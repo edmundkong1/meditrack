@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/fragment_practitioners.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable/ic_navbar_about_me.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable/ic_navbar_calendar.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable/ic_navbar_home.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable/ic_navbar_incident_summary.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable/ic_navbar_practitioners.xml" value="0.1" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/content_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/fragment_about_me.xml" value="0.1796875" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/fragment_incident_summary.xml" value="0.1796875" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/menu_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
       </map>
     </option>
   </component>

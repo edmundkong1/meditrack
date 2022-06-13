@@ -2,23 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/FirstFragment"
+        android:id="@+id/HomeFragment"
+        android:icon="@drawable/ic_navbar_home"
         android:title="Home"/>
 
     <item
-        android:id="@+id/SecondFragment"
+        android:id="@+id/CalendarFragment"
+        android:icon="@drawable/ic_navbar_calendar"
         android:title="Calendar"/>
 
     <item
         android:id="@+id/IncidentSummaryFragment"
-        android:title="Incident Summary"/>
+        android:icon="@drawable/ic_navbar_incident_summary"
+        android:title="Summary"/>
 
     <item
         android:id="@+id/PractitionersFragment"
+        android:icon="@drawable/ic_navbar_practitioners"
         android:title="Practitioners"/>
 
     <item
         android:id="@+id/AboutMeFragment"
-        android:title="Calendar"/>
+        android:icon="@drawable/ic_navbar_about_me"
+        android:title="About Me"/>
 
 </menu>
