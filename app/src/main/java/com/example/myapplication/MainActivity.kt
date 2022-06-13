@@ -37,8 +37,9 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         NavigationUI.setupWithNavController(navView, navController)
 
+        //TODO: INPUT tab - action should lead to input fragment
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
     }

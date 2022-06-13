@@ -9,4 +9,16 @@
         android:id="@+id/SecondFragment"
         android:title="Calendar"/>
 
+    <item
+        android:id="@+id/IncidentSummaryFragment"
+        android:title="Incident Summary"/>
+
+    <item
+        android:id="@+id/PractitionersFragment"
+        android:title="Practitioners"/>
+
+    <item
+        android:id="@+id/AboutMeFragment"
+        android:title="Calendar"/>
+
 </menu>

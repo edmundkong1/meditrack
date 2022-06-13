@@ -25,4 +25,23 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/IncidentSummaryFragment"
+        android:name="com.example.myapplication.IncidentSummaryFragment"
+        android:label="@string/incident_summary_fragment_label"
+        tools:layout="@layout/fragment_incident_summary">
+
+    </fragment>
+    <fragment
+        android:id="@+id/PractitionersFragment"
+        android:name="com.example.myapplication.PractitionersFragment"
+        android:label="@string/practitioners_fragment_label"
+        tools:layout="@layout/fragment_practitioners">
+    </fragment>
+    <fragment
+        android:id="@+id/AboutMeFragment"
+        android:name="com.example.myapplication.AboutMeFragment"
+        android:label="@string/about_me_fragment_label"
+        tools:layout="@layout/fragment_about_me">
+    </fragment>
 </navigation>

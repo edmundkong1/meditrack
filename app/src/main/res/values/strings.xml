@@ -4,9 +4,15 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="incident_summary_fragment_label">Incident Summary Fragment</string>
+    <string name="practitioners_fragment_label">Practitioners Fragment</string>
+    <string name="about_me_fragment_label">About Me Fragment</string>
+    <string name="input_fragment_label">Input Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

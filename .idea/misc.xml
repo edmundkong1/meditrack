@@ -3,10 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/layout/content_main.xml" value="0.1796875" />
-        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/menu_main.xml" value="0.1796875" />
-        <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/fragment_practitioners.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
