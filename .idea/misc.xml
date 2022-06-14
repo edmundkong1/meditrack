@@ -17,6 +17,11 @@
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
         <entry key="app/src/main/res/drawable/ic_button_input.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23159179687500003" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.21051759581634966" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.15446624755859376" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -2,12 +2,12 @@
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Home Fragment</string>
-    <string name="second_fragment_label">Calendar Fragment</string>
-    <string name="incident_summary_fragment_label">Incident Summary Fragment</string>
-    <string name="practitioners_fragment_label">Practitioners Fragment</string>
-    <string name="about_me_fragment_label">About Me Fragment</string>
-    <string name="input_fragment_label">Input Fragment</string>
+    <string name="first_fragment_label">Home</string>
+    <string name="second_fragment_label">Calendar</string>
+    <string name="incident_summary_fragment_label">Incident Summary</string>
+    <string name="practitioners_fragment_label">Practitioners</string>
+    <string name="about_me_fragment_label">About Me</string>
+    <string name="input_fragment_label">Input</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
