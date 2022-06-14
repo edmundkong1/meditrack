@@ -27,8 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="@dimen/fab_margin_end"
+        android:layout_marginTop="@dimen/fab_margin_top"
+        app:fabSize="mini"
         app:srcCompat="@drawable/ic_button_input" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
