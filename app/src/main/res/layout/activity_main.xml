@@ -30,6 +30,8 @@
         app:fabSize="normal"
         app:backgroundTint="@android:color/transparent"
         android:outlineProvider="none"
-        app:srcCompat="@drawable/ic_button_input" />
+        app:tint="@null"
+        app:srcCompat="@drawable/ic_button_input"
+        android:contentDescription="@string/input_button" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

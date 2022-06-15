@@ -18,4 +18,5 @@
     <string name="hello_practitioners_fragment">Hello practitioners fragment</string>
     <string name="hello_about_me_fragment">Hello about me fragment</string>
     <string name="hello_input_fragment">Hello input fragment</string>
+    <string name="input_button">Input button</string>
 </resources>
