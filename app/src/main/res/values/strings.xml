@@ -19,4 +19,5 @@
     <string name="hello_about_me_fragment">Hello about me fragment</string>
     <string name="hello_input_fragment">Hello input fragment</string>
     <string name="input_button">Input button</string>
+    <string name="current_date">Current Date</string>
 </resources>
