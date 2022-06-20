@@ -6,16 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".CalendarFragment">
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:ignore="MissingConstraints" />
-
-    <ListView
-        android:id="@+id/listCalendar"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp"/>
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
+
+        <ListView
+            android:id="@+id/listCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textview_date"/>
+
+        <TextView
+            android:id="@+id/textview_date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calendar"
+            android:text="Current Date"
+            tools:ignore="MissingConstraints" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
