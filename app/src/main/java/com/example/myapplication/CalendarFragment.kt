@@ -1,11 +1,12 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.FragmentCalendarBinding
 
 /**
@@ -23,18 +24,26 @@ class CalendarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
+        val listItems = arrayOf("Item 1", "Item 2")
+        val l: ListView = view.findViewById(R.id.listCalendar)
+        val listViewAdapter = ArrayAdapter(
+            requireActivity(),
+            android.R.layout.simple_list_item_1,
+            listItems
+        )
+        l.adapter = listViewAdapter
+        return view
 
-        _binding = FragmentCalendarBinding.inflate(inflater, container, false)
-        return binding.root
+//        _binding = FragmentCalendarBinding.inflate(inflater, container, false)
+//        return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+
     }
 
     override fun onDestroyView() {
