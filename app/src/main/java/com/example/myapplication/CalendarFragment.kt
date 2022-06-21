@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
 
+//TODO: NotificationManager/AlarmManager + Hour+minutes + Sort by time
+//TODO: BUG: List is cut off by one element
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
@@ -33,7 +36,8 @@ class CalendarFragment : Fragment() {
             android.R.layout.simple_list_item_1,
             listItems
         )
-        l.adapter = listViewAdapter
+        //l.adapter = listViewAdapter
+        l.adapter = CalendarListAdapter(requireActivity(), listItems)
         return view
     }
 
@@ -42,7 +46,7 @@ class CalendarFragment : Fragment() {
         calendarView = view.findViewById(R.id.calendar)
         dateTV = view.findViewById(R.id.textview_date)
 
-        val Day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta")
+        val Day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9")
         val Day2 = arrayOf("Norvasc")
         val Day3 = arrayOf("Norvasc", "Libitor")
         val Day4 = arrayOf("Norvasc")
@@ -71,7 +75,8 @@ class CalendarFragment : Fragment() {
             android.R.layout.simple_list_item_1,
             data
         )
-        l.adapter = listViewAdapter
+        //l.adapter = listViewAdapter
+        l.adapter = CalendarListAdapter(requireActivity(), data)
         // set this date in TextView for Display
         dateTV.text = date
 
@@ -113,7 +118,8 @@ class CalendarFragment : Fragment() {
                         android.R.layout.simple_list_item_1,
                         data
                     )
-                    l.adapter = listViewAdapter
+                    //l.adapter = listViewAdapter
+                    l.adapter = CalendarListAdapter(requireActivity(), data)
                     // set this date in TextView for Display
                     dateTV.text = date
                 })

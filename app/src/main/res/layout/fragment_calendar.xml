@@ -23,7 +23,7 @@
             android:id="@+id/listCalendar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/textview_date"/>
+            android:layout_below="@id/textview_date" />
 
         <TextView
             android:id="@+id/textview_date"
