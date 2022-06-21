@@ -1,4 +1,5 @@
 <resources>
     <dimen name="fab_margin_end">16dp</dimen>
     <dimen name="fab_margin_top">8dp</dimen>
+    <dimen name="calendar_list_padding">8dp</dimen>
 </resources>
