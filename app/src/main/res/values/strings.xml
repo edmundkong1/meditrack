@@ -20,4 +20,6 @@
     <string name="hello_input_fragment">Hello input fragment</string>
     <string name="input_button">Input button</string>
     <string name="current_date">Current Date</string>
+    <string name="medicineName">medicineName</string>
+    <string name="medicineTime">medicineTime</string>
 </resources>
