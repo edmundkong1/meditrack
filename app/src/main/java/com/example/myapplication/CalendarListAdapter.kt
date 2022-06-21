@@ -39,8 +39,9 @@ class CalendarListAdapter(context: Context, data: Array<String>) : BaseAdapter()
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
-       val randomIndex: Int = Random().nextInt(times.size)
-       val medTime: String = times[randomIndex]
+       // val randomIndex: Int = Random().nextInt(times.size)
+       // Made times non-random so times don't change when switching back and forth between dates
+       val medTime: String = times[i % times.size]
        time.text = medTime
        return view
     }
