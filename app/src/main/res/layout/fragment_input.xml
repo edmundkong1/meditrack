@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".InputFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -52,10 +51,9 @@
                     android:gravity="center"
                     android:padding="13dp" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/HeartburnBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -105,10 +103,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/ChestPainBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -158,10 +155,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/SoreThroatBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -210,10 +206,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/BreathBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -262,10 +257,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/WheezingBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -314,10 +308,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/NauseaBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
@@ -366,10 +359,9 @@
                     android:gravity="center"
                     android:padding="13dip" />
                 <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/OtherBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:singleSelection="true"
+
                     android:gravity="center"
                     >
                     <Button
