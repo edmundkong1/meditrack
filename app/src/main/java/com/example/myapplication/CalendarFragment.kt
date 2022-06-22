@@ -42,10 +42,10 @@ class CalendarFragment : Fragment() {
         dateTV = view.findViewById(R.id.textview_date)
 
         //temp mockup data
-        val day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9")
-        val day2 = arrayOf("Norvasc")
+        val day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta")
+        val day2 = arrayOf("Norvasc", "Chiropractor Appointment")
         val day3 = arrayOf("Norvasc", "Libitor")
-        val day4 = arrayOf("Norvasc")
+        val day4 = arrayOf("Norvasc", "Physician Appointment")
         val day5 = arrayOf("Norvasc", "Libitor", "Warfarin")
         val day6 = arrayOf("Norvasc", "Brilinta")
         val day7 = arrayOf("Norvasc", "Libitor")
