@@ -56,7 +56,7 @@ class CalendarFragment : Fragment() {
 
         //list of medications
         val l: ListView = view.findViewById(R.id.listCalendar)
-        l.adapter = CalendarListAdapter(requireActivity(), day1)
+        l.adapter = CalendarListAdapter(requireActivity(), day2)
         // set this date in TextView for Display
         dateTV.text = date
 
