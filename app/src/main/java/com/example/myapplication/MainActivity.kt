@@ -1,6 +1,10 @@
 package com.example.myapplication
 
 import android.app.ActionBar
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,11 +17,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private var alarmManager: AlarmManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +54,27 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        scheduleNotification(2, 16);
+    }
+// https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
+    fun scheduleNotification(Hour: Int, Min : Int) {
+        val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
+        intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
+        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, 11, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val alarmStartTime = Calendar.getInstance()
+        alarmStartTime.timeInMillis = System.currentTimeMillis()
+        alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
+        alarmStartTime[Calendar.MINUTE] = Min
+        /*alarmManager!!.setExact(
+            AlarmManager.RTC_WAKEUP,
+            alarmStartTime.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent
+        )*/
+        alarmManager!!.setExact(
+            AlarmManager.RTC_WAKEUP,
+            alarmStartTime.timeInMillis, pendingIntent
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
