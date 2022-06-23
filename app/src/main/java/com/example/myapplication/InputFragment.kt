@@ -25,10 +25,6 @@ class InputFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,18 +44,17 @@ class InputFragment : Fragment() {
         ButtonViews.add(view.findViewById(R.id.WheezingBtns))
         ButtonViews.add(view.findViewById(R.id.NauseaBtns))
         ButtonViews.add(view.findViewById(R.id.OtherBtns))
-        MaterialButtonToggleGroup.OnButtonCheckedListener()
         for(btn in ButtonViews){
             btn.setSelectionRequired(true)
-            btn.addOnButtonCheckedListener (new MaterialButtonToggleGroup.OnButtonCheckedListener(){
-                    public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                        if (isChecked) {
-                            if (checkedId == R.id.button1) {
-                                //..
-                            }
-                        }
+            btn.addOnButtonCheckedListener { buttonGroup, checkedId, isChecked ->
+                if(isChecked){
+                    when(checkedId){
+                        //STORE CLICKED BUTTON
+                        val buttonId = buttonGroup.getCheckedButtonId()
                     }
-                })
+                }
+
+            }
 
         }
 

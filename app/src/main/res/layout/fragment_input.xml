@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".InputFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -160,7 +161,7 @@
                     android:id="@+id/SoreThroatBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleSelection="true"
+                    app:singleSelection="true"
                     android:gravity="center"
                     >
                     <Button
@@ -212,7 +213,7 @@
                     android:id="@+id/BreathBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleSelection="true"
+                    app:singleSelection="true"
                     android:gravity="center"
                     >
                     <Button
@@ -264,7 +265,7 @@
                     android:id="@+id/WheezingBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleSelection="true"
+                    app:singleSelection="true"
                     android:gravity="center"
                     >
                     <Button
@@ -316,7 +317,7 @@
                     android:id="@+id/NauseaBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleSelection="true"
+                    app:singleSelection="true"
                     android:gravity="center"
                     >
                     <Button
@@ -368,7 +369,7 @@
                     android:id="@+id/OtherBtns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleSelection="true"
+                    app:singleSelection="true"
                     android:gravity="center"
                     >
                     <Button
