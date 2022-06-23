@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.ActionBar
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             R.id.HomeFragment, R.id.CalendarFragment, R.id.IncidentSummaryFragment, R.id.PractitionersFragment, R.id.AboutMeFragment
         ).build()
 
-        //appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // TODO: Don't hardcode name of tabs
@@ -55,10 +55,14 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
+        //call alarm in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        //time alarm will ring
+        //TODO: need to change this so it shows for the time of when to take medication (depends on input data)
         scheduleNotification(2, 16);
     }
-// https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
+    // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Hour: Int, Min : Int) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
         intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
@@ -67,10 +71,7 @@ class MainActivity : AppCompatActivity() {
         alarmStartTime.timeInMillis = System.currentTimeMillis()
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
         alarmStartTime[Calendar.MINUTE] = Min
-        /*alarmManager!!.setExact(
-            AlarmManager.RTC_WAKEUP,
-            alarmStartTime.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent
-        )*/
+        //set exact time of alarm
         alarmManager!!.setExact(
             AlarmManager.RTC_WAKEUP,
             alarmStartTime.timeInMillis, pendingIntent
