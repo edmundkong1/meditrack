@@ -1,9 +1,92 @@
 package com.example.myapplication
 
+import android.app.ActionBar
 import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.myapplication.databinding.ActivityInputBinding
+import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 //new Activity created because Input tab is a new screen
 //TODO: need to add either the action bar at the bottom of this new screen, or a back button to go to previous screen
-class InputActivity : Activity() {
+class InputActivity : AppCompatActivity() {
     //TODO: add all input content here, and layout info to activity_input.xml file
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityInputBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityInputBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+//        setSupportActionBar(binding.toolbar2)
+
+//        val navController = findNavController(R.id.)
+//
+//        //removes back arrows
+//        appBarConfiguration = AppBarConfiguration.Builder(
+//            R.id.HomeFragment, R.id.CalendarFragment, R.id.IncidentSummaryFragment, R.id.PractitionersFragment, R.id.AboutMeFragment
+//        ).build()
+//
+//        //appBarConfiguration = AppBarConfiguration(navController.graph)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//
+//        // TODO: Don't hardcode name of tabs
+//
+//        // Allow tabs to navigate to corresponding fragments based on nav_menu.xml and nav_graph.xml
+//        val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//        NavigationUI.setupWithNavController(navView, navController)
+//
+//        //TODO: INPUT tab - action should lead to input fragment
+////        binding.fab.setOnClickListener { view ->
+////            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
+////                .setAction("Action", null).show()
+////        }
+//
+//
+//        //added a new activity for input
+//        val fab = findViewById<View>(R.id.fab) as FloatingActionButton
+//        fab.setOnClickListener {
+//            startActivity(
+//                Intent(
+//                    this@InputActivity,
+//                    InputActivity::class.java
+//                )
+//            )
+//        }
+    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        return false
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        return when (item.itemId) {
+//            R.id.action_settings -> true
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
+//
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = findNavController(R.id.nav_host_fragment_content_main)
+//        return navController.navigateUp(appBarConfiguration)
+//                || super.onSupportNavigateUp()
+//    }
 }
