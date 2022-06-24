@@ -1,9 +1,11 @@
 package com.example.myapplication
 
 import android.app.ActionBar
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,6 +14,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -44,9 +47,21 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(navView, navController)
 
         //TODO: INPUT tab - action should lead to input fragment
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+//        binding.fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
+
+
+        //added a new activity for input
+        val fab = findViewById<View>(R.id.fab) as FloatingActionButton
+        fab.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    InputActivity::class.java
+                )
+            )
         }
     }
 

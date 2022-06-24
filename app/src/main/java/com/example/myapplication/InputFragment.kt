@@ -50,7 +50,7 @@ class InputFragment : Fragment() {
                 if(isChecked){
                     when(checkedId){
                         //STORE CLICKED BUTTON
-                        val buttonId = buttonGroup.getCheckedButtonId()
+                        //val buttonId = buttonGroup.getCheckedButtonId()
                     }
                 }
 
