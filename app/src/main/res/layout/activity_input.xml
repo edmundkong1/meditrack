@@ -6,8 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity">
 
-    <include layout="@layout/fragment_input"/>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
