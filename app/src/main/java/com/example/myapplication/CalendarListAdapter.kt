@@ -29,7 +29,7 @@ class CalendarListAdapter(context: Context, data: Array<String>) : BaseAdapter()
    @SuppressLint("InflateParams")
    override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View? {
        //random times for medicine
-       val times = arrayOf("9:00am", "5:30pm", "8:00pm", "6:00pm", "11:00am", "9:30pm", "3:15pm")
+       val times = arrayOf("9:00am", "11:00am", "3:15pm", "5:30pm", "6:00pm", "8:00pm", "9:30pm")
        var view: View? = view
        if (view == null) {
            view = LayoutInflater.from(context).inflate(R.layout.calendar_list_item, null)
