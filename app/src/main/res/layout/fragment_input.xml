@@ -4,172 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="?android:attr/actionBarSize"
     tools:context=".InputFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingTop="8dp"
-        android:paddingBottom="?android:attr/actionBarSize">
 
 
 
-
-        <TextView
-            android:layout_below="@id/textview_input_table"
-            android:id="@+id/textview_other"
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview1"
+            style="@style/Base.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Input Other Symptoms"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:paddingTop="10dp"/>
+            android:layout_margin="10dp"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintVertical_bias="0.021">
 
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:gravity="top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textview_other"
-            android:id="@+id/textview_other_table"
-            android:stretchColumns="0">
-            <TableRow>
-                <Button
-                    android:id="@+id/Button1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Prescription"
-                   />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Insurance Info"
-                    />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Practitioners"
-                    />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Conditions"
-                    />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Appointments"
-                    />
-            </TableRow>
-
-        </TableLayout>
-
-
-
-
-
-
-
-
-
-
-    </RelativeLayout>
-
-    <!--Base CardView-->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/base_cardview"
-        style="@style/Base.CardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021">
-
-        <!--This is a ConstraintLayout for the entire CardView
-                including the expandable portion-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/base_cardview"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.511"
-            tools:layout_editor_absoluteX="-55dp">
-
-            <!--This is a ConstraintLayout for the fixed portion
-                of the CardView. The elements
-                that lie within the fixed portion of the CardView
-                can be constrained to this layout.-->
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fixed_layout"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-                <Button
-                    android:id="@+id/textview_input_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Input Daily Symptoms"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    tools:ignore="MissingConstraints"
-                    />
-
-
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--The following is the expandable portion whose
-                visibility is initially set to 'gone'.
-                The parent LinearLayout contains 3 child LinearLayouts
-                that hold a subject name and an icon each.-->
-            <LinearLayout
-                android:id="@+id/hidden_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fixed_layout">
+                app:layout_constraintBottom_toBottomOf="@id/cardview1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
 
-                <!--Child LinearLayout 1-->
-                <LinearLayout
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+                    <Button
+                        android:id="@+id/input_symptoms_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Input Daily Symptoms"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        tools:ignore="MissingConstraints"
+                        />
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout1">
+
 
                     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:gravity="top"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textview_input"
+                        android:layout_below="@id/input_symptoms_btn"
                         android:id="@+id/textview_input_table"
                         android:stretchColumns="1"
                         android:paddingTop="10dp"
@@ -556,58 +470,427 @@
                     </TableLayout>
                 </LinearLayout>
 
-                <!--Child LinearLayout 2-->
-                <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview2"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintTop_toBottomOf="@id/cardview1"
+            app:layout_constraintVertical_bias="0.021">
+
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/cardview2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
+
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/gfg_icon_black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/input_prescription_btn"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Data Structures"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
+                        android:gravity="center"
+                        android:text="Input Prescriptions"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        tools:ignore="MissingConstraints"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout2">
+
+                    <!--Child LinearLayout 1-->
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_prescription_btn"
+                        android:id="@+id/input_prescription_table"
+                        android:stretchColumns="1"
+                        android:paddingTop="10dp"
+                        >
+
+                    </TableLayout>
                 </LinearLayout>
 
-                <!--Child LinearLayout 3-->
-                <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview3"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview2"
+            app:layout_constraintVertical_bias="0.021">
+
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/cardview3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
+
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/gfg_icon_black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+                    <Button
+                        android:id="@+id/input_insurance_btn"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Operating Systems"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
-                </LinearLayout>
-            </LinearLayout>
+                        android:gravity="center"
+                        android:text="Input Insurance Info"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        tools:ignore="MissingConstraints"
+                        />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout3">
+
+                    <!--Child LinearLayout 1-->
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_insurance_btn"
+                        android:id="@+id/input_insurance_table"
+                        android:stretchColumns="1"
+                        android:paddingTop="10dp"
+                        >
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview4"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview3"
+            app:layout_constraintVertical_bias="0.021">
+
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/cardview4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
+
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+                    <Button
+                        android:id="@+id/input_practitioners_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Input Practitioners"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        tools:ignore="MissingConstraints"
+                        />
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout4">
+
+                    <!--Child LinearLayout 1-->
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_practitioners_btn"
+                        android:id="@+id/input_practitioners_table"
+                        android:stretchColumns="1"
+                        android:paddingTop="10dp"
+                        >
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview5"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.021">
+
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/cardview5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
+
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+                    <Button
+                        android:id="@+id/input_conditions_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Input Conditions"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        tools:ignore="MissingConstraints"
+                        />
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout5">
+
+                    <!--Child LinearLayout 1-->
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_conditions_btn"
+                        android:id="@+id/input_conditions_table"
+                        android:stretchColumns="1"
+                        android:paddingTop="10dp"
+                        >
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <!--Base CardView-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview6"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview5"
+            app:layout_constraintVertical_bias="0.021">
+
+            <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/cardview6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511"
+                tools:layout_editor_absoluteX="-55dp">
+
+                <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fixed_layout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <Button
+                        android:id="@+id/input_appointment_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Input Appointments"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                <LinearLayout
+                    android:id="@+id/hidden_view6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fixed_layout6">
+
+                    <!--Child LinearLayout 1-->
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:gravity="top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_appointment_btn"
+                        android:id="@+id/input_appointment_table"
+                        android:stretchColumns="1"
+                        android:paddingTop="10dp"
+                        >
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
 </FrameLayout>
