@@ -42,7 +42,7 @@ class CalendarFragment : Fragment() {
         dateTV = view.findViewById(R.id.textview_date)
 
         //temp mockup data
-        val day1 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"),
+        val day1 = arrayOf(arrayOf("Norvasc", "9:00am"), arrayOf("Libitor", "11:00am"),
             arrayOf("Warfarin", "3:00pm"), arrayOf("Brilinta", "5:00pm"))
         val day2 = arrayOf(arrayOf("Norvasc","9:00am"),
             arrayOf("Chiropractor Appointment", "12:00pm"))
@@ -109,6 +109,8 @@ class CalendarFragment : Fragment() {
                     //for (i in data){
                     //    scheduleNotification(1, 2)
                     //}
+
+                    (activity as MainActivity).scheduleNotification(month, dayOfMonth, 8,30, "This 830 is a test")
                 })
     }
 }

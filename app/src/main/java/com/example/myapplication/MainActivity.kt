@@ -58,17 +58,20 @@ class MainActivity : AppCompatActivity() {
         //call alarm in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         //time alarm will ring
-        //TODO: need to change this so it shows for the time of when to take medication (depends on input data)
-        scheduleNotification(2, 16);
+
+        //scheduleNotification(14, 16, "I hope this works");
     }
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
-    fun scheduleNotification(Hour: Int, Min : Int) {
+    fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
         intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
+        intent.putExtra("Message", NotifMessage)
         val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, 11, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmStartTime = Calendar.getInstance()
         alarmStartTime.timeInMillis = System.currentTimeMillis()
+        alarmStartTime[Calendar.MONTH] = Month
+        alarmStartTime[Calendar.DAY_OF_MONTH] = Day
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
         alarmStartTime[Calendar.MINUTE] = Min
         //set exact time of alarm

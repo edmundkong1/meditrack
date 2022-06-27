@@ -14,10 +14,11 @@ class ReminderBroadcast : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         //temp data for notification
+        val message = intent.extras!!.get("Message")
         showNotification(
             context,
-            "Reminder 1",
-            "This is the example reminder 1 from alarm manager"
+            "Meditrack Alert",
+            message as String
         )
     }
 
