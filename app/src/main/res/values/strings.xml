@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MediTrack</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home</string>
@@ -23,4 +23,5 @@
     <string name="current_date">Current Date</string>
     <string name="medicineName">medicineName</string>
     <string name="medicineTime">medicineTime</string>
+    <string name="display_logo">Display logo</string>
 </resources>
