@@ -11,9 +11,9 @@ import java.util.*
 
 //Starter code from https://stackoverflow.com/questions/61321990/android-listview-add-text-to-the-end-of-row
 //create custom adapter
-class CalendarListAdapter(context: Context, data: Array<String>) : BaseAdapter() {
+class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAdapter() {
     private val context: Context
-    private val data: Array<String>
+    private val data: Array<Array<String>>
     override fun getCount(): Int {
         return data.size
     }
@@ -29,20 +29,20 @@ class CalendarListAdapter(context: Context, data: Array<String>) : BaseAdapter()
    @SuppressLint("InflateParams")
    override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View? {
        //random times for medicine
-       val times = arrayOf("9:00am", "11:00am", "3:15pm", "5:30pm", "6:00pm", "8:00pm", "9:30pm")
+       //val times = arrayOf("9:00am", "11:00am", "3:15pm", "5:30pm", "6:00pm", "8:00pm", "9:30pm")
        var view: View? = view
        if (view == null) {
            view = LayoutInflater.from(context).inflate(R.layout.calendar_list_item, null)
        }
        val name: TextView = view!!.findViewById(R.id.name)
-       name.text = data[i]
+       name.text = data[i][0]
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
        // val randomIndex: Int = Random().nextInt(times.size)
        // Made times non-random so times don't change when switching back and forth between dates
-       val medTime: String = times[i % times.size]
-       time.text = medTime
+       // val medTime: String = times[i % times.size]
+       time.text = data[i][1]
        return view
     }
 

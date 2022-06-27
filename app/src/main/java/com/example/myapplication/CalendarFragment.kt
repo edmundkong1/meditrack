@@ -29,7 +29,7 @@ class CalendarFragment : Fragment() {
     ): View? {
         //creating a list of items with custom adapter
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val listItems = arrayOf("Item 1", "Item 2")
+        val listItems = arrayOf(arrayOf("Item 1","1:00pm"), arrayOf("Item 2","1:00pm"))
         val l: ListView = view.findViewById(R.id.listCalendar)
         l.adapter = CalendarListAdapter(requireActivity(), listItems)
         return view
@@ -42,13 +42,16 @@ class CalendarFragment : Fragment() {
         dateTV = view.findViewById(R.id.textview_date)
 
         //temp mockup data
-        val day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta")
-        val day2 = arrayOf("Norvasc", "Chiropractor Appointment")
-        val day3 = arrayOf("Norvasc", "Libitor")
-        val day4 = arrayOf("Norvasc", "Physician Appointment")
-        val day5 = arrayOf("Norvasc", "Libitor", "Warfarin")
-        val day6 = arrayOf("Norvasc", "Brilinta")
-        val day7 = arrayOf("Norvasc", "Libitor")
+        val day1 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"),
+            arrayOf("Warfarin", "3:00pm"), arrayOf("Brilinta", "5:00pm"))
+        val day2 = arrayOf(arrayOf("Norvasc","9:00am"),
+            arrayOf("Chiropractor Appointment", "12:00pm"))
+        val day3 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"))
+        val day4 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Physician Appointment", "2:00pm"))
+        val day5 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"),
+            arrayOf("Warfarin", "3:00pm"))
+        val day6 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Brilinta", "5:00pm"))
+        val day7 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"))
 
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
@@ -72,7 +75,7 @@ class CalendarFragment : Fragment() {
 
                     //show list of medicines
                     val l: ListView = view.findViewById(R.id.listCalendar)
-                    var data = arrayOf<String>()
+                    var data : Array<Array<String>>
 
                     //mockup data for one week
                     if (dayOfMonth % 7 == 0) {
@@ -93,13 +96,19 @@ class CalendarFragment : Fragment() {
                     else if (dayOfMonth % 7 == 5) {
                         data = day6
                     }
-                    else if (dayOfMonth % 7 == 6) {
+                    else {
                         data = day7
                     }
 
                     l.adapter = CalendarListAdapter(requireActivity(), data)
                     // set this date in TextView for Display
                     dateTV.text = date
+
+                    //Set notification for date/time
+                    //MainActivity.scheduleNotification
+                    //for (i in data){
+                    //    scheduleNotification(1, 2)
+                    //}
                 })
     }
 }
