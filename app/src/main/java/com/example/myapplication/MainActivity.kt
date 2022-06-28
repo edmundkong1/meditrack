@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
         intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
         intent.putExtra("Message", NotifMessage)
-        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, 11, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, 11, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         val alarmStartTime = Calendar.getInstance()
         alarmStartTime.timeInMillis = System.currentTimeMillis()
         alarmStartTime[Calendar.MONTH] = Month
