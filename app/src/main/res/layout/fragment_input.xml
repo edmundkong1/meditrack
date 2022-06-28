@@ -57,7 +57,18 @@
                         tools:ignore="MissingConstraints"
                         />
 
-
+                    <!--This is ImageButton for the expansion icon.-->
+                    <ImageButton
+                        android:id="@+id/arrow_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_expand_more_24"
+                        app:layout_constraintBottom_toBottomOf="@id/fixed_layout1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.802"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/list_of_subjects1"
+                        app:layout_constraintVertical_bias="0.0" />
 
 
 
