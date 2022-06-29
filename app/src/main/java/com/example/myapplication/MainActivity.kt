@@ -1,6 +1,10 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.ActionBar
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -16,11 +20,13 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private var alarmManager: AlarmManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             R.id.HomeFragment, R.id.CalendarFragment, R.id.IncidentSummaryFragment, R.id.PractitionersFragment, R.id.AboutMeFragment
         ).build()
 
-        //appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // TODO: Don't hardcode name of tabs
@@ -63,6 +68,32 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
+
+        //call alarm in this activity
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        //time alarm will ring
+
+        //scheduleNotification(14, 16, "I hope this works");
+    }
+    // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
+    @SuppressLint("UnspecifiedImmutableFlag")
+    fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
+        val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
+        //intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
+        intent.putExtra("Message", NotifMessage)
+        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val alarmStartTime = Calendar.getInstance()
+        alarmStartTime.timeInMillis = System.currentTimeMillis()
+        alarmStartTime[Calendar.MONTH] = Month
+        alarmStartTime[Calendar.DAY_OF_MONTH] = Day
+        alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
+        alarmStartTime[Calendar.MINUTE] = Min
+        alarmStartTime[Calendar.SECOND] = 0
+        //set exact time of alarm
+        alarmManager!!.setExact(
+            AlarmManager.RTC_WAKEUP,
+            alarmStartTime.timeInMillis, pendingIntent
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
