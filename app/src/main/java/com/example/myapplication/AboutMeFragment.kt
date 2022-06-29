@@ -52,28 +52,28 @@ class AboutMeFragment : Fragment() {
             "Norvasc",
             "40 mg",
             "Call Pharmacy: Refill required",
-            "Take daily at 9:00am (on empty stomach)."
+            "Directions: Take daily at 9:00am (on empty stomach)."
         ))
 
         medicationsList.add(Medications(
             "Brilinta",
             "10 mg",
-            "N/A",
-            "Take twice a week at 11:00am"
+            "Call Doctor: New prescription required",
+            "Directions: Take twice a week at 11:00am"
         ))
 
         medicationsList.add(Medications(
             "Libitor",
             "25 mg",
-            "N/A",
-            "Take four times a week at 3:15pm"
+            "",
+            "Directions: Take four times a week at 3:15pm"
         ))
 
         medicationsList.add(Medications(
             "Warfarin",
             "100 mg",
-            "N/A",
-            "Take once a week at 12:00pm"
+            "",
+            "Directions: Take once a week at 12:00pm"
         ))
     }
 
