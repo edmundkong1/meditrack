@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 //    add practitoners section
 //    add scrolling
 //    fix last section opening properly (don't default the sections being open)
-//    add button to call pharmacy + other shortcuts
+//    add button to call pharmacy/doctors + other shortcuts
 //    fix text overlap, go to next line
-//    button to learn more about the drug
+//    button to learn more about the medication
 
 class AboutMeFragment : Fragment() {
 
@@ -51,14 +51,14 @@ class AboutMeFragment : Fragment() {
         medicationsList.add(Medications(
             "Norvasc",
             "40 mg",
-            "Call Pharmacy: Refill required",
+            "Refill required",
             "Directions: Take daily at 9:00am (on empty stomach)."
         ))
 
         medicationsList.add(Medications(
             "Brilinta",
             "10 mg",
-            "Call Doctor: New prescription required",
+            "New prescription required",
             "Directions: Take twice a week at 11:00am"
         ))
 
