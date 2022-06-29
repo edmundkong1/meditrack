@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class CalendarFragment : Fragment() {
     ): View? {
         //creating a list of items with custom adapter
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val listItems = arrayOf("Item 1", "Item 2")
+        val listItems = arrayOf(arrayOf("Item 1","1:00pm"), arrayOf("Item 2","1:00pm"))
         val l: ListView = view.findViewById(R.id.listCalendar)
         l.adapter = CalendarListAdapter(requireActivity(), listItems)
         return view
@@ -42,13 +43,16 @@ class CalendarFragment : Fragment() {
         dateTV = view.findViewById(R.id.textview_date)
 
         //temp mockup data
-        val day1 = arrayOf("Norvasc", "Libitor", "Warfarin", "Brilinta")
-        val day2 = arrayOf("Norvasc", "Chiropractor Appointment")
-        val day3 = arrayOf("Norvasc", "Libitor")
-        val day4 = arrayOf("Norvasc", "Physician Appointment")
-        val day5 = arrayOf("Norvasc", "Libitor", "Warfarin")
-        val day6 = arrayOf("Norvasc", "Brilinta")
-        val day7 = arrayOf("Norvasc", "Libitor")
+        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
+        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
+            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
+        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
+        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
+        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
+        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
 
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
@@ -72,7 +76,7 @@ class CalendarFragment : Fragment() {
 
                     //show list of medicines
                     val l: ListView = view.findViewById(R.id.listCalendar)
-                    var data = arrayOf<String>()
+                    var data : Array<Array<String>>
 
                     //mockup data for one week
                     if (dayOfMonth % 7 == 0) {
@@ -93,13 +97,57 @@ class CalendarFragment : Fragment() {
                     else if (dayOfMonth % 7 == 5) {
                         data = day6
                     }
-                    else if (dayOfMonth % 7 == 6) {
+                    else {
                         data = day7
+                    }
+                    if (dayOfMonth == 20) {
+                        val list: MutableList<Array<String>> = data.toMutableList()
+                        list.add(0, arrayOf("Norvasc Refill","8:00am", "refill", "Amount: 3000mg"))
+                        data = list.toTypedArray()
                     }
 
                     l.adapter = CalendarListAdapter(requireActivity(), data)
                     // set this date in TextView for Display
                     dateTV.text = date
+
+                    //Set notification for date/time
+                    //MainActivity.scheduleNotification
+                    //for (i in data){
+                    //    scheduleNotification(1, 2)
+                    //}
+                    //Log.w("year",year.toString())
+                    //Log.w("month",month.toString())
+                    //Log.w("day",dayOfMonth.toString())
+                    if(year == 2022 && month == 5 && dayOfMonth == 29) {
+                        for (day in data) {
+                            (activity as MainActivity).scheduleNotification(
+                                month,
+                                dayOfMonth,
+                                extracthour(day[1]),
+                                0,
+                                "Reminder: " + day[0]
+                            )
+                        }
+                    }
                 })
+    }
+
+    private fun extracthour(time: String): Int {
+        var hour = 0
+        for(i in time){
+            if (i == ':'){
+                break
+            }
+            hour *= 10
+            Log.w("I is:", i.toString())
+            hour += i.toString().toInt()
+        }
+
+        if(time[time.length-2] == 'p'){
+            hour += 12
+        }
+
+        Log.w("hour: ", hour.toString())
+        return hour
     }
 }
