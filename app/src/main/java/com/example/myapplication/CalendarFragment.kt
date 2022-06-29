@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +46,7 @@ class CalendarFragment : Fragment() {
         val day1 = arrayOf(arrayOf("Norvasc", "9:00am"), arrayOf("Libitor", "11:00am"),
             arrayOf("Warfarin", "3:00pm"), arrayOf("Brilinta", "5:00pm"))
         val day2 = arrayOf(arrayOf("Norvasc","9:00am"),
-            arrayOf("Chiropractor Appointment", "12:00pm"))
+            arrayOf("Chiropractor Appointment", "1:00pm"))
         val day3 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"))
         val day4 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Physician Appointment", "2:00pm"))
         val day5 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"),
@@ -109,8 +110,28 @@ class CalendarFragment : Fragment() {
                     //for (i in data){
                     //    scheduleNotification(1, 2)
                     //}
-
-                    (activity as MainActivity).scheduleNotification(month, dayOfMonth, 8,30, "This 830 is a test")
+                    for (day in data){
+                        (activity as MainActivity).scheduleNotification(month, dayOfMonth, extracthour(day[1]),0, "Reminder: " + day[0])
+                    }
                 })
+    }
+
+    private fun extracthour(time: String): Int {
+        var hour = 0
+        for(i in time){
+            if (i == ':'){
+                break
+            }
+            hour *= 10
+            Log.w("I is:", i.toString())
+            hour += i.toString().toInt()
+        }
+
+        if(time[time.length-2] == 'p'){
+            hour += 12
+        }
+
+        Log.w("hour: ", hour.toString())
+        return hour
     }
 }
