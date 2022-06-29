@@ -24,7 +24,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_navbar_home.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_stethoscope_with_binaural_spring.xml" value="0.103" />
+        <entry key="app/src/main/res/layout/fragment_about_me.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.235552978515625" />
+        <entry key="app/src/main/res/layout/fragment_incident_summary.xml" value="0.16354166666666667" />
+        <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

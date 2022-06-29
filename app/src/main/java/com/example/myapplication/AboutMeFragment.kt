@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ms.square.android.expandabletextview.ExpandableTextView
+import kotlinx.android.synthetic.main.fragment_about_me.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,8 @@ class AboutMeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var medicationsList = ArrayList<Medications>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,6 +39,45 @@ class AboutMeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about_me, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        tv_medications.text = "yes"
+//        val expTv: ExpandableTextView? =
+//        expand_text_view.text = "yuhh"
+
+        initData()
+        setRecyclerView()
+    }
+
+    private fun setRecyclerView() {
+        val medicationsAdapter = MedicationsAdapter(medicationsList)
+        recycler_view.adapter = medicationsAdapter
+        recycler_view.setHasFixedSize(true)
+    }
+
+    private fun initData() {
+        medicationsList.add(Medications(
+            "Norvasc",
+            "40 mg",
+            "Call Pharmacy: Refill required",
+            "Take on empty stomach first thing in the morning, 1 hour before eating"
+        ))
+
+        medicationsList.add(Medications(
+            "Brilinta",
+            "10 mg",
+            "N/A",
+            "Take with dinner"
+        ))
+
+        medicationsList.add(Medications(
+            "Libitor",
+            "25 mg",
+            "N/A",
+            "Take an hour before lunch"
+        ))
     }
 
     companion object {

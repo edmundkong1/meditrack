@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".AboutMeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_medications"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_about_me_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Medications"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <!-- This is the actual mandatory library attributes that must be used -->
+<!--    <com.ms.square.android.expandabletextview.ExpandableTextView-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/expand_text_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_below="@id/tv_medications"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tv_medications"-->
+<!--        expandableTextView:maxCollapsedLines="4"-->
+<!--        expandableTextView:animDuration="200">-->
+
+<!--        <TextView-->
+<!--            android:id="@id/expandable_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="#666666" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@id/expand_collapse"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="16dp"-->
+<!--            android:layout_gravity="right|bottom"-->
+<!--            android:background="@android:color/transparent"/>-->
+
+<!--    </com.ms.square.android.expandabletextview.ExpandableTextView>-->
+</LinearLayout >
