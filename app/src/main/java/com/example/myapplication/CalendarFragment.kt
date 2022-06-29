@@ -110,8 +110,19 @@ class CalendarFragment : Fragment() {
                     //for (i in data){
                     //    scheduleNotification(1, 2)
                     //}
-                    for (day in data){
-                        (activity as MainActivity).scheduleNotification(month, dayOfMonth, extracthour(day[1]),0, "Reminder: " + day[0])
+                    //Log.w("year",year.toString())
+                    //Log.w("month",month.toString())
+                    //Log.w("day",dayOfMonth.toString())
+                    if(year == 2022 && month == 5 && dayOfMonth == 29) {
+                        for (day in data) {
+                            (activity as MainActivity).scheduleNotification(
+                                month,
+                                dayOfMonth,
+                                extracthour(day[1]),
+                                0,
+                                "Reminder: " + day[0]
+                            )
+                        }
                     }
                 })
     }
