@@ -62,7 +62,7 @@
                     android:text="@string/medicineTime"
                     android:textSize="20sp"
                     android:id="@+id/time"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="@android:color/black"
                     android:paddingTop="@dimen/calendar_list_padding"
                     android:paddingBottom="@dimen/calendar_list_padding"
                     app:layout_constraintBottom_toBottomOf="parent"
