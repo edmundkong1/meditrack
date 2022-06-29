@@ -65,17 +65,15 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
-        //intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
+        intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
         intent.putExtra("Message", NotifMessage)
-        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity,
-            System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, 11, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmStartTime = Calendar.getInstance()
         alarmStartTime.timeInMillis = System.currentTimeMillis()
         alarmStartTime[Calendar.MONTH] = Month
         alarmStartTime[Calendar.DAY_OF_MONTH] = Day
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
         alarmStartTime[Calendar.MINUTE] = Min
-        alarmStartTime[Calendar.SECOND] = 0
         //set exact time of alarm
         alarmManager!!.setExact(
             AlarmManager.RTC_WAKEUP,
