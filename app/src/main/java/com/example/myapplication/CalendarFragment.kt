@@ -43,16 +43,16 @@ class CalendarFragment : Fragment() {
         dateTV = view.findViewById(R.id.textview_date)
 
         //temp mockup data
-        val day1 = arrayOf(arrayOf("Norvasc", "9:00am"), arrayOf("Libitor", "11:00am"),
-            arrayOf("Warfarin", "3:00pm"), arrayOf("Brilinta", "5:00pm"))
-        val day2 = arrayOf(arrayOf("Norvasc","9:00am"),
-            arrayOf("Chiropractor Appointment", "1:00pm"))
-        val day3 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"))
-        val day4 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Physician Appointment", "2:00pm"))
-        val day5 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"),
-            arrayOf("Warfarin", "3:00pm"))
-        val day6 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Brilinta", "5:00pm"))
-        val day7 = arrayOf(arrayOf("Norvasc","9:00am"), arrayOf("Libitor", "11:00am"))
+        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
+        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
+            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
+        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
+        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
+        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
+        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
 
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
@@ -99,6 +99,11 @@ class CalendarFragment : Fragment() {
                     }
                     else {
                         data = day7
+                    }
+                    if (dayOfMonth == 20) {
+                        val list: MutableList<Array<String>> = data.toMutableList()
+                        list.add(0, arrayOf("Norvasc Refill","8:00am", "refill", "Amount: 3000mg"))
+                        data = list.toTypedArray()
                     }
 
                     l.adapter = CalendarListAdapter(requireActivity(), data)

@@ -2,11 +2,17 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import java.util.*
 
 //Starter code from https://stackoverflow.com/questions/61321990/android-listview-add-text-to-the-end-of-row
@@ -43,6 +49,37 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
        // Made times non-random so times don't change when switching back and forth between dates
        // val medTime: String = times[i % times.size]
        time.text = data[i][1]
+       if (data[i].size > 3) {
+           val directions: TextView = view.findViewById(R.id.directions)
+           var directionText = ""
+
+           for (j in 3 until data[i].size) {
+               directionText = directionText.plus(data[i][j]).plus("\n")
+           }
+
+           directions.text = directionText
+       }
+
+       val cardView: CardView = view.findViewById(R.id.base_cardview);
+       val hiddenView: LinearLayout = view.findViewById(R.id.hidden_view);
+       view.setOnClickListener(View.OnClickListener {
+           if (hiddenView.visibility == View.VISIBLE) {
+               TransitionManager.beginDelayedTransition(cardView)
+               hiddenView.visibility = View.GONE
+           } else {
+               TransitionManager.beginDelayedTransition(cardView)
+               hiddenView.visibility = View.VISIBLE
+           }
+       })
+
+       if (data[i][2] == "appointment") {
+           cardView.setBackgroundColor(Color.parseColor("#f0faa7"))
+       } else if (data[i][2] == "refill") {
+           cardView.setBackgroundColor(Color.parseColor("#b0d3f7"))
+       } else {
+           cardView.setBackgroundColor(Color.parseColor("#a7fad7"))
+       }
+
        return view
     }
 
