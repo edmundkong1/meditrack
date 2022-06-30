@@ -35,7 +35,6 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
    @SuppressLint("InflateParams")
    override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View? {
        //random times for medicine
-       //val times = arrayOf("9:00am", "11:00am", "3:15pm", "5:30pm", "6:00pm", "8:00pm", "9:30pm")
        var view: View? = view
        if (view == null) {
            view = LayoutInflater.from(context).inflate(R.layout.calendar_list_item, null)
@@ -45,9 +44,6 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
-       // val randomIndex: Int = Random().nextInt(times.size)
-       // Made times non-random so times don't change when switching back and forth between dates
-       // val medTime: String = times[i % times.size]
        time.text = data[i][1]
        if (data[i].size > 3) {
            val directions: TextView = view.findViewById(R.id.directions)
@@ -60,6 +56,7 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
            directions.text = directionText
        }
 
+       //cardview for displaying extra information for calendar reminders
        val cardView: CardView = view.findViewById(R.id.base_cardview);
        val hiddenView: LinearLayout = view.findViewById(R.id.hidden_view);
        view.setOnClickListener(View.OnClickListener {
@@ -72,11 +69,14 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
            }
        })
 
+       //colour scheme
        if (data[i][2] == "appointment") {
            cardView.setBackgroundColor(Color.parseColor("#f0faa7"))
-       } else if (data[i][2] == "refill") {
+       }
+       else if (data[i][2] == "refill") {
            cardView.setBackgroundColor(Color.parseColor("#b0d3f7"))
-       } else {
+       }
+       else {
            cardView.setBackgroundColor(Color.parseColor("#a7fad7"))
        }
 

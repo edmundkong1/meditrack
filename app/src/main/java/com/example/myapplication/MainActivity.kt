@@ -1,7 +1,6 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
-import android.app.ActionBar
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -19,7 +18,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -51,13 +49,6 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         NavigationUI.setupWithNavController(navView, navController)
 
-        //TODO: INPUT tab - action should lead to input fragment
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
-
-
         //added a new activity for input
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton
         fab.setOnClickListener {
@@ -69,17 +60,14 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        //call alarm in this activity
+        //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        //time alarm will ring
 
-        //scheduleNotification(14, 16, "I hope this works");
     }
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
-        //intent.putExtra("ARG_REQUEST_CODE_KEY", 11)
         intent.putExtra("Message", NotifMessage)
         val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmStartTime = Calendar.getInstance()
@@ -89,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
         alarmStartTime[Calendar.MINUTE] = Min
         alarmStartTime[Calendar.SECOND] = 0
+
         //set exact time of alarm
         alarmManager!!.setExact(
             AlarmManager.RTC_WAKEUP,

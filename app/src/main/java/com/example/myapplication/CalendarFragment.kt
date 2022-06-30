@@ -6,15 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.CalendarView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
-
-//TODO: NotificationManager/AlarmManager + Hour+minutes + Sort by time
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -110,15 +107,8 @@ class CalendarFragment : Fragment() {
                     // set this date in TextView for Display
                     dateTV.text = date
 
-                    //Set notification for date/time
-                    //MainActivity.scheduleNotification
-                    //for (i in data){
-                    //    scheduleNotification(1, 2)
-                    //}
-                    //Log.w("year",year.toString())
-                    //Log.w("month",month.toString())
-                    //Log.w("day",dayOfMonth.toString())
-                    if(year == 2022 && month == 5 && dayOfMonth == 29) {
+                    //temp data for demo
+                    if (year == 2022 && month == 5 && dayOfMonth == 29) {
                         for (day in data) {
                             (activity as MainActivity).scheduleNotification(
                                 month,
@@ -134,7 +124,7 @@ class CalendarFragment : Fragment() {
 
     private fun extracthour(time: String): Int {
         var hour = 0
-        for(i in time){
+        for (i in time){
             if (i == ':'){
                 break
             }
@@ -143,11 +133,10 @@ class CalendarFragment : Fragment() {
             hour += i.toString().toInt()
         }
 
-        if(time[time.length-2] == 'p'){
+        if (time[time.length-2] == 'p'){
             hour += 12
         }
 
-        Log.w("hour: ", hour.toString())
         return hour
     }
 }
