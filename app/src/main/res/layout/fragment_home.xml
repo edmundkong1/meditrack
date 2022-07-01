@@ -7,40 +7,12 @@
     tools:context=".HomeFragment">
 
     <TextView
-        android:id="@+id/textview_first"
+        android:id="@+id/textview_currentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/intro_heading_home"
+        android:text="Current Date"
         android:textSize="32sp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:ignore="MissingConstraints" />
 
-
-    <ImageView
-        android:layout_width="165dp"
-        android:layout_height="160dp"
-        android:contentDescription="@string/display_logo"
-        android:src="@drawable/ic_stethoscope_with_binaural_spring"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="264dp" />
-
-    <TextView
-        android:id="@+id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/intro_blurb_home"
-        android:textSize="24sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
 </androidx.constraintlayout.widget.ConstraintLayout>
