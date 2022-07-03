@@ -23,7 +23,6 @@ import com.google.android.material.snackbar.Snackbar
 //TODO: need to add either the action bar at the bottom of this new screen, or a back button to go to previous screen
 class InputActivity : AppCompatActivity() {
     //TODO: add all input content here, and layout info to activity_input.xml file
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityInputBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,61 +31,10 @@ class InputActivity : AppCompatActivity() {
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.toolbar2)
 
-//        val navController = findNavController(R.id.)
-//
-//        //removes back arrows
-//        appBarConfiguration = AppBarConfiguration.Builder(
-//            R.id.HomeFragment, R.id.CalendarFragment, R.id.IncidentSummaryFragment, R.id.PractitionersFragment, R.id.AboutMeFragment
-//        ).build()
-//
-//        //appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//
-//        // TODO: Don't hardcode name of tabs
-//
-//        // Allow tabs to navigate to corresponding fragments based on nav_menu.xml and nav_graph.xml
-//        val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-//        NavigationUI.setupWithNavController(navView, navController)
-//
-//        //TODO: INPUT tab - action should lead to input fragment
-////        binding.fab.setOnClickListener { view ->
-////            Snackbar.make(view, "Please Input", Snackbar.LENGTH_LONG)
-////                .setAction("Action", null).show()
-////        }
-//
-//
-//        //added a new activity for input
-//        val fab = findViewById<View>(R.id.fab) as FloatingActionButton
-//        fab.setOnClickListener {
-//            startActivity(
-//                Intent(
-//                    this@InputActivity,
-//                    InputActivity::class.java
-//                )
-//            )
-//        }
+        // TODO: Don't hardcode name of tabs
+
+
+        //TODO: INPUT tab - action should lead to input fragment
     }
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.menu_main, menu)
-//        return false
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        return when (item.itemId) {
-//            R.id.action_settings -> true
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
-//
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_main)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
 }
