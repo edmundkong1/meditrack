@@ -24,4 +24,5 @@
     <string name="medicineName">medicineName</string>
     <string name="medicineTime">medicineTime</string>
     <string name="display_logo">Display logo</string>
+    <string name="go_to_calendar">Go to Calendar</string>
 </resources>

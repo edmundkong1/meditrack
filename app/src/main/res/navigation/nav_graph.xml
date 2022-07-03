@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_Home_to_Calendar"
             app:destination="@id/CalendarFragment" />
     </fragment>
     <fragment
