@@ -23,9 +23,6 @@ class InputFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var ButtonViews: ArrayList<MaterialButtonToggleGroup>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,11 +41,11 @@ class InputFragment : Fragment() {
         ButtonViews.add(view.findViewById(R.id.WheezingBtns))
         ButtonViews.add(view.findViewById(R.id.NauseaBtns))
         ButtonViews.add(view.findViewById(R.id.OtherBtns))
-        for(btn in ButtonViews){
-            btn.setSelectionRequired(true)
+        for (btn in ButtonViews){
+            btn.isSelectionRequired = true
             btn.addOnButtonCheckedListener { buttonGroup, checkedId, isChecked ->
-                if(isChecked){
-                    when(checkedId){
+                if (isChecked) {
+                    when (checkedId) {
                         //STORE CLICKED BUTTON
                         //val buttonId = buttonGroup.getCheckedButtonId()
                     }
