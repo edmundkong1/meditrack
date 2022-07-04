@@ -60,17 +60,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        //when button is clicked on home page, jump to input activity
-        //input_home_button.setOnClickListener {
-        //    Log.w("CLICKED", "CLICKED\n\n\n\n\n")
-            //startActivity(
-            //    Intent(
-            //        this@MainActivity,
-            //        InputActivity::class.java
-            //    )
-            //)
-        //}
-
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 

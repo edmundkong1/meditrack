@@ -41,8 +41,8 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_Home_to_Calendar)
         }
 
+        //go to input activity when this button is clicked
         input_home_button.setOnClickListener {
-            Log.w("CLICKED", "CLICKED\n\n\n\n\n")
             startActivity(
                 Intent(
                     activity,
