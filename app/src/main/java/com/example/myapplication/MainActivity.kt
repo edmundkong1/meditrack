@@ -18,6 +18,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -52,6 +53,15 @@ class MainActivity : AppCompatActivity() {
         //added a new activity for input
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton
         fab.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    InputActivity::class.java
+                )
+            )
+        }
+
+        input_home_button.setOnClickListener {
             startActivity(
                 Intent(
                     this@MainActivity,
