@@ -44,8 +44,6 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // TODO: Don't hardcode name of tabs
-
         // Allow tabs to navigate to corresponding fragments based on nav_menu.xml and nav_graph.xml
         val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         NavigationUI.setupWithNavController(navView, navController)
@@ -61,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        //when button is clicked on home page, jump to input activity
         input_home_button.setOnClickListener {
             startActivity(
                 Intent(
