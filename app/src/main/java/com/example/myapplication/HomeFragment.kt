@@ -22,6 +22,10 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        //news api we can use
+        //top health news in canada - https://newsapi.org/v2/top-headlines?country=ca&category=health&apiKey=d4682a94c76c49d5a6cefc1358232e7f
+
         //creating a list of items with custom adapter
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
