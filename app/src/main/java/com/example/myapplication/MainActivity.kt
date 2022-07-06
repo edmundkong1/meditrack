@@ -6,6 +6,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -16,17 +18,26 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.kwabenaberko.newsapilib.NewsApiClient
+import com.kwabenaberko.newsapilib.NewsApiClient.ArticlesResponseCallback
+import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest
+import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private var alarmManager: AlarmManager? = null
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +74,23 @@ class MainActivity : AppCompatActivity() {
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
+        //NewsList stuffs
+
+        recyclerView = list_news
+        val recyclerViewAdapter = NewsListAdapter(null, this)
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(
+                context,
+                RecyclerView.VERTICAL, false
+            )
+
+            adapter = recyclerViewAdapter
+        }
+        //TODO: Dont do this is bad
+        val policy = ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+        get_news_from_api()
     }
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -84,6 +112,70 @@ class MainActivity : AppCompatActivity() {
             alarmStartTime.timeInMillis, pendingIntent
         )
     }
+    //https://www.geeksforgeeks.org/how-to-create-a-news-app-in-android/
+    //https://blog.techchee.com/develop-a-simple-news-search-android-app-with-kotlin-newsapi/
+    fun get_news_from_api(){
+        val newsApiClient = NewsApiClient("36eaeaaa4688442ab4ab1f7137e53655")
+        newsApiClient.getTopHeadlines(
+            TopHeadlinesRequest.Builder()
+                .q("health")
+                .language("en")
+                .build(),
+            object : ArticlesResponseCallback {
+                override fun onSuccess(response: ArticleResponse) {
+                    val newsadapter = recyclerView.adapter as NewsListAdapter
+                    newsadapter.refreshNewsItems(response.articles)
+                }
+
+                override fun onFailure(throwable: Throwable) {
+                    throwable.message?.let { Log.w("API CALL FAILED: ", it) }
+                }
+            }
+        )
+
+        //val obj = URL("https://newsapi.org/v2/everything?q=tesla&from=2022-06-06&sortBy=publishedAt&apiKey=36eaeaaa4688442ab4ab1f7137e53655")
+        //val con = obj.openConnection() as HttpURLConnection
+        //con.requestMethod = "GET"
+        //val responseCode = con.responseCode
+        //val responseMessage = con.responseMessage
+        //Log.w("API KEY CODE: ", responseCode.toString())
+        //Log.w("API KEY MESSAGE: ", responseMessage.toString())
+
+       // if (responseCode == HttpURLConnection.HTTP_OK) { // connection ok
+       /* if(true){
+            val ins = BufferedReader(InputStreamReader(con.inputStream))
+            val response = StringBuffer()
+
+            var line : String?
+
+            do {
+                line = ins.readLine()
+                if (line == null)
+                    break
+                response.append(line)
+            } while (true)
+
+            ins.close()
+
+            val gson = Gson()
+            val rt = gson.fromJson(response.toString(), NewsResult::class.java)
+
+            if ( rt.status == "ok" ){
+                val newsadapter = recyclerView as NewsListAdapter
+                newsadapter.refreshNewsItems(rt.articles)
+            }
+            else {
+                Log.w("You dun goofed", "Yes you did")
+            }
+        } else {
+            Log.w("OOPS", "OOPS")
+            get_news_from_api()
+        }
+
+        */
+
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
