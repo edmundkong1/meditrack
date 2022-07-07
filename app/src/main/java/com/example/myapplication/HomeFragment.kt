@@ -18,14 +18,15 @@ import java.util.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
+//TODO: health news only gets displayed when you first open the home tab, but when you switch tabs and come back, its no longer there - might have to move code from main activity to the fragment?
+//TODO: remove first Test item from the health news api list, and only show remaining ones
+//TODO: make list news clickable, open on default browser?
 class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        //news api we can use
-        //top health news in canada - https://newsapi.org/v2/top-headlines?country=ca&category=health&apiKey=d4682a94c76c49d5a6cefc1358232e7f
 
         //creating a list of items with custom adapter
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -50,7 +51,7 @@ class HomeFragment : Fragment() {
         // Will no reminders be and empty array or nothing at all.
         if (l.adapter.count > 0) {
             var totalHeight = 0
-            for (i in 0..l.adapter.count - 1) {
+            for (i in 0 until l.adapter.count) {
                 val listItem = l.adapter.getView(i, null, l)
                 listItem.measure(0,0)
                 totalHeight += listItem.measuredHeight
