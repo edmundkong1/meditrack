@@ -8,14 +8,12 @@
     android:padding="2sp"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/newsImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
         android:padding="2sp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_foreground"
@@ -25,19 +23,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.138"
-        app:layout_constraintWidth_max="100sp" />
+        app:layout_constraintWidth_max="100sp"
+        android:contentDescription="@string/image_for_article" />
 
     <TextView
         android:id="@+id/newsTitle"
         android:layout_width="260sp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="1"
-        android:text="Test title"
+        android:text="@string/test_title"
         android:textAlignment="gravity"
         android:textColor="@android:color/background_dark"
         android:textSize="22sp"
@@ -54,13 +52,12 @@
         android:layout_width="260sp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="3"
-        android:text="Test description"
+        android:text="@string/test_description"
         android:textAlignment="gravity"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -69,19 +66,17 @@
         app:layout_constraintWidth_max="300sp"
         app:layout_constraintWidth_min="160sp" />
 
-
     <TextView
         android:id="@+id/newsDate"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="1"
-        android:text="Test date"
+        android:text="@string/test_date"
         android:textAlignment="gravity"
         android:textColor="@android:color/black"
         android:textSize="16sp"

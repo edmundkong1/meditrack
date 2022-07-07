@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +24,17 @@ class NewsListAdapter(
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class NewsItemViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+        //include image, title, description, and date for article
         val newsImage : ImageView = itemView.findViewById(R.id.newsImage)
         val newsTitle : TextView = itemView.findViewById(R.id.newsTitle)
         val newsDescription : TextView = itemView.findViewById(R.id.newsDescription)
         val newsDate : TextView = itemView.findViewById(R.id.newsDate)
         init {
+            //TODO - need to show article clicked, right now it is hardcoded to just show first one
             itemView.setOnClickListener {
-                // when click should open another activity to show the news details
+                // should open default browser to show the news details
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(articles!![1].url))
+                context?.startActivity(browserIntent)
             }
         }
     }

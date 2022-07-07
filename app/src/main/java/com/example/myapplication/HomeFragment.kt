@@ -21,7 +21,7 @@ import java.util.*
 
 //TODO: health news only gets displayed when you first open the home tab, but when you switch tabs and come back, its no longer there - might have to move code from main activity to the fragment?
 //TODO: remove first Test item from the health news api list, and only show remaining ones
-//TODO: make list news clickable, open on default browser?
+//TODO: make list news clickable, open on default browser - check in NewsListAdapter
 class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

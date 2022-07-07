@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             adapter = recyclerViewAdapter
         }
 
-        //TODO: Don t do this is bad
+        //TODO: Dont do this is bad
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         get_news_from_api()
@@ -113,6 +113,7 @@ class MainActivity : AppCompatActivity() {
     }
     //https://www.geeksforgeeks.org/how-to-create-a-news-app-in-android/
     //https://blog.techchee.com/develop-a-simple-news-search-android-app-with-kotlin-newsapi/
+    //get articles from api
     fun get_news_from_api() {
         val newsApiClient = NewsApiClient("36eaeaaa4688442ab4ab1f7137e53655")
         newsApiClient.getTopHeadlines(

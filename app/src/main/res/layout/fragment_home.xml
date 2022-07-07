@@ -35,7 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_first" />
 
-
         <TextView
             android:id="@+id/button_first"
             android:layout_width="wrap_content"
@@ -124,7 +123,7 @@
             android:id="@+id/textview_health_news"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Health News"
+            android:text="@string/health_news"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"

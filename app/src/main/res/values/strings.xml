@@ -28,4 +28,9 @@
     <string name="input_your_symptoms">Input your symptoms</string>
     <string name="how_are_you_feeling_today">How are you feeling today?</string>
     <string name="schedule">Schedule</string>
+    <string name="image_for_article">Image for Article</string>
+    <string name="test_title">Test title</string>
+    <string name="test_description">Test description</string>
+    <string name="test_date">Test date</string>
+    <string name="health_news">Health News</string>
 </resources>
