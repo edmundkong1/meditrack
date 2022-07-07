@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
@@ -94,8 +93,10 @@ class NewsListAdapter (private var  articles : MutableList <Article>?, private v
 
     }
 
-    override fun getItemCount(): Int {
 
+    //only return the top 3 results
+    override fun getItemCount(): Int {
+        return 4
         return ( 1 + (articles?.size ?: 0) )
     }
 

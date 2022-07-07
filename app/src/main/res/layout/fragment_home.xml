@@ -27,12 +27,13 @@
             android:id="@+id/image_home"
             android:layout_width="165dp"
             android:layout_height="160dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="24dp"
             android:contentDescription="@string/display_logo"
             android:src="@drawable/ic_stethoscope_with_binaural_spring"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_first" />
+
 
         <TextView
             android:id="@+id/button_first"
@@ -46,7 +47,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_home"
-            app:layout_constraintVertical_bias="0.071" />
+            app:layout_constraintVertical_bias="0.047" />
 
         <TextView
             android:id="@+id/textview_currentDate"
@@ -60,8 +61,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_first"
-            app:layout_constraintVertical_bias="0.09" />
-
+            app:layout_constraintVertical_bias="0.04" />
 
         <Button
             android:id="@+id/home_calendar_button"
@@ -73,7 +73,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_currentDate"
-            app:layout_constraintVertical_bias="0.101" />
+            app:layout_constraintVertical_bias="0.042" />
 
         <TextView
             android:id="@+id/textview_schedule_home"
@@ -86,7 +86,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_calendar_button"
-            app:layout_constraintVertical_bias="0.213" />
+            app:layout_constraintVertical_bias="0.064" />
 
         <TextView
             android:id="@+id/textview_input_home"
@@ -112,14 +112,26 @@
             app:layout_constraintTop_toBottomOf="@id/textview_input_home"
             app:layout_constraintVertical_bias="1.0" />
 
+        <TextView
+            android:id="@+id/textview_health_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health News"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_schedule_home"
+            app:layout_constraintVertical_bias="0.116" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_news"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_schedule_home"
-             />
+            app:layout_constraintTop_toBottomOf="@id/textview_health_news" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
