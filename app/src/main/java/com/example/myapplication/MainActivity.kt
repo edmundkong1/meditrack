@@ -92,6 +92,22 @@ class MainActivity : AppCompatActivity() {
                 Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
                 Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
                 Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day2 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day3 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+            Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+        val day4 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day5 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""))
+        val day6 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day7 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+
         val fos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val oos = ObjectOutputStream(fos)
 
