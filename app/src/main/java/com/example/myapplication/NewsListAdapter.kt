@@ -32,7 +32,6 @@ class NewsListAdapter(
         val newsDescription : TextView = itemView.findViewById(R.id.newsDescription)
         val newsDate : TextView = itemView.findViewById(R.id.newsDate)
         init {
-            //TODO - need to show article clicked, right now it is hardcoded to just show first one
             itemView.setOnClickListener {
                 // should open default browser to show the news details
                 for(article in articles!!) {
@@ -69,11 +68,6 @@ class NewsListAdapter(
         }
     }
 
-    //override fun getItemViewType(position: Int): Int {
-    //    if (position == 0) return 0
-    //    return 1
-    //}
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val v = parent.inflate(R.layout.news_list_item)
         return NewsItemViewHolder(v)
@@ -92,7 +86,7 @@ class NewsListAdapter(
                 if (articles?.indices?.contains(idx) == true) {
                     val a = articles!![idx]
                     val newsItemViewHolder = (holder as NewsItemViewHolder)
-                    newsItemViewHolder.newsTitle.text  = a.title
+                    newsItemViewHolder.newsTitle.text = a.title
                     newsItemViewHolder.newsDescription.text = a.description
                     newsItemViewHolder.newsDate.text = a.publishedAt
 
