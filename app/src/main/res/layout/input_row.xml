@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    android:theme="@style/Theme.MyApplication">
+
+    <!--This is a ConstraintLayout for the entire CardView
+                    including the expandable portion-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_view_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511"
+        tools:layout_editor_absoluteX="-55dp">
+
+        <!--This is a ConstraintLayout for the fixed portion
+            of the CardView. The elements
+            that lie within the fixed portion of the CardView
+            can be constrained to this layout.-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fixed_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_input_title"
+                android:text="Title"
+                android:textSize="22sp"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:background="?colorPrimaryVariant"
+                android:textColor="@color/white"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--The following is the expandable portion whose
+            visibility is initially set to 'gone'.
+            The parent LinearLayout contains 3 child LinearLayouts
+            that hold a subject name and an icon each.-->
+        <LinearLayout
+            android:id="@+id/hidden_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fixed_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_input_instructions"
+                android:text="Instructions"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                tools:ignore="MissingConstraints" />
+
+            <TableLayout
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_input_instructions"
+                android:id="@+id/textview_input_table"
+                android:stretchColumns="0,1"
+                android:paddingTop="10dp"
+                >
+
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_input_heading1"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Heading1" />
+
+                    <TextView
+                        android:id="@+id/tv_input_heading2"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Heading2" />
+                </TableRow>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_inputs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <include
+                    layout="@layout/input_tbl_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+
+
+
+            </TableLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

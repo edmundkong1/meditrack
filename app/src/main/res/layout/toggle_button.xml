@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/hidden_view1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/WheezingBtns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/WheezButt1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+        <Button
+            android:id="@+id/WheezButt2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="2"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+        <Button
+            android:id="@+id/WheezButt3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="3"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+        <Button
+            android:id="@+id/WheezButt4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="4"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+        <Button
+            android:id="@+id/WheezButt5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+</LinearLayout>
