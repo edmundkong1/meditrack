@@ -31,7 +31,7 @@ class CalendarFragment : Fragment() {
     ): View? {
         //creating a list of items with custom adapter
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val listItems = arrayOf(arrayOf("Item 1","1:00pm"), arrayOf("Item 2","1:00pm"))
+        val listItems : Array<Reminders> = emptyArray()
         val l: ListView = view.findViewById(R.id.listCalendar)
         l.adapter = CalendarListAdapter(requireActivity(), listItems)
         return view
@@ -62,16 +62,16 @@ class CalendarFragment : Fragment() {
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
 
-        val medicationsList: Array<Array<Array<String>>> =
-            ois.readObject() as Array<Array<Array<String>>>
+        val medicationsList: Array<Array<Meds>> =
+            ois.readObject() as Array<Array<Meds>>
 
-        val day1 = (medicationsList as Array<Array<Array<String>>>)[0]
-        val day2 = (medicationsList as Array<Array<Array<String>>>)[1]
-        val day3 = (medicationsList as Array<Array<Array<String>>>)[2]
-        val day4 = (medicationsList as Array<Array<Array<String>>>)[3]
-        val day5 = (medicationsList as Array<Array<Array<String>>>)[4]
-        val day6 = (medicationsList as Array<Array<Array<String>>>)[5]
-        val day7 = (medicationsList as Array<Array<Array<String>>>)[6]
+        val day1 = (medicationsList)[0]
+        val day2 = (medicationsList)[1]
+        val day3 = (medicationsList)[2]
+        val day4 = (medicationsList)[3]
+        val day5 = (medicationsList)[4]
+        val day6 = (medicationsList)[5]
+        val day7 = (medicationsList)[6]
 
 
         //Initialize date
@@ -80,7 +80,7 @@ class CalendarFragment : Fragment() {
 
         //list of medications
         val l: ListView = view.findViewById(R.id.listCalendar)
-        l.adapter = CalendarListAdapter(requireActivity(), day2)
+        l.adapter = CalendarListAdapter(requireActivity(), day2 as Array<Reminders>)
         // set this date in TextView for Display
         dateTV.text = date
 
@@ -96,52 +96,54 @@ class CalendarFragment : Fragment() {
 
                     //show list of medicines
                     val l: ListView = view.findViewById(R.id.listCalendar)
-                    var data : Array<Array<String>>
+                    var data : Array<Meds>
+
+                    calendar.get(Calendar.DAY_OF_WEEK)
 
                     //mockup data for one week
-                    if (dayOfMonth % 7 == 0) {
+                    if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
                         data = day1
                     }
-                    else if (dayOfMonth % 7 == 1) {
+                    else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
                         data = day2
                     }
-                    else if (dayOfMonth % 7 == 2) {
+                    else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
                         data = day3
                     }
-                    else if (dayOfMonth % 7 == 3) {
+                    else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
                         data = day4
                     }
-                    else if (dayOfMonth % 7 == 4) {
+                    else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
                         data = day5
                     }
-                    else if (dayOfMonth % 7 == 5) {
+                    else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
                         data = day6
                     }
                     else {
                         data = day7
                     }
-                    if (dayOfMonth == 20) {
-                        val list: MutableList<Array<String>> = data.toMutableList()
-                        list.add(0, arrayOf("Norvasc Refill","8:00am", "refill", "Amount: 3000mg"))
-                        data = list.toTypedArray()
-                    }
+                   // if (dayOfMonth == 20) {
+                   //     val list: MutableList<Array<String>> = data.toMutableList()
+                   //     list.add(0, arrayOf("Norvasc Refill","8:00am", "refill", "Amount: 3000mg"))
+                   //     data = list.toTypedArray()
+                   // }
 
-                    l.adapter = CalendarListAdapter(requireActivity(), data)
+                    l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
                     // set this date in TextView for Display
                     dateTV.text = date
 
                     //temp data for demo
-                    if (year == 2022 && month == 5 && dayOfMonth == 29) {
-                        for (day in data) {
-                            (activity as MainActivity).scheduleNotification(
-                                month,
-                                dayOfMonth,
-                                extracthour(day[1]),
-                                0,
-                                "Reminder: " + day[0]
-                            )
-                        }
-                    }
+                    //if (year == 2022 && month == 5 && dayOfMonth == 29) {
+                    //    for (day in data) {
+                    //        (activity as MainActivity).scheduleNotification(
+                    //            month,
+                    //            dayOfMonth,
+                    //            extracthour(day[1]),
+                    //            0,
+                    //            "Reminder: " + day[0]
+                    //        )
+                    //    }
+                    //}
                 })
     }
 

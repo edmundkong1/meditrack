@@ -1,6 +1,8 @@
 package com.example.myapplication
 
-open class Reminders {
+import java.io.Serializable
+
+open class Reminders : Serializable{
     var name: String? = null
     var time: String? = null
     protected open val color: String? = null
@@ -28,15 +30,24 @@ class Meds : Reminders {
 }
 
 class Appointments: Reminders {
+    var year: Int? = null
+    var month: Int? = null
+    var day: Int? = null
     var doctor: String? = null
     var phoneNumber : String? = null
     var address : String? = null
     override var color = "#f0faa7"
     constructor(_name: String,
                 _time: String,
+                _year: Int,
+                _month: Int,
+                _day: Int,
                 _doctor: String,
                 _phoneNumber: String,
                 _address: String) : super(_name, _time) {
+        year = _year
+        month = _month
+        day = _day
         doctor = _doctor
         phoneNumber = _phoneNumber
         address = _address

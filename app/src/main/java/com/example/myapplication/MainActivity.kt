@@ -108,11 +108,25 @@ class MainActivity : AppCompatActivity() {
             arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
                 Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
 
-        val fos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
-        val oos = ObjectOutputStream(fos)
+        val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
+        val medoos = ObjectOutputStream(medfos)
 
-        oos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
-        oos.close()
+        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        medoos.close()
+
+        val appointments =
+            arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
+                7, 13, "Dr.Good", "4162839172", "291 University Ave"),
+                    Appointments("Physician Appointment", "2:00pm", 2022,
+                        7, 8, "Dr.Bad", "6472339172", "221 University Ave")
+                    )
+
+        val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
+        val appoos = ObjectOutputStream(appfos)
+
+        appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        appoos.close()
+
 
         //for health news api
         /*

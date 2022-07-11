@@ -42,7 +42,10 @@ class HomeFragment : Fragment() {
         val formattedDate = sdf.format(date)
         todayDate.text = "Today: ".plus(formattedDate)
 
-        val data = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
+        // TODO: Extract from current day in Calendar
+        val data = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
+            Appointments("Chiropractor Appointment", "12:00pm", 2022,
+                7, 13, "Dr.Good", "4162839172", "291 University Ave"))
         val l: ListView = view.findViewById(R.id.listview_schedule)
         l.adapter = CalendarListAdapter(requireActivity(), data)
 
