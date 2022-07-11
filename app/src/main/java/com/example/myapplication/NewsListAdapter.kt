@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,17 +62,17 @@ class NewsListAdapter(
             this.articles!![i].publishedAt = newarticles[i].publishedAt
         }
 
-        notifyItemRangeChanged(1, newarticles.size ?: 0)
+        notifyItemRangeChanged(0, newarticles.size ?: 0)
         if (newarticles.size < initialSize) {
             val sizeDifference = initialSize - newarticles.size
             notifyItemRangeRemoved(newarticles.size, sizeDifference)
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        if (position == 0) return 0
-        return 1
-    }
+    //override fun getItemViewType(position: Int): Int {
+    //    if (position == 0) return 0
+    //    return 1
+    //}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val v = parent.inflate(R.layout.news_list_item)
@@ -85,9 +86,9 @@ class NewsListAdapter(
 
     //display headline items
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position >= 1) {
+        if (position >= 0) {
             if (articles != null) {
-                val idx =  position - 1
+                val idx =  position
                 if (articles?.indices?.contains(idx) == true) {
                     val a = articles!![idx]
                     val newsItemViewHolder = (holder as NewsItemViewHolder)
