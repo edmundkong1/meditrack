@@ -79,8 +79,33 @@ class CalendarFragment : Fragment() {
         val date = sdf.format(calendarView.date)
 
         //list of medications
+        var data: Array<Meds>
+        val calendar = Calendar.getInstance()
+
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
+            data = day1
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
+            data = day2
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
+            data = day3
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
+            data = day4
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
+            data = day5
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+            data = day6
+        }
+        else {
+            data = day7
+        }
+
         val l: ListView = view.findViewById(R.id.listCalendar)
-        l.adapter = CalendarListAdapter(requireActivity(), day2 as Array<Reminders>)
+        l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
         // set this date in TextView for Display
         dateTV.text = date
 

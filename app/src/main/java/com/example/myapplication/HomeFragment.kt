@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,9 +45,47 @@ class HomeFragment : Fragment() {
         todayDate.text = "Today: ".plus(formattedDate)
 
         // TODO: Extract from current day in Calendar
-        val data = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
-            Appointments("Chiropractor Appointment", "12:00pm", 2022,
-                7, 13, "Dr.Good", "4162839172", "291 University Ave"))
+        val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
+        val ois = ObjectInputStream(fis)
+
+        val medicationsList: Array<Array<Reminders>> =
+            ois.readObject() as Array<Array<Reminders>>
+
+        val day1 = (medicationsList)[0]
+        val day2 = (medicationsList)[1]
+        val day3 = (medicationsList)[2]
+        val day4 = (medicationsList)[3]
+        val day5 = (medicationsList)[4]
+        val day6 = (medicationsList)[5]
+        val day7 = (medicationsList)[6]
+
+        var data: Array<Reminders>
+        val calendar = Calendar.getInstance()
+
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
+            data = day1
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
+            data = day2
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
+            data = day3
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
+            data = day4
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
+            data = day5
+        }
+        else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+            data = day6
+        }
+        else {
+            data = day7
+        }
+        //val data = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
+        //    Appointments("Chiropractor Appointment", "12:00pm", 2022,
+        //        7, 13, "Dr.Good", "4162839172", "291 University Ave"))
         val l: ListView = view.findViewById(R.id.listview_schedule)
         l.adapter = CalendarListAdapter(requireActivity(), data)
 
