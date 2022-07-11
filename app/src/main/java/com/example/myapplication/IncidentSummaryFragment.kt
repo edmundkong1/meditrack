@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 
-//this link might be useful for creating graphs - https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
+//this link might be useful for creating graphs - https://learntodroid.com/how-to-display-a-line-chart-in-your-android-app/
 class IncidentSummaryFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
