@@ -10,6 +10,10 @@ import android.widget.CalendarView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,7 +43,10 @@ class CalendarFragment : Fragment() {
         calendarView = view.findViewById(R.id.calendar)
         dateTV = view.findViewById(R.id.textview_date)
 
+
+
         //temp mockup data
+        /*
         val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
             arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
         val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
@@ -50,6 +57,22 @@ class CalendarFragment : Fragment() {
             arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
         val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+         */
+
+        val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
+        val ois = ObjectInputStream(fis)
+
+        val medicationsList: Array<Array<Array<String>>> =
+            ois.readObject() as Array<Array<Array<String>>>
+
+        val day1 = (medicationsList as Array<Array<Array<String>>>)[0]
+        val day2 = (medicationsList as Array<Array<Array<String>>>)[1]
+        val day3 = (medicationsList as Array<Array<Array<String>>>)[2]
+        val day4 = (medicationsList as Array<Array<Array<String>>>)[3]
+        val day5 = (medicationsList as Array<Array<Array<String>>>)[4]
+        val day6 = (medicationsList as Array<Array<Array<String>>>)[5]
+        val day7 = (medicationsList as Array<Array<Array<String>>>)[6]
+
 
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")

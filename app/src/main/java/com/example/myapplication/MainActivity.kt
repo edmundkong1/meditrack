@@ -6,8 +6,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -18,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,6 +25,8 @@ import com.kwabenaberko.newsapilib.NewsApiClient.ArticlesResponseCallback
 import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.io.FileOutputStream
+import java.io.ObjectOutputStream
 import java.util.*
 
 
@@ -74,6 +73,24 @@ class MainActivity : AppCompatActivity() {
 
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        //Dummy data for calendar
+        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
+        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
+            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
+        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
+        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
+        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
+        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+
+        val fos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
+        val oos = ObjectOutputStream(fos)
+
+        oos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        oos.close()
 
         //for health news api
         /*
