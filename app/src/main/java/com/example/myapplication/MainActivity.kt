@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         //Dummy data for calendar
+        /*
         val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
             arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
         val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
@@ -85,7 +86,12 @@ class MainActivity : AppCompatActivity() {
             arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
         val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
-
+        */
+        val day1 =
+        arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
         val fos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val oos = ObjectOutputStream(fos)
 
