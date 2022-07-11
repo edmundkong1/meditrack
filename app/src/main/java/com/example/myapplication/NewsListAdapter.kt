@@ -12,6 +12,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import kotlinx.android.synthetic.main.news_list_item.view.*
 
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
@@ -33,8 +34,13 @@ class NewsListAdapter(
             //TODO - need to show article clicked, right now it is hardcoded to just show first one
             itemView.setOnClickListener {
                 // should open default browser to show the news details
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(articles!![1].url))
-                context?.startActivity(browserIntent)
+                for(article in articles!!) {
+                    if (article.title == newsTitle.text){
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
+                        context?.startActivity(browserIntent)
+                        break
+                    }
+                }
             }
         }
     }
