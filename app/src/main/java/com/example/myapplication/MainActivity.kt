@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private var alarmManager: AlarmManager? = null
 
     //for health news api
-    private lateinit var recyclerView: RecyclerView
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         //for health news api
+        /*
         recyclerView = list_news
         val recyclerViewAdapter = NewsListAdapter(null, this)
         recyclerView.apply {
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity() {
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         get_news_from_api()
+
+         */
     }
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
