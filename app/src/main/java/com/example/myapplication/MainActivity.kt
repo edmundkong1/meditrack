@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
     fun get_news_from_api() {
         val newsApiClient = NewsApiClient("36eaeaaa4688442ab4ab1f7137e53655")
         newsApiClient.getTopHeadlines(
+            //health related news
             TopHeadlinesRequest.Builder()
                 .q("health")
                 .language("en")
@@ -127,13 +128,13 @@ class MainActivity : AppCompatActivity() {
                     newsadapter.refreshNewsItems(response.articles)
                 }
 
+                //if api call fails
                 override fun onFailure(throwable: Throwable) {
                     throwable.message?.let { Log.w("API CALL FAILED: ", it) }
                 }
             }
         )
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

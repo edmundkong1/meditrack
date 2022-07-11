@@ -39,13 +39,14 @@ class NewsListAdapter(
         }
     }
 
+    //obtain new headline items
     internal fun refreshNewsItems (newarticles: MutableList<com.kwabenaberko.newsapilib.models.Article>){
         val initialSize = this.articles?.size ?: 0
         if (this.articles == null) {
             this.articles = mutableListOf()
         }
         this.articles?.clear()
-        for ((i, article) in newarticles.withIndex()) {
+        for ((i) in newarticles.withIndex()) {
             this.articles!!.add(Article())
             this.articles!![i].title = newarticles[i].title
             this.articles!![i].description = newarticles[i].description
@@ -76,12 +77,13 @@ class NewsListAdapter(
         return 4
     }
 
+    //display headline items
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position >= 1) {
             if (articles != null) {
                 val idx =  position - 1
-                if (articles?.indices?.contains(idx ) == true) {
-                    val a = articles!![ idx ]
+                if (articles?.indices?.contains(idx) == true) {
+                    val a = articles!![idx]
                     val newsItemViewHolder = (holder as NewsItemViewHolder)
                     newsItemViewHolder.newsTitle.text  = a.title
                     newsItemViewHolder.newsDescription.text = a.description
