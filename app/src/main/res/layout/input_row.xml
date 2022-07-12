@@ -96,17 +96,10 @@
                         android:text="Heading2" />
                 </TableRow>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_inputs"
+                    android:id="@+id/recycler_view_inputs_table"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                <include
-                    layout="@layout/input_tbl_row"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center" />
-
 
 
             </TableLayout>

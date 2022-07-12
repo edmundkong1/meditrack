@@ -42,6 +42,7 @@ class InputFragment : Fragment(R.layout.fragment_input) {
 //        ButtonViews.add(view.findViewById(R.id.WheezingBtns))
 //        ButtonViews.add(view.findViewById(R.id.NauseaBtns))
 //        ButtonViews.add(view.findViewById(R.id.OtherBtns))
+    //TODO: Add Button Listners into INcidents Adapter using the following
 //        for(btn in ButtonViews){
 //            btn.setSelectionRequired(true)
 //            btn.addOnButtonCheckedListener { buttonGroup, checkedId, isChecked ->
