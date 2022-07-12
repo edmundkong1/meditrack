@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.row.view.*
+import kotlinx.android.synthetic.main.simple_expander.view.*
 
 class MedicationsAdapter(val medicationList: List<Medications>) :
     RecyclerView.Adapter<MedicationsAdapter.MedicationViewHolder>(){
@@ -27,10 +27,10 @@ class MedicationsAdapter(val medicationList: List<Medications>) :
 
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
-            tv_name.text = currMedication.name
-            tv_dosage.text = currMedication.dosage
-            tv_actions.text = currMedication.actions
-            tv_directions.text = currMedication.directions
+            tv_title.text = currMedication.name
+            tv_prop1.text = currMedication.dosage
+            tv_prop2.text = currMedication.actions
+            tv_prop3.text = currMedication.directions
 
             val isExpandable : Boolean = currMedication.expandable
             rl_expandable_layout.visibility = if (isExpandable) View.GONE else View.VISIBLE

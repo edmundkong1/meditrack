@@ -23,13 +23,14 @@
             android:padding="16dp"
             android:textStyle="bold"/>
 
-        <!-- Text within each row-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rl_expandable_layout"
             android:visibility="visible"
             >
+
+
 
             <TextView
                 android:id="@+id/tv_prop1"
@@ -38,7 +39,9 @@
                 android:padding="16dp"
                 android:text="Property 1"
                 android:textColor="@color/dark_grey"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_toLeftOf="@id/tv_prop2"
+                android:maxLines="1"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,7 +52,9 @@
                 android:textColor="@color/dark_grey"
                 android:padding="16dp"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/tv_prop3"
+                android:maxLines="1"/>
 
             <TextView
                 android:layout_width="wrap_content"
