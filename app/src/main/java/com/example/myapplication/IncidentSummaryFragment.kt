@@ -16,6 +16,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [IncidentSummary.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+//this link might be useful for creating graphs - https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
 class IncidentSummaryFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
