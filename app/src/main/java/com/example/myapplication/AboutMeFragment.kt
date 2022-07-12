@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_about_me.*
 
-//TODO:
+// TODO:
 //    use real data
 //    add practitoners section
 //    add scrolling
@@ -51,7 +51,7 @@ class AboutMeFragment : Fragment() {
         medicationsList.add(Medications(
             "Norvasc",
             "40 mg",
-            "Refill required",
+            "Refill required---------- DO OTHIS and don't look back on it yuh",
             "Directions: Take daily at 9:00am (on empty stomach)."
         ))
 

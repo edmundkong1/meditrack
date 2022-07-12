@@ -124,8 +124,8 @@ class CalendarFragment : Fragment() {
 
     private fun extracthour(time: String): Int {
         var hour = 0
-        for (i in time){
-            if (i == ':'){
+        for (i in time) {
+            if (i == ':') {
                 break
             }
             hour *= 10
@@ -133,10 +133,9 @@ class CalendarFragment : Fragment() {
             hour += i.toString().toInt()
         }
 
-        if (time[time.length-2] == 'p'){
+        if (time[time.length-2] == 'p') {
             hour += 12
         }
-
         return hour
     }
 }

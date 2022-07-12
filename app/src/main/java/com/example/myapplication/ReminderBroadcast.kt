@@ -17,7 +17,7 @@ class ReminderBroadcast : BroadcastReceiver() {
         val message = intent.extras!!.get("Message")
         showNotification(
             context,
-            "Meditrack Alert",
+            "MediTrack Alert",
             message as String
         )
     }
