@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 class AboutMeFragment : Fragment() {
 
     private var medicationsList = ArrayList<Medications>()
+    private var conditionsList = ArrayList<Conditions>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -37,6 +38,8 @@ class AboutMeFragment : Fragment() {
 
         initData()
         setRecyclerView()
+        initData2()
+        setRecyclerView2()
     }
 
     // setup the recycler view
@@ -44,6 +47,12 @@ class AboutMeFragment : Fragment() {
         val medicationsAdapter = MedicationsAdapter(medicationsList)
         recycler_view.adapter = medicationsAdapter
         recycler_view.setHasFixedSize(true)
+    }
+
+    private fun setRecyclerView2() {
+        val conditionsAdapter = ConditionsAdapter(conditionsList)
+        recycler_view2.adapter = conditionsAdapter
+        recycler_view2.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
@@ -71,6 +80,22 @@ class AboutMeFragment : Fragment() {
 
         medicationsList.add(Medications(
             "Warfarin",
+            "100 mg",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+    }
+
+    private fun initData2() {
+        conditionsList.add(Conditions(
+            "COPD",
+            "100 mg",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+
+        conditionsList.add(Conditions(
+            "Acid Reflux",
             "100 mg",
             "",
             "Directions: Take once a week at 12:00pm"

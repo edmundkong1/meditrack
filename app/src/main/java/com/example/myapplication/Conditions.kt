@@ -1,6 +1,6 @@
 package com.example.myapplication
 
-data class Medications(
+data class Conditions(
     val name: String,
     val dosage: String,
     val actions: String,
