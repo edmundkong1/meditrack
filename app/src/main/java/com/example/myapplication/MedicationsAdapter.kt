@@ -15,7 +15,7 @@ class MedicationsAdapter(val medicationList: List<Medications>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicationViewHolder {
         return MedicationViewHolder (
                 LayoutInflater.from(parent.context).inflate( // takes 4 arguments, all optional: resources, parser, resources, parser
-                    R.layout.row, // R is to access resources, layout is a resource
+                    R.layout.simple_expander, // R is to access resources, layout is a resource
                     parent,
                     false // don't wanna attach this view to the root layout, set to false
                 )
