@@ -82,9 +82,10 @@ private var inputsList = ArrayList<Inputs>()
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
     private fun initData() {
+
         inputsList.add(Inputs(
-            "Enter Incident Report",
-            "What are your symptoms today?",
+            "Enter Appointments",
+            "When is your Appointment",
             "Symptom",
             "Severity",
             listOf("Symptom1","Symptom2")
@@ -97,10 +98,10 @@ private var inputsList = ArrayList<Inputs>()
             "Severity",
             listOf("Symptom1","Symptom2")
         ))
-
+        
         inputsList.add(Inputs(
-            "Enter Insurance Info",
-            "What is your insurance plan?",
+            "Enter Incident Report",
+            "What are your symptoms today?",
             "Symptom",
             "Severity",
             listOf("Symptom1","Symptom2")
@@ -114,6 +115,16 @@ private var inputsList = ArrayList<Inputs>()
             listOf("Symptom1","Symptom2")
         ))
 
+
+        inputsList.add(Inputs(
+            "Enter Insurance Info",
+            "What is your insurance plan?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+
         inputsList.add(Inputs(
             "Enter Conditions",
             "What are your conditions?",
@@ -122,13 +133,6 @@ private var inputsList = ArrayList<Inputs>()
             listOf("Symptom1","Symptom2")
         ))
 
-        inputsList.add(Inputs(
-            "Enter Appointments",
-            "When is your Appointment",
-            "Symptom",
-            "Severity",
-            listOf("Symptom1","Symptom2")
-        ))
     }
 
 //    companion object {

@@ -17,5 +17,7 @@ class InputActivity : AppCompatActivity() {
 
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+
     }
 }
