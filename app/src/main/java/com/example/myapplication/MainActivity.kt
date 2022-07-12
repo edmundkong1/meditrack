@@ -41,6 +41,48 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //data per week for medications
+        val day1 =
+            arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day2 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day3 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+        val day4 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day5 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""))
+        val day6 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day7 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+
+        val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
+        val medoos = ObjectOutputStream(medfos)
+
+        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        medoos.close()
+
+        //data for appointments
+        val appointments =
+            arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
+                7, 13, "Dr.Good", "4162839172", "291 University Ave"),
+                Appointments("Physician Appointment", "2:00pm", 2022,
+                    7, 8, "Dr.Bad", "6472339172", "221 University Ave")
+            )
+
+        val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
+        val appoos = ObjectOutputStream(appfos)
+
+        appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        appoos.close()
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -88,48 +130,6 @@ class MainActivity : AppCompatActivity() {
         val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
         */
-
-        //data per week for medications
-        val day1 =
-        arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
-                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
-                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
-        val day2 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
-        val day3 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-            Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
-        val day4 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
-        val day5 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""),
-                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""))
-        val day6 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
-        val day7 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
-
-        val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
-        val medoos = ObjectOutputStream(medfos)
-
-        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
-        medoos.close()
-
-        //data for appointments
-        val appointments =
-            arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
-                7, 13, "Dr.Good", "4162839172", "291 University Ave"),
-                    Appointments("Physician Appointment", "2:00pm", 2022,
-                        7, 8, "Dr.Bad", "6472339172", "221 University Ave")
-                    )
-
-        val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
-        val appoos = ObjectOutputStream(appfos)
-
-        appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
-        appoos.close()
     }
 
     //scheduler for notifications
