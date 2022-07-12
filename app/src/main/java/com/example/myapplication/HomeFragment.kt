@@ -20,9 +20,7 @@ import java.io.ObjectInputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+//home screen
 
 class HomeFragment : Fragment() {
     override fun onCreateView(
@@ -34,6 +32,7 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    //when app begins to run
     @SuppressLint("NewApi", "SimpleDateFormat", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,13 +43,15 @@ class HomeFragment : Fragment() {
         val formattedDate = sdf.format(date)
         todayDate.text = "Today: ".plus(formattedDate)
 
-        // TODO: Extract from current day in Calendar
+        //get info from current day in calendar
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
 
+        @Suppress("UNCHECKED_CAST")
         val medicationsList: Array<Array<Reminders>> =
             ois.readObject() as Array<Array<Reminders>>
 
+        //weekly medications
         val day1 = (medicationsList)[0]
         val day2 = (medicationsList)[1]
         val day3 = (medicationsList)[2]
@@ -59,9 +60,11 @@ class HomeFragment : Fragment() {
         val day6 = (medicationsList)[5]
         val day7 = (medicationsList)[6]
 
-        var data: Array<Reminders>
+        val data: Array<Reminders>
         val calendar = Calendar.getInstance()
 
+        //reminders to show in calendar - for today
+        //taken from calendar fragment
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
             data = day1
         }
@@ -120,6 +123,7 @@ class HomeFragment : Fragment() {
             )
         }
 
+        //list the news
         (activity as MainActivity).recyclerView = list_news
         val recyclerViewAdapter = NewsListAdapter(null, activity)
         (activity as MainActivity).recyclerView.apply {

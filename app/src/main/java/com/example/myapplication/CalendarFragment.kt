@@ -17,14 +17,14 @@ import java.io.ObjectOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+//calendar tab
+
 class CalendarFragment : Fragment() {
 
     lateinit var dateTV: TextView
     lateinit var calendarView: CalendarView
 
+    //when tab is clicked
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,8 +43,6 @@ class CalendarFragment : Fragment() {
         calendarView = view.findViewById(R.id.calendar)
         dateTV = view.findViewById(R.id.textview_date)
 
-
-
         //temp mockup data
         /*
         val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
@@ -62,9 +60,11 @@ class CalendarFragment : Fragment() {
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
 
+        @Suppress("UNCHECKED_CAST")
         val medicationsList: Array<Array<Meds>> =
             ois.readObject() as Array<Array<Meds>>
 
+        //medication taken per week
         val day1 = (medicationsList)[0]
         val day2 = (medicationsList)[1]
         val day3 = (medicationsList)[2]
@@ -73,15 +73,15 @@ class CalendarFragment : Fragment() {
         val day6 = (medicationsList)[5]
         val day7 = (medicationsList)[6]
 
-
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
         val date = sdf.format(calendarView.date)
 
         //list of medications
-        var data: Array<Meds>
+        val data: Array<Meds>
         val calendar = Calendar.getInstance()
 
+        //reminders to show in calendar
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
             data = day1
         }
@@ -105,6 +105,7 @@ class CalendarFragment : Fragment() {
         }
 
         val l: ListView = view.findViewById(R.id.listCalendar)
+        @Suppress("UNCHECKED_CAST")
         l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
         // set this date in TextView for Display
         dateTV.text = date
@@ -125,7 +126,7 @@ class CalendarFragment : Fragment() {
 
                     calendar.get(Calendar.DAY_OF_WEEK)
 
-                    //mockup data for one week
+                    //data for a week
                     if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
                         data = day1
                     }
@@ -153,10 +154,12 @@ class CalendarFragment : Fragment() {
                    //     data = list.toTypedArray()
                    // }
 
+                    @Suppress("UNCHECKED_CAST")
                     l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
                     // set this date in TextView for Display
                     dateTV.text = date
 
+                    //notifications
                     //temp data for demo
                     //if (year == 2022 && month == 5 && dayOfMonth == 29) {
                     //    for (day in data) {
@@ -172,6 +175,7 @@ class CalendarFragment : Fragment() {
                 })
     }
 
+    //used for setting up notifications
     private fun extracthour(time: String): Int {
         var hour = 0
         for (i in time) {

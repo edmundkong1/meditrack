@@ -29,6 +29,7 @@ import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 import java.util.*
 
+//main activity - used for all tabs
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,6 +88,8 @@ class MainActivity : AppCompatActivity() {
         val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
         */
+
+        //data per week for medications
         val day1 =
         arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
                 Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
@@ -114,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
         medoos.close()
 
+        //data for appointments
         val appointments =
             arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
                 7, 13, "Dr.Good", "4162839172", "291 University Ave"),
@@ -126,27 +130,9 @@ class MainActivity : AppCompatActivity() {
 
         appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
         appoos.close()
-
-
-        //for health news api
-        /*
-        recyclerView = list_news
-        val recyclerViewAdapter = NewsListAdapter(null, this)
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(
-                context,
-                RecyclerView.VERTICAL, false
-            )
-            adapter = recyclerViewAdapter
-        }
-
-        //TODO: Dont do this is bad
-        val policy = ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-        get_news_from_api()
-
-         */
     }
+
+    //scheduler for notifications
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
@@ -167,6 +153,7 @@ class MainActivity : AppCompatActivity() {
             alarmStartTime.timeInMillis, pendingIntent
         )
     }
+
     //https://www.geeksforgeeks.org/how-to-create-a-news-app-in-android/
     //https://blog.techchee.com/develop-a-simple-news-search-android-app-with-kotlin-newsapi/
     //get articles from api
