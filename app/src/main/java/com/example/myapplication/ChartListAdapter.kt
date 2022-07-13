@@ -49,7 +49,7 @@ class ChartListAdapter(context: Context, data: Array<MutableList<Entry>>) : Base
         lineChart = view?.findViewById(R.id.linechart)
 
         configureLineChart()
-        setLineChartData(mutableListOf(Entry(1.0F,1.0F)))
+        setLineChartData(data[0])
 
         return view
     }

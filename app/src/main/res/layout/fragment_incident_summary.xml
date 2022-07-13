@@ -7,7 +7,7 @@
     tools:context=".IncidentSummaryFragment">
 
     <ListView
-        android:id="@+id/listSummary"
+        android:id="@+id/listChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/calendar_list_padding"
