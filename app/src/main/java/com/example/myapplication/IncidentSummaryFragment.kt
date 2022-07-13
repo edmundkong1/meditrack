@@ -36,8 +36,8 @@ class IncidentSummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lineChart = view.findViewById(R.id.linechart)
 
-        configureLineChart()
-        setLineChartData(mutableListOf(Entry(1.0F,1.0F)))
+       // configureLineChart()
+       // setLineChartData(mutableListOf(Entry(1.0F,1.0F)))
     }
 
     private fun configureLineChart() {
