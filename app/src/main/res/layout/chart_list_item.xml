@@ -6,12 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".IncidentSummaryFragment">
 
+    <TextView
+        android:id="@+id/lineChartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Title"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/linechart"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:minHeight="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/lineChartTitle"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

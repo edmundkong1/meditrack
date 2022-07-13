@@ -10,6 +10,7 @@
         android:id="@+id/listChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="30dp"
         android:paddingStart="@dimen/calendar_list_padding"
         android:paddingEnd="@dimen/calendar_list_padding" />
 

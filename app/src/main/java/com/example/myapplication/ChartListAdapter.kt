@@ -55,18 +55,15 @@ class ChartListAdapter(context: Context, data: Array<MutableList<Entry>>) : Base
     }
 
     private fun configureLineChart() {
-        val desc = Description()
-        desc.text = "Symptoms"
-        desc.textSize = 28F
-        lineChart?.description = desc
+        lineChart?.description!!.isEnabled = false
         val xAxis: XAxis = lineChart!!.xAxis
-        xAxis.valueFormatter = object : ValueFormatter() {
-            private val mFormat: SimpleDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
-            override fun getFormattedValue(value: Float): String {
-                val millis = value.toLong() * 1000L
-                return mFormat.format(Date(millis))
-            }
-        }
+//        xAxis.valueFormatter = object : ValueFormatter() {
+//            private val mFormat: SimpleDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
+//            override fun getFormattedValue(value: Float): String {
+//                val millis = value.toLong() * 1000L
+//                return mFormat.format(Date(millis))
+//            }
+//        }
     }
 
     private fun setLineChartData(pricesHigh: MutableList<Entry>) {
