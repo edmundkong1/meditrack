@@ -25,7 +25,9 @@ class IncidentSummaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val l: ListView = view.findViewById(R.id.listChart)
-        l.adapter = ChartListAdapter(requireActivity(), arrayOf(mutableListOf(Entry(1.0F,1.0F))))
+        l.adapter = ChartListAdapter(requireActivity(), arrayOf(mutableListOf(Entry(0.0F,3.0F), Entry(1.0F,1.0F), Entry(2.0F,2.0F)),
+            mutableListOf(Entry(0.0F,0.0F), Entry(1.0F,1.0F), Entry(2.0F,2.0F)),
+            mutableListOf(Entry(0.0F,0.0F), Entry(1.0F,1.0F), Entry(2.0F,2.0F))))
         super.onViewCreated(view, savedInstanceState)
     }
 }
