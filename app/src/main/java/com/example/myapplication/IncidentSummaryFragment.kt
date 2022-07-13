@@ -1,16 +1,19 @@
 package com.example.myapplication
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,6 +37,7 @@ class IncidentSummaryFragment : Fragment() {
         lineChart = view.findViewById(R.id.linechart)
 
         configureLineChart()
+        setLineChartData(mutableListOf(Entry(1.0F,1.0F)))
     }
 
     private fun configureLineChart() {
@@ -49,5 +53,25 @@ class IncidentSummaryFragment : Fragment() {
                 return mFormat.format(Date(millis))
             }
         }
+    }
+
+    private fun setLineChartData(pricesHigh: MutableList<Entry>) {
+        val dataSets: ArrayList<ILineDataSet> = ArrayList()
+
+        val highLineDataSet = LineDataSet(
+            pricesHigh,
+            "Symptom Level"
+        )
+        highLineDataSet.setDrawCircles(true)
+        highLineDataSet.circleRadius = 4f
+        highLineDataSet.setDrawValues(false)
+        highLineDataSet.lineWidth = 3f
+        highLineDataSet.color = Color.GREEN
+        highLineDataSet.setCircleColor(Color.GREEN)
+        dataSets.add(highLineDataSet)
+
+        val lineData = LineData(dataSets)
+        lineChart!!.data = lineData
+        lineChart!!.invalidate()
     }
 }
