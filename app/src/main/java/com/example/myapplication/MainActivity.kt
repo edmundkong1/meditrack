@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
         val appoos = ObjectOutputStream(appfos)
 
-        appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        appoos.writeObject(appointments)
         appoos.close()
 
         super.onCreate(savedInstanceState)
