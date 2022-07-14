@@ -26,6 +26,7 @@ class IncidentSummaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val l: ListView = view.findViewById(R.id.listChart)
 
+        //temp dates for line charts
         val calendar1 = Calendar.getInstance()
         calendar1.set(2022,6, 13, 12, 0, 0)
 
@@ -35,6 +36,7 @@ class IncidentSummaryFragment : Fragment() {
         val calendar3 = Calendar.getInstance()
         calendar3.set(2022,6,17, 12, 0, 0)
 
+        //temp data for line charts
         val symptom1 = Pair("Cough", mutableListOf(Entry(calendar1.timeInMillis.toFloat(),3.0F), Entry(calendar2.timeInMillis.toFloat(),1.0F), Entry(calendar3.timeInMillis.toFloat(),2.0F)))
         val symptom2 = Pair("Cough", mutableListOf(Entry(calendar1.timeInMillis.toFloat(),3.0F), Entry(calendar2.timeInMillis.toFloat(),1.0F), Entry(calendar3.timeInMillis.toFloat(),2.0F)))
         val symptom3 = Pair("Cough", mutableListOf(Entry(calendar1.timeInMillis.toFloat(),3.0F), Entry(calendar2.timeInMillis.toFloat(),1.0F), Entry(calendar3.timeInMillis.toFloat(),2.0F)))

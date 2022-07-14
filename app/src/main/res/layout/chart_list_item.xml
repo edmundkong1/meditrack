@@ -10,7 +10,7 @@
         android:id="@+id/lineChartTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test Title"
+        android:text="@string/test_title"
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
