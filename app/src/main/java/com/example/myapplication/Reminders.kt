@@ -6,8 +6,11 @@ import java.io.Serializable
 open class Reminders(_name: String, _time: String) : Serializable {
     var name: String? = _name
     var time: String? = _time
-    protected open val color: String? = null
+    protected open val colour: String? = null
     var expandable: Boolean? = true
+    fun colourGetter(): String? {
+        return colour
+    }
 
     open fun messageAdapter(): String {
         return ""
@@ -27,7 +30,7 @@ class Meds(
     var actions: String? = _actions
     var directions: String? = _directions
     var totalAmount: Int = _totalAmount
-    override var color: String = "#a7fad7"
+    override var colour: String = "#a7fad7"
 
     //display text for when medication is clicked
     override fun messageAdapter(): String {
@@ -62,7 +65,7 @@ class Appointments(
     var doctor: String? = _doctor
     var phoneNumber : String? = _phoneNumber
     var address : String? = _address
-    override var color = "#f0faa7"
+    override var colour = "#f0faa7"
 
     //display text for when the appointment is clicked
     override fun messageAdapter() : String {
@@ -85,5 +88,5 @@ class Appointments(
 //Refills class, represents the user's refills, a subclass of Reminders class
 class Refills(_name: String, _time: String, _amount: String) : Reminders(_name, _time) {
     var amount: String? = _amount
-    override var color = "#b0d3f7"
+    override var colour = "#b0d3f7"
 }

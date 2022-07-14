@@ -64,16 +64,7 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
            }
        })
 
-       //colour scheme for different reminders
-       if (data[i] is Appointments) {
-           cardView.setBackgroundColor(Color.parseColor("#f0faa7"))
-       }
-       else if (data[i] is Refills) {
-           cardView.setBackgroundColor(Color.parseColor("#b0d3f7"))
-       }
-       else {
-           cardView.setBackgroundColor(Color.parseColor("#a7fad7"))
-       }
+       cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
 
        return view
     }
