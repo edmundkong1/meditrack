@@ -22,9 +22,9 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ChartListAdapter(context: Context, data: Array<MutableList<Entry>>) : BaseAdapter(){
+class ChartListAdapter(context: Context, data: Array<Pair<String, MutableList<Entry>>>) : BaseAdapter(){
     private val context: Context
-    private val data: Array<MutableList<Entry>>
+    private val data: Array<Pair<String, MutableList<Entry>>>
     private var lineChart: LineChart? = null
     override fun getCount(): Int {
         return data.size
@@ -46,10 +46,13 @@ class ChartListAdapter(context: Context, data: Array<MutableList<Entry>>) : Base
             view = LayoutInflater.from(context).inflate(R.layout.chart_list_item, null)
         }
 
+        val lineChartTitle : TextView? = view?.findViewById(R.id.lineChartTitle)
+        lineChartTitle?.text = data[i].first
+
         lineChart = view?.findViewById(R.id.linechart)
 
         configureLineChart()
-        setLineChartData(data[i])
+        setLineChartData(data[i].second)
 
         return view
     }
@@ -57,13 +60,13 @@ class ChartListAdapter(context: Context, data: Array<MutableList<Entry>>) : Base
     private fun configureLineChart() {
         lineChart?.description!!.isEnabled = false
         val xAxis: XAxis = lineChart!!.xAxis
-//        xAxis.valueFormatter = object : ValueFormatter() {
-//            private val mFormat: SimpleDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
-//            override fun getFormattedValue(value: Float): String {
-//                val millis = value.toLong() * 1000L
-//                return mFormat.format(Date(millis))
-//            }
-//        }
+        xAxis.valueFormatter = object : ValueFormatter() {
+            private val mFormat: SimpleDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
+            override fun getFormattedValue(value: Float): String {
+                val millis = value.toLong()
+                return mFormat.format(Date(millis))
+            }
+        }
     }
 
     private fun setLineChartData(pricesHigh: MutableList<Entry>) {
