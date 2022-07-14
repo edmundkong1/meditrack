@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
                 Meds("Libitor", "11:00am", 40, "", "", 4000))
 
+        //create file output stream for meds data
         val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val medoos = ObjectOutputStream(medfos)
 
@@ -77,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     7, 8, "Dr.Bad", "6472339172", "221 University Ave")
             )
 
+        //create file output stream for appointments data
         val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
         val appoos = ObjectOutputStream(appfos)
 

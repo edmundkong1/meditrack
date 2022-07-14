@@ -58,6 +58,7 @@ class CalendarFragment : Fragment() {
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
          */
 
+        //get medications
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
 
@@ -75,6 +76,7 @@ class CalendarFragment : Fragment() {
         val day7 = (medicationsList)[6]
         ois.close()
 
+        //appointments for user
         val fis1 = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
         val ois1 = ObjectInputStream(fis1)
         val appointmentsList: Array<Appointments> =
@@ -111,6 +113,7 @@ class CalendarFragment : Fragment() {
             data.addAll(day7)
         }
 
+        //display appointments on specific day on calendar
         for (appointment in appointmentsList) {
             if (calendar.get(Calendar.YEAR) == appointment.year &&
                 calendar.get(Calendar.MONTH) + 1 == appointment.month &&
@@ -120,8 +123,7 @@ class CalendarFragment : Fragment() {
         }
 
         val l: ListView = view.findViewById(R.id.listCalendar)
-        @Suppress("UNCHECKED_CAST")
-        l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray() as Array<Reminders>)
+        l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
         // set this date in TextView for Display
         dateTV.text = date
 
@@ -171,8 +173,7 @@ class CalendarFragment : Fragment() {
                         }
                     }
 
-                    @Suppress("UNCHECKED_CAST")
-                    l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray() as Array<Reminders>)
+                    l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
                     // set this date in TextView for Display
                     dateTV.text = date
 
