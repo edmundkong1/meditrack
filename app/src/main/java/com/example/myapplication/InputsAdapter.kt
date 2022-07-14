@@ -29,13 +29,15 @@ class InputsAdapter(val inputList: List<Inputs>) :
         holder.itemView.apply {
             tv_input_title.text = currInput.title
             tv_input_instructions.text = currInput.instructions
-            //TODO: get rid of headings and make the instructions more clear so you don't need them
+            //TODO: get rid of headings and make the instructions  more clear so you don't need them
             tv_input_heading1.text = currInput.heading1
             tv_input_heading2.text = currInput.heading2
 
             //TODO: make these adapters conditional based on title and fill with necessary questions
             val incidentsAdapter = IncidentsAdapter(currInput.questions)
-            recycler_view_inputs_table.adapter = incidentsAdapter
+            rv_inputs_table.adapter = incidentsAdapter
+
+            // TODO: add adapters for appointment, prescription, etc.
 
 
             val isExpandable : Boolean = currInput.expandable

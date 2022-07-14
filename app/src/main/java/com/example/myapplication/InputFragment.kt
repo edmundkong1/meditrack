@@ -39,7 +39,7 @@ class InputFragment : Fragment(R.layout.fragment_input) {
 //        ButtonViews.add(view.findViewById(R.id.ChestPainBtns))
 //        ButtonViews.add(view.findViewById(R.id.SoreThroatBtns))
 //        ButtonViews.add(view.findViewById(R.id.BreathBtns))
-//        ButtonViews.add(view.findViewById(R.id.WheezingBtns))
+//        ButtonViews.add(view.findViewById(R.id.ToggleBtns))
 //        ButtonViews.add(view.findViewById(R.id.NauseaBtns))
 //        ButtonViews.add(view.findViewById(R.id.OtherBtns))
     //TODO: Add Button Listners into INcidents Adapter using the following
@@ -78,7 +78,7 @@ private var inputsList = ArrayList<Inputs>()
     // setup the recycler view
     private fun setRecyclerView() {
         val inputsAdapter = InputsAdapter(inputsList)
-        recycler_view_inputs.adapter = inputsAdapter
+        rv_inputs.adapter = inputsAdapter
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
