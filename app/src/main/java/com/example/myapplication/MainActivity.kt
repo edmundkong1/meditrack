@@ -43,25 +43,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //data per week for medications
         val day1 =
-            arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
-                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
-                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
-        val day2 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+            arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500),
+                Meds("Libitor", "11:00am", 40, "Take with Food", "", 4000),
+                Meds("Warfarin", "3:00pm", 10, "", "", 1000),
+                Meds("Brilinta", "5:00pm", 20, "", "", 2000))
+        val day2 = arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500))
         val day3 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
-        val day4 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
+                Meds("Libitor", "11:00am", 40, "", "", 4000))
+        val day4 = arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500))
         val day5 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""),
-                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""))
+            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
+                Meds("Libitor", "11:00am", 40, "", "", 4000),
+                Meds("Warfarin", "3:00pm", 10, "", "", 1000))
         val day6 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
+                Meds("Brilinta", "5:00pm", 20, "", "", 2000))
         val day7 =
-            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
-                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
+                Meds("Libitor", "11:00am", 40, "", "", 4000))
 
         val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val medoos = ObjectOutputStream(medfos)

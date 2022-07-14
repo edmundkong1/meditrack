@@ -45,6 +45,8 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
        //set random time
        val time: TextView = view.findViewById(R.id.time)
        time.text = data[i].time
+
+       /*
        if (data[i] is Meds) {
            val directions: TextView = view.findViewById(R.id.directions)
            var directionText = ""
@@ -53,13 +55,21 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
            //    directionText = directionText.plus(data[i][j]).plus("\n")
            //}
 
-           directionText = (data[i] as Meds).dosage!! + "\n"
+           directionText = (data[i] as Meds).dosage!!
            if((data[i] as Meds).actions!! != ""){
                directionText += (data[i] as Meds).actions!! + "\n"
            }
 
            directions.text = directionText
        }
+
+        */
+
+       val directions: TextView = view.findViewById(R.id.directions)
+       var subTextOutput = data[i].messageAdapter()
+       directions.text = subTextOutput
+
+
 
        //cardview for displaying extra information for calendar reminders
        val cardView: CardView = view.findViewById(R.id.base_cardview);

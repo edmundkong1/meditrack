@@ -11,22 +11,41 @@ open class Reminders : Serializable{
         name = _name
         time = _time
     }
+    open fun messageAdapter(): String {
+        return ""
+    }
 }
 
 class Meds : Reminders {
-    var dosage: String? = null
+    var dosage: Int = 0
     var actions: String? = null
     var directions: String? = null
+    var totalAmount: Int = 0
     override var color: String = "#a7fad7"
     constructor(_name: String,
                 _time: String,
-                _dosage: String,
+                _dosage: Int,
                 _actions: String,
-                _directions: String) : super(_name, _time) {
+                _directions: String,
+                _totalAmount: Int) : super(_name, _time) {
                     dosage = _dosage
                     actions = _actions
                     directions = _directions
+                    totalAmount = _totalAmount
                 }
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if (dosage != 0) {
+            cardText += "Dosage: " + dosage.toString() + "mg" + "\n"
+        }
+        if (actions != null && actions != "") {
+            cardText += "Actions: $actions\n"
+        }
+        if (directions != null && directions != "") {
+            cardText += "Directions: $directions\n"
+        }
+        return cardText
+    }
 }
 
 class Appointments: Reminders {
@@ -51,6 +70,19 @@ class Appointments: Reminders {
         doctor = _doctor
         phoneNumber = _phoneNumber
         address = _address
+    }
+    override fun messageAdapter() : String {
+        var cardText = ""
+        if (doctor != null || doctor != "") {
+            cardText += "Doctor: $doctor\n"
+        }
+        if (address != null || address != "") {
+            cardText += "Address: $address\n"
+        }
+        if (phoneNumber != null || phoneNumber != "") {
+            cardText += "Phone Number: $phoneNumber\n"
+        }
+        return cardText
     }
 
     fun callDoctor() {}
