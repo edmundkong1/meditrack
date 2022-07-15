@@ -4,6 +4,8 @@ import android.hardware.biometrics.BiometricManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -33,7 +35,19 @@ class IncidentsAdapter(val symptomsList: List<String>) :
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
             //TODO: switch these from strings to Spinners(https://developer.android.com/guide/topics/ui/controls/spinner)
-            input_tbl_attribute.text = currInput
+            //input_tbl_attribute.text = currInput
+            val spinner: Spinner = findViewById(R.id.input_tbl_attribute)
+            // Create an ArrayAdapter using the string array and a default spinner layout
+            ArrayAdapter.createFromResource(
+                context,
+                R.array.symptoms_array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                spinner.adapter = adapter
+            }
 
 //            test()
 //            input_tbl_attribute.ToggleBtns
@@ -45,8 +59,8 @@ class IncidentsAdapter(val symptomsList: List<String>) :
 //            println(toggle.checkedButtonId)
 //            { _, isChecked ->
 //                // toggle the box being expandable
-////                currInput.expandable = !currInput.expandable
-////                test()
+//                currInput.expandable = !currInput.expandable
+//                test()
 //                if (input_tbl_attribute.ToggleBtns.Btn1) {
 //                    // The toggle is enabled
 //                } else {

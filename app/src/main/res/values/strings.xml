@@ -33,4 +33,13 @@
     <string name="test_description">Test description</string>
     <string name="test_date">Test date</string>
     <string name="health_news">Health News</string>
+    <string-array name="symptoms_array">
+        <item>Heartburn</item>
+        <item>Chest Pain</item>
+        <item>Sore Throat</item>
+        <item>Shortness of Breath</item>
+        <item>Wheezing</item>
+        <item>Nausea</item>
+        <item>Other</item>
+    </string-array>
 </resources>
