@@ -45,14 +45,14 @@ class AboutMeFragment : Fragment() {
     // setup the recycler view
     private fun setRecyclerView() {
         val medicationsAdapter = MedicationsAdapter(medicationsList)
-        recycler_view.adapter = medicationsAdapter
-        recycler_view.setHasFixedSize(true)
+        rv_medications.adapter = medicationsAdapter
+        rv_medications.setHasFixedSize(true)
     }
 
     private fun setRecyclerView2() {
         val conditionsAdapter = ConditionsAdapter(conditionsList)
-        recycler_view2.adapter = conditionsAdapter
-        recycler_view2.setHasFixedSize(true)
+        rv_conditions.adapter = conditionsAdapter
+        rv_conditions.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar

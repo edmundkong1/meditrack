@@ -1,93 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    tools:context=".PractitionersFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-        android:text="@string/hello_practitioners_fragment" />
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/LinearLayout1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-                <!-- Include other widget or layout tags here. These are considered
-                        "child views" or "children" of the linear layout -->
+            android:orientation="vertical"
+            android:padding="8dp"
+            tools:context=".PractitionersFragment">
 
                 <TextView
-                    android:id="@+id/Providers"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_insurance_providers"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:paddingTop="30dp"
-                    android:paddingLeft="10dp"
-                    android:text="Providers"
-                    />
+                    android:gravity="center"
+                    android:text="Your Insurance Providers"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/providersrecycler_view"
-                    android:layout_width="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:id="@+id/rv_insurance_providers"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    ></androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/PublicCovered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/LinearLayout1"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:text="Publicly Covered Practitioners"
-            android:textSize="15dp"
-
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/PublicCoveredRecycler"
-            android:layout_width="wrap_content"
-            android:paddingLeft="30dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/PublicCovered"
-            ></androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/PractCovered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/PublicCoveredRecycler"
-            android:text="Practitioners Covered by Your Insurance"
-            android:textSize="15dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/PractCoveredRecycler"
-            android:layout_width="wrap_content"
-            android:paddingLeft="30dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/PractCovered"
-            ></androidx.recyclerview.widget.RecyclerView>
-
-        />
+                    android:scrollbars="vertical"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
+                <TextView
+                    android:id="@+id/tv_practitioners"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Your Practitioners"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
 
-</RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_practitioners"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </LinearLayout >
+</ScrollView>

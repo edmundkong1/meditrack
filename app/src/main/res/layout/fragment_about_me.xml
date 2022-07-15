@@ -23,7 +23,7 @@
             android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/rv_medications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
@@ -40,7 +40,7 @@
             android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view2"
+            android:id="@+id/rv_conditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
