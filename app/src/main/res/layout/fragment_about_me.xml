@@ -6,10 +6,7 @@
     android:layout_height="wrap_content"
     android:fillViewport="true">
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,9 +19,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Medications"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -40,12 +36,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Conditions"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_view2"/>
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view2"
@@ -53,10 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scrollbars="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_conditions"  />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout >
 </ScrollView>
