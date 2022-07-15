@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 class AboutMeFragment : Fragment() {
 
     private var medicationsList = ArrayList<Medications>()
+    private var conditionsList = ArrayList<Conditions>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -37,6 +38,8 @@ class AboutMeFragment : Fragment() {
 
         initData()
         setRecyclerView()
+        initData2()
+        setRecyclerView2()
     }
 
     // setup the recycler view
@@ -44,6 +47,12 @@ class AboutMeFragment : Fragment() {
         val medicationsAdapter = MedicationsAdapter(medicationsList)
         recycler_view.adapter = medicationsAdapter
         recycler_view.setHasFixedSize(true)
+    }
+
+    private fun setRecyclerView2() {
+        val conditionsAdapter = ConditionsAdapter(conditionsList)
+        recycler_view2.adapter = conditionsAdapter
+        recycler_view2.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
@@ -77,23 +86,19 @@ class AboutMeFragment : Fragment() {
         ))
     }
 
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment AboutMeFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            AboutMeFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
+    private fun initData2() {
+        conditionsList.add(Conditions(
+            "COPD",
+            "100 mg",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+
+        conditionsList.add(Conditions(
+            "Acid Reflux",
+            "100 mg",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+    }
 }
