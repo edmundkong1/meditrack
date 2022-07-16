@@ -180,15 +180,15 @@ class CalendarFragment : Fragment() {
                     //notifications
                     //temp data for demo
                     //if (year == 2022 && month == 5 && dayOfMonth == 29) {
-                    //    for (day in data) {
-                    //        (activity as MainActivity).scheduleNotification(
-                    //            month,
-                    //            dayOfMonth,
-                    //            extracthour(day[1]),
-                    //            0,
-                    //            "Reminder: " + day[0]
-                    //        )
-                    //    }
+                        for (appointment in appointmentsList) {
+                            (activity as MainActivity).scheduleNotification(
+                                month,
+                                dayOfMonth,
+                                extracthour(appointment.time!!),
+                                0,
+                                "Reminder: " + appointment.messageAdapter()
+                            )
+                        }
                     //}
                 })
     }

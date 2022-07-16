@@ -72,10 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         //data for appointments
         val appointments =
-            arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
-                7, 13, "Dr.Good", "4162839172", "291 University Ave"),
-                Appointments("Physician Appointment", "2:00pm", 2022,
-                    7, 8, "Dr.Bad", "6472339172", "221 University Ave")
+            arrayOf(Appointments("Chiropractor Appointment", "6:00pm", 2022,
+                7, 16, "Dr.Good", "4162839172", "291 University Ave"),
+                Appointments("Physician Appointment", "7:00pm", 2022,
+                    7, 16, "Dr.Bad", "6472339172", "221 University Ave")
             )
 
         //create file output stream for appointments data
