@@ -17,7 +17,7 @@ class ReminderBroadcast : BroadcastReceiver() {
         val message = intent.extras!!.get("Message")
         showNotification(
             context,
-            "Meditrack Alert",
+            "MediTrack Alert",
             message as String
         )
     }
@@ -45,7 +45,7 @@ class ReminderBroadcast : BroadcastReceiver() {
             .setAutoCancel(true)
         //intent used for performing action on screen
         val intent = Intent(context, MainActivity::class.java)
-        val pi = PendingIntent.getActivity(context, 0, intent, 0)
+        val pi = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         mBuilder.setContentIntent(pi)
         //show notification
         mNotificationManager.notify(System.currentTimeMillis().toInt(), mBuilder.build())
