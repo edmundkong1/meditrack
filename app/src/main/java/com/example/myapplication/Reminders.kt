@@ -3,13 +3,29 @@ package com.example.myapplication
 import java.io.Serializable
 
 //objects for Reminders
-open class Reminders(_name: String, _time: String) : Serializable {
+open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializable {
     var name: String? = _name
-    var time: String? = _time
+    var timeHour: Int? = _timeHour
+    var timeMin: Int? = _timeMin
     protected open val colour: String? = null
     var expandable: Boolean? = true
     fun colourGetter(): String? {
         return colour
+    }
+
+    fun printTime(): String? {
+        var ending = "am"
+        var hour = timeHour
+        var minute = timeMin.toString()
+        if (timeHour!! >= 12) {
+            hour = timeHour!! - 12
+            ending = "pm"
+        }
+        if (timeMin!! < 10) {
+            minute = "0" + minute
+        }
+
+        return hour.toString() + ":" + minute + " " + ending
     }
 
     open fun messageAdapter(): String {
@@ -20,12 +36,13 @@ open class Reminders(_name: String, _time: String) : Serializable {
 //Meds class, represents the medications, and is a subclass of Reminders
 class Meds(
     _name: String,
-    _time: String,
+    _timeHour: Int,
+    _timeMin: Int,
     _dosage: Int,
     _actions: String,
     _directions: String,
     _totalAmount: Int
-) : Reminders(_name, _time) {
+) : Reminders(_name, _timeHour, _timeMin) {
     var dosage: Int = _dosage
     var actions: String? = _actions
     var directions: String? = _directions
@@ -51,14 +68,15 @@ class Meds(
 //Appointments class, represents the user's appointments, a subclass for the Reminders class
 class Appointments(
     _name: String,
-    _time: String,
+    _timeHour: Int,
+    _timeMin: Int,
     _year: Int,
     _month: Int,
     _day: Int,
     _doctor: String,
     _phoneNumber: String,
     _address: String
-) : Reminders(_name, _time) {
+) : Reminders(_name, _timeHour, _timeMin) {
     var year: Int? = _year
     var month: Int? = _month
     var day: Int? = _day
@@ -86,7 +104,18 @@ class Appointments(
 }
 
 //Refills class, represents the user's refills, a subclass of Reminders class
-class Refills(_name: String, _time: String, _amount: String) : Reminders(_name, _time) {
+class Refills(
+    _name: String,
+    _timeHour: Int,
+    _timeMin: Int,
+    _amount: String,
+    _year: Int,
+    _month: Int,
+    _day: Int
+) : Reminders(_name, _timeHour, _timeMin) {
     var amount: String? = _amount
+    var year: Int = _year
+    var month: Int = _month
+    var day: Int = _day
     override var colour = "#b0d3f7"
 }

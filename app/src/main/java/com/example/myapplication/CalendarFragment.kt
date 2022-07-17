@@ -181,13 +181,16 @@ class CalendarFragment : Fragment() {
                     //temp data for demo
                     //if (year == 2022 && month == 5 && dayOfMonth == 29) {
                         for (appointment in appointmentsList) {
-                            (activity as MainActivity).scheduleNotification(
-                                month,
-                                dayOfMonth,
-                                extracthour(appointment.time!!),
-                                0,
-                                "Reminder: " + appointment.messageAdapter()
-                            )
+                            appointment.timeHour?.let {
+                                (activity as MainActivity).scheduleNotification(
+                                    month,
+                                    dayOfMonth,
+                                    it,
+                                    //extracthour(appointment.time!!),
+                                    0,
+                                    "Reminder: " + appointment.messageAdapter()
+                                )
+                            }
                         }
                     //}
                 })
