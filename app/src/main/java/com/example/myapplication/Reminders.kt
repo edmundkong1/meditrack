@@ -52,7 +52,7 @@ class Meds(
     var actions: String? = _actions
     var directions: String? = _directions
     var totalAmount: Int = _totalAmount
-    override var colour: String = "#a7fad7"
+    override var colour: String = "#99d4bb"
 
     //display text for when medication is clicked
     override fun messageAdapter(): String {
@@ -88,7 +88,7 @@ class Appointments(
     var doctor: String? = _doctor
     var phoneNumber : String? = _phoneNumber
     var address : String? = _address
-    override var colour = "#f0faa7"
+    override var colour = "#cff6d2"
 
     //display text for when the appointment is clicked
     override fun messageAdapter() : String {
