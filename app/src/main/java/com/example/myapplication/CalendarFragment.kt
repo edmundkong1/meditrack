@@ -177,22 +177,19 @@ class CalendarFragment : Fragment() {
                     // set this date in TextView for Display
                     dateTV.text = date
 
+                    for (appointment in appointmentsList) {
+                        (activity as MainActivity).scheduleNotification(
+                            appointment.year!!,
+                            appointment.month!!,
+                            appointment.day!!,
+                            appointment.timeHour!!,
+                            appointment.timeMin!!,
+                            "Reminder: " + appointment.messageAdapter()
+                        )
+                    }
+
                     //notifications
                     //temp data for demo
-                    //if (year == 2022 && month == 5 && dayOfMonth == 29) {
-                        for (appointment in appointmentsList) {
-                            appointment.timeHour?.let {
-                                (activity as MainActivity).scheduleNotification(
-                                    month,
-                                    dayOfMonth,
-                                    it,
-                                    //extracthour(appointment.time!!),
-                                    0,
-                                    "Reminder: " + appointment.messageAdapter()
-                                )
-                            }
-                        }
-                    //}
                 })
     }
 

@@ -72,10 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         //data for appointments
         val appointments =
-            arrayOf(Appointments("Chiropractor Appointment", 18,0, 2022,
-                7, 16, "Dr.Good", "4162839172", "291 University Ave"),
-                Appointments("Physician Appointment", 19,0, 2022,
-                    7, 16, "Dr.Bad", "6472339172", "221 University Ave")
+            arrayOf(Appointments("Chiropractor Appointment", 12,0, 2022,
+                7, 18, "Dr.Good", "4162839172", "291 University Ave"),
+                Appointments("Physician Appointment", 10,0, 2022,
+                    7, 18, "Dr.Bad", "6472339172", "221 University Ave")
             )
 
         //create file output stream for appointments data
@@ -137,12 +137,13 @@ class MainActivity : AppCompatActivity() {
     //scheduler for notifications
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
-    fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
+    fun scheduleNotification(Year: Int, Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
         intent.putExtra("Message", NotifMessage)
         val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmStartTime = Calendar.getInstance()
         alarmStartTime.timeInMillis = System.currentTimeMillis()
+        alarmStartTime[Calendar.YEAR] = Year
         alarmStartTime[Calendar.MONTH] = Month
         alarmStartTime[Calendar.DAY_OF_MONTH] = Day
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
