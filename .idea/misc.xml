@@ -25,19 +25,20 @@
         <entry key="app/src/main/res/drawable/ic_button_input.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1105" />
+        <entry key="app/src/main/res/drawable/ic_navbar_about_me.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_navbar_home.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_stethoscope_with_binaural_spring.xml" value="0.103" />
         <entry key="app/src/main/res/layout/activity_input.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/calendar_list_item.xml" value="0.14402173913043478" />
-        <entry key="app/src/main/res/layout/chart_list_item.xml" value="0.15412186379928317" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_about_me.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.235552978515625" />
         <entry key="app/src/main/res/layout/fragment_incident_summary.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/fragment_input.xml" value="0.2761215209960937" />
-        <entry key="app/src/main/res/layout/news_list_item.xml" value="0.13632246376811594" />
+        <entry key="app/src/main/res/layout/fragment_practitioners.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/news_list_item.xml" value="0.18034864785014715" />
         <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/layout/simple_expander.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
