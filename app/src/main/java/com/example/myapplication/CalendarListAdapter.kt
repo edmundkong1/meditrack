@@ -44,7 +44,7 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
-       time.text = data[i].time
+       time.text = data[i].printTime()
 
        //display directions as subtext
        val directions: TextView = view.findViewById(R.id.directions)

@@ -43,41 +43,39 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //data per week for medications
         val day1 =
-            arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500),
-                Meds("Libitor", "11:00am", 40, "Take with Food", "", 4000),
-                Meds("Warfarin", "3:00pm", 10, "", "", 1000),
-                Meds("Brilinta", "5:00pm", 20, "", "", 2000))
-        val day2 = arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500))
+            arrayOf(Meds("Norvasc", 9, 0, 5, "", "", 500),
+                Meds("Libitor", 11, 0, 40, "Take with Food", "", 4000),
+                Meds("Warfarin", 15, 0, 10, "", "", 1000),
+                Meds("Brilinta", 17, 0, 20, "", "", 2000))
+        val day2 = arrayOf(Meds("Norvasc", 9, 0, 5, "", "", 500))
         val day3 =
-            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
-                Meds("Libitor", "11:00am", 40, "", "", 4000))
-        val day4 = arrayOf(Meds("Norvasc", "9:00am", 5, "", "", 500))
+            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
+                Meds("Libitor", 11,0, 40, "", "", 4000))
+        val day4 = arrayOf(Meds("Norvasc", 9,0, 5, "", "", 500))
         val day5 =
-            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
-                Meds("Libitor", "11:00am", 40, "", "", 4000),
-                Meds("Warfarin", "3:00pm", 10, "", "", 1000))
+            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
+                Meds("Libitor", 11,0, 40, "", "", 4000),
+                Meds("Warfarin", 15,0, 10, "", "", 1000))
         val day6 =
-            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
-                Meds("Brilinta", "5:00pm", 20, "", "", 2000))
+            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
+                Meds("Brilinta", 17,0, 20, "", "", 2000))
         val day7 =
-            arrayOf(Meds("Norvasc","9:00am", 5, "", "", 500),
-                Meds("Libitor", "11:00am", 40, "", "", 4000))
-
-        val medications_list = arrayOf(day1, day2, day3, day4, day5, day6, day7)
+            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
+                Meds("Libitor", 11,0, 40, "", "", 4000))
 
         //create file output stream for meds data
         val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val medoos = ObjectOutputStream(medfos)
 
-        medoos.writeObject(medications_list)
+        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
         medoos.close()
 
         //data for appointments
         val appointments =
-            arrayOf(Appointments("Chiropractor Appointment", "8:00pm", 2022,
+            arrayOf(Appointments("Chiropractor Appointment", 18,0, 2022,
                 7, 16, "Dr.Good", "4162839172", "291 University Ave"),
-                Appointments("Physician Appointment", "7:00pm", 2022,
-                    7, 18, "Dr.Bad", "6472339172", "221 University Ave")
+                Appointments("Physician Appointment", 19,0, 2022,
+                    7, 16, "Dr.Bad", "6472339172", "221 University Ave")
             )
 
         //create file output stream for appointments data
@@ -121,33 +119,6 @@ class MainActivity : AppCompatActivity() {
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        //Set up notifications
-        for (appointment in appointments) {
-            scheduleNotification(
-                appointment.month!!,
-                appointment.day!!,
-                extracthour(appointment.time!!),
-                15,
-                "Reminder: " + appointment.name + " " + appointment.messageAdapter()
-            )
-        }
-
-        /*
-        var dayofweek = 1
-        for (day in medications_list) {
-            for (reminder in day){
-                scheduleRepeatingNotification(
-                    dayofweek,
-                    extracthour(reminder.time!!),
-                    0,
-                    "Reminder: " + reminder.name + " " + reminder.messageAdapter()
-                )
-            }
-            dayofweek++
-        }
-
-         */
-
         //Dummy data for calendar
         /*
         val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
@@ -163,65 +134,9 @@ class MainActivity : AppCompatActivity() {
         */
     }
 
-    //used for setting up notifications
-    private fun extracthour(time: String): Int {
-        var hour = 0
-        for (i in time) {
-            if (i == ':') {
-                break
-            }
-            hour *= 10
-            Log.w("I is:", i.toString())
-            hour += i.toString().toInt()
-        }
-
-        if (time[time.length-2] == 'p') {
-            hour += 12
-        }
-        return hour
-    }
-
     //scheduler for notifications
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
-    fun scheduleRepeatingNotification(dayofweek: Int, Hour:Int, Min:Int, NotifMessage: String) {
-        val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
-        intent.putExtra("Message", NotifMessage)
-        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val alarmStartTime = Calendar.getInstance()
-        alarmStartTime.timeInMillis = System.currentTimeMillis()
-        if(dayofweek == 1){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.MONDAY
-        }
-        else if(dayofweek == 2){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.TUESDAY
-        }
-        else if(dayofweek == 3){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.WEDNESDAY
-        }
-        else if(dayofweek == 4){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.THURSDAY
-        }
-        else if(dayofweek == 5){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.FRIDAY
-        }
-        else if(dayofweek == 6){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.SATURDAY
-        }
-        else if(dayofweek == 7){
-            alarmStartTime[Calendar.DAY_OF_WEEK] = Calendar.SUNDAY
-        }
-        alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
-        alarmStartTime[Calendar.MINUTE] = Min
-        alarmStartTime[Calendar.SECOND] = 0
-
-        //set exact time of alarm
-        alarmManager!!.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            alarmStartTime.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent
-        )
-    }
-
     fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
         intent.putExtra("Message", NotifMessage)
