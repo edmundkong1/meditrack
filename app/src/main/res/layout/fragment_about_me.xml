@@ -37,7 +37,8 @@
             android:gravity="center"
             android:text="Conditions"
             android:textSize="25sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_conditions"
