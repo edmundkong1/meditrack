@@ -17,8 +17,13 @@ open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializabl
         var ending = "am"
         var hour = timeHour
         var minute = timeMin.toString()
+        if (timeHour!! == 0) {
+            hour = timeHour!! + 12
+        }
         if (timeHour!! >= 12) {
-            hour = timeHour!! - 12
+            if (timeHour!! >= 13) {
+                hour = timeHour!! - 12
+            }
             ending = "pm"
         }
         if (timeMin!! < 10) {
