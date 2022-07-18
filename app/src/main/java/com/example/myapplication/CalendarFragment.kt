@@ -16,6 +16,7 @@ import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 //calendar tab
 
@@ -57,6 +58,7 @@ class CalendarFragment : Fragment() {
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
          */
 
+        //get medications
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
 
@@ -72,41 +74,56 @@ class CalendarFragment : Fragment() {
         val day5 = (medicationsList)[4]
         val day6 = (medicationsList)[5]
         val day7 = (medicationsList)[6]
+        ois.close()
+
+        //appointments for user
+        val fis1 = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+        val ois1 = ObjectInputStream(fis1)
+        val appointmentsList: Array<Appointments> =
+            ois1.readObject() as Array<Appointments>
 
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
         val date = sdf.format(calendarView.date)
 
         //list of medications
-        val data: Array<Meds>
+        val data: ArrayList<Reminders> = arrayListOf()
         val calendar = Calendar.getInstance()
 
         //reminders to show in calendar
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-            data = day1
+            data.addAll(day1)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
-            data = day2
+            data.addAll(day2)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
-            data = day3
+            data.addAll(day3)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
-            data = day4
+            data.addAll(day4)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-            data = day5
+            data.addAll(day5)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-            data = day6
+            data.addAll(day6)
         }
         else {
-            data = day7
+            data.addAll(day7)
+        }
+
+        //display appointments on specific day on calendar
+        for (appointment in appointmentsList) {
+            if (calendar.get(Calendar.YEAR) == appointment.year &&
+                calendar.get(Calendar.MONTH) + 1 == appointment.month &&
+                calendar.get(Calendar.DAY_OF_MONTH) == appointment.day) {
+                data.add(appointment)
+            }
         }
 
         val l: ListView = view.findViewById(R.id.listCalendar)
-        @Suppress("UNCHECKED_CAST")
-        l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
+        l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
         // set this date in TextView for Display
         dateTV.text = date
 
@@ -122,56 +139,57 @@ class CalendarFragment : Fragment() {
 
                     //show list of medicines
                     val l: ListView = view.findViewById(R.id.listCalendar)
-                    var data : Array<Meds>
+                    val data: ArrayList<Reminders> = arrayListOf()
 
                     calendar.get(Calendar.DAY_OF_WEEK)
 
                     //data for a week
                     if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-                        data = day1
+                        data.addAll(day1)
                     }
                     else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
-                        data = day2
+                        data.addAll(day2)
                     }
                     else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
-                        data = day3
+                        data.addAll(day3)
                     }
                     else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
-                        data = day4
+                        data.addAll(day4)
                     }
                     else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-                        data = day5
+                        data.addAll(day5)
                     }
                     else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-                        data = day6
+                        data.addAll(day6)
                     }
                     else {
-                        data = day7
+                        data.addAll(day7)
                     }
-                   // if (dayOfMonth == 20) {
-                   //     val list: MutableList<Array<String>> = data.toMutableList()
-                   //     list.add(0, arrayOf("Norvasc Refill","8:00am", "refill", "Amount: 3000mg"))
-                   //     data = list.toTypedArray()
-                   // }
+                    for (appointment in appointmentsList) {
+                        if (calendar.get(Calendar.YEAR) == appointment.year &&
+                            calendar.get(Calendar.MONTH) + 1 == appointment.month &&
+                            calendar.get(Calendar.DAY_OF_MONTH) == appointment.day) {
+                            data.add(appointment)
+                        }
+                    }
 
-                    @Suppress("UNCHECKED_CAST")
-                    l.adapter = CalendarListAdapter(requireActivity(), data as Array<Reminders>)
+                    l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
                     // set this date in TextView for Display
                     dateTV.text = date
 
+                    for (appointment in appointmentsList) {
+                        (activity as MainActivity).scheduleNotification(
+                            appointment.year!!,
+                            appointment.month!!,
+                            appointment.day!!,
+                            appointment.timeHour!!,
+                            appointment.timeMin!!,
+                            "Reminder: " + appointment.messageAdapter()
+                        )
+                    }
+
                     //notifications
                     //temp data for demo
-                    //if (year == 2022 && month == 5 && dayOfMonth == 29) {
-                    //    for (day in data) {
-                    //        (activity as MainActivity).scheduleNotification(
-                    //            month,
-                    //            dayOfMonth,
-                    //            extracthour(day[1]),
-                    //            0,
-                    //            "Reminder: " + day[0]
-                    //        )
-                    //    }
-                    //}
                 })
     }
 

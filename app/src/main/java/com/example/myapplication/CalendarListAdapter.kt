@@ -44,22 +44,12 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
-       time.text = data[i].time
-       if (data[i] is Meds) {
-           val directions: TextView = view.findViewById(R.id.directions)
-           var directionText = ""
+       time.text = data[i].printTime()
 
-           //for (j in 3 until data[i].size) {
-           //    directionText = directionText.plus(data[i][j]).plus("\n")
-           //}
-
-           directionText = (data[i] as Meds).dosage!! + "\n"
-           if((data[i] as Meds).actions!! != ""){
-               directionText += (data[i] as Meds).actions!! + "\n"
-           }
-
-           directions.text = directionText
-       }
+       //display directions as subtext
+       val directions: TextView = view.findViewById(R.id.directions)
+       val subTextOutput = data[i].messageAdapter()
+       directions.text = subTextOutput
 
        //cardview for displaying extra information for calendar reminders
        val cardView: CardView = view.findViewById(R.id.base_cardview);
@@ -74,16 +64,7 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
            }
        })
 
-       //colour scheme
-       if (data[i] is Appointments) {
-           cardView.setBackgroundColor(Color.parseColor("#f0faa7"))
-       }
-       else if (data[i] is Refills) {
-           cardView.setBackgroundColor(Color.parseColor("#b0d3f7"))
-       }
-       else {
-           cardView.setBackgroundColor(Color.parseColor("#a7fad7"))
-       }
+       cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
 
        return view
     }
