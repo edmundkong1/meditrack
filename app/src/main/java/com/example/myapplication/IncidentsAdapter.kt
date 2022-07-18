@@ -1,42 +1,49 @@
 package com.example.myapplication
 
-import android.hardware.biometrics.BiometricManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButtonToggleGroup
-import kotlinx.android.synthetic.main.fragment_input.*
-import kotlinx.android.synthetic.main.input_row.view.*
-import kotlinx.android.synthetic.main.input_tbl_row.view.*
-import kotlinx.android.synthetic.main.toggle_button.view.*
+
 
 class IncidentsAdapter(val symptomsList: List<String>) :
-    RecyclerView.Adapter<IncidentsAdapter.InputsViewHolder>(){
+    RecyclerView.Adapter<IncidentsAdapter.ViewHolder>(){
+    private var listener: OnToggleButtonClickListener? = null
 
-    class InputsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    //class InputsViewHolder(itemView: View) : RecyclerView.ViewHolder()
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var Spinner: Spinner
+        var toggleButton: MaterialButtonToggleGroup
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InputsViewHolder {
-        return InputsViewHolder (
-                LayoutInflater.from(parent.context).inflate( // takes 4 arguments, all optional: resources, parser, resources, parser
-                    R.layout.input_tbl_row, // R is to access resources, layout is a resource
-                    parent,
-                    false // don't wanna attach this view to the root layout, set to false
-                )
-        )
+        // setText in Main-List title text
+//        fun setData(name: String?) {
+//            Spinner.text = name
+//        }
+
+        //Link up the Main-List items layout
+        // components with their respective id
+        init {
+            Spinner = itemView.findViewById(R.id.input_tbl_attribute)
+            toggleButton = itemView.findViewById(R.id.input_tbl_rating)
+        }
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.input_tbl_row, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: InputsViewHolder, position: Int) {
-        val currInput: String = symptomsList[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {val currInput: String = symptomsList[position]
 
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
             //TODO: switch these from strings to Spinners(https://developer.android.com/guide/topics/ui/controls/spinner)
             //input_tbl_attribute.text = currInput
-            val spinner: Spinner = findViewById(R.id.input_tbl_attribute)
+            val spinner: Spinner = holder.Spinner
             // Create an ArrayAdapter using the string array and a default spinner layout
             ArrayAdapter.createFromResource(
                 context,
@@ -66,25 +73,54 @@ class IncidentsAdapter(val symptomsList: List<String>) :
 //                } else {
 //                    // The toggle is disabled
 //                }
-            input_tbl_rating.ToggleBtns.
-            setOnClickListener {
+            // Log.i("button test","testing")
+//            val rating = holder.itemView.findViewById<MaterialButtonToggleGroup>(R.id.input_tbl_rating)//.findViewById(R.id.input_tbl_rating) as MaterialButtonToggleGroup
+//            rating.addOnButtonCheckedListener { buttonGroup, checkedId, isChecked ->
+//                Log.i("button test","testing2")
+////                val mySpinner = findViewById<Spinner>(R.id.input_tbl_attribute)
+////                val text = mySpinner.selectedItem.toString()
+////                Log.i("button test",text)
+//                if (isChecked) {
+//                    when (checkedId) {
+//                        //STORE CLICKED BUTTON
+//                        //val buttonId = buttonGroup.getCheckedButtonId()
+//                    }
+//                } else {
+//
+//                }
+//            }
+            holder.toggleButton.setOnClickListener {
                 // toggle the box being expandable
 //                currInput.expandable = !currInput.expandable
 //                notifyItemChanged(position)
-                println("testttttttt")
+                Log.i("button test","testing2")
+                val text = holder.Spinner.selectedItem.toString()
+                Log.i("button test",text)
             }
+            holder.toggleButton.setOnClickListener(View.OnClickListener {
+                if (listener != null) {
+                    listener.onToggleButtonClick(modelItems)
+                }
+            })
 
 //                notifyItemChanged(position)
         }
     }
 
+//    override fun onBindViewHolder(holder: InputsViewHolder, position: Int) {
+//
+//    }
+
     override fun getItemCount(): Int {
         return symptomsList.size
     }
 
-
-    // setup the recycler view
-    private fun test() {
-        println("test")
+    interface OnToggleButtonClickListener {
+        fun onToggleButtonClick(toggleButton: MaterialButtonToggleGroup?)
     }
+
+    fun setWhenClickListener(listener: OnToggleButtonClickListener?) {
+        this.listener = listener
+    }
+
 }

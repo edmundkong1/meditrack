@@ -93,7 +93,7 @@ private var inputsList = ArrayList<Inputs>()
         ))
 
         inputsList.add(Inputs(
-            "Enter Prescription",
+            "Enter Medication",
             "What is your new prescription?",
             "Symptom",
             "Severity",

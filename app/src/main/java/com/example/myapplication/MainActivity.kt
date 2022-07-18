@@ -57,6 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+
+        Log.i("main test","testing")
+
         // Allow tabs to navigate to corresponding fragments based on nav_menu.xml and nav_graph.xml
         val navView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         NavigationUI.setupWithNavController(navView, navController)

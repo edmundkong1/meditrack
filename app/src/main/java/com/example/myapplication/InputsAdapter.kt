@@ -1,9 +1,11 @@
 package com.example.myapplication
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButtonToggleGroup
 import kotlinx.android.synthetic.main.fragment_input.*
 import kotlinx.android.synthetic.main.input_row.view.*
 
@@ -36,6 +38,11 @@ class InputsAdapter(val inputList: List<Inputs>) :
             //TODO: make these adapters conditional based on title and fill with necessary questions
             val incidentsAdapter = IncidentsAdapter(currInput.questions)
             rv_inputs_table.adapter = incidentsAdapter
+            incidentsAdapter.setWhenClickListener(object : IncidentsAdapter.OnToggleButtonClickListener() {
+                fun onItemClick(toggleButton: MaterialButtonToggleGroup?) {
+                    //fill with what to do when you click?
+                }
+            })
 
             // TODO: add adapters for appointment, prescription, etc.
 
@@ -45,6 +52,7 @@ class InputsAdapter(val inputList: List<Inputs>) :
 
             constraint_view_input.setOnClickListener {
                 // toggle the box being expandable
+                Log.i("button test","testing1")
                 currInput.expandable = !currInput.expandable
                 notifyItemChanged(position)
             }

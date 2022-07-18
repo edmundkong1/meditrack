@@ -25,10 +25,16 @@
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/menu_main.xml" value="0.1796875" />
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.103" />
+        <entry key="app/src/main/res/drawable/ic_baseline_expand_less_24.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_button_input.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1105" />
+        <entry key="app/src/main/res/drawable/ic_navbar_about_me.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/ic_navbar_calendar.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_navbar_home.xml" value="0.103" />
+        <entry key="app/src/main/res/drawable/ic_navbar_incident_summary.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/ic_navbar_practitioners.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_stethoscope_with_binaural_spring.xml" value="0.103" />
         <entry key="app/src/main/res/layout/activity_input.xml" value="0.23154144287109377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
