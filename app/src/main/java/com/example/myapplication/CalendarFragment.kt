@@ -179,35 +179,8 @@ class CalendarFragment : Fragment() {
 
                     //notifications
                     //temp data for demo
-                    //if (year == 2022 && month == 5 && dayOfMonth == 29) {
-                        for (appointment in appointmentsList) {
-                            (activity as MainActivity).scheduleNotification(
-                                month,
-                                dayOfMonth,
-                                extracthour(appointment.time!!),
-                                0,
-                                "Reminder: " + appointment.messageAdapter()
-                            )
-                        }
+                    //if (year == 2022 && month == 5 && dayOfMonth == 29)
                     //}
                 })
-    }
-
-    //used for setting up notifications
-    private fun extracthour(time: String): Int {
-        var hour = 0
-        for (i in time) {
-            if (i == ':') {
-                break
-            }
-            hour *= 10
-            Log.w("I is:", i.toString())
-            hour += i.toString().toInt()
-        }
-
-        if (time[time.length-2] == 'p') {
-            hour += 12
-        }
-        return hour
     }
 }
