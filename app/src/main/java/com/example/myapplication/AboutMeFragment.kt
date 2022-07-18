@@ -20,6 +20,8 @@ class AboutMeFragment : Fragment() {
 
     private var medicationsList = ArrayList<Medications>()
     private var conditionsList = ArrayList<Conditions>()
+    private var symptomList = ArrayList<Symptoms>()
+    private var appointmentList = ArrayList<Appointments>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -40,6 +42,10 @@ class AboutMeFragment : Fragment() {
         setRecyclerView()
         initData2()
         setRecyclerView2()
+        initData3()
+        setRecyclerView3()
+        initData4()
+        setRecyclerView4()
     }
 
     // setup the recycler view
@@ -53,6 +59,18 @@ class AboutMeFragment : Fragment() {
         val conditionsAdapter = ConditionsAdapter(conditionsList)
         recycler_view2.adapter = conditionsAdapter
         recycler_view2.setHasFixedSize(true)
+    }
+
+    private fun setRecyclerView3() {
+        val symptomsAdapter = SymptomsAdapter(symptomList)
+        recycler_view3.adapter = symptomsAdapter
+        recycler_view3.setHasFixedSize(true)
+    }
+
+    private fun setRecyclerView4() {
+        val appointmentAdapter = AppointmentsAdapter(appointmentList)
+        recycler_view4.adapter = appointmentAdapter
+        recycler_view4.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
@@ -100,5 +118,54 @@ class AboutMeFragment : Fragment() {
             "",
             "Directions: Take once a week at 12:00pm"
         ))
+    }
+
+    private fun initData3() {
+        symptomList.add(Symptoms(
+            "Heartburn",
+            "blank",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+
+        symptomList.add(Symptoms(
+            "Chest Pain",
+            "blank",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+
+        symptomList.add(Symptoms(
+            "Sore Throat",
+            "blank",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+    }
+
+    private fun initData4() {
+        appointmentList.add(
+            Appointments(
+            "Dentist Appointment",
+            "blank",
+            "",
+            "Dentist appointment with Dr. Teeth at 3pm"
+        )
+        )
+
+        appointmentList.add(Appointments(
+            "Chiropractor Appointment",
+            "blank",
+            "",
+            "Chiropractor appointment with Dr. Bones at 4pm"
+        ))
+
+        appointmentList.add(Appointments(
+            "Allergist Appointment",
+            "blank",
+            "",
+            "Allergist appointment with Dr. Peanuts at 4pm"
+        ))
+
     }
 }
