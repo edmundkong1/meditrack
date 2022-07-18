@@ -17,9 +17,9 @@ import java.util.*
 
 //Starter code from https://stackoverflow.com/questions/61321990/android-listview-add-text-to-the-end-of-row
 //create custom adapter
-class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAdapter() {
+class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapter() {
     private val context: Context
-    private val data: Array<Array<String>>
+    private val data: Array<Reminders>
     override fun getCount(): Int {
         return data.size
     }
@@ -40,21 +40,16 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
            view = LayoutInflater.from(context).inflate(R.layout.calendar_list_item, null)
        }
        val name: TextView = view!!.findViewById(R.id.name)
-       name.text = data[i][0]
+       name.text = data[i].name
 
        //set random time
        val time: TextView = view.findViewById(R.id.time)
-       time.text = data[i][1]
-       if (data[i].size > 3) {
-           val directions: TextView = view.findViewById(R.id.directions)
-           var directionText = ""
+       time.text = data[i].printTime()
 
-           for (j in 3 until data[i].size) {
-               directionText = directionText.plus(data[i][j]).plus("\n")
-           }
-
-           directions.text = directionText
-       }
+       //display directions as subtext
+       val directions: TextView = view.findViewById(R.id.directions)
+       val subTextOutput = data[i].messageAdapter()
+       directions.text = subTextOutput
 
        //cardview for displaying extra information for calendar reminders
        val cardView: CardView = view.findViewById(R.id.base_cardview);
@@ -69,16 +64,7 @@ class CalendarListAdapter(context: Context, data: Array<Array<String>>) : BaseAd
            }
        })
 
-       //colour scheme
-       if (data[i][2] == "appointment") {
-           cardView.setBackgroundColor(Color.parseColor("#f0faa7"))
-       }
-       else if (data[i][2] == "refill") {
-           cardView.setBackgroundColor(Color.parseColor("#b0d3f7"))
-       }
-       else {
-           cardView.setBackgroundColor(Color.parseColor("#a7fad7"))
-       }
+       cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
 
        return view
     }
