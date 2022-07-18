@@ -50,4 +50,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.github.KwabenBerko:News-API-Java:1.0.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

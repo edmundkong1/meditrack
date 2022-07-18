@@ -6,8 +6,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -18,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,8 +25,11 @@ import com.kwabenaberko.newsapilib.NewsApiClient.ArticlesResponseCallback
 import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.io.FileOutputStream
+import java.io.ObjectOutputStream
 import java.util.*
 
+//main activity - used for all tabs
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +41,48 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //data per week for medications
+        val day1 =
+            arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "Take with Food", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day2 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day3 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+        val day4 = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""))
+        val day5 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""),
+                Meds("Warfarin", "3:00pm", "Dosage: 10mg", "", ""))
+        val day6 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Brilinta", "5:00pm", "Dosage: 20mg", "", ""))
+        val day7 =
+            arrayOf(Meds("Norvasc","9:00am", "Dosage: 5mg", "", ""),
+                Meds("Libitor", "11:00am", "Dosage: 40mg", "", ""))
+
+        val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
+        val medoos = ObjectOutputStream(medfos)
+
+        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        medoos.close()
+
+        //data for appointments
+        val appointments =
+            arrayOf(Appointments("Chiropractor Appointment", "12:00pm", 2022,
+                7, 13, "Dr.Good", "4162839172", "291 University Ave"),
+                Appointments("Physician Appointment", "2:00pm", 2022,
+                    7, 8, "Dr.Bad", "6472339172", "221 University Ave")
+            )
+
+        val appfos = FileOutputStream(filesDir.toString() + "appointments_list.meditrack")
+        val appoos = ObjectOutputStream(appfos)
+
+        appoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        appoos.close()
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -75,25 +117,22 @@ class MainActivity : AppCompatActivity() {
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        //for health news api
+        //Dummy data for calendar
         /*
-        recyclerView = list_news
-        val recyclerViewAdapter = NewsListAdapter(null, this)
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(
-                context,
-                RecyclerView.VERTICAL, false
-            )
-            adapter = recyclerViewAdapter
-        }
-
-        //TODO: Dont do this is bad
-        val policy = ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-        get_news_from_api()
-
-         */
+        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
+        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
+            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
+        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
+        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
+            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
+        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
+        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
+        */
     }
+
+    //scheduler for notifications
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
     @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
@@ -114,6 +153,7 @@ class MainActivity : AppCompatActivity() {
             alarmStartTime.timeInMillis, pendingIntent
         )
     }
+
     //https://www.geeksforgeeks.org/how-to-create-a-news-app-in-android/
     //https://blog.techchee.com/develop-a-simple-news-search-android-app-with-kotlin-newsapi/
     //get articles from api
