@@ -5,11 +5,13 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     //for health news api
     lateinit var recyclerView: RecyclerView
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         //data per week for medications
         val day1 =
@@ -132,10 +135,22 @@ class MainActivity : AppCompatActivity() {
         val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
         val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
         */
+
+        for (appointment in appointments) {
+            scheduleNotification(
+                appointment.year!!,
+                appointment.month!!,
+                appointment.day!!,
+                appointment.timeHour!!,
+                appointment.timeMin!!,
+                "Reminder: " + appointment.messageAdapter()
+            )
+        }
     }
 
     //scheduler for notifications
     // https://premsinghsodha7.medium.com/schedule-task-using-alarm-manager-android-36327548cf8e
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(Year: Int, Month: Int, Day: Int, Hour: Int, Min : Int, NotifMessage: String) {
         val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
@@ -144,14 +159,14 @@ class MainActivity : AppCompatActivity() {
         val alarmStartTime = Calendar.getInstance()
         alarmStartTime.timeInMillis = System.currentTimeMillis()
         alarmStartTime[Calendar.YEAR] = Year
-        alarmStartTime[Calendar.MONTH] = Month
+        alarmStartTime[Calendar.MONTH] = Month - 1
         alarmStartTime[Calendar.DAY_OF_MONTH] = Day
         alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
         alarmStartTime[Calendar.MINUTE] = Min
         alarmStartTime[Calendar.SECOND] = 0
 
         //set exact time of alarm
-        alarmManager!!.setExact(
+        alarmManager!!.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             alarmStartTime.timeInMillis, pendingIntent
         )

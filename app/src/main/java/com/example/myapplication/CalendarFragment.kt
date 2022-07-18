@@ -177,17 +177,6 @@ class CalendarFragment : Fragment() {
                     // set this date in TextView for Display
                     dateTV.text = date
 
-                    for (appointment in appointmentsList) {
-                        (activity as MainActivity).scheduleNotification(
-                            appointment.year!!,
-                            appointment.month!!,
-                            appointment.day!!,
-                            appointment.timeHour!!,
-                            appointment.timeMin!!,
-                            "Reminder: " + appointment.messageAdapter()
-                        )
-                    }
-
                     //notifications
                     //temp data for demo
                 })
