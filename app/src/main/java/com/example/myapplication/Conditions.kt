@@ -5,4 +5,5 @@ data class Conditions(
     val dosage: String,
     val actions: String,
     val directions: String,
-    var expandable: Boolean = true)
+    var expandable: Boolean = true
+)

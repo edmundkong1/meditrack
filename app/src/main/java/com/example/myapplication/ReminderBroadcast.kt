@@ -28,10 +28,10 @@ class ReminderBroadcast : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "1",
-                "CH_ID",
-                NotificationManager.IMPORTANCE_DEFAULT
+                "Calendar Alerts",
+                NotificationManager.IMPORTANCE_HIGH
             )
-            channel.description = "Example Alarm"
+            channel.description = "Alerts from Meditrack Calendar"
             mNotificationManager.createNotificationChannel(channel)
         }
         val mBuilder = NotificationCompat.Builder(context, "1")
@@ -48,6 +48,6 @@ class ReminderBroadcast : BroadcastReceiver() {
         val pi = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         mBuilder.setContentIntent(pi)
         //show notification
-        mNotificationManager.notify(1001, mBuilder.build())
+        mNotificationManager.notify(System.currentTimeMillis().toInt(), mBuilder.build())
     }
 }
