@@ -37,7 +37,7 @@ class MedicationsAdapter(val medicationList: List<Medications>) :
             tv_prop6.text = currMedication.totalAmount
 
             val isExpandable : Boolean = currMedication.expandable
-            rl_expandable_layout.visibility = if (isExpandable) View.VISIBLE else View.GONE
+            rl_expandable_layout.visibility = if (isExpandable) View.GONE else View.VISIBLE
 
             linear_layout.setOnClickListener {
                 // toggle the box being expandable
