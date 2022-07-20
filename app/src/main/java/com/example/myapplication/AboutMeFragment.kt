@@ -77,30 +77,42 @@ class AboutMeFragment : Fragment() {
     private fun initData() {
         medicationsList.add(Medications(
             "Norvasc",
-            "40 mg",
-            "Refill required---------- DO OTHIS and don't look back on it yuh",
-            "Directions: Take daily at 9:00am (on empty stomach)."
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Brilinta",
-            "10 mg",
-            "New prescription required",
-            "Directions: Take twice a week at 11:00am"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Libitor",
-            "25 mg",
-            "",
-            "Directions: Take four times a week at 3:15pm"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Warfarin",
-            "100 mg",
-            "",
-            "Directions: Take once a week at 12:00pm"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
     }
 
