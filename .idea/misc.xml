@@ -33,7 +33,7 @@
         <entry key="app/src/main/res/drawable/ic_stethoscope_with_binaural_spring.xml" value="0.103" />
         <entry key="app/src/main/res/layout/activity_input.xml" value="0.23154144287109377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/calendar_list_item.xml" value="0.18795166015625003" />
+        <entry key="app/src/main/res/layout/calendar_list_item.xml" value="0.14402173913043478" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_about_me.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
@@ -44,8 +44,9 @@
         <entry key="app/src/main/res/layout/news_list_item.xml" value="0.18034864785014715" />
         <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/layout/simple_expander.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/menu_main.xml" value="0.16666666666666666" />
-        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.1747589111328125" />
+        <entry key="app/src/main/res/layout/simple_expander_conditions.xml" value="0.42626190185546875" />
+        <entry key="app/src/main/res/layout/simple_expander_medications.xml" value="0.33983612060546875" />
+        <entry key="app/src/main/res/layout/toggle_button.xml" value="0.1265625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

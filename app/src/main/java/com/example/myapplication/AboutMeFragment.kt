@@ -21,7 +21,7 @@ class AboutMeFragment : Fragment() {
     private var medicationsList = ArrayList<Medications>()
     private var conditionsList = ArrayList<Conditions>()
     private var symptomList = ArrayList<Symptoms>()
-    private var appointmentList = ArrayList<Appointments>()
+    private var appointmentList = ArrayList<Appointment>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -119,16 +119,14 @@ class AboutMeFragment : Fragment() {
     private fun initData2() {
         conditionsList.add(Conditions(
             "COPD",
-            "100 mg",
-            "",
-            "Directions: Take once a week at 12:00pm"
+            "None",
+            "Screaming, Crying, Throwing Up",
         ))
 
         conditionsList.add(Conditions(
             "Acid Reflux",
-            "100 mg",
-            "",
-            "Directions: Take once a week at 12:00pm"
+            "Heart Surgery",
+            "Coughing, Screaming, Crying, Throwing Up",
         ))
     }
 
@@ -156,27 +154,41 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun initData4() {
-        appointmentList.add(
-            Appointments(
+        appointmentList.add(Appointment(
             "Dentist Appointment",
-            "blank",
-            "",
-            "Dentist appointment with Dr. Teeth at 3pm"
+            "2",
+            "30",
+            "2022",
+            "August",
+            "20",
+            "Dr. Teeth",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
         )
         )
 
-        appointmentList.add(Appointments(
+        appointmentList.add(Appointment(
             "Chiropractor Appointment",
-            "blank",
-            "",
-            "Chiropractor appointment with Dr. Bones at 4pm"
+            "12",
+            "00",
+            "2022",
+            "December",
+            "12",
+            "Dr. Bones",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
         ))
 
-        appointmentList.add(Appointments(
+        appointmentList.add(Appointment(
             "Allergist Appointment",
-            "blank",
-            "",
-            "Allergist appointment with Dr. Peanuts at 4pm"
+            "6",
+            "20",
+            "2022",
+            "September",
+            "19",
+            "Dr. Peanut",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
         ))
 
     }
