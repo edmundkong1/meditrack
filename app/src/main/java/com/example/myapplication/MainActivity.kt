@@ -88,6 +88,85 @@ class MainActivity : AppCompatActivity() {
         appoos.writeObject(appointments)
         appoos.close()
 
+
+        val Norvasc = Meds("Norvasc", 9, 0, 5, "", "", 500)
+        val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
+        val Libitor = Meds("Libitor", 11, 0, 40, "Take with Food", "", 4000)
+        val LibitorDays = arrayOf(0, 2, 4, 6)
+        val Warfarin = Meds("Warfarin", 15, 0, 10, "", "", 1000)
+        val WarfarinDays = arrayOf(0, 4)
+        val Brilinta = Meds("Brilinta", 17, 0, 20, "", "", 2000)
+        val BrilintaDays = arrayOf(0, 5)
+
+        val refillReminders: ArrayList<Refills> = arrayListOf()
+
+        fun createRefillReminder(med: Meds, days: Array<Int>) {
+            var calcDays = med.totalAmount / med.dosage - days.size
+            var calendar = Calendar.getInstance()
+            val today = calendar.get(Calendar.DAY_OF_WEEK) - 1
+            var index = 0
+            var count = 0
+            for (i in days.indices) {
+                if (days[i] > today) {
+                    index = i
+                    count = days[i] - today
+                    calcDays--
+                }
+            }
+
+            while (calcDays > 0) {
+
+                var current = days[index]
+                index += 1
+                if (index >= days.size) index = 0
+                var next = days[index]
+
+                if (current < next) {
+                    count += next - current
+                } else {
+                    count += (7 - current + next)
+                }
+                calcDays--
+            }
+            calendar.add(Calendar.DAY_OF_MONTH, count)
+            refillReminders.add(Refills(med.name + " Refill", med.timeHour!!, med.timeMin!!, med.totalAmount.toString(),
+                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)))
+            Log.w("med", med.name!!)
+            Log.w("year", calendar.get(Calendar.YEAR).toString())
+            Log.w("month", calendar.get(Calendar.MONTH).toString())
+            Log.w("day", calendar.get(Calendar.DAY_OF_MONTH).toString())
+        }
+
+        createRefillReminder(Norvasc, NorvascDays)
+        createRefillReminder(Libitor, LibitorDays)
+        createRefillReminder(Warfarin, WarfarinDays)
+        createRefillReminder(Brilinta, BrilintaDays)
+
+
+
+        /*
+        Log.w("currentDay", calendar.get(Calendar.DAY_OF_WEEK).toString())
+        Log.w("currentMonth", calendar.get(Calendar.MONTH).toString())
+        Log.w("currentYear", calendar.get(Calendar.YEAR).toString())
+        calendar.add(Calendar.DAY_OF_MONTH, count)
+        Log.w("count", count.toString())
+        Log.w("day", calendar.get(Calendar.DAY_OF_WEEK).toString())
+        Log.w("month", calendar.get(Calendar.MONTH).toString())
+        Log.w("Year", calendar.get(Calendar.YEAR).toString())
+        calendar = Calendar.getInstance()
+        Log.w("daysub", calendar.get(Calendar.DAY_OF_WEEK).toString())
+        Log.w("monthsub", calendar.get(Calendar.MONTH).toString())
+        Log.w("Yearsub", calendar.get(Calendar.YEAR).toString())
+
+         */
+
+        //create file output stream for Refills data
+        val reffos = FileOutputStream(filesDir.toString() + "refills_list.meditrack")
+        val refoos = ObjectOutputStream(reffos)
+
+        refoos.writeObject(refillReminders.toTypedArray())
+        refoos.close()
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

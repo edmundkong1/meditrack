@@ -82,6 +82,15 @@ class CalendarFragment : Fragment() {
         val appointmentsList: Array<Appointments> =
             ois1.readObject() as Array<Appointments>
 
+        ois1.close()
+
+        //refills for user
+        val fis2 = FileInputStream(activity?.filesDir.toString() + "refills_list.meditrack")
+        val ois2 = ObjectInputStream(fis2)
+        val refillsList: Array<Refills> =
+            ois2.readObject() as Array<Refills>
+        ois2.close()
+
         //Initialize date
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
         val date = sdf.format(calendarView.date)
@@ -122,7 +131,16 @@ class CalendarFragment : Fragment() {
             }
         }
 
+        for (refill in refillsList) {
+            if (calendar.get(Calendar.YEAR) == refill.year &&
+                calendar.get(Calendar.MONTH) + 1 == refill.month &&
+                calendar.get(Calendar.DAY_OF_MONTH) == refill.day) {
+                data.add(refill)
+            }
+        }
+
         val l: ListView = view.findViewById(R.id.listCalendar)
+        data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
         l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
         // set this date in TextView for Display
         dateTV.text = date
@@ -172,6 +190,16 @@ class CalendarFragment : Fragment() {
                             data.add(appointment)
                         }
                     }
+
+                    for (refill in refillsList) {
+                        if (calendar.get(Calendar.YEAR) == refill.year &&
+                            calendar.get(Calendar.MONTH) + 1 == refill.month &&
+                            calendar.get(Calendar.DAY_OF_MONTH) == refill.day) {
+                            data.add(refill)
+                        }
+                    }
+
+                    data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
 
                     l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
                     // set this date in TextView for Display
