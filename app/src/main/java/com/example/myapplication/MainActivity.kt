@@ -70,7 +70,9 @@ class MainActivity : AppCompatActivity() {
         val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val medoos = ObjectOutputStream(medfos)
 
-        medoos.writeObject(arrayOf(day1, day2, day3, day4, day5, day6, day7))
+        val medicationList = arrayOf(day1, day2, day3, day4, day5, day6, day7)
+
+        medoos.writeObject(medicationList)
         medoos.close()
 
         //data for appointments
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             arrayOf(Appointments("Chiropractor Appointment", 12,0, 2022,
                 7, 18, "Dr.Good", "4162839172", "291 University Ave"),
                 Appointments("Physician Appointment", 10,0, 2022,
-                    7, 18, "Dr.Bad", "6472339172", "221 University Ave")
+                    7, 21, "Dr.Bad", "6472339172", "221 University Ave")
             )
 
         //create file output stream for appointments data
@@ -225,6 +227,19 @@ class MainActivity : AppCompatActivity() {
                 "Reminder: " + appointment.messageAdapter()
             )
         }
+
+        var day = 1
+        for (medday in medicationList){
+            for(med in medday) {
+                scheduleRepeatingNotification(
+                    day,
+                    med.timeHour!!,
+                    med.timeMin!!,
+                    "Reminder: " + med.messageAdapter()
+                )
+            }
+            day++
+        }
     }
 
     //scheduler for notifications
@@ -248,6 +263,28 @@ class MainActivity : AppCompatActivity() {
         alarmManager!!.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             alarmStartTime.timeInMillis, pendingIntent
+        )
+    }
+
+    fun scheduleRepeatingNotification(Dayofweek: Int, Hour: Int, Min : Int, NotifMessage: String) {
+        val intent = Intent(this@MainActivity, ReminderBroadcast::class.java)
+        intent.putExtra("Message", NotifMessage)
+        val pendingIntent = PendingIntent.getBroadcast(this@MainActivity, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val alarmStartTime = Calendar.getInstance()
+        alarmStartTime.timeInMillis = System.currentTimeMillis()
+        alarmStartTime[Calendar.DAY_OF_WEEK] = Dayofweek
+        alarmStartTime[Calendar.HOUR_OF_DAY] = Hour
+        alarmStartTime[Calendar.MINUTE] = Min
+        alarmStartTime[Calendar.SECOND] = 0
+
+        if (alarmStartTime.time.before(Date(System.currentTimeMillis()))){
+            alarmStartTime.add(Calendar.WEEK_OF_YEAR,1)
+        }
+
+        //set exact time of alarm
+        alarmManager!!.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            alarmStartTime.timeInMillis, 1000 * 60 * 60 * 24 * 7, pendingIntent
         )
     }
 
