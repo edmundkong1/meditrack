@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+
 data class Appointment(
     val name: String,
     val timeHour: String,
@@ -11,3 +12,6 @@ data class Appointment(
     val phoneNumber: String,
     val address: String,
     var expandable: Boolean = true)
+
+
+
