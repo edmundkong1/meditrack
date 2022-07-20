@@ -123,4 +123,11 @@ class Refills(
     var month: Int = _month
     var day: Int = _day
     override var colour = "#b0d3f7"
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if (amount != null || amount != "") {
+            cardText += "Amount: "+ amount + "mg" + "\n"
+        }
+        return cardText
+    }
 }

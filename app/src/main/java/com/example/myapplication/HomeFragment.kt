@@ -90,6 +90,7 @@ class HomeFragment : Fragment() {
         //    Appointments("Chiropractor Appointment", "12:00pm", 2022,
         //        7, 13, "Dr.Good", "4162839172", "291 University Ave"))
         val l: ListView = view.findViewById(R.id.listview_schedule)
+        data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
         l.adapter = CalendarListAdapter(requireActivity(), data)
 
         // Would cause errors if below implementation done on empty array
