@@ -30,6 +30,7 @@
             android:visibility="visible"
             >
 
+
             <TextView
                 android:id="@+id/tv_prop1"
                 android:layout_width="wrap_content"
@@ -38,7 +39,6 @@
                 android:text="Property 1"
                 android:textColor="@color/dark_grey"
                 android:textSize="18sp"
-                android:layout_toLeftOf="@id/tv_prop2"
                 android:maxLines="1"/>
 
             <TextView
@@ -49,9 +49,8 @@
                 android:textSize="18sp"
                 android:textColor="@color/dark_grey"
                 android:padding="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_toRightOf="@id/tv_prop3"
+                android:layout_toEndOf="@+id/tv_prop1"
+
                 android:maxLines="1"/>
 
             <TextView
@@ -62,7 +61,40 @@
                 android:textSize="18sp"
                 android:textColor="@color/dark_grey"
                 android:padding="16dp"
-                android:layout_below="@id/tv_prop1"/>
+                android:layout_toEndOf="@+id/tv_prop2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_prop4"
+                android:text="Property 4"
+                android:layout_marginTop="0dp"
+                android:textSize="18sp"
+                android:textColor="@color/dark_grey"
+                android:padding="16dp"
+                android:layout_below="@+id/tv_prop3"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_prop5"
+                android:text="Property 5"
+                android:textSize="18sp"
+                android:textColor="@color/dark_grey"
+                android:padding="16dp"
+                android:layout_below="@+id/tv_prop4"
+                />
+
+            <TextView
+                android:id="@+id/tv_prop6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Property 6"
+                android:textColor="@color/dark_grey"
+                android:textSize="18sp"
+                android:layout_below="@+id/tv_prop5"/>
 
         </RelativeLayout>
 

@@ -20,6 +20,8 @@ class AboutMeFragment : Fragment() {
 
     private var medicationsList = ArrayList<Medications>()
     private var conditionsList = ArrayList<Conditions>()
+    private var symptomList = ArrayList<Symptoms>()
+    private var appointmentList = ArrayList<Appointment>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -40,6 +42,10 @@ class AboutMeFragment : Fragment() {
         setRecyclerView()
         initData2()
         setRecyclerView2()
+        initData3()
+        setRecyclerView3()
+        initData4()
+        setRecyclerView4()
     }
 
     // setup the recycler view
@@ -55,50 +61,135 @@ class AboutMeFragment : Fragment() {
         recycler_view2.setHasFixedSize(true)
     }
 
+    private fun setRecyclerView3() {
+        val symptomsAdapter = SymptomsAdapter(symptomList)
+        recycler_view3.adapter = symptomsAdapter
+        recycler_view3.setHasFixedSize(true)
+    }
+
+    private fun setRecyclerView4() {
+        val appointmentAdapter = AppointmentsAdapter(appointmentList)
+        recycler_view4.adapter = appointmentAdapter
+        recycler_view4.setHasFixedSize(true)
+    }
+
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
     private fun initData() {
         medicationsList.add(Medications(
             "Norvasc",
-            "40 mg",
-            "Refill required---------- DO OTHIS and don't look back on it yuh",
-            "Directions: Take daily at 9:00am (on empty stomach)."
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Brilinta",
-            "10 mg",
-            "New prescription required",
-            "Directions: Take twice a week at 11:00am"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Libitor",
-            "25 mg",
-            "",
-            "Directions: Take four times a week at 3:15pm"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
 
         medicationsList.add(Medications(
             "Warfarin",
-            "100 mg",
-            "",
-            "Directions: Take once a week at 12:00pm"
+            "2",
+            "20",
+            "20mg",
+            "none",
+            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+            "A lot"
         ))
     }
 
     private fun initData2() {
         conditionsList.add(Conditions(
             "COPD",
-            "100 mg",
-            "",
-            "Directions: Take once a week at 12:00pm"
+            "None",
+            "Screaming, Crying, Throwing Up",
         ))
 
         conditionsList.add(Conditions(
             "Acid Reflux",
-            "100 mg",
+            "Heart Surgery",
+            "Coughing, Screaming, Crying, Throwing Up",
+        ))
+    }
+
+    private fun initData3() {
+        symptomList.add(Symptoms(
+            "Heartburn",
+            "blank",
             "",
             "Directions: Take once a week at 12:00pm"
         ))
+
+        symptomList.add(Symptoms(
+            "Chest Pain",
+            "blank",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+
+        symptomList.add(Symptoms(
+            "Sore Throat",
+            "blank",
+            "",
+            "Directions: Take once a week at 12:00pm"
+        ))
+    }
+
+    private fun initData4() {
+        appointmentList.add(Appointment(
+            "Dentist Appointment",
+            "2",
+            "30",
+            "2022",
+            "August",
+            "20",
+            "Dr. Teeth",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
+        )
+        )
+
+        appointmentList.add(Appointment(
+            "Chiropractor Appointment",
+            "12",
+            "00",
+            "2022",
+            "December",
+            "12",
+            "Dr. Bones",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
+        ))
+
+        appointmentList.add(Appointment(
+            "Allergist Appointment",
+            "6",
+            "20",
+            "2022",
+            "September",
+            "19",
+            "Dr. Peanut",
+            "226-555-5555",
+            "255 Sunview St. Waterloo, ON N2L 3V8"
+        ))
+
     }
 }
