@@ -99,7 +99,7 @@ class IncidentsAdapter(val symptomsList: List<String>) :
             }
             holder.toggleButton.setOnClickListener(View.OnClickListener {
                 if (listener != null) {
-                    listener.onToggleButtonClick(modelItems)
+                    //listener.onToggleButtonClick(modelItems)
                 }
             })
 

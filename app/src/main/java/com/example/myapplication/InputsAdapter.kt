@@ -38,11 +38,11 @@ class InputsAdapter(val inputList: List<Inputs>) :
             //TODO: make these adapters conditional based on title and fill with necessary questions
             val incidentsAdapter = IncidentsAdapter(currInput.questions)
             rv_inputs_table.adapter = incidentsAdapter
-            incidentsAdapter.setWhenClickListener(object : IncidentsAdapter.OnToggleButtonClickListener() {
-                fun onItemClick(toggleButton: MaterialButtonToggleGroup?) {
-                    //fill with what to do when you click?
-                }
-            })
+//            incidentsAdapter.setWhenClickListener(object : IncidentsAdapter.OnToggleButtonClickListener() {
+//                fun onItemClick(toggleButton: MaterialButtonToggleGroup?) {
+//                    //fill with what to do when you click?
+//                }
+//            })
 
             // TODO: add adapters for appointment, prescription, etc.
 
