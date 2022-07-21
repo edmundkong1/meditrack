@@ -45,27 +45,21 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         //data per week for medications
-        val day1 =
-            arrayOf(Meds("Norvasc", 9, 0, 5, "", "", 500),
-                Meds("Libitor", 11, 0, 40, "Take with Food", "", 4000),
-                Meds("Warfarin", 15, 0, 10, "", "", 1000),
-                Meds("Brilinta", 17, 0, 20, "", "", 2000))
-        val day2 = arrayOf(Meds("Norvasc", 9, 0, 5, "", "", 500))
-        val day3 =
-            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
-                Meds("Libitor", 11,0, 40, "", "", 4000))
-        val day4 = arrayOf(Meds("Norvasc", 9,0, 5, "", "", 500))
-        val day5 =
-            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
-                Meds("Libitor", 11,0, 40, "", "", 4000),
-                Meds("Warfarin", 15,0, 10, "", "", 1000))
-        val day6 =
-            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
-                Meds("Brilinta", 17,0, 20, "", "", 2000))
-        val day7 =
-            arrayOf(Meds("Norvasc",9,0, 5, "", "", 500),
-                Meds("Libitor", 11,0, 40, "", "", 4000))
+//meds
+        val Norvasc = Meds("Norvasc", 9, 0, 5, "", "", 100)
+        val Libitor = Meds("Libitor", 11, 0, 40, "Take with Food", "", 4000)
+        val Warfarin = Meds("Warfarin", 15, 0, 10, "", "", 1000)
+        val Brilinta = Meds("Brilinta", 17, 0, 20, "", "", 2000)
 
+        //data per week for medications
+        val day1 =
+            arrayOf(Norvasc, Libitor, Warfarin, Brilinta)
+        val day2 = arrayOf(Norvasc)
+        val day3 = arrayOf(Norvasc, Libitor)
+        val day4 = arrayOf(Norvasc)
+        val day5 = arrayOf(Norvasc, Libitor, Warfarin)
+        val day6 = arrayOf(Norvasc, Brilinta)
+        val day7 = arrayOf(Norvasc, Libitor)
         //create file output stream for meds data
         val medfos = FileOutputStream(filesDir.toString() + "medications_list.meditrack")
         val medoos = ObjectOutputStream(medfos)
@@ -91,13 +85,9 @@ class MainActivity : AppCompatActivity() {
         appoos.close()
 
 
-        val Norvasc = Meds("Norvasc", 9, 0, 5, "", "", 500)
         val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
-        val Libitor = Meds("Libitor", 11, 0, 40, "Take with Food", "", 4000)
         val LibitorDays = arrayOf(0, 2, 4, 6)
-        val Warfarin = Meds("Warfarin", 15, 0, 10, "", "", 1000)
         val WarfarinDays = arrayOf(0, 4)
-        val Brilinta = Meds("Brilinta", 17, 0, 20, "", "", 2000)
         val BrilintaDays = arrayOf(0, 5)
 
         val refillReminders: ArrayList<Refills> = arrayListOf()
