@@ -5,6 +5,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ import com.kwabenaberko.newsapilib.NewsApiClient
 import com.kwabenaberko.newsapilib.NewsApiClient.ArticlesResponseCallback
 import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
+import kotlinx.android.synthetic.main.calendar_list_item.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
@@ -190,6 +192,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+
+
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
@@ -323,5 +327,13 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    //temp function for phone call
+    fun testPhoneCall() {
+        val number: String = call_button.text.toString()
+        val callIntent = Intent(Intent.ACTION_CALL)
+        callIntent.data = Uri.parse("tel:$number")
+        startActivity(callIntent)
     }
 }

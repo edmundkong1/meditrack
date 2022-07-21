@@ -1,7 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
+
 
 //objects for Reminders
 open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializable {
@@ -111,6 +116,11 @@ class Appointments(
     override fun callPhone() {
         Log.w("phone Number", phoneNumber!!)
         // Add phone call functionality
+        val callIntent = Intent(Intent.ACTION_CALL)
+        callIntent.data = Uri.parse("tel:$phoneNumber")
+
+        //need to do this in MainActivity
+        //startActivity(callIntent)
     }
 }
 
