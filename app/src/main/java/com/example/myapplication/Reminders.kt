@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.util.Log
 import java.io.Serializable
 
 //objects for Reminders
@@ -36,6 +37,8 @@ open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializabl
     open fun messageAdapter(): String {
         return ""
     }
+
+    open fun callPhone() {}
 }
 
 //Meds class, represents the medications, and is a subclass of Reminders
@@ -105,7 +108,10 @@ class Appointments(
         return cardText
     }
 
-    fun callDoctor() {}
+    override fun callPhone() {
+        Log.w("phone Number", phoneNumber!!)
+        // Add phone call functionality
+    }
 }
 
 //Refills class, represents the user's refills, a subclass of Reminders class

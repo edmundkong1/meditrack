@@ -8,10 +8,7 @@ import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import java.util.*
 
@@ -63,6 +60,14 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
                hiddenView.visibility = View.VISIBLE
            }
        })
+
+       if (data[i] is Appointments) {
+           val callButton: Button = view.findViewById(R.id.call_button)
+           callButton.visibility = View.VISIBLE
+           callButton.setOnClickListener{
+               data[i].callPhone()
+           }
+       }
 
        cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
 
