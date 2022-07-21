@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/input_nav_graph"
+    app:startDestination="@id/InputFragment">
+
+    <fragment
+        android:id="@+id/InputAppointmentFragment"
+        android:name="com.example.myapplication.InputAppointmentFragment"
+        android:label="InputAppointment"
+        tools:layout="@layout/fragment_input_appointment">
+    </fragment>
+    <fragment
+        android:id="@+id/InputFragment"
+        android:name="com.example.myapplication.InputFragment"
+        android:label="Input"
+        tools:layout="@layout/fragment_input">
+        <action
+            android:id="@+id/action_InputFragment_to_InputAppointmentFragment"
+            app:destination="@id/InputAppointmentFragment" />
+    </fragment>
+</navigation>
