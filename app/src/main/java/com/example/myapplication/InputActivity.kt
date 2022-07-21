@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.myapplication.databinding.ActivityInputBinding
@@ -19,5 +20,9 @@ class InputActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+    }
+
+    fun showTimePickerDialog(v: View) {
+        TimePickerFragment().show(supportFragmentManager, "timePicker")
     }
 }

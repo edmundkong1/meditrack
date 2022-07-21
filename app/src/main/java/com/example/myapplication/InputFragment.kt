@@ -77,7 +77,7 @@ private var inputsList = ArrayList<Inputs>()
 
     // setup the recycler view
     private fun setRecyclerView() {
-        val inputsAdapter = InputsAdapter(inputsList)
+        val inputsAdapter = InputsAdapter(inputsList, this)
         rv_inputs.adapter = inputsAdapter
     }
 

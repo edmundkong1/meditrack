@@ -98,9 +98,9 @@ class IncidentsAdapter(val symptomsList: List<String>) :
                 Log.i("button test",text)
             }
             holder.toggleButton.setOnClickListener(View.OnClickListener {
-                if (listener != null) {
-                    listener.onToggleButtonClick(modelItems)
-                }
+                //if (listener != null) {
+                //    listener!!.onToggleButtonClick(modelItems)
+                //}
             })
 
 //                notifyItemChanged(position)

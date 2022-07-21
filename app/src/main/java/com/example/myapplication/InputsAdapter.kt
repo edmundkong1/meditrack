@@ -4,12 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+//import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButtonToggleGroup
 import kotlinx.android.synthetic.main.fragment_input.*
 import kotlinx.android.synthetic.main.input_row.view.*
 
-class InputsAdapter(val inputList: List<Inputs>) :
+class InputsAdapter(val inputList: List<Inputs>, val inputFragment: InputFragment) :
     RecyclerView.Adapter<InputsAdapter.InputsViewHolder>(){
 
     class InputsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -38,9 +39,16 @@ class InputsAdapter(val inputList: List<Inputs>) :
             //TODO: make these adapters conditional based on title and fill with necessary questions
             val incidentsAdapter = IncidentsAdapter(currInput.questions)
             rv_inputs_table.adapter = incidentsAdapter
-            incidentsAdapter.setWhenClickListener(object : IncidentsAdapter.OnToggleButtonClickListener() {
-                fun onItemClick(toggleButton: MaterialButtonToggleGroup?) {
-                    //fill with what to do when you click?
+            //incidentsAdapter.setWhenClickListener(object : IncidentsAdapter.OnToggleButtonClickListener() {
+            //    fun onItemClick(toggleButton: MaterialButtonToggleGroup?) {
+            //        //fill with what to do when you click?
+            //    }
+            //})
+
+            tv_input_title.setOnClickListener(View.OnClickListener {
+                Log.w("Position: ", position.toString())
+                if(position == 0){
+                    inputFragment.findNavController().navigate(R.id.action_InputFragment_to_InputAppointmentFragment)
                 }
             })
 
