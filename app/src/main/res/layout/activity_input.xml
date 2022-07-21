@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity">
 
-    <include layout="@layout/fragment_input"/>
+    <include layout="@layout/content_input"/>
 
 
 

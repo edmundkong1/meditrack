@@ -1,14 +1,16 @@
 package com.example.myapplication
 
+import TimePickerFragment
 import android.app.ActionBar
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
@@ -30,11 +32,9 @@ class InputActivity : AppCompatActivity() {
 
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
-
-        // TODO: Don't hardcode name of tabs
-
-
-        //TODO: INPUT tab - action should lead to input fragment
+    fun showTimePickerDialog(v: View) {
+        TimePickerFragment().show(supportFragmentManager, "timePicker")
     }
 }
