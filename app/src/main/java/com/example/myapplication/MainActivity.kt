@@ -328,12 +328,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
-    //temp function for phone call
-    fun testPhoneCall() {
-        val number: String = call_button.text.toString()
-        val callIntent = Intent(Intent.ACTION_CALL)
-        callIntent.data = Uri.parse("tel:$number")
-        startActivity(callIntent)
-    }
 }

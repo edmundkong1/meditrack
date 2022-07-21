@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -43,7 +44,7 @@ open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializabl
         return ""
     }
 
-    open fun callPhone() {}
+    open fun callPhone(context: Context) {}
 }
 
 //Meds class, represents the medications, and is a subclass of Reminders
@@ -113,14 +114,13 @@ class Appointments(
         return cardText
     }
 
-    override fun callPhone() {
-        Log.w("phone Number", phoneNumber!!)
+    //used for calling the phone number of listed doctor for an appointment
+    override fun callPhone(context: Context) {
+        // Log.w("phone Number", phoneNumber!!)
         // Add phone call functionality
-        val callIntent = Intent(Intent.ACTION_CALL)
+        val callIntent = Intent(Intent.ACTION_DIAL)
         callIntent.data = Uri.parse("tel:$phoneNumber")
-
-        //need to do this in MainActivity
-        //startActivity(callIntent)
+        context.startActivity(callIntent)
     }
 }
 
