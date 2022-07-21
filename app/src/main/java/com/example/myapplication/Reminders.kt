@@ -1,6 +1,13 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
+
 
 //objects for Reminders
 open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializable {
@@ -36,6 +43,8 @@ open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializabl
     open fun messageAdapter(): String {
         return ""
     }
+
+    open fun callPhone(context: Context) {}
 }
 
 //Meds class, represents the medications, and is a subclass of Reminders
@@ -105,7 +114,14 @@ class Appointments(
         return cardText
     }
 
-    fun callDoctor() {}
+    //used for calling the phone number of listed doctor for an appointment
+    override fun callPhone(context: Context) {
+        // Log.w("phone Number", phoneNumber!!)
+        // Add phone call functionality
+        val callIntent = Intent(Intent.ACTION_DIAL)
+        callIntent.data = Uri.parse("tel:$phoneNumber")
+        context.startActivity(callIntent)
+    }
 }
 
 //Refills class, represents the user's refills, a subclass of Reminders class
@@ -123,4 +139,11 @@ class Refills(
     var month: Int = _month
     var day: Int = _day
     override var colour = "#b0d3f7"
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if (amount != null || amount != "") {
+            cardText += "Amount: "+ amount + "mg" + "\n"
+        }
+        return cardText
+    }
 }
