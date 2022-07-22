@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,6 +27,26 @@ class InputAppointmentFragment : Fragment() {
     }
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //https://www.codingdemos.com/android-datepicker-button/
+        val chooseDate: EditText = view.findViewById(R.id.editTextDate)
+        chooseDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar[Calendar.YEAR]
+            val month = calendar[Calendar.MONTH]
+            val dayOfMonth = calendar[Calendar.DAY_OF_MONTH]
+            val datePickerDialog = this.context?.let { it1 ->
+                DatePickerDialog(
+                    it1,
+                    { datePicker, year, month, day -> chooseDate.setText(day.toString() + "/" + (month + 1) + "/" + year)}, year, month, dayOfMonth
+                )
+            }
+            if (datePickerDialog != null) {
+                datePickerDialog.datePicker.minDate = System.currentTimeMillis()
+                datePickerDialog.show()
+            }
+        }
+
+        //https://www.codingdemos.com/android-timepicker-edittext/
         val chooseTime: EditText = view.findViewById(R.id.appointment_pick_time)
         chooseTime.setOnClickListener {
             val calendar = Calendar.getInstance()

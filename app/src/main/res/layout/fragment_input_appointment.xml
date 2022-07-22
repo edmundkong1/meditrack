@@ -18,6 +18,7 @@
             android:ems="10"
             android:inputType="date"
             android:hint="Enter Date"
+            android:focusableInTouchMode="false"
             android:textColor="@color/black" />
 
         <EditText
