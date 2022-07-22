@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Input Other Symptoms"
+            android:text="Select Input Option"
             android:textSize="20sp"
             android:textAlignment="center"
             android:paddingTop="10dp"/>
@@ -38,7 +38,10 @@
                     android:id="@+id/Button1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Enter Prescription" />
+                    android:text="Enter Medications"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp"/>
             </TableRow>
             <TableRow>
                 <Button
@@ -46,7 +49,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Insurance Info"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
             </TableRow>
             <TableRow>
                 <Button
@@ -54,7 +59,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Practitioners"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
             </TableRow>
             <TableRow>
                 <Button
@@ -62,7 +69,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Conditions"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
             </TableRow>
             <TableRow>
                 <Button
@@ -70,7 +79,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Appointments"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
             </TableRow>
 
         </TableLayout>

@@ -16,22 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:hint="Enter Date"
+            android:textColor="@color/black" />
 
-        <Button
+        <EditText
             android:id="@+id/appointment_pick_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="showTimePickerDialog"
-            android:text="Select Time" />
+            android:ems="10"
+            android:focusableInTouchMode="false"
+            android:hint="Choose Time"
+            android:textColor="@color/black" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/doctorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Enter Doctor's Name"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:hint="Enter Doctor's Phone Number"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/doctorAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:hint="Enter Doctor's Address"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
