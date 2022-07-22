@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 
 class AboutMeFragment : Fragment() {
 
-    private var medicationsList = ArrayList<Medications>()
+    private var medicationsList = ArrayList<Meds>()
     private var conditionsList = ArrayList<Conditions>()
     private var symptomList = ArrayList<Symptoms>()
-    private var appointmentList = ArrayList<Appointment>()
+    private var appointmentList = ArrayList<Appointments>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -50,69 +50,69 @@ class AboutMeFragment : Fragment() {
 
     // setup the recycler view
     private fun setRecyclerView() {
-        val medicationsAdapter = MedicationsAdapter(medicationsList)
+        val medicationsAdapter = AboutMeAdapter(medicationsList)
         recycler_view.adapter = medicationsAdapter
         recycler_view.setHasFixedSize(true)
     }
 
     private fun setRecyclerView2() {
-        val conditionsAdapter = ConditionsAdapter(conditionsList)
+        val conditionsAdapter = AboutMeAdapter(conditionsList)
         recycler_view2.adapter = conditionsAdapter
         recycler_view2.setHasFixedSize(true)
     }
 
     private fun setRecyclerView3() {
-        val symptomsAdapter = SymptomsAdapter(symptomList)
+        val symptomsAdapter = AboutMeAdapter(symptomList)
         recycler_view3.adapter = symptomsAdapter
         recycler_view3.setHasFixedSize(true)
     }
 
     private fun setRecyclerView4() {
-        val appointmentAdapter = AppointmentsAdapter(appointmentList)
+        val appointmentAdapter = AboutMeAdapter(appointmentList)
         recycler_view4.adapter = appointmentAdapter
         recycler_view4.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
     private fun initData() {
-        medicationsList.add(Medications(
+        medicationsList.add(Meds(
             "Norvasc",
-            "2",
-            "20",
-            "20mg",
+            2,
+            20,
+            20,
             "none",
             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            "A lot"
+            2000
         ))
 
-        medicationsList.add(Medications(
+        medicationsList.add(Meds(
             "Brilinta",
-            "2",
-            "20",
-            "20mg",
+            2,
+            20,
+            20,
             "none",
             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            "A lot"
+            2000
         ))
 
-        medicationsList.add(Medications(
+        medicationsList.add(Meds(
             "Libitor",
-            "2",
-            "20",
-            "20mg",
+            2,
+            20,
+            20,
             "none",
             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            "A lot"
+            2000
         ))
 
-        medicationsList.add(Medications(
+        medicationsList.add(Meds(
             "Warfarin",
-            "2",
-            "20",
-            "20mg",
+            2,
+            20,
+            20,
             "none",
             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            "A lot"
+            2000
         ))
     }
 
@@ -133,59 +133,59 @@ class AboutMeFragment : Fragment() {
     private fun initData3() {
         symptomList.add(Symptoms(
             "Heartburn",
-            "blank",
+            0,
             "",
             "Directions: Take once a week at 12:00pm"
         ))
 
         symptomList.add(Symptoms(
             "Chest Pain",
-            "blank",
+            0,
             "",
             "Directions: Take once a week at 12:00pm"
         ))
 
         symptomList.add(Symptoms(
             "Sore Throat",
-            "blank",
+            0,
             "",
             "Directions: Take once a week at 12:00pm"
         ))
     }
 
     private fun initData4() {
-        appointmentList.add(Appointment(
+        appointmentList.add(Appointments(
             "Dentist Appointment",
-            "2",
-            "30",
-            "2022",
-            "August",
-            "20",
+            2,
+            30,
+            2022,
+            8,
+            20,
             "Dr. Teeth",
             "226-555-5555",
             "255 Sunview St. Waterloo, ON N2L 3V8"
         )
         )
 
-        appointmentList.add(Appointment(
+        appointmentList.add(Appointments(
             "Chiropractor Appointment",
-            "12",
-            "00",
-            "2022",
-            "December",
-            "12",
+            12,
+            0,
+            2022,
+            11,
+            12,
             "Dr. Bones",
             "226-555-5555",
             "255 Sunview St. Waterloo, ON N2L 3V8"
         ))
 
-        appointmentList.add(Appointment(
+        appointmentList.add(Appointments(
             "Allergist Appointment",
-            "6",
-            "20",
-            "2022",
-            "September",
-            "19",
+            6,
+            20,
+            2022,
+            8,
+            19,
             "Dr. Peanut",
             "226-555-5555",
             "255 Sunview St. Waterloo, ON N2L 3V8"
