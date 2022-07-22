@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_input_appointment">
     </fragment>
     <fragment
+        android:id="@+id/InputMedicationsFragment"
+        android:name="com.example.myapplication.InputMedicationsFragment"
+        android:label="InputMedications"
+        tools:layout="@layout/fragment_input_medications">
+    </fragment>
+    <fragment
         android:id="@+id/InputFragment"
         android:name="com.example.myapplication.InputFragment"
         android:label="Input"
@@ -19,6 +25,9 @@
         <action
             android:id="@+id/action_InputFragment_to_InputAppointmentFragment"
             app:destination="@id/InputAppointmentFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputMedicationsFragment"
+            app:destination="@id/InputMedicationsFragment" />
     </fragment>
 
 </navigation>

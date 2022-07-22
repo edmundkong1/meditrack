@@ -33,17 +33,6 @@
             android:id="@+id/textview_other_table"
             android:stretchColumns="0">
             <TableRow>
-
-                <Button
-                    android:id="@+id/Button1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Enter Medications"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:height="80dp"/>
-            </TableRow>
-            <TableRow>
                 <Button
                     android:id="@+id/Button2"
                     android:layout_width="match_parent"
@@ -83,6 +72,18 @@
                     android:textStyle="bold"
                     android:height="80dp" />
             </TableRow>
+
+            <TableRow>
+                <Button
+                    android:id="@+id/InputMedicationsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Medications"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+
 
         </TableLayout>
 

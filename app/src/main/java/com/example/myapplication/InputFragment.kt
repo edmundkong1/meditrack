@@ -37,5 +37,8 @@ class InputFragment : Fragment() {
         InputAppointmentsButton.setOnClickListener{
             findNavController().navigate(R.id.action_InputFragment_to_InputAppointmentFragment)
         }
+        InputMedicationsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InputFragment_to_InputMedicationsFragment)
+        }
     }
 }

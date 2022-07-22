@@ -116,7 +116,6 @@ class Appointments(
 
     //used for calling the phone number of listed doctor for an appointment
     override fun callPhone(context: Context) {
-        // Log.w("phone Number", phoneNumber!!)
         // Add phone call functionality
         val callIntent = Intent(Intent.ACTION_DIAL)
         callIntent.data = Uri.parse("tel:$phoneNumber")
