@@ -1,13 +1,16 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
 import android.widget.ListView
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButtonToggleGroup
+import kotlinx.android.synthetic.main.fragment_input.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,9 +23,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class InputFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private lateinit var ButtonViews: ArrayList<MaterialButtonToggleGroup>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,46 +34,8 @@ class InputFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ButtonViews.add(view.findViewById(R.id.HeartburnBtns))
-        ButtonViews.add(view.findViewById(R.id.ChestPainBtns))
-        ButtonViews.add(view.findViewById(R.id.SoreThroatBtns))
-        ButtonViews.add(view.findViewById(R.id.BreathBtns))
-        ButtonViews.add(view.findViewById(R.id.WheezingBtns))
-        ButtonViews.add(view.findViewById(R.id.NauseaBtns))
-        ButtonViews.add(view.findViewById(R.id.OtherBtns))
-        for (btn in ButtonViews){
-            btn.isSelectionRequired = true
-            btn.addOnButtonCheckedListener { buttonGroup, checkedId, isChecked ->
-                if (isChecked) {
-                    when (checkedId) {
-                        //STORE CLICKED BUTTON
-                        //val buttonId = buttonGroup.getCheckedButtonId()
-                    }
-                }
-
-            }
-
+        InputAppointmentsButton.setOnClickListener{
+            findNavController().navigate(R.id.action_InputFragment_to_InputAppointmentFragment)
         }
-
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InputFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InputFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

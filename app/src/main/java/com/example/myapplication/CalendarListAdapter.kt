@@ -2,17 +2,17 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import java.util.*
 
 //Starter code from https://stackoverflow.com/questions/61321990/android-listview-add-text-to-the-end-of-row
@@ -64,8 +64,15 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
            }
        })
 
-       cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
+       if (data[i] is Appointments) {
+           val callButton: Button = view.findViewById(R.id.call_button)
+           callButton.visibility = View.VISIBLE
+           callButton.setOnClickListener {
+               data[i].callPhone(context)
+           }
+       }
 
+       cardView.setBackgroundColor(Color.parseColor(data[i].colourGetter()))
        return view
     }
 

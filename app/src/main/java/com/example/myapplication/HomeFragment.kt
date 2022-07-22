@@ -60,37 +60,70 @@ class HomeFragment : Fragment() {
         val day6 = (medicationsList)[5]
         val day7 = (medicationsList)[6]
 
-        val data: Array<Reminders>
+        //appointments for user
+        val fis1 = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+        val ois1 = ObjectInputStream(fis1)
+        val appointmentsList: Array<Appointments> =
+            ois1.readObject() as Array<Appointments>
+
+        ois1.close()
+
+        //refills for user
+        val fis2 = FileInputStream(activity?.filesDir.toString() + "refills_list.meditrack")
+        val ois2 = ObjectInputStream(fis2)
+        val refillsList: Array<Refills> =
+            ois2.readObject() as Array<Refills>
+        ois2.close()
+
+        val data: ArrayList<Reminders> = arrayListOf()
         val calendar = Calendar.getInstance()
 
         //reminders to show in calendar - for today
         //taken from calendar fragment
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-            data = day1
+            data.addAll(day1)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
-            data = day2
+            data.addAll(day2)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
-            data = day3
+            data.addAll(day3)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
-            data = day4
+            data.addAll(day4)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-            data = day5
+            data.addAll(day5)
         }
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-            data = day6
+            data.addAll(day6)
         }
         else {
-            data = day7
+            data.addAll(day7)
         }
+
+        for (appointment in appointmentsList) {
+            if (calendar.get(Calendar.YEAR) == appointment.year &&
+                calendar.get(Calendar.MONTH) + 1 == appointment.month &&
+                calendar.get(Calendar.DAY_OF_MONTH) == appointment.day) {
+                data.add(appointment)
+            }
+        }
+
+        for (refill in refillsList) {
+            if (calendar.get(Calendar.YEAR) == refill.year &&
+                calendar.get(Calendar.MONTH) + 1 == refill.month &&
+                calendar.get(Calendar.DAY_OF_MONTH) == refill.day) {
+                data.add(refill)
+            }
+        }
+
         //val data = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
         //    Appointments("Chiropractor Appointment", "12:00pm", 2022,
         //        7, 13, "Dr.Good", "4162839172", "291 University Ave"))
         val l: ListView = view.findViewById(R.id.listview_schedule)
-        l.adapter = CalendarListAdapter(requireActivity(), data)
+        data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
+        l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
 
         // Would cause errors if below implementation done on empty array
         // Will need to see how the data is going to be structured to check this

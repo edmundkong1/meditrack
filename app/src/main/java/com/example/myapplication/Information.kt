@@ -1,14 +1,27 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
+import java.text.DateFormatSymbols
+
+open class Information(_name: String) : Serializable {
+    var name: String = _name
+    var expandable: Boolean = true
+    open fun aboutMeAdapter() : ArrayList<String> {
+        return arrayListOf()
+    }
+}
 
 //objects for Reminders
-open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializable {
-    var name: String? = _name
+open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Information(_name) {
     var timeHour: Int? = _timeHour
     var timeMin: Int? = _timeMin
     protected open val colour: String? = null
-    var expandable: Boolean? = true
     fun colourGetter(): String? {
         return colour
     }
@@ -36,6 +49,8 @@ open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializabl
     open fun messageAdapter(): String {
         return ""
     }
+
+    open fun callPhone(context: Context) {}
 }
 
 //Meds class, represents the medications, and is a subclass of Reminders
@@ -67,6 +82,16 @@ class Meds(
             cardText += "Directions: $directions\n"
         }
         return cardText
+    }
+
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Time: " + printTime()!!)
+        newList.add("Dosage: " + dosage.toString() + "mg")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        newList.add("Total Amount: " + totalAmount + "mg")
+        return newList
     }
 }
 
@@ -105,7 +130,25 @@ class Appointments(
         return cardText
     }
 
-    fun callDoctor() {}
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Time: " + printTime()!!)
+        val date = "Date: " + day.toString() + "/" + month.toString() + "/" + year.toString()
+        newList.add(date)
+        newList.add("Doctor: " + doctor!!)
+        newList.add("Phone Number: " + phoneNumber!!)
+        newList.add("Address: " + address!!)
+        return newList
+    }
+
+    //used for calling the phone number of listed doctor for an appointment
+    override fun callPhone(context: Context) {
+        // Log.w("phone Number", phoneNumber!!)
+        // Add phone call functionality
+        val callIntent = Intent(Intent.ACTION_DIAL)
+        callIntent.data = Uri.parse("tel:$phoneNumber")
+        context.startActivity(callIntent)
+    }
 }
 
 //Refills class, represents the user's refills, a subclass of Reminders class
@@ -123,4 +166,44 @@ class Refills(
     var month: Int = _month
     var day: Int = _day
     override var colour = "#b0d3f7"
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if (amount != null || amount != "") {
+            cardText += "Amount: "+ amount + "mg" + "\n"
+        }
+        return cardText
+    }
+}
+
+class Symptoms(
+    _name: String,
+    _dosage: Int,
+    _actions: String,
+    _directions: String
+) : Information(_name) {
+    var dosage: Int = _dosage
+    var actions: String = _actions
+    var directions: String = _directions
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Dosage: $dosage")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        return newList
+    }
+}
+
+class Conditions(
+    _name: String,
+    _relatedProceduresHistory: String,
+    _symptomsHistory: String
+) : Information(_name) {
+    var relatedProceduresHistory: String = _relatedProceduresHistory
+    var symptomsHistory: String = _symptomsHistory
+    override fun aboutMeAdapter(): ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Related Procedures History: $relatedProceduresHistory")
+        newList.add("Symptoms History: $symptomsHistory")
+        return newList
+    }
 }

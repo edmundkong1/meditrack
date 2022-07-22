@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:layout_height="fill_parent"
+    android:paddingBottom="?android:attr/actionBarSize"
+    >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,15 +21,52 @@
             android:gravity="center"
             android:text="Medications"
             android:textSize="25sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_medications"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_medications"
+            tools:orientation="horizontal" />
+
+        <EditText
+            android:id="@+id/et_insert_med"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_medications"/>
+
+        <Button
+            android:id="@+id/bttn_insert_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="insert"
+            app:layout_constraintStart_toEndOf="@+id/et_insert_med"
+            app:layout_constraintTop_toBottomOf="@+id/rv_medications" />
+
+        <EditText
+            android:id="@+id/et_remove_med"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/bttn_insert_med"
+            app:layout_constraintTop_toBottomOf="@+id/rv_medications"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/bttn_remove_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            app:layout_constraintStart_toEndOf="@+id/et_remove_med"
+            app:layout_constraintTop_toBottomOf="@+id/rv_medications"/>
+
 
         <TextView
             android:id="@+id/tv_conditions"
@@ -37,8 +75,9 @@
             android:gravity="center"
             android:text="Conditions"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_insert_med"
+            android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_conditions"
@@ -46,7 +85,56 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_conditions" />
 
-    </LinearLayout >
-</ScrollView>
+        <TextView
+            android:id="@+id/tv_symptoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Symptoms"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_conditions"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:orientation="horizontal"
+            android:scrollbars="vertical"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_symptoms" />
+
+        <TextView
+            android:id="@+id/appointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Appointments"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view3"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:orientation="horizontal"
+            android:scrollbars="vertical"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointments" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout >
+</androidx.core.widget.NestedScrollView>
