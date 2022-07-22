@@ -1,10 +1,10 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_about_me.*
 
 // TODO:
@@ -46,6 +46,30 @@ class AboutMeFragment : Fragment() {
         setRecyclerView3()
         initData4()
         setRecyclerView4()
+
+
+        bttn_insert_med.setOnClickListener {
+            val position: Int = et_insert_med.getText().toString().toInt()
+            insertMedicationItem(position)
+        }
+
+        bttn_remove_med.setOnClickListener {
+            val position: Int = et_insert_med.getText().toString().toInt()
+            removeMedicationItem(position)
+        }
+    }
+
+    private fun insertMedicationItem(position: Int) {
+        medicationsList.add(
+            position,
+            Medications("new med", "New Item At Position$position", "This is Line 2", "This is Line 2")
+        )
+        MedicationsAdapter(medicationsList).notifyItemInserted(position)
+    }
+
+    fun removeMedicationItem(position: Int) {
+        medicationsList.removeAt(position)
+        MedicationsAdapter(medicationsList).notifyItemRemoved(position)
     }
 
     // setup the recycler view
