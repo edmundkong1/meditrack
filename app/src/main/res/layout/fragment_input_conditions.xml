@@ -12,13 +12,30 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/conditionsDate"
+            android:id="@+id/conditionsName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:hint="Enter Date"
-            android:focusableInTouchMode="false"
+            android:inputType="textPersonName"
+            android:hint="Enter Condition Name"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/conditionsProcedureHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
+            android:hint="Enter Related Procedure History"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/conditionsSymptomsHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
+            android:hint="Enter Symptoms History"
             android:textColor="@color/black" />
 
         <Button
