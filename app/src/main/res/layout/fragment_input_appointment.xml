@@ -57,5 +57,12 @@
             android:hint="Enter Doctor's Address"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/submitInputAppt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center_horizontal"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

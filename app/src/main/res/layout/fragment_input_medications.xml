@@ -65,5 +65,12 @@
             android:hint="Enter Total Amount (mg)"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/submitInputMed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center_horizontal"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
