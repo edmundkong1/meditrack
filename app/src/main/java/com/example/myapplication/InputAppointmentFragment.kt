@@ -28,7 +28,7 @@ class InputAppointmentFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //https://www.codingdemos.com/android-datepicker-button/
-        val chooseDate: EditText = view.findViewById(R.id.editTextDate)
+        val chooseDate: EditText = view.findViewById(R.id.apptDate)
         chooseDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar[Calendar.YEAR]

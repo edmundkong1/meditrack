@@ -40,5 +40,17 @@ class InputFragment : Fragment() {
         InputMedicationsButton.setOnClickListener {
             findNavController().navigate(R.id.action_InputFragment_to_InputMedicationsFragment)
         }
+        InputIncidentsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InputFragment_to_InputIncidentReportFragment)
+        }
+        InputPractitionersButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InputFragment_to_InputPractitionersFragment)
+        }
+        InputInsuranceButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InputFragment_to_InputInsuranceFragment)
+        }
+        InputConditionsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InputFragment_to_InputConditionsFragment)
+        }
     }
 }

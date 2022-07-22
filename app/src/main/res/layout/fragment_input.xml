@@ -55,17 +55,17 @@
             </TableRow>
             <TableRow>
                 <Button
-                    android:id="@+id/Button2"
+                    android:id="@+id/InputIncidentsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Insurance Info"
+                    android:text="Enter Incident Report"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />
             </TableRow>
             <TableRow>
                 <Button
-                    android:id="@+id/Button3"
+                    android:id="@+id/InputPractitionersButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Practitioners"
@@ -75,7 +75,17 @@
             </TableRow>
             <TableRow>
                 <Button
-                    android:id="@+id/Button4"
+                    android:id="@+id/InputInsuranceButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Insurance Information"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputConditionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Conditions"
