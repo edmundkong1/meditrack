@@ -50,27 +50,27 @@ class AboutMeFragment : Fragment() {
 
         bttn_insert_med.setOnClickListener {
             val position: Int = et_insert_med.getText().toString().toInt()
-            insertMedicationItem(position)
+//            insertMedicationItem(position)
         }
 
         bttn_remove_med.setOnClickListener {
             val position: Int = et_insert_med.getText().toString().toInt()
-            removeMedicationItem(position)
+//            removeMedicationItem(position)
         }
     }
 
-    private fun insertMedicationItem(position: Int) {
-        medicationsList.add(
-            position,
-            Medications("new med", "New Item At Position$position", "This is Line 2", "This is Line 2")
-        )
-        MedicationsAdapter(medicationsList).notifyItemInserted(position)
-    }
-
-    fun removeMedicationItem(position: Int) {
-        medicationsList.removeAt(position)
-        MedicationsAdapter(medicationsList).notifyItemRemoved(position)
-    }
+//    private fun insertMedicationItem(position: Int) {
+//        medicationsList.add(
+//            position,
+//            Meds("new med", "New Item At Position$position", "This is Line 2", "This is Line 2")
+//        )
+//        AboutMeAdapter(medicationsList).notifyItemInserted(position)
+//    }
+//
+//    fun removeMedicationItem(position: Int) {
+//        medicationsList.removeAt(position)
+//        AboutMeAdapter(medicationsList).notifyItemRemoved(position)
+//    }
 
     // setup the recycler view
     private fun setRecyclerView() {
