@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Input Other Symptoms"
+            android:text="Select Input Option"
             android:textSize="20sp"
             android:textAlignment="center"
             android:paddingTop="10dp"/>
@@ -33,59 +33,66 @@
             android:id="@+id/textview_other_table"
             android:stretchColumns="0">
             <TableRow>
-
-                <Button
-                    android:id="@+id/Button1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Enter Prescription" />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Insurance Info"
-                    />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Practitioners"
-                    />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/Button4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Conditions"
-                    />
-            </TableRow>
-            <TableRow>
                 <Button
                     android:id="@+id/InputAppointmentsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Appointments"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
             </TableRow>
 
+            <TableRow>
+                <Button
+                    android:id="@+id/InputMedicationsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Medications"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputIncidentsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Incident Report"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputPractitionersButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Practitioners"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputInsuranceButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Insurance Information"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputConditionsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Conditions"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
         </TableLayout>
-
-
-
-
-
-
-
-
-
-
     </RelativeLayout>
-
-
-
 </FrameLayout>

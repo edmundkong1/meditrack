@@ -118,16 +118,10 @@ class HomeFragment : Fragment() {
             }
         }
 
-        //val data = arrayOf(Meds("Norvasc", "9:00am", "Dosage: 5mg", "", ""),
-        //    Appointments("Chiropractor Appointment", "12:00pm", 2022,
-        //        7, 13, "Dr.Good", "4162839172", "291 University Ave"))
         val l: ListView = view.findViewById(R.id.listview_schedule)
         data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
         l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
 
-        // Would cause errors if below implementation done on empty array
-        // Will need to see how the data is going to be structured to check this
-        // Will no reminders be and empty array or nothing at all.
         if (l.adapter.count > 0) {
             var totalHeight = 0
             for (i in 0 until l.adapter.count) {

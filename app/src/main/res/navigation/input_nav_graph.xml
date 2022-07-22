@@ -12,6 +12,36 @@
         tools:layout="@layout/fragment_input_appointment">
     </fragment>
     <fragment
+        android:id="@+id/InputMedicationsFragment"
+        android:name="com.example.myapplication.InputMedicationsFragment"
+        android:label="InputMedications"
+        tools:layout="@layout/fragment_input_medications">
+    </fragment>
+    <fragment
+        android:id="@+id/InputIncidentReportFragment"
+        android:name="com.example.myapplication.InputIncidentReportFragment"
+        android:label="InputIncidentReport"
+        tools:layout="@layout/fragment_input_incident_report">
+    </fragment>
+    <fragment
+        android:id="@+id/InputPractitionersFragment"
+        android:name="com.example.myapplication.InputPractitionersFragment"
+        android:label="InputPractitioners"
+        tools:layout="@layout/fragment_input_practitioners">
+    </fragment>
+    <fragment
+        android:id="@+id/InputInsuranceFragment"
+        android:name="com.example.myapplication.InputInsuranceFragment"
+        android:label="InputInsurance"
+        tools:layout="@layout/fragment_input_insurance">
+    </fragment>
+    <fragment
+        android:id="@+id/InputConditionsFragment"
+        android:name="com.example.myapplication.InputConditionsFragment"
+        android:label="InputConditions"
+        tools:layout="@layout/fragment_input_conditions">
+    </fragment>
+    <fragment
         android:id="@+id/InputFragment"
         android:name="com.example.myapplication.InputFragment"
         android:label="Input"
@@ -19,6 +49,21 @@
         <action
             android:id="@+id/action_InputFragment_to_InputAppointmentFragment"
             app:destination="@id/InputAppointmentFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputMedicationsFragment"
+            app:destination="@id/InputMedicationsFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputIncidentReportFragment"
+            app:destination="@id/InputIncidentReportFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputPractitionersFragment"
+            app:destination="@id/InputPractitionersFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputInsuranceFragment"
+            app:destination="@id/InputInsuranceFragment" />
+        <action
+            android:id="@+id/action_InputFragment_to_InputConditionsFragment"
+            app:destination="@id/InputConditionsFragment" />
     </fragment>
 
 </navigation>

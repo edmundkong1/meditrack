@@ -86,17 +86,16 @@ class MainActivity : AppCompatActivity() {
         appoos.writeObject(appointments)
         appoos.close()
 
-
         val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
         val LibitorDays = arrayOf(0, 2, 4, 6)
         val WarfarinDays = arrayOf(0, 4)
         val BrilintaDays = arrayOf(0, 5)
 
+        //used for calculating when to let user know about refills
         val refillReminders: ArrayList<Refills> = arrayListOf()
-
         fun createRefillReminder(med: Meds, days: Array<Int>) {
             var calcDays = med.totalAmount / med.dosage - days.size
-            var calendar = Calendar.getInstance()
+            val calendar = Calendar.getInstance()
             val today = calendar.get(Calendar.DAY_OF_WEEK) - 1
             var index = 0
             var count = 0
@@ -109,11 +108,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             while (calcDays > 0) {
-
-                var current = days[index]
+                val current = days[index]
                 index += 1
                 if (index >= days.size) index = 0
-                var next = days[index]
+                val next = days[index]
 
                 if (current < next) {
                     count += next - current
@@ -135,24 +133,6 @@ class MainActivity : AppCompatActivity() {
         createRefillReminder(Libitor, LibitorDays)
         createRefillReminder(Warfarin, WarfarinDays)
         createRefillReminder(Brilinta, BrilintaDays)
-
-
-
-        /*
-        Log.w("currentDay", calendar.get(Calendar.DAY_OF_WEEK).toString())
-        Log.w("currentMonth", calendar.get(Calendar.MONTH).toString())
-        Log.w("currentYear", calendar.get(Calendar.YEAR).toString())
-        calendar.add(Calendar.DAY_OF_MONTH, count)
-        Log.w("count", count.toString())
-        Log.w("day", calendar.get(Calendar.DAY_OF_WEEK).toString())
-        Log.w("month", calendar.get(Calendar.MONTH).toString())
-        Log.w("Year", calendar.get(Calendar.YEAR).toString())
-        calendar = Calendar.getInstance()
-        Log.w("daysub", calendar.get(Calendar.DAY_OF_WEEK).toString())
-        Log.w("monthsub", calendar.get(Calendar.MONTH).toString())
-        Log.w("Yearsub", calendar.get(Calendar.YEAR).toString())
-
-         */
 
         //create file output stream for Refills data
         val reffos = FileOutputStream(filesDir.toString() + "refills_list.meditrack")
@@ -192,24 +172,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-
-
         //call alarm for notifications in this activity
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        //Dummy data for calendar
-        /*
-        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
-            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
-        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
-            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
-        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
-        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
-        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
-            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
-        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
-        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
-        */
 
         for (appointment in appointments) {
             scheduleNotification(

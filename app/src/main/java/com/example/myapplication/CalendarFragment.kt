@@ -44,20 +44,6 @@ class CalendarFragment : Fragment() {
         calendarView = view.findViewById(R.id.calendar)
         dateTV = view.findViewById(R.id.textview_date)
 
-        //temp mockup data
-        /*
-        val day1 = arrayOf(arrayOf("Norvasc", "9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
-            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg"))
-        val day2 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"),
-            arrayOf("Chiropractor Appointment", "12:00pm", "appointment", "Dr. Good"))
-        val day3 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
-        val day4 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Physician Appointment", "2:00pm", "appointment", "Dr. Bad"))
-        val day5 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"),
-            arrayOf("Warfarin", "3:00pm", "medication", "Dosage: 10mg"))
-        val day6 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Brilinta", "5:00pm", "medication", "Dosage: 20mg", "Take with Food"))
-        val day7 = arrayOf(arrayOf("Norvasc","9:00am", "medication", "Dosage: 5mg"), arrayOf("Libitor", "11:00am", "medication", "Dosage: 40mg", "Take with Food"))
-         */
-
         //get medications
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
         val ois = ObjectInputStream(fis)
@@ -205,26 +191,8 @@ class CalendarFragment : Fragment() {
                     // set this date in TextView for Display
                     dateTV.text = date
 
-                    //notifications
-                    //temp data for demo
-                })
+                }
+            )
     }
 
-    //used for setting up notifications
-    private fun extracthour(time: String): Int {
-        var hour = 0
-        for (i in time) {
-            if (i == ':') {
-                break
-            }
-            hour *= 10
-            Log.w("I is:", i.toString())
-            hour += i.toString().toInt()
-        }
-
-        if (time[time.length-2] == 'p') {
-            hour += 12
-        }
-        return hour
-    }
 }
