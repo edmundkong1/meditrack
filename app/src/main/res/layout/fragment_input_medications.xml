@@ -18,7 +18,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Enter Medication Name"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medicationTime"
@@ -27,7 +28,8 @@
             android:ems="10"
             android:focusableInTouchMode="false"
             android:hint="Choose Time"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medDosage"
@@ -36,7 +38,8 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Enter Medication Dosage (mg)"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medActions"
@@ -45,7 +48,8 @@
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Actions"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medDirections"
@@ -54,7 +58,8 @@
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Directions"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medTotal"
@@ -63,14 +68,16 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Enter Total Amount (mg)"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputMed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
