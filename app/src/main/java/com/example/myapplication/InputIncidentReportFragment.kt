@@ -27,7 +27,23 @@ class InputIncidentReportFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        val chooseDate: EditText = view.findViewById(R.id.incidentDate)
+        chooseDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar[Calendar.YEAR]
+            val month = calendar[Calendar.MONTH]
+            val dayOfMonth = calendar[Calendar.DAY_OF_MONTH]
+            val datePickerDialog = this.context?.let { it1 ->
+                DatePickerDialog(
+                    it1,
+                    { datePicker, year, month, day -> chooseDate.setText(day.toString() + "/" + (month + 1) + "/" + year)}, year, month, dayOfMonth
+                )
+            }
+            if (datePickerDialog != null) {
+                datePickerDialog.datePicker.minDate = System.currentTimeMillis()
+                datePickerDialog.show()
+            }
+        }
     }
 
 }
