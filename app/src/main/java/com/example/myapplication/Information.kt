@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
+import com.example.myapplication.practitioners.InsuranceProvider
+import com.example.myapplication.practitioners.InsuredPractitioner
 import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
 import java.text.DateFormatSymbols
@@ -229,3 +231,54 @@ class PublicPractitioners(
         return newList
     }
 }
+
+
+class InsuranceProvider(
+    _name: String,
+    _insuredPractitioners: List<InsuredPractitioner>,
+): Information(_name) {
+    var insuredPractitioner: List<InsuredPractitioner> = _insuredPractitioners
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Insured Practitioners: $insuredPractitioner")
+        return newList
+    }
+}
+
+class InsuredPractitioner(
+    _name: String,
+    _equivalentTitles: List<String>,
+    _coveredAmount: Int,
+    _reimbursement: Int
+): Information(_name) {
+    var equivalentTitles: List<String> = _equivalentTitles
+    var coveredAmount: Int = _coveredAmount
+    var reimbursement: Int = _reimbursement
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Equivalent Titles: $equivalentTitles")
+        newList.add("Covered Amount: $coveredAmount")
+        newList.add("Reimbursement Percentage: $reimbursement%")
+        return newList
+    }
+}
+
+class UserPractitioner(
+   _name: String,
+   _equivalentTitles: List<String>,
+   _costPerSession: String,
+   _coveredProviders: List<InsuranceProvider>,
+
+): Information(_name) {
+    var equivalentTitles: List<String> = _equivalentTitles
+    var costPerSession: String = _costPerSession
+    var coveredProviders: List<InsuranceProvider> = _coveredProviders
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Equivalent Titles: $equivalentTitles")
+        newList.add("Cost Per Session: $costPerSession")
+        newList.add("Covered Providers: $coveredProviders%")
+        return newList
+    }
+}
+
