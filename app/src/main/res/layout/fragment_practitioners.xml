@@ -33,16 +33,33 @@
 
 
                 <TextView
-                    android:id="@+id/tv_practitioners"
+                    android:id="@+id/tv_practitioners_private"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Your Practitioners"
+                    android:text="Privately Insured Practitioners"
                     android:textSize="25sp"
                     android:textStyle="bold"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_practitioners"
+                    android:id="@+id/rv_practitioners_private"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <TextView
+                    android:id="@+id/tv_practitioners_public"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Publicly Insured Practitioners"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_practitioners_public"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

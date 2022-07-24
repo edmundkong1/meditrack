@@ -43,8 +43,8 @@ class PractitionersFragment : Fragment() {
 //        rv_insurance_providers.setHasFixedSize(true)
 
         val publicCoveredAdapter = PublicCoveredAdapter(publicCoveredList)
-        rv_practitioners.adapter = publicCoveredAdapter
-        rv_practitioners.setHasFixedSize(true)
+        rv_practitioners_private.adapter = publicCoveredAdapter
+        rv_practitioners_private.setHasFixedSize(true)
     }
 
     private fun initData() {
