@@ -20,6 +20,35 @@
             android:hint="Enter Practitioner's Name"
             android:textColor="@color/black" />
 
+        <EditText
+            android:id="@+id/et_cost_per_session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Enter Covered Insurance"
+            android:textColor="@color/black" />
+
+<!--        MAKE dropdown menu-->
+        <EditText
+            android:id="@+id/insurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Enter Insurance Provider"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/insurance_coverage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="How much does your insurance cover for this expense"
+            android:textColor="@color/black" />
+
+
         <Button
             android:id="@+id/submitInputPractitioners"
             android:layout_width="wrap_content"
