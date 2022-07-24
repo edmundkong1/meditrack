@@ -65,7 +65,7 @@
                     android:text="Heading2" />
             </TableRow>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_inputs_table"
+                android:id="@+id/rv_inputs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

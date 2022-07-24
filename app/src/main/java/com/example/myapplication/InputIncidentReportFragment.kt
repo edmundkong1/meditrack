@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_input_incident_report.*
 import java.util.*
 
 
 class InputIncidentReportFragment : Fragment() {
+    private var inputsList = ArrayList<Inputs>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -27,6 +29,8 @@ class InputIncidentReportFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initData()
+        setRecyclerView()
         val chooseDate: EditText = view.findViewById(R.id.incidentDate)
         chooseDate.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -44,6 +48,65 @@ class InputIncidentReportFragment : Fragment() {
                 datePickerDialog.show()
             }
         }
+    }
+
+    private fun setRecyclerView() {
+        val inputsAdapter = IncidentsAdapter(inputsList)
+        rv_inputs.adapter = inputsAdapter
+    }
+
+    private fun initData() {
+
+        inputsList.add(Inputs(
+            "Enter Appointments",
+            "When is your Appointment",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+        inputsList.add(Inputs(
+            "Enter Medication",
+            "What is your new prescription?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+        inputsList.add(Inputs(
+            "Enter Incident Report",
+            "What are your symptoms today?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+        inputsList.add(Inputs(
+            "Enter Practitioners",
+            "What is your practitioner's info?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+
+        inputsList.add(Inputs(
+            "Enter Insurance Info",
+            "What is your insurance plan?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
+
+        inputsList.add(Inputs(
+            "Enter Conditions",
+            "What are your conditions?",
+            "Symptom",
+            "Severity",
+            listOf("Symptom1","Symptom2")
+        ))
+
     }
 
 }
