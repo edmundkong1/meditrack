@@ -62,36 +62,36 @@ class PractitionersFragment : Fragment() {
             "Directions: Take twice a week at 11:00am"
         ))
 
-        insuranceProvidersList.add(
-            InsuranceProviders(
-            "Sunlife",
-            "40 mg",
-            "Refill required---------- DO OTHIS and don't look back on it yuh",
-            "Directions: Take daily at 9:00am (on empty stomach)."
-        ))
-
-        insuranceProvidersList.add(
-            InsuranceProviders(
-                "Manulife",
-                "40 mg",
-                "Refill required---------- DO OTHIS and don't look back on it yuh",
-                "Directions: Take daily at 9:00am (on empty stomach)."
-            ))
-        insuranceProvidersList.add(
-            InsuranceProviders(
-                "OHIP",
-                "40 mg",
-                "Refill required---------- DO OTHIS and don't look back on it yuh",
-                "Directions: Take daily at 9:00am (on empty stomach)."
-            ))
-
-        insuranceProvidersList.add(
-            InsuranceProviders(
-                "CanadaLife",
-                "40 mg",
-                "Refill required---------- DO OTHIS and don't look back on it yuh",
-                "Directions: Take daily at 9:00am (on empty stomach)."
-            ))
+//        insuranceProvidersList.add(
+//            InsuranceProviders(
+//            "Sunlife",
+//            "40 mg",
+//            "Refill required---------- DO OTHIS and don't look back on it yuh",
+//            "Directions: Take daily at 9:00am (on empty stomach)."
+//        ))
+//
+//        insuranceProvidersList.add(
+//            InsuranceProviders(
+//                "Manulife",
+//                "40 mg",
+//                "Refill required---------- DO OTHIS and don't look back on it yuh",
+//                "Directions: Take daily at 9:00am (on empty stomach)."
+//            ))
+//        insuranceProvidersList.add(
+//            InsuranceProviders(
+//                "OHIP",
+//                "40 mg",
+//                "Refill required---------- DO OTHIS and don't look back on it yuh",
+//                "Directions: Take daily at 9:00am (on empty stomach)."
+//            ))
+//
+//        insuranceProvidersList.add(
+//            InsuranceProviders(
+//                "CanadaLife",
+//                "40 mg",
+//                "Refill required---------- DO OTHIS and don't look back on it yuh",
+//                "Directions: Take daily at 9:00am (on empty stomach)."
+//            ))
     }
 
 }
