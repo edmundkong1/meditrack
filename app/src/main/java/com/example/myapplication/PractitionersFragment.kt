@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_practitioners.*
 
 class PractitionersFragment : Fragment() {
-    private var publicCoveredList = ArrayList<PublicCovered>()
+    private var publicCoveredList = ArrayList<PublicPractitioners>()
     private var insuranceProvidersList = ArrayList<InsuranceProviders>()
 
     override fun onCreateView(
@@ -40,26 +40,29 @@ class PractitionersFragment : Fragment() {
             )
         )
         rv_insurance_providers.adapter = insuranceProvidersAdapter
-//        rv_insurance_providers.setHasFixedSize(true)
+        rv_insurance_providers.setHasFixedSize(true)
 
-        val publicCoveredAdapter = PublicCoveredAdapter(publicCoveredList)
-        rv_practitioners_private.adapter = publicCoveredAdapter
-        rv_practitioners_private.setHasFixedSize(true)
+        val publicCovered= PractitionersAdapter(publicCoveredList)
+        rv_practitioners_public.adapter = publicCovered
+        rv_practitioners_public.setHasFixedSize(true)
     }
 
     private fun initData() {
-        publicCoveredList.add(PublicCovered(
-            "Optometrist",
-            "40 mg",
-            "Refill required---------- DO OTHIS and don't look back on it yuh",
-            "Directions: Take daily at 9:00am (on empty stomach)."
-        ))
+        publicCoveredList.add(
+            PublicPractitioners(
+            "Dr. Eyes",
+                "Optometrist",
+            2022,
+            9,
+            30
+            ))
 
-        publicCoveredList.add(PublicCovered(
+        publicCoveredList.add(PublicPractitioners(
+            "Dr. Depressed",
             "Therapist",
-            "10 mg",
-            "New prescription required",
-            "Directions: Take twice a week at 11:00am"
+            2022,
+            10,
+            20
         ))
 
 //        insuranceProvidersList.add(

@@ -15,6 +15,9 @@ open class Information(_name: String) : Serializable {
     open fun aboutMeAdapter() : ArrayList<String> {
         return arrayListOf()
     }
+    open fun practitionersAdapter() : ArrayList<String> {
+        return arrayListOf()
+    }
 }
 
 //objects for Reminders
@@ -203,6 +206,26 @@ class Conditions(
         val newList: ArrayList<String> = arrayListOf()
         newList.add("Related Procedures History: $relatedProceduresHistory")
         newList.add("Symptoms History: $symptomsHistory")
+        return newList
+    }
+}
+
+class PublicPractitioners(
+    _name: String,
+    _title: String,
+    _year: Int,
+    _month: Int,
+    _day: Int
+) : Information(_name) {
+    var title: String = _title
+    var year: Int? = _year
+    var month: Int? = _month
+    var day: Int? = _day
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Title: $title")
+        val date = "Date of next appointment: " + day.toString() + "/" + month.toString() + "/" + year.toString()
+        newList.add(date)
         return newList
     }
 }
