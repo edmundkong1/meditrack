@@ -24,6 +24,8 @@ class CalendarFragment : Fragment() {
 
     lateinit var dateTV: TextView
     lateinit var calendarView: CalendarView
+    lateinit var thisView: View
+    lateinit var thisInstance: Bundle
 
     //when tab is clicked
     override fun onCreateView(
@@ -41,8 +43,17 @@ class CalendarFragment : Fragment() {
     @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calendarView = view.findViewById(R.id.calendar)
-        dateTV = view.findViewById(R.id.textview_date)
+        thisView = view
+        if (savedInstanceState != null) {
+            thisInstance = savedInstanceState
+        }
+        onResume()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        calendarView = thisView.findViewById(R.id.calendar)
+        dateTV = thisView.findViewById(R.id.textview_date)
 
         //get medications
         val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
@@ -84,6 +95,7 @@ class CalendarFragment : Fragment() {
         //list of medications
         val data: ArrayList<Reminders> = arrayListOf()
         val calendar = Calendar.getInstance()
+        calendar.timeInMillis = calendarView.date
 
         //reminders to show in calendar
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
@@ -125,7 +137,7 @@ class CalendarFragment : Fragment() {
             }
         }
 
-        val l: ListView = view.findViewById(R.id.listCalendar)
+        val l: ListView = thisView.findViewById(R.id.listCalendar)
         data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
         l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
         // set this date in TextView for Display
@@ -142,7 +154,7 @@ class CalendarFragment : Fragment() {
                     val date = sdf.format(calendarView.date)
 
                     //show list of medicines
-                    val l: ListView = view.findViewById(R.id.listCalendar)
+                    val l: ListView = thisView.findViewById(R.id.listCalendar)
                     val data: ArrayList<Reminders> = arrayListOf()
 
                     calendar.get(Calendar.DAY_OF_WEEK)
