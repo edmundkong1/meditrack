@@ -54,35 +54,32 @@ class InputPractitionersFragment : Fragment() {
             // make dropdown for insurance
             // TODO check if the entered practitioner into the list of practitioners into each of the insurances chosen
 
-//            val insuranceCoverageString: String = insuranceCoverage.text.toString()
-//            val insuranceCoverageInt : Int = insuranceCoverageString.toInt()
 
             // make insured practitioner object to save to db about what type of insurance info is saved
-            var insuredPractitioner = InsuredPractitioner(
-                professionalTitle,
-                insuranceCoverage,
-                reimbursementPercentage
-            )
+            var insuredPractitionerInfo = InsuredPractitionerInfo(professionalTitle, insuranceCoverage, reimbursementPercentage)
+            var insuredPractitionerInfoList = mutableListOf<InsuredPractitionerInfo>()
+            insuredPractitionerInfoList.add(insuredPractitionerInfo)
 
-            var insuredPractitionersList = mutableListOf<InsuredPractitioner>()
-            insuredPractitionersList.add(insuredPractitioner)
-
-            // add one element list of the insuredPractitioner into a new insuranceProvider
-            var insuranceProvider = InsuranceProvider(insuranceName, insuredPractitionersList)
+            // make user practitioner
+            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, 2022, 10, 10)
+            var userPractitionerList = mutableListOf<UserPractitioner>()
+            userPractitionerList.add(userPractitioner)
 
 
-            // make insurance provider list and pass it into user practitioner
-            var insuranceProviderList = mutableListOf<InsuranceProvider>()
-            insuranceProviderList.add(insuranceProvider)
-//            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, insuranceProviderList)
+            // add both lists to a new insuranceProvider
+            var insuranceProvider = InsuranceProvider(insuranceName, userPractitionerList, insuredPractitionerInfoList)
 
-//            createAppointmentSuggestions(userPractitioner)
+            createAppointmentSuggestions(insuranceProvider._userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
 
-//            et_practitioner_name.setText(insuredPractitioner.title)
+//            et_practitioner_name.setText(insuredPractitionerInfo.title)
         }
     }
 
-    fun createAppointmentSuggestions(userPractitioner: UserPractitioner) {
+    fun createAppointmentSuggestions(
+        userPractitionerList: MutableList<UserPractitioner>,
+        insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>) {
+
+        userPractitionerList.intersect(insuredPractitionerInfoList)
 
     }
 

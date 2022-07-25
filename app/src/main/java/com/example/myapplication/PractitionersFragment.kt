@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-//import com.example.myapplication.practitioners.InsuredPractitioner
+//import com.example.myapplication.practitioners.InsuredPractitionerInfo
 
 import kotlinx.android.synthetic.main.fragment_practitioners.*
 
 class PractitionersFragment : Fragment() {
-    private var publicCoveredList = ArrayList<PublicPractitioners>()
     private var insuranceProviderList = ArrayList<InsuranceProvider>()
 
     override fun onCreateView(
@@ -42,10 +41,6 @@ class PractitionersFragment : Fragment() {
         )
         rv_insurance_providers.adapter = insuranceProviderAdapter
         rv_insurance_providers.setHasFixedSize(true)
-
-        val publicCovered= PractitionersAdapter(publicCoveredList)
-        rv_practitioners_public.adapter = publicCovered
-        rv_practitioners_public.setHasFixedSize(true)
     }
 
     private fun initData() {

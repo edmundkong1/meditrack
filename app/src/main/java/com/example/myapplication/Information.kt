@@ -210,48 +210,45 @@ class Conditions(
     }
 }
 
-class PublicPractitioners(
+//// FOR PRACTITIONERS //////////
+
+// eg. Manulife, list of the user's practitioners, list of practitioner info
+class InsuranceProvider(
+    _insuranceName: String,
+    _userPractitionerList: MutableList<UserPractitioner>,
+    _insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>,
+): Information(_insuranceName) {
+    var _insuranceName: String = _insuranceName
+    var _userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
+    var insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo> = _insuredPractitionerInfoList
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Insured Practitioners: $insuredPractitionerInfoList")
+        return newList
+    }
+}
+
+// eg. Dr. Smith, psychologist, $500 per session
+class UserPractitioner(
+    _name: String,
     _title: String,
+    _costPerSession: Int,
     _year: Int,
     _month: Int,
     _day: Int
-) : Information(_title) {
+): Information(_name) {
     var title: String = _title
-    var year: Int? = _year
-    var month: Int? = _month
-    var day: Int? = _day
+    var costPerSession: Int = _costPerSession
     override fun practitionersAdapter() : ArrayList<String> {
         val newList: ArrayList<String> = arrayListOf()
-        newList.add("Title: $title")
-        val date = "Date of next appointment: " + day.toString() + "/" + month.toString() + "/" + year.toString()
-        newList.add(date)
+        newList.add("Equivalent Titles: $title")
+        newList.add("Cost Per Session: $costPerSession")
         return newList
     }
 }
 
-
-class InsuranceProvider(
-    _insuranceName: String,
-    _insuredPractitionerList: MutableList<InsuredPractitioner>,
-): Information(_insuranceName) {
-    var _insuranceName: String = _insuranceName
-    var insuredPractitionerList: MutableList<InsuredPractitioner> = _insuredPractitionerList
-    override fun practitionersAdapter() : ArrayList<String> {
-        val newList: ArrayList<String> = arrayListOf()
-        newList.add("Insured Practitioners: $insuredPractitionerList")
-        return newList
-    }
-
-//    override fun InsuranceProvider(name: String) {
-//        _insuranceName = name
-//        insuredPractitionerList = mutableListOf<InsuredPractitioner>() // empty mutable list
-//    }
-
-
-}
-
-// not displayed to
-class InsuredPractitioner(
+// eg. Psychologist, $500 per year, 80%
+class InsuredPractitionerInfo(
     _title: String,
     _coveredAmount: Int,
     _reimbursementPercentage: Int
@@ -268,26 +265,4 @@ class InsuredPractitioner(
     }
 }
 
-
-// not displayed to user
-class UserPractitioner(
-   _name: String,
-   _title: String,
-   _costPerSession: Int,
-   _coveredProvidersList: List<InsuranceProvider>,
-   _year: Int,
-   _month: Int,
-   _day: Int
-): Information(_name) {
-    var title: String = _title
-    var costPerSession: Int = _costPerSession
-    var coveredProviders: List<InsuranceProvider> = _coveredProvidersList
-    override fun practitionersAdapter() : ArrayList<String> {
-        val newList: ArrayList<String> = arrayListOf()
-        newList.add("Equivalent Titles: $title")
-        newList.add("Cost Per Session: $costPerSession")
-        newList.add("Covered Providers: $coveredProviders%")
-        return newList
-    }
-}
 
