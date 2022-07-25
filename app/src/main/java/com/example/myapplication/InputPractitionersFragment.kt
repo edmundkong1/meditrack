@@ -74,29 +74,27 @@ class InputPractitionersFragment : Fragment() {
 
 
             // add both lists to a new insuranceProvider
-            var newInsuranceProvider = InsuranceProvider(insuranceName, userPractitionerList, insuredPractitionerInfoList)
+            var insuranceProvider = InsuranceProvider(insuranceName, userPractitionerList, insuredPractitionerInfoList)
+
 
             // open saved insurance providers from database
+
             // input database into ram
             val fis =
                 FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
             val ois = ObjectInputStream(fis)
 
-            // create list of insurance providers for the database
             @Suppress("UNCHECKED_CAST")
             var insuranceProviderList: Array<InsuranceProvider> =
                 ois.readObject() as Array<InsuranceProvider>
+
+            // create data
             val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
-
-            // only add insurance provider if it doesn't already exist in the database
-            mutableInsuranceProviderList.forEach { insuranceProvider ->
-                if (insuranceProvider._insuranceName != newInsuranceProvider._insuranceName) {
-                    mutableInsuranceProviderList.add(newInsuranceProvider)
-                }
-            }
-
-            // convert list to a typed array to save to database
+            mutableInsuranceProviderList.add(insuranceProvider)
             insuranceProviderList = mutableInsuranceProviderList.toTypedArray()
+
+
+            // TODO: check if insurance company already exists in database, check if practitioner exists in database
 
             // enter data into database
             val insfos =
@@ -105,14 +103,23 @@ class InputPractitionersFragment : Fragment() {
             insoos.writeObject(insuranceProviderList)
             insoos.close()
 
-            createAppointmentSuggestions(userPractitioner, insuredPractitionerInfo)
+            createAppointmentSuggestions(insuranceProvider._userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
+
+//            et_practitioner_name.setText(insuredPractitionerInfo.title)
         }
     }
 
     fun createAppointmentSuggestions(
-        userPractitionerList: UserPractitioner,
-        insuredPractitionerInfoList: InsuredPractitionerInfo) {
+        userPractitionerList: MutableList<UserPractitioner>,
+        insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>) {
 
+        userPractitionerList.forEach { userPractitioner ->
+            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->
+                if (userPractitioner.title == insuredPractitionerInfo.title) {
+                    return
+                }
+            }
+        }
 
 
     }

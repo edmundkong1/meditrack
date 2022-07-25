@@ -38,29 +38,30 @@ class PractitionersFragment : Fragment() {
         val ois = ObjectInputStream(fis)
 
         @Suppress("UNCHECKED_CAST")
-        var insuranceProviderList: Array<InsuranceProvider> =
+        val insuranceProviderList: Array<InsuranceProvider> =
             ois.readObject() as Array<InsuranceProvider>
         val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
 
-
+        // add to the adapter to display
         val insuranceProviderAdapter = InsuranceProviderAdapter(mutableInsuranceProviderList as ArrayList<InsuranceProvider>)
         rv_insurance_providers.adapter = insuranceProviderAdapter
         rv_insurance_providers.setHasFixedSize(true)
+
     }
 
 
     private fun setRecyclerViews() {
 
-        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
-        rv_insurance_providers.setLayoutManager(
-            LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-        )
-        rv_insurance_providers.adapter = insuranceProviderAdapter
-        rv_insurance_providers.setHasFixedSize(true)
+//        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
+//        rv_insurance_providers.setLayoutManager(
+//            LinearLayoutManager(
+//                context,
+//                LinearLayoutManager.HORIZONTAL,
+//                false
+//            )
+//        )
+//        rv_insurance_providers.adapter = insuranceProviderAdapter
+//        rv_insurance_providers.setHasFixedSize(true)
     }
 
     private fun initData() {
