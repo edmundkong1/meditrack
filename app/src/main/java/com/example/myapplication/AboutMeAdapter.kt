@@ -140,11 +140,34 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                         }
                     }
 
-                    val condfos =
+                    val medfos =
                         FileOutputStream(context?.filesDir.toString() + "medications_list.meditrack")
-                    val condoos = ObjectOutputStream(condfos)
-                    condoos.writeObject(medicationsList)
-                    condoos.close()
+                    val medoos = ObjectOutputStream(medfos)
+                    medoos.writeObject(medicationsList)
+                    medoos.close()
+
+                    val fis2 = FileInputStream(context?.filesDir.toString() + "refills_list.meditrack")
+                    val ois2 = ObjectInputStream(fis2)
+                    var refillsList: Array<Refills> =
+                        ois2.readObject() as Array<Refills>
+
+                    ois2.close()
+                    fis2.close()
+
+                    for(i in refillsList.indices){
+                        if(refillsList[i].name == (currInformation.name + " Refill")){
+                            val tempappointmentsList = refillsList.toMutableList()
+                            tempappointmentsList.removeAt(i)
+                            refillsList = tempappointmentsList.toTypedArray()
+                            break
+                        }
+                    }
+
+                    val reffos =
+                        FileOutputStream(context?.filesDir.toString() + "refills_list.meditrack")
+                    val refoos = ObjectOutputStream(reffos)
+                    refoos.writeObject(refillsList)
+                    refoos.close()
                 }
                 else if(currInformation is IncidentAboutMe){
                     val fis = FileInputStream(context?.filesDir.toString() + "incident_list.meditrack")
