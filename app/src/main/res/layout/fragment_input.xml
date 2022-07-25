@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".InputFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +22,7 @@
             android:text="Select Input Option"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:paddingTop="10dp"/>
+            android:padding="10dp"/>
 
         <TableLayout
             android:gravity="top"
@@ -69,16 +68,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Practitioners"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:height="80dp" />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/InputInsuranceButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Insurance Information"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />

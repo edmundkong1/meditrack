@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.insurance_provider.view.*
 
-class InsuranceProvidersAdapter(val insuranceProviderList: ArrayList<InsuranceProviders>) :
-    RecyclerView.Adapter<InsuranceProvidersAdapter.InsuranceProviderViewHolder>() {
+class InsuranceProviderAdapter(val insuranceProviderList: ArrayList<InsuranceProvider>) :
+    RecyclerView.Adapter<InsuranceProviderAdapter.InsuranceProviderViewHolder>() {
 
     class InsuranceProviderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -23,7 +23,7 @@ class InsuranceProvidersAdapter(val insuranceProviderList: ArrayList<InsurancePr
     }
 
     override fun onBindViewHolder(holder: InsuranceProviderViewHolder, position: Int) {
-        val currProvider: InsuranceProviders = insuranceProviderList[position]
+        val currProvider: InsuranceProvider = insuranceProviderList[position]
 
         holder.itemView.apply {
             tv_provider_name.text = currProvider.name

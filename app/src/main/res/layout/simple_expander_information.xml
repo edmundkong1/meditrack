@@ -36,6 +36,7 @@
             android:background="@drawable/ic_baseline_delete_24"
             app:layout_constraintWidth_percent=".08"
             app:layout_constraintDimensionRatio="1:1"
+
             />
 
         <RelativeLayout

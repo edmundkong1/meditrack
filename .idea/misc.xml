@@ -53,13 +53,14 @@
         <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/layout/simple_expander.xml" value="0.1" />
         <entry key="app/src/main/res/layout/simple_expander_conditions.xml" value="0.42626190185546875" />
-        <entry key="app/src/main/res/layout/simple_expander_information.xml" value="0.2962561471121652" />
+        <entry key="app/src/main/res/layout/simple_expander_information.xml" value="0.22847682119205298" />
         <entry key="app/src/main/res/layout/simple_expander_medications.xml" value="0.33983612060546875" />
         <entry key="app/src/main/res/layout/toggle_button.xml" value="0.1265625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

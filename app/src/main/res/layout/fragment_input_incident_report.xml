@@ -2,35 +2,107 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InputIncidentReportFragment" >
-
-    <LinearLayout
+    tools:context=".InputIncidentReportFragment">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="?android:attr/actionBarSize">
 
-        <EditText
-            android:id="@+id/incidentDate"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_input_instructions"
+        android:text="Incidents"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:hint="Enter Date"
-            android:focusableInTouchMode="false"
-            android:textColor="@color/black"
-            android:layout_margin="10dp" />
+            android:layout_below="@+id/tv_input_instructions"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/submitInputIncident"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-         />
+            <EditText
+                android:id="@+id/incidentDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:hint="Enter Date"
+                android:inputType="date"
+                android:textColor="@color/black" />
+
+            <TableLayout
+                android:id="@+id/textview_input_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_input_instructions"
+                android:gravity="top"
+                android:paddingTop="10dp"
+                android:stretchColumns="0,1">
+
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_input_heading1"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Symptom" />
+
+                    <TextView
+                        android:id="@+id/tv_input_heading2"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Severity" />
+                </TableRow>
+                <TableRow android:layout_width="match_parent">
+                    <TextView
+                        android:id="@+id/tv_input_low"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="@string/low" />
+                    <TextView
+                        android:id="@+id/tv_input_high"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="@string/high" />
+                </TableRow>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_inputs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/input_tbl_row"/>
+
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/add_row_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Add Another Symptom" />
+
+            <Button
+                android:id="@+id/submitInputIncident"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Submit" />
+
 
         <Button
             android:id="@+id/button_take_picture"
@@ -50,5 +122,6 @@
             />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
