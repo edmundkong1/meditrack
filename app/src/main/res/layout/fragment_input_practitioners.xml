@@ -12,6 +12,14 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Practitioner Info"/>
+
         <EditText
             android:id="@+id/et_practitioner_name"
             android:layout_width="match_parent"
@@ -29,7 +37,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Practitioner's Professional Title"
+            android:hint="Enter Practitioner's Title"
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/et_cost_per_session"
@@ -38,13 +46,13 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Enter Covered Insurance"
+            android:hint="Cost Per Session ($)"
             android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:layout_margin="10dp"
             android:text="Insurance"/>
 
@@ -67,7 +75,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="How much does your insurance cover for this expense"
+            android:hint="Insurance Coverage for Expense ($)"
             android:textColor="@color/black" />
 
         <EditText
@@ -77,15 +85,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="What percentage are you reimbursed?"
+            android:hint="Reimbursement (%)"
             android:textColor="@color/black" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_margin="10dp"
-            android:text="Add another insurance provider?"/>
 
         <Button
             android:id="@+id/bttn_submit_input_practitioners"
