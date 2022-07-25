@@ -55,13 +55,25 @@
                         android:id="@+id/tv_input_heading1"
                         android:gravity="center"
                         android:padding="3dip"
-                        android:text="Heading1" />
+                        android:text="Symptom" />
 
                     <TextView
                         android:id="@+id/tv_input_heading2"
                         android:gravity="center"
                         android:padding="3dip"
-                        android:text="Heading2" />
+                        android:text="Severity" />
+                </TableRow>
+                <TableRow android:layout_width="match_parent">
+                    <TextView
+                        android:id="@+id/tv_input_low"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="@string/low" />
+                    <TextView
+                        android:id="@+id/tv_input_high"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="@string/high" />
                 </TableRow>
 
                 <androidx.recyclerview.widget.RecyclerView

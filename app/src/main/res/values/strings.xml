@@ -36,6 +36,8 @@
     <string name="call_now">Call Now</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
     <string-array name="symptoms_array">
         <item>Heartburn</item>
         <item>Chest Pain</item>

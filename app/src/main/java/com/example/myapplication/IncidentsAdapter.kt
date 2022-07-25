@@ -17,7 +17,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup.OnButtonChec
 class IncidentsAdapter(val symptomsList: List<String>) :
     RecyclerView.Adapter<IncidentsAdapter.ViewHolder>(){
     private var listener: OnToggleButtonClickListener? = null
-    var symptoms: MutableList<List<String>> = ArrayList<List<String>>()
+    var symptoms: ArrayList<List<String>> = ArrayList<List<String>>()
 
 
 
