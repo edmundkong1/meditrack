@@ -172,7 +172,7 @@ class InputAppointmentFragment : Fragment() {
                     newAppointment.day!!,
                     newAppointment.timeHour!!,
                     newAppointment.timeMin!!,
-                    "Reminder: " + newAppointment.messageAdapter()
+                    newAppointment.name + " " + newAppointment.messageAdapter()
                 )
 
                 Log.w("END", "END")

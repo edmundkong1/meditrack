@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_input_medications.*
 import java.io.FileInputStream
@@ -32,6 +34,7 @@ class InputMedicationsFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_medications, container, false)
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val chooseTime: EditText = view.findViewById(R.id.medicationTime)
@@ -243,10 +246,23 @@ class InputMedicationsFragment : Fragment() {
                 val refillsList: Array<Refills> =
                     ois2.readObject() as Array<Refills>
                 var refillsmutable = refillsList.toMutableList()
+
+                val temprefill = Refills(newMed.name + " Refill", newMed.timeHour!!, newMed.timeMin!!, newMed.totalAmount.toString(),
+                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))
+
                 refillsmutable.add(Refills(newMed.name + " Refill", newMed.timeHour!!, newMed.timeMin!!, newMed.totalAmount.toString(),
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)))
                 val reffos = FileOutputStream(activity?.filesDir.toString() + "refills_list.meditrack")
                 val refoos = ObjectOutputStream(reffos)
+
+                (activity as InputActivity).scheduleNotification(
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH) + 1,
+                    calendar.get(Calendar.DAY_OF_MONTH),
+                    newMed.timeHour!!,
+                    newMed.timeMin!!,
+                    "Refill: " + newMed.name + " " + temprefill.messageAdapter()
+                )
 
                 refoos.writeObject(refillsmutable.toTypedArray())
                 refoos.close()
