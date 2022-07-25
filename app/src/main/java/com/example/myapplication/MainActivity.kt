@@ -91,6 +91,13 @@ class MainActivity : AppCompatActivity() {
             refoos.writeObject(refillReminders.toTypedArray())
             refoos.close()
 
+            val condReminders: ArrayList<Conditions> = arrayListOf()
+
+            val condfos = FileOutputStream(filesDir.toString() + "conditions_list.meditrack")
+            val condoos = ObjectOutputStream(condfos)
+
+            condoos.writeObject(condReminders.toTypedArray())
+            condoos.close()
 
             //call alarm for notifications in this activity
             alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
