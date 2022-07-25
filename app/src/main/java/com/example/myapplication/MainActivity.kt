@@ -91,6 +91,16 @@ class MainActivity : AppCompatActivity() {
             refoos.writeObject(refillReminders.toTypedArray())
             refoos.close()
 
+            //used for calculating when to let user know about refills
+            val incidentReminders: ArrayList<Incident> = arrayListOf()
+
+            //create file output stream for Refills data
+            val incidentfos = FileOutputStream(filesDir.toString() + "incident_list.meditrack")
+            val incidentoos = ObjectOutputStream(incidentfos)
+
+            incidentoos.writeObject(incidentReminders.toTypedArray())
+            incidentoos.close()
+
             val condReminders: ArrayList<Conditions> = arrayListOf()
 
             val condfos = FileOutputStream(filesDir.toString() + "conditions_list.meditrack")
@@ -225,6 +235,7 @@ class MainActivity : AppCompatActivity() {
     //get articles from api
     fun get_news_from_api() {
         val newsApiClient = NewsApiClient("36eaeaaa4688442ab4ab1f7137e53655")
+        //val newsApiClient = NewsApiClient("d4682a94c76c49d5a6cefc1358232e7f")
         newsApiClient.getTopHeadlines(
             //health related news
             TopHeadlinesRequest.Builder()

@@ -18,9 +18,9 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ChartListAdapter(context: Context, data: Array<Pair<String, MutableList<Entry>>>) : BaseAdapter(){
+class ChartListAdapter(context: Context, data: ArrayList<IncidentSymptom>) : BaseAdapter(){
     private val context: Context
-    private val data: Array<Pair<String, MutableList<Entry>>>
+    private val data: ArrayList<IncidentSymptom>
     private var lineChart: LineChart? = null
     override fun getCount(): Int {
         return data.size
@@ -44,12 +44,12 @@ class ChartListAdapter(context: Context, data: Array<Pair<String, MutableList<En
 
         //get line chart title
         val lineChartTitle : TextView? = view?.findViewById(R.id.lineChartTitle)
-        lineChartTitle?.text = data[i].first
+        lineChartTitle?.text = data[i].symptom
 
         lineChart = view?.findViewById(R.id.linechart)
 
         configureLineChart()
-        setLineChartData(data[i].second)
+        data[i].symptomData?.let { setLineChartData(it) }
 
         return view
     }

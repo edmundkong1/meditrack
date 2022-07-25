@@ -313,4 +313,19 @@ class InsuredPractitionerInfo(
     }
 }
 
-
+class IncidentAboutMe (
+    _symptom: String,
+    _date: String,
+    _severity: String
+): Information(_symptom)  {
+    var symptom: String = _symptom
+    var date: String = _date
+    var severity: String = _severity
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Symptom: $symptom")
+        newList.add("Date: $date")
+        newList.add("Severity: $severity")
+        return newList
+    }
+}
