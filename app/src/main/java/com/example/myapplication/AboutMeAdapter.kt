@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -98,7 +97,54 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                     apptoos.close()
                 }
                 else if(currInformation is Conditions){
+                    val fis1 = FileInputStream(context?.filesDir.toString() + "conditions_list.meditrack")
+                    val ois1 = ObjectInputStream(fis1)
+                    var conditionsList: Array<Conditions> =
+                        ois1.readObject() as Array<Conditions>
 
+                    ois1.close()
+                    fis1.close()
+
+                    for(i in conditionsList.indices){
+                        if(conditionsList[i].name == currInformation.name){
+                            val tempappointmentsList = conditionsList.toMutableList()
+                            tempappointmentsList.removeAt(i)
+                            conditionsList = tempappointmentsList.toTypedArray()
+                            break
+                        }
+                    }
+
+                    val condfos =
+                        FileOutputStream(context?.filesDir.toString() + "conditions_list.meditrack")
+                    val condoos = ObjectOutputStream(condfos)
+                    condoos.writeObject(conditionsList)
+                    condoos.close()
+                }
+                else if(currInformation is AboutMeMeds){
+                    val fis1 = FileInputStream(context?.filesDir.toString() + "medications_list.meditrack")
+                    val ois1 = ObjectInputStream(fis1)
+                    var medicationsList: Array<Array<Meds>> =
+                        ois1.readObject() as Array<Array<Meds>>
+
+                    ois1.close()
+                    fis1.close()
+
+                    for(i in medicationsList.indices){
+                        for(j in medicationsList[i].indices){
+                            if(medicationsList[i][j].name == currInformation.name){
+                                var newList = medicationsList[i].toMutableList()
+                                newList.removeAt(j)
+                                medicationsList[i] = newList.toTypedArray()
+                                break
+                            }
+                        }
+                    }
+
+                    val condfos =
+                        FileOutputStream(context?.filesDir.toString() + "medications_list.meditrack")
+                    val condoos = ObjectOutputStream(condfos)
+                    condoos.writeObject(medicationsList)
+                    condoos.close()
                 }
 
                 linear_layout.visibility = View.GONE
