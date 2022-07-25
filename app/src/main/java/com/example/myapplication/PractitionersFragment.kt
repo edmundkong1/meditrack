@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_practitioners.*
 
 class PractitionersFragment : Fragment() {
     private var publicCoveredList = ArrayList<PublicPractitioners>()
-    private var insuranceProvidersList = ArrayList<InsuranceProvider>()
+    private var insuranceProviderList = ArrayList<InsuranceProvider>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class PractitionersFragment : Fragment() {
 
     private fun setRecyclerViews() {
 
-        val insuranceProvider = PractitionersAdapter(insuranceProvidersList)
+        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
         rv_insurance_providers.setLayoutManager(
             LinearLayoutManager(
                 context,
@@ -40,7 +40,7 @@ class PractitionersFragment : Fragment() {
                 false
             )
         )
-        rv_insurance_providers.adapter = insuranceProvider
+        rv_insurance_providers.adapter = insuranceProviderAdapter
         rv_insurance_providers.setHasFixedSize(true)
 
         val publicCovered= PractitionersAdapter(publicCoveredList)
@@ -49,39 +49,37 @@ class PractitionersFragment : Fragment() {
     }
 
     private fun initData() {
+//        publicCoveredList.add(
+//            PublicPractitioners(
+//            "Dr. Eyes",
+//                "Optometrist",
+//            2022,
+//            9,
+//            30
+//            ))
+//
+//        publicCoveredList.add(PublicPractitioners(
+//            "Dr. Depressed",
+//            "Therapist",
+//            2022,
+//            10,
+//            20
+//        ))
 
-
-        publicCoveredList.add(
-            PublicPractitioners(
-            "Dr. Eyes",
-                "Optometrist",
-            2022,
-            9,
-            30
-            ))
-
-        publicCoveredList.add(PublicPractitioners(
-            "Dr. Depressed",
-            "Therapist",
-            2022,
-            10,
-            20
-        ))
-
-//        insuranceProvidersList.add(
+//        insuranceProviderList.add(
 //            InsuranceProvider(
 //            "Sunlife",
 //            "Dr. Bean, Dr. Olive, Dr. Letttuce"
 //        ))
 //
-//        insuranceProvidersList.add(
+//        insuranceProviderList.add(
 //            InsuranceProvider(
 //                "Manulife",
 //                "40 mg",
 //                "Refill required---------- DO OTHIS and don't look back on it yuh",
 //                "Directions: Take daily at 9:00am (on empty stomach)."
 //            ))
-//        insuranceProvidersList.add(
+//        insuranceProviderList.add(
 //            InsuranceProvider(
 //                "OHIP",
 //                "40 mg",
@@ -89,7 +87,7 @@ class PractitionersFragment : Fragment() {
 //                "Directions: Take daily at 9:00am (on empty stomach)."
 //            ))
 //
-//        insuranceProvidersList.add(
+//        insuranceProviderList.add(
 //            InsuranceProvider(
 //                "CanadaLife",
 //                "40 mg",
