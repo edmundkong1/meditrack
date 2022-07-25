@@ -5,8 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
-import com.example.myapplication.practitioners.InsuranceProvider
-import com.example.myapplication.practitioners.InsuredPractitioner
 import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
 import java.text.DateFormatSymbols
@@ -245,6 +243,7 @@ class InsuranceProvider(
     }
 }
 
+// not displayed to
 class InsuredPractitioner(
     _name: String,
     _equivalentTitles: List<String>,
