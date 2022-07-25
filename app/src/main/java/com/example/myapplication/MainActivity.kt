@@ -91,6 +91,16 @@ class MainActivity : AppCompatActivity() {
             refoos.writeObject(refillReminders.toTypedArray())
             refoos.close()
 
+            //used for calculating when to let user know about refills
+            val incidentReminders: ArrayList<Incident> = arrayListOf()
+
+            //create file output stream for Refills data
+            val incidentfos = FileOutputStream(filesDir.toString() + "incident_list.meditrack")
+            val incidentoos = ObjectOutputStream(incidentfos)
+
+            incidentoos.writeObject(incidentReminders.toTypedArray())
+            incidentoos.close()
+
             val condReminders: ArrayList<Conditions> = arrayListOf()
 
             val condfos = FileOutputStream(filesDir.toString() + "conditions_list.meditrack")

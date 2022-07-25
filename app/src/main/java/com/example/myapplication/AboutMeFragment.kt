@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.data.Entry
 import kotlinx.android.synthetic.main.fragment_about_me.*
 import java.io.FileInputStream
 import java.io.ObjectInputStream
+import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO:
 //    use real data
@@ -22,7 +25,7 @@ class AboutMeFragment : Fragment() {
 
     private var medicationsList = ArrayList<AboutMeMeds>()
     private var conditionsList = ArrayList<Conditions>()
-    private var symptomList = ArrayList<Symptoms>()
+    private var symptomList = ArrayList<IncidentAboutMe>()
     private var appointmentList = ArrayList<Appointments>()
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -232,26 +235,43 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun initData3() {
-        symptomList.add(Symptoms(
-            "Heartburn",
-            0,
-            "",
-            "Directions: Take once a week at 12:00pm"
-        ))
+        val fis = FileInputStream(activity?.filesDir.toString() + "incident_list.meditrack")
+        val ois = ObjectInputStream(fis)
 
-        symptomList.add(Symptoms(
-            "Chest Pain",
-            0,
-            "",
-            "Directions: Take once a week at 12:00pm"
-        ))
+        @Suppress("UNCHECKED_CAST")
+        var incidentsList: Array<Incident> =
+            ois.readObject() as Array<Incident>
 
-        symptomList.add(Symptoms(
-            "Sore Throat",
-            0,
-            "",
-            "Directions: Take once a week at 12:00pm"
-        ))
+        val incidents: ArrayList<Incident> = incidentsList.toMutableList() as ArrayList<Incident>
+        //medication taken per week
+        for (incident in incidents) {
+            symptomList.add(IncidentAboutMe(
+                incident.symptom,
+                incident.date,
+                incident.severity))
+
+        }
+        ois.close()
+//        symptomList.add(Symptoms(
+//            "Heartburn",
+//            0,
+//            "",
+//            "Directions: Take once a week at 12:00pm"
+//        ))
+//
+//        symptomList.add(Symptoms(
+//            "Chest Pain",
+//            0,
+//            "",
+//            "Directions: Take once a week at 12:00pm"
+//        ))
+//
+//        symptomList.add(Symptoms(
+//            "Sore Throat",
+//            0,
+//            "",
+//            "Directions: Take once a week at 12:00pm"
+//        ))
     }
 
     private fun initData4() {
