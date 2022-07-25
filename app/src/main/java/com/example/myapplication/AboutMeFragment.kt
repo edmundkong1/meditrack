@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_about_me.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 
 // TODO:
 //    use real data
@@ -18,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 
 class AboutMeFragment : Fragment() {
 
-    private var medicationsList = ArrayList<Meds>()
+    private var medicationsList = ArrayList<AboutMeMeds>()
     private var conditionsList = ArrayList<Conditions>()
     private var symptomList = ArrayList<Symptoms>()
     private var appointmentList = ArrayList<Appointments>()
@@ -37,7 +39,10 @@ class AboutMeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    override fun onResume() {
+        super.onResume()
         initData()
         setRecyclerView()
         initData2()
@@ -46,17 +51,6 @@ class AboutMeFragment : Fragment() {
         setRecyclerView3()
         initData4()
         setRecyclerView4()
-
-
-        bttn_insert_med.setOnClickListener {
-            val position: Int = et_insert_med.getText().toString().toInt()
-//            insertMedicationItem(position)
-        }
-
-        bttn_remove_med.setOnClickListener {
-            val position: Int = et_insert_med.getText().toString().toInt()
-//            removeMedicationItem(position)
-        }
     }
 
 //    private fun insertMedicationItem(position: Int) {
@@ -75,14 +69,14 @@ class AboutMeFragment : Fragment() {
     // setup the recycler view
     private fun setRecyclerView() {
         val medicationsAdapter = AboutMeAdapter(medicationsList)
-        recycler_view.adapter = medicationsAdapter
-        recycler_view.setHasFixedSize(true)
+        rv_medications.adapter = medicationsAdapter
+        rv_medications.setHasFixedSize(true)
     }
 
     private fun setRecyclerView2() {
         val conditionsAdapter = AboutMeAdapter(conditionsList)
-        recycler_view2.adapter = conditionsAdapter
-        recycler_view2.setHasFixedSize(true)
+        rv_conditions.adapter = conditionsAdapter
+        rv_conditions.setHasFixedSize(true)
     }
 
     private fun setRecyclerView3() {
@@ -99,59 +93,142 @@ class AboutMeFragment : Fragment() {
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
     private fun initData() {
-        medicationsList.add(Meds(
-            "Norvasc",
-            2,
-            20,
-            20,
-            "none",
-            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            2000
-        ))
+        val fis = FileInputStream(activity?.filesDir.toString() + "medications_list.meditrack")
+        val ois = ObjectInputStream(fis)
 
-        medicationsList.add(Meds(
-            "Brilinta",
-            2,
-            20,
-            20,
-            "none",
-            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            2000
-        ))
+        @Suppress("UNCHECKED_CAST")
+        val tempmedicationsList: Array<Array<Meds>> =
+            ois.readObject() as Array<Array<Meds>>
 
-        medicationsList.add(Meds(
-            "Libitor",
-            2,
-            20,
-            20,
-            "none",
-            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            2000
-        ))
+        for(i in tempmedicationsList.indices){
+            for(j in tempmedicationsList[i].indices){
+                var newmed = true
+                for(k in medicationsList.indices){
+                    if(tempmedicationsList[i][j].name == medicationsList[k].name){
+                        if(i == 0){
+                            medicationsList[k].days += " Monday"
+                        }
+                        else if(i == 1){
+                            medicationsList[k].days += " Tuesday"
+                        }
+                        else if(i == 2){
+                            medicationsList[k].days += " Wednesday"
+                        }
+                        else if(i == 3){
+                            medicationsList[k].days += " Thursday"
+                        }
+                        else if(i == 4){
+                            medicationsList[k].days += " Friday"
+                        }
+                        else if(i == 5){
+                            medicationsList[k].days += " Saturday"
+                        }
+                        else if(i == 6){
+                            medicationsList[k].days += " Sunday"
+                        }
+                        newmed = false
+                        break
+                    }
+                }
+                if(newmed){
+                    var days = ""
+                    if(i == 0){
+                        days = " Monday"
+                    }
+                    else if(i == 1){
+                        days = " Tuesday"
+                    }
+                    else if(i == 2){
+                        days = " Wednesday"
+                    }
+                    else if(i == 3){
+                        days = " Thursday"
+                    }
+                    else if(i == 4){
+                        days = " Friday"
+                    }
+                    else if(i == 5){
+                        days = " Saturday"
+                    }
+                    else if(i == 6){
+                        days = " Sunday"
+                    }
+                    medicationsList.add(AboutMeMeds(tempmedicationsList[i][j].name,
+                        tempmedicationsList[i][j].timeHour!!,
+                        tempmedicationsList[i][j].timeMin!!,
+                        tempmedicationsList[i][j].dosage,
+                        tempmedicationsList[i][j].actions!!,
+                        tempmedicationsList[i][j].directions!!,
+                        tempmedicationsList[i][j].totalAmount,
+                        days))
+                }
+            }
+        }
 
-        medicationsList.add(Meds(
-            "Warfarin",
-            2,
-            20,
-            20,
-            "none",
-            "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-            2000
-        ))
+        /* medicationsList.add(Meds(
+             "Norvasc",
+             2,
+             20,
+             20,
+             "none",
+             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+             2000
+         ))
+
+         medicationsList.add(Meds(
+             "Brilinta",
+             2,
+             20,
+             20,
+             "none",
+             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+             2000
+         ))
+
+         medicationsList.add(Meds(
+             "Libitor",
+             2,
+             20,
+             20,
+             "none",
+             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+             2000
+         ))
+
+         medicationsList.add(Meds(
+             "Warfarin",
+             2,
+             20,
+             20,
+             "none",
+             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
+             2000
+         ))
+
+         */
     }
 
     private fun initData2() {
-        conditionsList.add(Conditions(
-            "COPD",
-            "None",
-            "Screaming, Crying, Throwing Up",
-        ))
+        val fis = FileInputStream(activity?.filesDir.toString() + "conditions_list.meditrack")
+        val ois = ObjectInputStream(fis)
 
-        conditionsList.add(Conditions(
-            "Acid Reflux",
-            "Heart Surgery",
-            "Coughing, Screaming, Crying, Throwing Up",
-        ))
+        @Suppress("UNCHECKED_CAST")
+        val tempconditionsList: Array<Conditions> =
+            ois.readObject() as Array<Conditions>
+
+        conditionsList.addAll(tempconditionsList)
+
+//        conditionsList.add(Conditions(
+//            "COPD",
+//            "None",
+//            "Screaming, Crying, Throwing Up",
+//        ))
+//
+//        conditionsList.add(Conditions(
+//            "Acid Reflux",
+//            "Heart Surgery",
+//            "Coughing, Screaming, Crying, Throwing Up",
+//        ))
     }
 
     private fun initData3() {
@@ -178,6 +255,15 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun initData4() {
+        val fis = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+        val ois = ObjectInputStream(fis)
+
+        @Suppress("UNCHECKED_CAST")
+        val appointmentsList: Array<Appointments> =
+            ois.readObject() as Array<Appointments>
+
+        appointmentList.addAll(appointmentsList)
+        /*
         appointmentList.add(Appointments(
             "Dentist Appointment",
             2,
@@ -214,6 +300,7 @@ class AboutMeFragment : Fragment() {
             "226-555-5555",
             "255 Sunview St. Waterloo, ON N2L 3V8"
         ))
+         */
 
     }
 }

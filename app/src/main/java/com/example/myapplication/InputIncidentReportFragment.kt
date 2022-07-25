@@ -41,6 +41,8 @@ class InputIncidentReportFragment : Fragment() {
     private var imageUri: Uri? = null
     private var imageView: ImageView? = null
 
+
+
     //TODO: need to load symptoms based on condition
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +65,8 @@ class InputIncidentReportFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_incident_report, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

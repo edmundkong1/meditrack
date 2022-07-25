@@ -37,7 +37,6 @@ class InputAppointmentFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_appointment, container, false)
     }
-    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //https://www.codingdemos.com/android-datepicker-button/

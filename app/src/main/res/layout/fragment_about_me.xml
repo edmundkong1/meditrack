@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/rv_medications"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -36,36 +36,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_medications"
             tools:orientation="horizontal" />
 
-        <EditText
-            android:id="@+id/et_insert_med"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"/>
-
-        <Button
-            android:id="@+id/bttn_insert_med"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="insert"
-            app:layout_constraintStart_toEndOf="@+id/et_insert_med"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
-
-        <EditText
-            android:id="@+id/et_remove_med"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/bttn_insert_med"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
-            android:layout_marginLeft="30dp"/>
-
-        <Button
-            android:id="@+id/bttn_remove_med"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            app:layout_constraintStart_toEndOf="@+id/et_remove_med"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"/>
 
 
         <TextView
@@ -76,11 +46,11 @@
             android:text="Conditions"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_insert_med"
+            app:layout_constraintTop_toBottomOf="@+id/rv_medications"
             android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view2"
+            android:id="@+id/rv_conditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -94,11 +64,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Symptoms"
+            android:text="Incidents"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view2"/>
+            app:layout_constraintTop_toBottomOf="@+id/rv_conditions"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view3"

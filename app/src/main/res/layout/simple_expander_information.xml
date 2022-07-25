@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="vertical"
+    android:layout_weight="1"
     app:cardCornerRadius="2dp"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true">
@@ -23,6 +25,20 @@
             android:padding="16dp"
             android:textStyle="bold"/>
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/ic_baseline_delete_24"
+            app:layout_constraintWidth_percent=".08"
+            app:layout_constraintDimensionRatio="1:1"
+
+            />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/information_list"
                 android:nestedScrollingEnabled="true"/>
+
 
         </RelativeLayout>
 

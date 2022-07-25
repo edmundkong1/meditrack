@@ -1,37 +1,16 @@
 package com.example.myapplication
 
-import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.simple_expander_information.view.*
 
-//https://www.codevscolor.com/android-kotlin-delete-item-recyclerview
+class PractitionersAdapter(val informationList: List<Information>) :
+    RecyclerView.Adapter<PractitionersAdapter.InformationViewHolder>(){
 
-class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adapter<AboutMeAdapter.InformationViewHolder>(){
-
-    class InformationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    }
-//    private var listData: MutableList<Information> = informationList as MutableList<Information>
-//    inner class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){
-//
-//        fun bind(information: Information, index: Int){
-//            val title = view.findViewById<TextView>(R.id.tv_title)
-////            val information1 = view.findViewById<TextView>(R.id.information_list)
-//            val button = view.findViewById<Button>(R.id.et_remove_med)
-//
-//            title.text = title.toString()
-////            information1.text = information1.toString()
-//
-////            Glide.with(view.context).load(property.image).centerCrop().into(imageView)
-//
-//            button.setOnClickListener{deleteItem(index)}
-//
-//        }
-//    }
-
+    class InformationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformationViewHolder {
         return InformationViewHolder (
@@ -46,13 +25,11 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: InformationViewHolder, position: Int) {
         val currInformation: Information = informationList[position]
 
-//        holder.bind(listData[position], position)
-        
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
 
             tv_title.text = currInformation.name
-            val textFields = currInformation.aboutMeAdapter()
+            val textFields = currInformation.practitionersAdapter()
             val arrayAdapter = ArrayAdapter(context, R.layout.simple_expander_text, textFields.toTypedArray())
             information_list.adapter = arrayAdapter
 
@@ -67,10 +44,6 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                 notifyItemChanged(position)
             }
 
-            button.setOnClickListener {
-                // toggle the box being expandable
-                linear_layout.visibility = View.GONE
-            }
 
             val params = information_list.layoutParams
             params.height =  200 * textFields.size
@@ -79,22 +52,9 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
 
         }
 
-
     }
 
-//    fun deleteItem(index: Int){
-//        listData.removeAt(index)
-//        notifyDataSetChanged()
-//    }
-//
-//
     override fun getItemCount(): Int {
         return informationList.size
     }
-//
-//    fun setItems(items: List<Information>){
-////        listData = items
-////        notifyDataSetChanged()
-//    }
 }
-

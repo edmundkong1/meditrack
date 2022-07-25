@@ -19,8 +19,7 @@
             android:inputType="textPersonName"
             android:hint="Enter Condition Name"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/conditionsProcedureHistory"
@@ -30,8 +29,7 @@
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Related Procedure History"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/conditionsSymptomsHistory"
@@ -41,8 +39,7 @@
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Symptoms History"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputConditions"

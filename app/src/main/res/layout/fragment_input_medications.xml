@@ -25,8 +25,7 @@
             android:inputType="textPersonName"
             android:hint="Enter Medication Name"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medicationTime"
@@ -36,8 +35,7 @@
             android:focusableInTouchMode="false"
             android:hint="Choose Time"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,8 +116,7 @@
             android:inputType="number"
             android:hint="Enter Medication Dosage (mg)"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medActions"
@@ -129,8 +126,7 @@
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Actions"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medDirections"
@@ -140,8 +136,7 @@
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Directions"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medTotal"
@@ -151,8 +146,7 @@
             android:inputType="number"
             android:hint="Enter Total Amount (mg)"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputMed"

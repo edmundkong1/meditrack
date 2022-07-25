@@ -15,6 +15,9 @@ open class Information(_name: String) : Serializable {
     open fun aboutMeAdapter() : ArrayList<String> {
         return arrayListOf()
     }
+    open fun practitionersAdapter() : ArrayList<String> {
+        return arrayListOf()
+    }
 }
 
 //objects for Reminders
@@ -86,6 +89,54 @@ class Meds(
 
     override fun aboutMeAdapter() : ArrayList<String> {
         val newList: ArrayList<String> = arrayListOf()
+        newList.add("Time: " + printTime()!!)
+        newList.add("Dosage: " + dosage.toString() + "mg")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        newList.add("Total Amount: " + totalAmount + "mg")
+        return newList
+    }
+}
+
+//Meds class, represents the medications, and is a subclass of Reminders
+class AboutMeMeds(
+    _name: String,
+    _timeHour: Int,
+    _timeMin: Int,
+    _dosage: Int,
+    _actions: String,
+    _directions: String,
+    _totalAmount: Int,
+    _days: String
+) : Reminders(_name, _timeHour, _timeMin) {
+    var dosage: Int = _dosage
+    var actions: String? = _actions
+    var directions: String? = _directions
+    var totalAmount: Int = _totalAmount
+    var days : String? = _days
+    override var colour: String = "#99d4bb"
+
+    //display text for when medication is clicked
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if(days != ""){
+            cardText += "Dates: $days\n"
+        }
+        if (dosage != 0) {
+            cardText += "Dosage: " + dosage.toString() + "mg" + "\n"
+        }
+        if (actions != null && actions != "") {
+            cardText += "Actions: $actions\n"
+        }
+        if (directions != null && directions != "") {
+            cardText += "Directions: $directions\n"
+        }
+        return cardText
+    }
+
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Dates: " + days)
         newList.add("Time: " + printTime()!!)
         newList.add("Dosage: " + dosage.toString() + "mg")
         newList.add("Actions: $actions")
@@ -206,3 +257,60 @@ class Conditions(
         return newList
     }
 }
+
+//// FOR PRACTITIONERS //////////
+
+// eg. Manulife, list of the user's practitioners, list of practitioner info
+class InsuranceProvider(
+    _insuranceName: String,
+    _userPractitionerList: MutableList<UserPractitioner>,
+    _insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>,
+): Information(_insuranceName) {
+    var _insuranceName: String = _insuranceName
+    var _userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
+    var insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo> = _insuredPractitionerInfoList
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Insured Practitioners: $insuredPractitionerInfoList")
+        return newList
+    }
+}
+
+// eg. Dr. Smith, psychologist, $500 per session
+class UserPractitioner(
+    _name: String,
+    _title: String,
+    _costPerSession: Int,
+    _year: Int,
+    _month: Int,
+    _day: Int
+): Information(_name) {
+    var title: String = _title
+    var costPerSession: Int = _costPerSession
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Equivalent Titles: $title")
+        newList.add("Cost Per Session: $costPerSession")
+        return newList
+    }
+}
+
+// eg. Psychologist, $500 per year, 80%
+class InsuredPractitionerInfo(
+    _title: String,
+    _coveredAmount: Int,
+    _reimbursementPercentage: Int
+): Information(_title) {
+    var title: String = _title
+    var coveredAmount: Int = _coveredAmount
+    var reimbursement: Int = _reimbursementPercentage
+    override fun practitionersAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Equivalent Titles: $title")
+        newList.add("Covered Amount: $coveredAmount")
+        newList.add("Reimbursement Percentage: $reimbursement%")
+        return newList
+    }
+}
+
+

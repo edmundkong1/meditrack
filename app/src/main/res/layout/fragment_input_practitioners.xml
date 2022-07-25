@@ -13,18 +13,82 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/practitionerName"
+            android:id="@+id/et_practitioner_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Enter Practitioner's Name"
             android:textColor="@color/black"
+            android:layout_margin="10dp" />
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter Practitioner's Professional Title"
+            android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/et_cost_per_session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Enter Covered Insurance"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:text="Insurance"/>
+
+
+<!--        MAKE dropdown menu-->
+        <EditText
+            android:id="@+id/insurance_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:hint="Enter Insurance Provider"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/insurance_coverage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="How much does your insurance cover for this expense"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/reimbursement_percentage"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="What percentage are you reimbursed?"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:text="Add another insurance provider?"/>
 
         <Button
-            android:id="@+id/submitInputPractitioners"
+            android:id="@+id/bttn_submit_input_practitioners"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
