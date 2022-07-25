@@ -30,10 +30,10 @@
         tools:layout="@layout/fragment_input_practitioners">
     </fragment>
     <fragment
-        android:id="@+id/InputInsuranceFragment"
-        android:name="com.example.myapplication.InputInsuranceFragment"
-        android:label="InputInsurance"
-        tools:layout="@layout/fragment_input_insurance">
+        android:id="@+id/InputConditionsFragment"
+        android:name="com.example.myapplication.InputConditionsFragment"
+        android:label="InputConditions"
+        tools:layout="@layout/fragment_input_conditions">
     </fragment>
     <fragment
         android:id="@+id/InputFragment"
@@ -52,9 +52,6 @@
         <action
             android:id="@+id/action_InputFragment_to_InputPractitionersFragment"
             app:destination="@id/InputPractitionersFragment" />
-        <action
-            android:id="@+id/action_InputFragment_to_InputInsuranceFragment"
-            app:destination="@id/InputInsuranceFragment" />
         <action
             android:id="@+id/action_InputFragment_to_InputConditionsFragment"
             app:destination="@id/InputConditionsFragment" />
