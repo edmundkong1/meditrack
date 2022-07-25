@@ -74,9 +74,9 @@ class InputPractitionersFragment : Fragment() {
             // make insurance provider list and pass it into user practitioner
             var insuranceProviderList = mutableListOf<InsuranceProvider>()
             insuranceProviderList.add(insuranceProvider)
-            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, insuranceProviderList)
+//            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, insuranceProviderList)
 
-            createAppointmentSuggestions(userPractitioner)
+//            createAppointmentSuggestions(userPractitioner)
 
 //            et_practitioner_name.setText(insuredPractitioner.title)
         }

@@ -1,5 +1,11 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -11,9 +17,11 @@ import java.util.*
 class InputActivity : AppCompatActivity() {
     //TODO: add all input content here, and layout info to activity_input.xml file
     private lateinit var binding: ActivityInputBinding
+    private var alarmManager: AlarmManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
