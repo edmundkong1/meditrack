@@ -89,27 +89,33 @@ class InputAppointmentFragment : Fragment() {
                 val nameText = view.findViewById<EditText>(R.id.apptName)
                 nameText.error = textError
                 submitError = true
-            } else if (chooseDate.text.toString() == "") {
+            }
+            if (chooseDate.text.toString() == "") {
                 val dateText = view.findViewById<EditText>(R.id.apptDate)
                 chooseDate.error = textError
                 submitError = true
-            } else if (chooseTime.text.toString() == "") {
+            }
+            if (chooseTime.text.toString() == "") {
                 val timeText = view.findViewById<EditText>(R.id.appointment_pick_time)
                 chooseTime.error = textError
                 submitError = true
-            } else if (doctorname == "") {
+            }
+            if (doctorname == "") {
                 val doctorText = view.findViewById<EditText>(R.id.doctorName)
                 doctorText.error = textError
                 submitError = true
-            } else if (phonenumber == "") {
+            }
+            if (phonenumber == "") {
                 val phoneText = view.findViewById<EditText>(R.id.phoneNumber)
                 phoneText.error = textError
                 submitError = true
-            } else if (address == "") {
+            }
+            if (address == "") {
                 val addressText = view.findViewById<EditText>(R.id.doctorAddress)
                 addressText.error = textError
                 submitError = true
-            } else {
+            }
+            if (!submitError){
                 val timeHour: Int = time.substringBefore(":").toInt()
                 val timeMin: Int = time.substringAfter(":").toInt()
                 val day: Int = date.substringBefore("/").toInt()
@@ -168,8 +174,7 @@ class InputAppointmentFragment : Fragment() {
                 Log.w("END", "END")
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
-            }
-            if (submitError) {
+            } else {
                 val dialogBuilder = AlertDialog.Builder(context)
 
                 // set message of alert dialog
