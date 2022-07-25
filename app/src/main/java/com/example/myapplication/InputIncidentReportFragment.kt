@@ -24,7 +24,6 @@ import android.content.DialogInterface
 import android.net.Uri
 import android.text.TextUtils
 import android.util.Log
-import android.widget.Toast
 
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.checkSelfPermission
@@ -122,8 +121,8 @@ class InputIncidentReportFragment : Fragment() {
             var duplicateSymptoms = false
             val seen: MutableSet<String> = mutableSetOf()
             for(symptom in symptomsRatings){
-                if(!seen.add(symptom.get(0))){
-                    duplicateSymptoms = true
+                if(!seen.add(symptom[0])){
+                    //duplicateSymptoms = true
                     break
                 }
             }
@@ -190,15 +189,17 @@ class InputIncidentReportFragment : Fragment() {
                 val ois = ObjectInputStream(fis)
 
                 @Suppress("UNCHECKED_CAST")
-                var incidentsList: ArrayList<Pair<String, ArrayList<List<String>>>> =
-                    ois.readObject() as ArrayList<Pair<String, ArrayList<List<String>>>>
-
-                incidentsList.add(
-                    Pair(
-                        date,
-                        symptomsRatings
-                    )
-                )
+                var incidentsList: Array<Incident> =
+                    ois.readObject() as Array<Incident>
+                val mutableIncidentsList = incidentsList.toMutableList()
+                for(symptom in symptomsRatings){
+                    var tempIncident = Incident()
+                    tempIncident.date = date
+                    tempIncident.symptom = symptom[0]
+                    tempIncident.severity = symptom[1]
+                    mutableIncidentsList.add(tempIncident)
+                }
+                incidentsList = mutableIncidentsList.toTypedArray()
 
 
                 val incidentfos =
