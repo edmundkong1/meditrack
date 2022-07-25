@@ -98,6 +98,54 @@ class Meds(
     }
 }
 
+//Meds class, represents the medications, and is a subclass of Reminders
+class AboutMeMeds(
+    _name: String,
+    _timeHour: Int,
+    _timeMin: Int,
+    _dosage: Int,
+    _actions: String,
+    _directions: String,
+    _totalAmount: Int,
+    _days: String
+) : Reminders(_name, _timeHour, _timeMin) {
+    var dosage: Int = _dosage
+    var actions: String? = _actions
+    var directions: String? = _directions
+    var totalAmount: Int = _totalAmount
+    var days : String? = _days
+    override var colour: String = "#99d4bb"
+
+    //display text for when medication is clicked
+    override fun messageAdapter(): String {
+        var cardText = ""
+        if(days != ""){
+            cardText += "Dates: $days\n"
+        }
+        if (dosage != 0) {
+            cardText += "Dosage: " + dosage.toString() + "mg" + "\n"
+        }
+        if (actions != null && actions != "") {
+            cardText += "Actions: $actions\n"
+        }
+        if (directions != null && directions != "") {
+            cardText += "Directions: $directions\n"
+        }
+        return cardText
+    }
+
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Dates: " + days)
+        newList.add("Time: " + printTime()!!)
+        newList.add("Dosage: " + dosage.toString() + "mg")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        newList.add("Total Amount: " + totalAmount + "mg")
+        return newList
+    }
+}
+
 //Appointments class, represents the user's appointments, a subclass for the Reminders class
 class Appointments(
     _name: String,
