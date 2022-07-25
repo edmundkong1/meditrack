@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -35,6 +37,7 @@ class InputAppointmentFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_appointment, container, false)
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //https://www.codingdemos.com/android-datepicker-button/
@@ -147,6 +150,15 @@ class InputAppointmentFragment : Fragment() {
                 val apptoos = ObjectOutputStream(apptfos)
                 apptoos.writeObject(appointmentsList)
                 apptoos.close()
+
+                (activity as InputActivity).scheduleNotification(
+                    newAppointment.year!!,
+                    newAppointment.month!!,
+                    newAppointment.day!!,
+                    newAppointment.timeHour!!,
+                    newAppointment.timeMin!!,
+                    "Reminder: " + newAppointment.messageAdapter()
+                )
 
                 Log.w("END", "END")
                 // Below quits input tab and returns to previous tab
