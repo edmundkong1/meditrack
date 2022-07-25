@@ -12,6 +12,16 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/apptName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter Appointment Name"
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
+
+        <EditText
             android:id="@+id/apptDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
