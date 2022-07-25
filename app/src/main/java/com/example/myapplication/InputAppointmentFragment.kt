@@ -131,6 +131,9 @@ class InputAppointmentFragment : Fragment() {
                     phonenumber,
                     address
                 )
+
+
+                // input database into ram
                 val fis =
                     FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
                 val ois = ObjectInputStream(fis)
@@ -139,11 +142,13 @@ class InputAppointmentFragment : Fragment() {
                 var appointmentsList: Array<Appointments> =
                     ois.readObject() as Array<Appointments>
 
+                // create data
                 val mutableAppointmentsList = appointmentsList.toMutableList()
                 mutableAppointmentsList.add(newAppointment)
                 appointmentsList = mutableAppointmentsList.toTypedArray()
                 //appointmentsList = emptyArray()
 
+                // enter data into database
                 val apptfos =
                     FileOutputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
                 val apptoos = ObjectOutputStream(apptfos)

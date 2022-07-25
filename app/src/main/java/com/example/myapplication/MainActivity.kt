@@ -99,6 +99,15 @@ class MainActivity : AppCompatActivity() {
             condoos.writeObject(condReminders.toTypedArray())
             condoos.close()
 
+            // Create insurance provider list in database
+            val insuranceProviderList: ArrayList<InsuranceProvider> = arrayListOf()
+
+            val insfos = FileOutputStream(filesDir.toString() + "insurance_providers_list.meditrack")
+            val insoos = ObjectOutputStream(insfos)
+
+            insoos.writeObject(insuranceProviderList.toTypedArray())
+            insoos.close()
+
             //call alarm for notifications in this activity
             alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
@@ -125,6 +134,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 day++
             }
+
 
             val editor = wmbPreference.edit()
             editor.putBoolean("FIRSTRUN", false)

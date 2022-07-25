@@ -11,6 +11,10 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_input_practitioners.*
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import java.util.*
 
 
@@ -51,6 +55,9 @@ class InputPractitionersFragment : Fragment() {
             val reimbursementPercentage = reimbursementPercentageET.text.toString().toInt()
 
 
+
+
+
             // make dropdown for insurance
             // TODO check if the entered practitioner into the list of practitioners into each of the insurances chosen
 
@@ -69,6 +76,33 @@ class InputPractitionersFragment : Fragment() {
             // add both lists to a new insuranceProvider
             var insuranceProvider = InsuranceProvider(insuranceName, userPractitionerList, insuredPractitionerInfoList)
 
+
+            // open saved insurance providers from database
+
+            // input database into ram
+            val fis =
+                FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+            val ois = ObjectInputStream(fis)
+
+            @Suppress("UNCHECKED_CAST")
+            var insuranceProviderList: Array<InsuranceProvider> =
+                ois.readObject() as Array<InsuranceProvider>
+
+            // create data
+            val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
+            mutableInsuranceProviderList.add(insuranceProvider)
+            insuranceProviderList = mutableInsuranceProviderList.toTypedArray()
+
+
+            // TODO: check if insurance company already exists in database, check if practitioner exists in database
+
+            // enter data into database
+            val insfos =
+                FileOutputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+            val insoos = ObjectOutputStream(insfos)
+            insoos.writeObject(insuranceProviderList)
+            insoos.close()
+
             createAppointmentSuggestions(insuranceProvider._userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
 
 //            et_practitioner_name.setText(insuredPractitionerInfo.title)
@@ -79,7 +113,14 @@ class InputPractitionersFragment : Fragment() {
         userPractitionerList: MutableList<UserPractitioner>,
         insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>) {
 
-        userPractitionerList.intersect(insuredPractitionerInfoList)
+        userPractitionerList.forEach { userPractitioner ->
+            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->
+                if (userPractitioner.title == insuredPractitionerInfo.title) {
+                    return
+                }
+            }
+        }
+
 
     }
 
