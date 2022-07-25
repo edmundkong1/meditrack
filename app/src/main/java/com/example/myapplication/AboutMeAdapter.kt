@@ -146,9 +146,35 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                     condoos.writeObject(medicationsList)
                     condoos.close()
                 }
+                else if(currInformation is IncidentAboutMe){
+                    val fis = FileInputStream(context?.filesDir.toString() + "incident_list.meditrack")
+                    val ois = ObjectInputStream(fis)
+
+                    var incidentsList: Array<Incident> =
+                        ois.readObject() as Array<Incident>
+
+                    ois.close()
+                    fis.close()
+
+
+                    for(i in incidentsList.indices){
+                        if(incidentsList[i].symptom == currInformation.name && incidentsList[i].date == currInformation.date){
+                            val tempIncidentsList = incidentsList.toMutableList()
+                            tempIncidentsList.removeAt(i)
+                            incidentsList = tempIncidentsList.toTypedArray()
+                            break
+                        }
+                    }
+                    val incidentfos =
+                        FileOutputStream(context?.filesDir.toString() + "incident_list.meditrack")
+                    val incidentsoos = ObjectOutputStream(incidentfos)
+                    incidentsoos.writeObject(incidentsList)
+                    incidentsoos.close()
+                }
 
                 linear_layout.visibility = View.GONE
             }
+
 
             val params = information_list.layoutParams
             params.height =  200 * textFields.size
