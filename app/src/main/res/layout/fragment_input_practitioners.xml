@@ -29,6 +29,13 @@
             android:hint="Enter Covered Insurance"
             android:textColor="@color/black" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Insurance"/>
+
+
 <!--        MAKE dropdown menu-->
         <EditText
             android:id="@+id/insurance"
@@ -48,6 +55,20 @@
             android:hint="How much does your insurance cover for this expense"
             android:textColor="@color/black" />
 
+        <EditText
+            android:id="@+id/reimbursement_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="What percentage are you reimbursed?"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Add another insurance provider?"/>
 
         <Button
             android:id="@+id/submitInputPractitioners"
