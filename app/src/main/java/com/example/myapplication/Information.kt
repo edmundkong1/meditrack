@@ -325,7 +325,7 @@ class IncidentAboutMe (
         val newList: ArrayList<String> = arrayListOf()
         newList.add("Symptom: $symptom")
         newList.add("Date: $date")
-        newList.add("Severity: $severity%")
+        newList.add("Severity: $severity")
         return newList
     }
 }
