@@ -20,7 +20,8 @@
             android:hint="Enter Date"
             android:focusableInTouchMode="false"
             android:textColor="@color/black"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/submitInputIncident"
@@ -35,8 +36,6 @@
             android:id="@+id/button_take_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:text="Take a Photo"
             />
@@ -45,8 +44,7 @@
             android:id="@+id/imageview_picture"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            />
+            android:contentDescription="Picture" />
 
 
     </LinearLayout>
