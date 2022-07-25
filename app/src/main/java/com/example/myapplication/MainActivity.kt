@@ -5,7 +5,6 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -27,8 +26,6 @@ import com.kwabenaberko.newsapilib.NewsApiClient
 import com.kwabenaberko.newsapilib.NewsApiClient.ArticlesResponseCallback
 import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
-import kotlinx.android.synthetic.main.calendar_list_item.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 import java.util.*
@@ -36,7 +33,6 @@ import java.util.*
 //main activity - used for all tabs
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private var alarmManager: AlarmManager? = null
