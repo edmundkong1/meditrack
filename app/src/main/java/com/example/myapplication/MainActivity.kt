@@ -86,8 +86,24 @@ class MainActivity : AppCompatActivity() {
         appoos.writeObject(appointments)
         appoos.close()
 
-        //data for appointments
-        val conditions = emptyArray<Conditions>()
+            val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
+            val LibitorDays = arrayOf(0, 2, 4, 6)
+            val WarfarinDays = arrayOf(0, 4)
+            val BrilintaDays = arrayOf(0, 5)
+
+            //used for calculating when to let user know about refills
+            val refillReminders: ArrayList<Refills> = arrayListOf()
+
+            //create file output stream for Refills data
+            val reffos = FileOutputStream(filesDir.toString() + "refills_list.meditrack")
+            val refoos = ObjectOutputStream(reffos)
+
+            refoos.writeObject(refillReminders.toTypedArray())
+            refoos.close()
+
+
+            //call alarm for notifications in this activity
+            alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         //create file output stream for appointments data
         val condfos = FileOutputStream(filesDir.toString() + "conditions_list.meditrack")

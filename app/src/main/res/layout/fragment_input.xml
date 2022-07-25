@@ -74,16 +74,6 @@
             </TableRow>
             <TableRow>
                 <Button
-                    android:id="@+id/InputInsuranceButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Insurance Information"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:height="80dp" />
-            </TableRow>
-            <TableRow>
-                <Button
                     android:id="@+id/InputConditionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

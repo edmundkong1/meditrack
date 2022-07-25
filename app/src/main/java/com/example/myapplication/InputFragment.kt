@@ -46,9 +46,6 @@ class InputFragment : Fragment() {
         InputPractitionersButton.setOnClickListener {
             findNavController().navigate(R.id.action_InputFragment_to_InputPractitionersFragment)
         }
-        InputInsuranceButton.setOnClickListener {
-            findNavController().navigate(R.id.action_InputFragment_to_InputInsuranceFragment)
-        }
         InputConditionsButton.setOnClickListener {
             findNavController().navigate(R.id.action_InputFragment_to_InputConditionsFragment)
         }
