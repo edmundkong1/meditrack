@@ -147,7 +147,7 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                     medoos.close()
 
                     val fis2 = FileInputStream(context?.filesDir.toString() + "refills_list.meditrack")
-                    val ois2 = ObjectInputStream(fis1)
+                    val ois2 = ObjectInputStream(fis2)
                     var refillsList: Array<Refills> =
                         ois2.readObject() as Array<Refills>
 
@@ -155,7 +155,7 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
                     fis2.close()
 
                     for(i in refillsList.indices){
-                        if(refillsList[i].name == currInformation.name){
+                        if(refillsList[i].name == (currInformation.name + " Refill")){
                             val tempappointmentsList = refillsList.toMutableList()
                             tempappointmentsList.removeAt(i)
                             refillsList = tempappointmentsList.toTypedArray()
