@@ -34,6 +34,16 @@
             android:stretchColumns="0">
             <TableRow>
                 <Button
+                    android:id="@+id/InputIncidentsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Daily Incident Report"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
                     android:id="@+id/InputAppointmentsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,16 +59,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Medications"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:height="80dp" />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/InputIncidentsButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Incident Report"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />
