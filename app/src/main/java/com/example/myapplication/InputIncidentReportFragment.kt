@@ -192,7 +192,7 @@ class InputIncidentReportFragment : Fragment() {
                     var tempIncident = Incident()
                     tempIncident.date = date
                     tempIncident.symptom = symptom[0]
-                    tempIncident.rating = symptom[1]
+                    tempIncident.severity = symptom[1]
                     mutableIncidentsList.add(tempIncident)
                 }
                 incidentsList = mutableIncidentsList.toTypedArray()

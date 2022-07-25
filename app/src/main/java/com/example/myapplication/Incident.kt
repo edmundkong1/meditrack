@@ -6,5 +6,5 @@ import java.io.Serializable
 class Incident : Serializable  {
     var symptom: String? = null
     var date: String? = null
-    var rating: String? = null
+    var severity: String? = null
 }

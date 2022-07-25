@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.data.Entry
 import java.io.FileInputStream
 import java.io.ObjectInputStream
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -63,7 +61,7 @@ class IncidentSummaryFragment : Fragment() {
             calendarTemp.set(year, month, day, 12, 0, 0)
             dates.add(calendarTemp)
             val symptom = incident.symptom
-            val severity = incident.rating
+            val severity = incident.severity
             if (symptoms.any { it.symptom == symptom }) {
                 val symptomTemp = symptoms.first { it.symptom == symptom }
                 var tempEntry = Entry(calendarTemp.timeInMillis.toFloat(), severity!!.toFloat())
