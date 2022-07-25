@@ -7,15 +7,21 @@ import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import kotlinx.android.synthetic.main.calendar_list_item.*
 import java.io.Serializable
+import java.text.DateFormatSymbols
 
+open class Information(_name: String) : Serializable {
+    var name: String = _name
+    var expandable: Boolean = true
+    open fun aboutMeAdapter() : ArrayList<String> {
+        return arrayListOf()
+    }
+}
 
 //objects for Reminders
-open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Serializable {
-    var name: String? = _name
+open class Reminders(_name: String, _timeHour: Int, _timeMin: Int) : Information(_name) {
     var timeHour: Int? = _timeHour
     var timeMin: Int? = _timeMin
     protected open val colour: String? = null
-    var expandable: Boolean? = true
     fun colourGetter(): String? {
         return colour
     }
@@ -77,6 +83,16 @@ class Meds(
         }
         return cardText
     }
+
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Time: " + printTime()!!)
+        newList.add("Dosage: " + dosage.toString() + "mg")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        newList.add("Total Amount: " + totalAmount + "mg")
+        return newList
+    }
 }
 
 //Appointments class, represents the user's appointments, a subclass for the Reminders class
@@ -114,6 +130,17 @@ class Appointments(
         return cardText
     }
 
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Time: " + printTime()!!)
+        val date = "Date: " + day.toString() + "/" + month.toString() + "/" + year.toString()
+        newList.add(date)
+        newList.add("Doctor: " + doctor!!)
+        newList.add("Phone Number: " + phoneNumber!!)
+        newList.add("Address: " + address!!)
+        return newList
+    }
+
     //used for calling the phone number of listed doctor for an appointment
     override fun callPhone(context: Context) {
         // Add phone call functionality
@@ -144,5 +171,38 @@ class Refills(
             cardText += "Amount: "+ amount + "mg" + "\n"
         }
         return cardText
+    }
+}
+
+class Symptoms(
+    _name: String,
+    _dosage: Int,
+    _actions: String,
+    _directions: String
+) : Information(_name) {
+    var dosage: Int = _dosage
+    var actions: String = _actions
+    var directions: String = _directions
+    override fun aboutMeAdapter() : ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Dosage: $dosage")
+        newList.add("Actions: $actions")
+        newList.add("Directions: $directions")
+        return newList
+    }
+}
+
+class Conditions(
+    _name: String,
+    _relatedProceduresHistory: String,
+    _symptomsHistory: String
+) : Information(_name) {
+    var relatedProceduresHistory: String = _relatedProceduresHistory
+    var symptomsHistory: String = _symptomsHistory
+    override fun aboutMeAdapter(): ArrayList<String> {
+        val newList: ArrayList<String> = arrayListOf()
+        newList.add("Related Procedures History: $relatedProceduresHistory")
+        newList.add("Symptoms History: $symptomsHistory")
+        return newList
     }
 }
