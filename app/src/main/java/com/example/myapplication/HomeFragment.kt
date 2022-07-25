@@ -23,6 +23,10 @@ import java.util.*
 //home screen
 
 class HomeFragment : Fragment() {
+
+    lateinit var thisView: View
+    lateinit var thisInstance: Bundle
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +40,16 @@ class HomeFragment : Fragment() {
     @SuppressLint("NewApi", "SimpleDateFormat", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val todayDate: TextView = view.findViewById(R.id.textview_currentDate)
+        thisView = view
+        if (savedInstanceState != null) {
+            thisInstance = savedInstanceState
+        }
+        onResume()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val todayDate: TextView = thisView.findViewById(R.id.textview_currentDate)
 
         val date = Calendar.getInstance().time
         val sdf = SimpleDateFormat("EEE, MMM d, ''yy")
@@ -118,7 +131,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val l: ListView = view.findViewById(R.id.listview_schedule)
+        val l: ListView = thisView.findViewById(R.id.listview_schedule)
         data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
         l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())
 
