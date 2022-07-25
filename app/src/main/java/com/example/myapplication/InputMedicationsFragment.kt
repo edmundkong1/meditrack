@@ -69,34 +69,41 @@ class InputMedicationsFragment : Fragment() {
                 val nameText = view.findViewById<EditText>(R.id.medName)
                 nameText.error = textError
                 submitError = true
-            } else if (time == "") {
+            }
+            if (time == "") {
                 val timeText = view.findViewById<EditText>(R.id.medicationTime)
                 timeText.error = textError
                 submitError = true
-            } else if (!monCheck.isChecked && !tuesCheck.isChecked &&
+            }
+            if (!monCheck.isChecked && !tuesCheck.isChecked &&
                        !wedCheck.isChecked && !thursCheck.isChecked &&
                        !friCheck.isChecked && !satCheck.isChecked &&
                        !sunCheck.isChecked) {
                 val daysText = view.findViewById<TextView>(R.id.days_check)
                 daysText.error = "Please select at least one day"
                 submitError = true
-            } else if (dosageString == "") {
+            }
+            if (dosageString == "") {
                 val dosageText = view.findViewById<EditText>(R.id.medDosage)
                 dosageText.error = textError
                 submitError = true
-            } else if (actions == "") {
+            }
+            if (actions == "") {
                 val actionsText = view.findViewById<EditText>(R.id.medActions)
                 actionsText.error = textError
                 submitError = true
-            } else if (directions == "") {
+            }
+            if (directions == "") {
                 val directionsText = view.findViewById<EditText>(R.id.directions)
                 directionsText.error = textError
                 submitError = true
-            } else if (totalAmountString == "") {
+            }
+            if (totalAmountString == "") {
                 val totalAmountString = view.findViewById<EditText>(R.id.medTotal)
                 totalAmountString.error = textError
                 submitError = true
-            } else {
+            }
+            if (!submitError){
                 val dosage = dosageString.toInt()
                 val totalAmount = totalAmountString.toInt()
                 val timeHour: Int = time.substringBefore(":").toInt()
@@ -249,8 +256,7 @@ class InputMedicationsFragment : Fragment() {
                 Log.w("day", calendar.get(Calendar.DAY_OF_MONTH).toString())
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
-            }
-            if (submitError) {
+            } else {
                 val dialogBuilder = AlertDialog.Builder(context)
 
                 // set message of alert dialog
