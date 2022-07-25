@@ -20,10 +20,12 @@ import java.io.ObjectInputStream
 
 class AboutMeFragment : Fragment() {
 
+
     private var medicationsList = ArrayList<Meds>()
     private var conditionsList = ArrayList<Conditions>()
     private var symptomList = ArrayList<Symptoms>()
     private var appointmentList = ArrayList<Appointments>()
+
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class AboutMeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about_me, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,15 +54,17 @@ class AboutMeFragment : Fragment() {
         setRecyclerView4()
 
 
-        bttn_insert_med.setOnClickListener {
-            val position: Int = et_insert_med.getText().toString().toInt()
-//            insertMedicationItem(position)
-        }
 
-        bttn_remove_med.setOnClickListener {
-            val position: Int = et_insert_med.getText().toString().toInt()
-//            removeMedicationItem(position)
-        }
+
+//        bttn_insert_med.setOnClickListener {
+//            val position: Int = et_insert_med.getText().toString().toInt()
+////            insertMedicationItem(position)
+//        }
+
+//        bttn_remove_med.setOnClickListener {
+//            val position: Int = et_insert_med.getText().toString().toInt()
+////            removeMedicationItem(position)
+//        }
     }
 
 //    private fun insertMedicationItem(position: Int) {

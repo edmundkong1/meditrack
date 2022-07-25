@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.15443840579710144" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="..\:/Users/Parathan/Downloads/meditrack/app/src/main/res/layout/fragment_calendar.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/Parathan/Downloads/meditrack/app/src/main/res/layout/fragment_home.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/menu_main.xml" value="0.1796875" />
         <entry key="..\:/Users/edmun/StudioProjects/meditrack/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.103" />
+        <entry key="app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.104" />
         <entry key="app/src/main/res/drawable/ic_button_input.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1105" />
@@ -35,7 +37,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/calendar_list_item.xml" value="0.14402173913043478" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_about_me.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_about_me.xml" value="0.1747589111328125" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.235552978515625" />
         <entry key="app/src/main/res/layout/fragment_incident_summary.xml" value="0.16354166666666667" />
@@ -51,7 +53,7 @@
         <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/layout/simple_expander.xml" value="0.1" />
         <entry key="app/src/main/res/layout/simple_expander_conditions.xml" value="0.42626190185546875" />
-        <entry key="app/src/main/res/layout/simple_expander_information.xml" value="0.2421875" />
+        <entry key="app/src/main/res/layout/simple_expander_information.xml" value="0.2962561471121652" />
         <entry key="app/src/main/res/layout/simple_expander_medications.xml" value="0.33983612060546875" />
         <entry key="app/src/main/res/layout/toggle_button.xml" value="0.1265625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

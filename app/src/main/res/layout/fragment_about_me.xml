@@ -36,36 +36,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_medications"
             tools:orientation="horizontal" />
 
-        <EditText
-            android:id="@+id/et_insert_med"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_medications"/>
-
-        <Button
-            android:id="@+id/bttn_insert_med"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="insert"
-            app:layout_constraintStart_toEndOf="@+id/et_insert_med"
-            app:layout_constraintTop_toBottomOf="@+id/rv_medications" />
-
-        <EditText
-            android:id="@+id/et_remove_med"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/bttn_insert_med"
-            app:layout_constraintTop_toBottomOf="@+id/rv_medications"
-            android:layout_marginLeft="30dp"/>
-
-        <Button
-            android:id="@+id/bttn_remove_med"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            app:layout_constraintStart_toEndOf="@+id/et_remove_med"
-            app:layout_constraintTop_toBottomOf="@+id/rv_medications"/>
 
 
         <TextView
@@ -94,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Symptoms"
+            android:text="Incidents"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
