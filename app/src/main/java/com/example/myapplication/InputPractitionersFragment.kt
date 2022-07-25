@@ -51,7 +51,7 @@ class InputPractitionersFragment : Fragment() {
             val reimbursementPercentage = reimbursementPercentageET.text.toString().toInt()
 
 
-            // TODO make insurance static and make dropdown for insurance
+            // make dropdown for insurance
             // TODO check if the entered practitioner into the list of practitioners into each of the insurances chosen
 
 //            val insuranceCoverageString: String = insuranceCoverage.text.toString()
@@ -74,9 +74,9 @@ class InputPractitionersFragment : Fragment() {
             // make insurance provider list and pass it into user practitioner
             var insuranceProviderList = mutableListOf<InsuranceProvider>()
             insuranceProviderList.add(insuranceProvider)
-            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, insuranceProviderList)
+//            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, insuranceProviderList)
 
-            createAppointmentSuggestions(userPractitioner)
+//            createAppointmentSuggestions(userPractitioner)
 
 //            et_practitioner_name.setText(insuredPractitioner.title)
         }

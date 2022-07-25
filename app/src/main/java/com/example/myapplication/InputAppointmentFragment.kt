@@ -1,8 +1,11 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +14,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -69,56 +74,114 @@ class InputAppointmentFragment : Fragment() {
 
         val submit : Button = view.findViewById(R.id.submitInputAppt)
         submit.setOnClickListener {
+            chooseDate.error = null
+            chooseTime.error = null
             val name: String = view.findViewById<EditText?>(R.id.apptName).text.toString()
             val date: String = chooseDate.text.toString()
             val time: String = chooseTime.text.toString()
             val doctorname: String = view.findViewById<EditText?>(R.id.doctorName).text.toString()
             val phonenumber: String = view.findViewById<EditText?>(R.id.phoneNumber).text.toString()
             val address: String = view.findViewById<EditText?>(R.id.doctorAddress).text.toString()
-            val timeHour: Int = time.substringBefore(":").toInt()
-            val timeMin: Int = time.substringAfter(":").toInt()
-            val day: Int = date.substringBefore("/").toInt()
-            val month: Int = date.substringAfter("/").substringBefore("/").toInt()
-            val year: Int = date.substringAfter("/").substringAfter("/").toInt()
+            var submitError = false
+            val textError = "Don't leave empty"
+            if (name == "") {
+                val nameText = view.findViewById<EditText>(R.id.apptName)
+                nameText.error = textError
+                submitError = true
+            } else if (chooseDate.text.toString() == "") {
+                val dateText = view.findViewById<EditText>(R.id.apptDate)
+                chooseDate.error = textError
+                submitError = true
+            } else if (chooseTime.text.toString() == "") {
+                val timeText = view.findViewById<EditText>(R.id.appointment_pick_time)
+                chooseTime.error = textError
+                submitError = true
+            } else if (doctorname == "") {
+                val doctorText = view.findViewById<EditText>(R.id.doctorName)
+                doctorText.error = textError
+                submitError = true
+            } else if (phonenumber == "") {
+                val phoneText = view.findViewById<EditText>(R.id.phoneNumber)
+                phoneText.error = textError
+                submitError = true
+            } else if (address == "") {
+                val addressText = view.findViewById<EditText>(R.id.doctorAddress)
+                addressText.error = textError
+                submitError = true
+            } else {
+                val timeHour: Int = time.substringBefore(":").toInt()
+                val timeMin: Int = time.substringAfter(":").toInt()
+                val day: Int = date.substringBefore("/").toInt()
+                val month: Int = date.substringAfter("/").substringBefore("/").toInt()
+                val year: Int = date.substringAfter("/").substringAfter("/").toInt()
 
-            Log.w("Year: ", year.toString())
-            Log.w("Month: ", month.toString())
-            Log.w("Day: ", day.toString())
-            Log.w("Hour: ", timeHour.toString())
-            Log.w("Min: ", timeMin.toString())
-            val newAppointment = Appointments(
-                name,
-                timeHour,
-                timeMin,
-                year,
-                month,
-                day,
-                doctorname,
-                phonenumber,
-                address
-            )
-            val fis =
-                FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
-            val ois = ObjectInputStream(fis)
+                Log.w("Year: ", year.toString())
+                Log.w("Month: ", month.toString())
+                Log.w("Day: ", day.toString())
+                Log.w("Hour: ", timeHour.toString())
+                Log.w("Min: ", timeMin.toString())
+                val newAppointment = Appointments(
+                    name,
+                    timeHour,
+                    timeMin,
+                    year,
+                    month,
+                    day,
+                    doctorname,
+                    phonenumber,
+                    address
+                )
+                val fis =
+                    FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+                val ois = ObjectInputStream(fis)
 
-            @Suppress("UNCHECKED_CAST")
-            var appointmentsList: Array<Appointments> =
-                ois.readObject() as Array<Appointments>
+                @Suppress("UNCHECKED_CAST")
+                var appointmentsList: Array<Appointments> =
+                    ois.readObject() as Array<Appointments>
 
-            val mutableAppointmentsList = appointmentsList.toMutableList()
-            mutableAppointmentsList.add(newAppointment)
-            appointmentsList = mutableAppointmentsList.toTypedArray()
-            //appointmentsList = emptyArray()
+                val mutableAppointmentsList = appointmentsList.toMutableList()
+                mutableAppointmentsList.add(newAppointment)
+                appointmentsList = mutableAppointmentsList.toTypedArray()
+                //appointmentsList = emptyArray()
 
-            val apptfos =
-                FileOutputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
-            val apptoos = ObjectOutputStream(apptfos)
-            apptoos.writeObject(appointmentsList)
-            apptoos.close()
+                val apptfos =
+                    FileOutputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+                val apptoos = ObjectOutputStream(apptfos)
+                apptoos.writeObject(appointmentsList)
+                apptoos.close()
 
-            Log.w("END", "END")
-            // Below quits input tab and returns to previous tab
-            activity?.finish()
+                (activity as InputActivity).scheduleNotification(
+                    newAppointment.year!!,
+                    newAppointment.month!!,
+                    newAppointment.day!!,
+                    newAppointment.timeHour!!,
+                    newAppointment.timeMin!!,
+                    "Reminder: " + newAppointment.messageAdapter()
+                )
+
+                Log.w("END", "END")
+                // Below quits input tab and returns to previous tab
+                activity?.finish()
+            }
+            if (submitError) {
+                val dialogBuilder = AlertDialog.Builder(context)
+
+                // set message of alert dialog
+                dialogBuilder.setMessage("Please don't leave any fields empty")
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Okay", DialogInterface.OnClickListener {
+                            dialog, id -> dialog.dismiss()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle("Empty Fields")
+                // show alert dialog
+                alert.show()
+            }
         }
     }
 

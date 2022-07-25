@@ -41,6 +41,8 @@ class InputIncidentReportFragment : Fragment() {
     private val IMAGE_CAPTURE_CODE = 1001
     private var imageUri: Uri? = null
     private var imageView: ImageView? = null
+
+    //TODO: need to load symptoms based on condition
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -113,6 +115,14 @@ class InputIncidentReportFragment : Fragment() {
         submitIncidents.setOnClickListener {
             val incidentsAdapter: IncidentsAdapter = rv_inputs.adapter as IncidentsAdapter
             val symptomsRatings = incidentsAdapter.symptoms
+            var duplicateSymptoms = false
+            val seen: MutableSet<String> = mutableSetOf()
+            for(symptom in symptomsRatings){
+                if(!seen.add(symptom.get(0))){
+                    duplicateSymptoms = true
+                    break
+                }
+            }
             if (TextUtils.isEmpty(chooseDate.text.toString())) {
                 chooseDate.error = "The date cannot be empty"
                 val dialogBuilder = AlertDialog.Builder(requireContext())
@@ -136,7 +146,7 @@ class InputIncidentReportFragment : Fragment() {
                 val dialogBuilder = AlertDialog.Builder(requireContext())
 
                 // set message of alert dialog
-                dialogBuilder.setMessage("You must add ratings for each symptom")
+                dialogBuilder.setMessage("You must add a Severity for each symptom")
                     // if the dialog is cancelable
                     .setCancelable(false)
                     // positive button text and action
@@ -147,10 +157,28 @@ class InputIncidentReportFragment : Fragment() {
                 // create dialog box
                 val alert = dialogBuilder.create()
                 // set title for alert dialog box
-                alert.setTitle("Empty Fields")
+                alert.setTitle("Empty Severity")
                 // show alert dialog
                 alert.show()
 
+            } else if(duplicateSymptoms){
+                val dialogBuilder = AlertDialog.Builder(requireContext())
+
+                // set message of alert dialog
+                dialogBuilder.setMessage("You must have unique symptoms")
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Okay", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle("Duplicate Symptoms")
+                // show alert dialog
+                alert.show()
             } else {
                 val date: String = chooseDate.text.toString()
                 val fis =
