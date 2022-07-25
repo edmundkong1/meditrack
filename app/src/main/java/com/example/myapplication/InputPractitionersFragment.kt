@@ -83,7 +83,7 @@ class InputPractitionersFragment : Fragment() {
     }
 
     fun createAppointmentSuggestions(userPractitioner: UserPractitioner) {
-        
+
     }
 
 }
