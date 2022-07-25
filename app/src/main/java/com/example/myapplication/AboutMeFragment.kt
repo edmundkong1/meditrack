@@ -39,7 +39,10 @@ class AboutMeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    override fun onResume() {
+        super.onResume()
         initData()
         setRecyclerView()
         initData2()
@@ -48,7 +51,6 @@ class AboutMeFragment : Fragment() {
         setRecyclerView3()
         initData4()
         setRecyclerView4()
-
     }
 
 //    private fun insertMedicationItem(position: Int) {
