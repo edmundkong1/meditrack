@@ -51,7 +51,7 @@ class InputPractitionersFragment : Fragment() {
             val reimbursementPercentage = reimbursementPercentageET.text.toString().toInt()
 
 
-            // TODO make insurance static and make dropdown for insurance
+            // make dropdown for insurance
             // TODO check if the entered practitioner into the list of practitioners into each of the insurances chosen
 
 //            val insuranceCoverageString: String = insuranceCoverage.text.toString()
@@ -83,7 +83,7 @@ class InputPractitionersFragment : Fragment() {
     }
 
     fun createAppointmentSuggestions(userPractitioner: UserPractitioner) {
-
+        
     }
 
 }

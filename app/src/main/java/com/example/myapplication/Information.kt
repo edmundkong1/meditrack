@@ -274,11 +274,14 @@ class UserPractitioner(
    _name: String,
    _title: String,
    _costPerSession: Int,
-   _coveredProviders: List<InsuranceProvider>,
+   _coveredProvidersList: List<InsuranceProvider>,
+   _year: Int,
+   _month: Int,
+   _day: Int
 ): Information(_name) {
     var title: String = _title
     var costPerSession: Int = _costPerSession
-    var coveredProviders: List<InsuranceProvider> = _coveredProviders
+    var coveredProviders: List<InsuranceProvider> = _coveredProvidersList
     override fun practitionersAdapter() : ArrayList<String> {
         val newList: ArrayList<String> = arrayListOf()
         newList.add("Equivalent Titles: $title")
