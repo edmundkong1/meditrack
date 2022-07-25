@@ -72,40 +72,49 @@ class InputMedicationsFragment : Fragment() {
             val medicationsList: Array<Array<Meds>> =
                 ois.readObject() as Array<Array<Meds>>
 
+            var days = arrayListOf<Int>()
+
             if (monCheck.isChecked) {
                 var newList = medicationsList[0].toMutableList()
                 newList.add(newMed)
                 medicationsList[0] = newList.toTypedArray()
+                days.add(0)
             }
             if (tuesCheck.isChecked) {
                 var newList = medicationsList[1].toMutableList()
                 newList.add(newMed)
                 medicationsList[1] = newList.toTypedArray()
+                days.add(1)
             }
             if (wedCheck.isChecked) {
                 var newList = medicationsList[2].toMutableList()
                 newList.add(newMed)
                 medicationsList[2] = newList.toTypedArray()
+                days.add(2)
             }
             if (thursCheck.isChecked) {
                 var newList = medicationsList[3].toMutableList()
                 newList.add(newMed)
                 medicationsList[3] = newList.toTypedArray()
+                days.add(3)
             }
             if (friCheck.isChecked) {
                 var newList = medicationsList[4].toMutableList()
                 newList.add(newMed)
                 medicationsList[4] = newList.toTypedArray()
+                days.add(4)
             }
             if (satCheck.isChecked) {
                 var newList = medicationsList[5].toMutableList()
                 newList.add(newMed)
                 medicationsList[5] = newList.toTypedArray()
+                days.add(5)
             }
             if (sunCheck.isChecked) {
                 var newList = medicationsList[6].toMutableList()
                 newList.add(newMed)
                 medicationsList[6] = newList.toTypedArray()
+                days.add(6)
             }
 
             val medfos =
@@ -114,6 +123,50 @@ class InputMedicationsFragment : Fragment() {
 
             medoos.writeObject(medicationsList)
             medoos.close()
+
+            var calcDays = newMed.totalAmount / newMed.dosage - days.size
+            val calendar = Calendar.getInstance()
+            val today = calendar.get(Calendar.DAY_OF_WEEK) - 1
+            var index = 0
+            var count = 0
+            for (i in days.indices) {
+                if (days[i] > today) {
+                    index = i
+                    count = days[i] - today
+                    calcDays--
+                }
+            }
+
+            while (calcDays > 0) {
+                val current = days[index]
+                index += 1
+                if (index >= days.size) index = 0
+                val next = days[index]
+
+                if (current < next) {
+                    count += next - current
+                } else {
+                    count += (7 - current + next)
+                }
+                calcDays--
+            }
+            calendar.add(Calendar.DAY_OF_MONTH, count)
+            val fis2 = FileInputStream(activity?.filesDir.toString() + "refills_list.meditrack")
+            val ois2 = ObjectInputStream(fis2)
+            val refillsList: Array<Refills> =
+                ois2.readObject() as Array<Refills>
+            var refillsmutable = refillsList.toMutableList()
+            refillsmutable.add(Refills(newMed.name + " Refill", newMed.timeHour!!, newMed.timeMin!!, newMed.totalAmount.toString(),
+                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)))
+            val reffos = FileOutputStream(activity?.filesDir.toString() + "refills_list.meditrack")
+            val refoos = ObjectOutputStream(reffos)
+
+            refoos.writeObject(refillsmutable.toTypedArray())
+            refoos.close()
+            Log.w("med", newMed.name!!)
+            Log.w("year", calendar.get(Calendar.YEAR).toString())
+            Log.w("month", calendar.get(Calendar.MONTH).toString())
+            Log.w("day", calendar.get(Calendar.DAY_OF_MONTH).toString())
             // Below quits input tab and returns to previous tab
             activity?.finish()
         }
