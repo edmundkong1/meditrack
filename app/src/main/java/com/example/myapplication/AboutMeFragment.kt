@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_about_me.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 
 // TODO:
 //    use real data
@@ -178,6 +180,15 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun initData4() {
+        val fis = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
+        val ois = ObjectInputStream(fis)
+
+        @Suppress("UNCHECKED_CAST")
+        val appointmentsList: Array<Appointments> =
+            ois.readObject() as Array<Appointments>
+
+        appointmentList.addAll(appointmentsList)
+        /*
         appointmentList.add(Appointments(
             "Dentist Appointment",
             2,
@@ -214,6 +225,7 @@ class AboutMeFragment : Fragment() {
             "226-555-5555",
             "255 Sunview St. Waterloo, ON N2L 3V8"
         ))
+         */
 
     }
 }
