@@ -105,6 +105,8 @@ class InputPractitionersFragment : Fragment() {
 
             createAppointmentSuggestions(insuranceProvider._userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
 
+            activity?.finish()
+
 //            et_practitioner_name.setText(insuredPractitionerInfo.title)
         }
     }
