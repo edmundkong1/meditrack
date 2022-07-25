@@ -3,12 +3,15 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_input_medications.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
@@ -47,6 +50,13 @@ class InputMedicationsFragment : Fragment() {
         submit.setOnClickListener{
             val name : String = view.findViewById<EditText?>(R.id.medName).text.toString()
             val time: String = chooseTime.text.toString()
+            val monCheck: CheckBox = view.findViewById(R.id.checkMonday)
+            val tuesCheck: CheckBox = view.findViewById(R.id.checkTuesday)
+            val wedCheck: CheckBox = view.findViewById(R.id.checkWednesday)
+            val thursCheck: CheckBox = view.findViewById(R.id.checkThursday)
+            val friCheck: CheckBox = view.findViewById(R.id.checkFriday)
+            val satCheck: CheckBox = view.findViewById(R.id.checkSaturday)
+            val sunCheck: CheckBox = view.findViewById(R.id.checkSunday)
             val dosage: Int = view.findViewById<EditText?>(R.id.medDosage).text.toString().toInt()
             val actions: String = view.findViewById<EditText?>(R.id.medActions).text.toString()
             val directions: String = view.findViewById<EditText?>(R.id.medDirections).text.toString()
@@ -62,9 +72,41 @@ class InputMedicationsFragment : Fragment() {
             val medicationsList: Array<Array<Meds>> =
                 ois.readObject() as Array<Array<Meds>>
 
-            var newList = medicationsList[0].toMutableList()
-            newList.add(newMed)
-            medicationsList[0] = newList.toTypedArray()
+            if (monCheck.isChecked) {
+                var newList = medicationsList[0].toMutableList()
+                newList.add(newMed)
+                medicationsList[0] = newList.toTypedArray()
+            }
+            if (tuesCheck.isChecked) {
+                var newList = medicationsList[1].toMutableList()
+                newList.add(newMed)
+                medicationsList[1] = newList.toTypedArray()
+            }
+            if (wedCheck.isChecked) {
+                var newList = medicationsList[2].toMutableList()
+                newList.add(newMed)
+                medicationsList[2] = newList.toTypedArray()
+            }
+            if (thursCheck.isChecked) {
+                var newList = medicationsList[3].toMutableList()
+                newList.add(newMed)
+                medicationsList[3] = newList.toTypedArray()
+            }
+            if (friCheck.isChecked) {
+                var newList = medicationsList[4].toMutableList()
+                newList.add(newMed)
+                medicationsList[4] = newList.toTypedArray()
+            }
+            if (satCheck.isChecked) {
+                var newList = medicationsList[5].toMutableList()
+                newList.add(newMed)
+                medicationsList[5] = newList.toTypedArray()
+            }
+            if (sunCheck.isChecked) {
+                var newList = medicationsList[6].toMutableList()
+                newList.add(newMed)
+                medicationsList[6] = newList.toTypedArray()
+            }
 
             val medfos =
                 FileOutputStream(activity?.filesDir.toString() + "medications_list.meditrack")
