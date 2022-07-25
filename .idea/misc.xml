@@ -41,16 +41,17 @@
         <entry key="app/src/main/res/layout/fragment_incident_summary.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/fragment_input.xml" value="0.2761215209960937" />
         <entry key="app/src/main/res/layout/fragment_input_appointment.xml" value="0.2265625" />
-        <entry key="app/src/main/res/layout/fragment_input_conditions.xml" value="0.11524822695035461" />
+        <entry key="app/src/main/res/layout/fragment_input_conditions.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_input_incident_report.xml" value="0.1431159420289855" />
         <entry key="app/src/main/res/layout/fragment_input_insurance.xml" value="0.11524822695035461" />
         <entry key="app/src/main/res/layout/fragment_input_medications.xml" value="0.22291666666666668" />
-        <entry key="app/src/main/res/layout/fragment_input_practitioners.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_practitioners.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_input_practitioners.xml" value="0.1431159420289855" />
+        <entry key="app/src/main/res/layout/fragment_practitioners.xml" value="0.1" />
         <entry key="app/src/main/res/layout/news_list_item.xml" value="0.18034864785014715" />
         <entry key="app/src/main/res/layout/row.xml" value="0.3839920043945313" />
         <entry key="app/src/main/res/layout/simple_expander.xml" value="0.1" />
         <entry key="app/src/main/res/layout/simple_expander_conditions.xml" value="0.42626190185546875" />
+        <entry key="app/src/main/res/layout/simple_expander_information.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/simple_expander_medications.xml" value="0.33983612060546875" />
         <entry key="app/src/main/res/layout/toggle_button.xml" value="0.1265625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

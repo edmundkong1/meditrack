@@ -86,6 +86,16 @@ class MainActivity : AppCompatActivity() {
         appoos.writeObject(appointments)
         appoos.close()
 
+        //data for appointments
+        val conditions = emptyArray<Conditions>()
+
+        //create file output stream for appointments data
+        val condfos = FileOutputStream(filesDir.toString() + "conditions_list.meditrack")
+        val condoos = ObjectOutputStream(condfos)
+
+        condoos.writeObject(conditions)
+        condoos.close()
+
         val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
         val LibitorDays = arrayOf(0, 2, 4, 6)
         val WarfarinDays = arrayOf(0, 4)

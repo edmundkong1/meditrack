@@ -143,17 +143,26 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun initData2() {
-        conditionsList.add(Conditions(
-            "COPD",
-            "None",
-            "Screaming, Crying, Throwing Up",
-        ))
+        val fis = FileInputStream(activity?.filesDir.toString() + "conditions_list.meditrack")
+        val ois = ObjectInputStream(fis)
 
-        conditionsList.add(Conditions(
-            "Acid Reflux",
-            "Heart Surgery",
-            "Coughing, Screaming, Crying, Throwing Up",
-        ))
+        @Suppress("UNCHECKED_CAST")
+        val tempconditionsList: Array<Conditions> =
+            ois.readObject() as Array<Conditions>
+
+        conditionsList.addAll(tempconditionsList)
+
+//        conditionsList.add(Conditions(
+//            "COPD",
+//            "None",
+//            "Screaming, Crying, Throwing Up",
+//        ))
+//
+//        conditionsList.add(Conditions(
+//            "Acid Reflux",
+//            "Heart Surgery",
+//            "Coughing, Screaming, Crying, Throwing Up",
+//        ))
     }
 
     private fun initData3() {
