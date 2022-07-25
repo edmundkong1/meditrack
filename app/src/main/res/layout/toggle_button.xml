@@ -9,50 +9,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/ToggleBtns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:singleSelection="true"
-        android:gravity="center"
-        >
-        <Button
-            android:id="@+id/Btn1"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="1"
-            style="?attr/materialButtonOutlinedStyle"
-            />
-        <Button
-            android:id="@+id/Btn2"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="2"
-            style="?attr/materialButtonOutlinedStyle"
-            />
-        <Button
-            android:id="@+id/Btn3"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="3"
-            style="?attr/materialButtonOutlinedStyle"
-            />
-        <Button
-            android:id="@+id/Btn4"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="4"
-            style="?attr/materialButtonOutlinedStyle"
-            />
-        <Button
-            android:id="@+id/Btn5"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="5"
-            style="?attr/materialButtonOutlinedStyle"
-            />
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
 </LinearLayout>

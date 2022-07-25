@@ -23,63 +23,73 @@
         android:padding="10dp"
         tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/incidentDate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:hint="Enter Date"
-            android:focusableInTouchMode="false"
-            android:textColor="@color/black"
-            android:layout_margin="10dp" />
+            android:layout_below="@+id/tv_input_instructions"
+            android:orientation="vertical">
 
-        <TableLayout
-            android:gravity="top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_input_instructions"
-            android:id="@+id/textview_input_table"
-            android:stretchColumns="0,1"
-            android:paddingTop="10dp"
-            >
-
-            <TableRow android:layout_width="match_parent">
-
-                <TextView
-                    android:id="@+id/tv_input_heading1"
-                    android:gravity="center"
-                    android:padding="3dip"
-                    android:text="Heading1" />
-
-                <TextView
-                    android:id="@+id/tv_input_heading2"
-                    android:gravity="center"
-                    android:padding="3dip"
-                    android:text="Heading2" />
-            </TableRow>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_inputs"
+            <EditText
+                android:id="@+id/incidentDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:hint="Enter Date"
+                android:inputType="date"
+                android:textColor="@color/black" />
+
+            <TableLayout
+                android:id="@+id/textview_input_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_input_instructions"
+                android:gravity="top"
+                android:paddingTop="10dp"
+                android:stretchColumns="0,1">
+
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_input_heading1"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Heading1" />
+
+                    <TextView
+                        android:id="@+id/tv_input_heading2"
+                        android:gravity="center"
+                        android:padding="3dip"
+                        android:text="Heading2" />
+                </TableRow>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_inputs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/input_tbl_row"/>
 
 
-        </TableLayout>
-        <Button
-            android:id="@+id/submitInputIncident"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp" />
+            </TableLayout>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/add_row_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Add Another Symptom" />
+
+            <Button
+                android:id="@+id/submitInputIncident"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Submit" />
+
+        </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

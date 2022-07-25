@@ -5,19 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.button.MaterialButtonToggleGroup.OnButtonCheckedListener
 
 
 class IncidentsAdapter(val symptomsList: List<String>) :
     RecyclerView.Adapter<IncidentsAdapter.ViewHolder>(){
     private var listener: OnToggleButtonClickListener? = null
+    var symptoms: MutableList<List<String>> = ArrayList<List<String>>()
+
+
 
     //class InputsViewHolder(itemView: View) : RecyclerView.ViewHolder()
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var Spinner: Spinner
         var toggleButton: MaterialButtonToggleGroup
+       // var addRowBtn: Button
 
         // setText in Main-List title text
 //        fun setData(name: String?) {
@@ -28,7 +36,8 @@ class IncidentsAdapter(val symptomsList: List<String>) :
         // components with their respective id
         init {
             Spinner = itemView.findViewById(R.id.input_tbl_attribute)
-            toggleButton = itemView.findViewById(R.id.input_tbl_rating)
+            toggleButton = itemView.findViewById(R.id.togglebtns)
+            //addRowBtn = itemView.findViewById(R.id.add_row_btn)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +46,8 @@ class IncidentsAdapter(val symptomsList: List<String>) :
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {val currInput: String = symptomsList[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currInput: String = symptomsList[position]
 
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
@@ -89,19 +99,34 @@ class IncidentsAdapter(val symptomsList: List<String>) :
 //
 //                }
 //            }
-            holder.toggleButton.setOnClickListener {
-                // toggle the box being expandable
-//                currInput.expandable = !currInput.expandable
-//                notifyItemChanged(position)
+//            holder.toggleButton.setOnClickListener {
+//                // toggle the box being expandable
+////                currInput.expandable = !currInput.expandable
+////                notifyItemChanged(position)
+//                Log.i("button test","testing2")
+//                val text = holder.Spinner.selectedItem.toString()
+//                Log.i("button test",text)
+//            }
+//            holder.toggleButton.addOnButtonCheckedListener(View.OnClickListener {
+//                Log.i("button test","testing2")
+//                val text = holder.Spinner.selectedItem.toString()
+//                Log.i("button test",text)
+//                if (listener != null) {
+//                    listener.onItemClick(modelItems)
+//                }
+//            })
+            holder.toggleButton.addOnButtonCheckedListener(OnButtonCheckedListener { group, checkedId, isChecked ->
                 Log.i("button test","testing2")
-                val text = holder.Spinner.selectedItem.toString()
-                Log.i("button test",text)
-            }
-            holder.toggleButton.setOnClickListener(View.OnClickListener {
-                if (listener != null) {
-                    //listener.onToggleButtonClick(modelItems)
+                if (isChecked) {
+                    val text: String = holder.Spinner.selectedItem.toString()
+                    val btn: MaterialButton = holder.toggleButton.findViewById(checkedId)
+                    val rating: String = btn.text.toString()
+                    Log.i("button test",text)
+                    Log.i("button test",rating)
+                    symptoms.add(listOf(text,rating))
                 }
             })
+
 
 //                notifyItemChanged(position)
         }
@@ -122,5 +147,7 @@ class IncidentsAdapter(val symptomsList: List<String>) :
     fun setWhenClickListener(listener: OnToggleButtonClickListener?) {
         this.listener = listener
     }
+
+
 
 }

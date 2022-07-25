@@ -18,29 +18,51 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 />
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_view_ratings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.511"
-            tools:layout_editor_absoluteX="-55dp">
-        <include
-            android:id="@+id/input_tbl_rating"
-            layout="@layout/toggle_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/input_tbl_attribute"
-            tools:ignore="NotSibling" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <ImageButton
-            android:id="@+id/sharepic"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add"
-            />
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/togglebtns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:singleSelection="true"
+                android:gravity="center"
+                >
+                <Button
+                    android:id="@+id/Btn1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/Btn2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/Btn3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/Btn4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/Btn5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
     </TableRow>
 </LinearLayout>
