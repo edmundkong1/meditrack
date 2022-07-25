@@ -36,12 +36,6 @@
         tools:layout="@layout/fragment_input_insurance">
     </fragment>
     <fragment
-        android:id="@+id/InputConditionsFragment"
-        android:name="com.example.myapplication.InputConditionsFragment"
-        android:label="InputConditions"
-        tools:layout="@layout/fragment_input_conditions">
-    </fragment>
-    <fragment
         android:id="@+id/InputFragment"
         android:name="com.example.myapplication.InputFragment"
         android:label="Input"
