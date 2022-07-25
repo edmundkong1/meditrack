@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".InputMedicationsFragment" >
 
     <LinearLayout
@@ -18,7 +23,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Enter Medication Name"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medicationTime"
@@ -27,7 +33,78 @@
             android:ems="10"
             android:focusableInTouchMode="false"
             android:hint="Choose Time"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Days for Medication: "
+            android:textSize="18sp"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkMonday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Monday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkTuesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Tuesday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkWednesday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Wednesday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkThursday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Thursday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkFriday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Friday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkSaturday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Saturday"
+            android:layout_margin="10dp" />
+
+        <CheckBox
+            android:id="@+id/checkSunday"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textSize="18sp"
+            android:text="Sunday"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medDosage"
@@ -36,7 +113,8 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Enter Medication Dosage (mg)"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medActions"
@@ -45,7 +123,8 @@
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Actions"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medDirections"
@@ -54,7 +133,8 @@
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:hint="Enter Medication Directions"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/medTotal"
@@ -63,14 +143,17 @@
             android:ems="10"
             android:inputType="number"
             android:hint="Enter Total Amount (mg)"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputMed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
