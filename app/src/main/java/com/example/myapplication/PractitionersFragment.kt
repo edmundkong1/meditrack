@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 //import com.example.myapplication.practitioners.InsuredPractitionerInfo
 
 import kotlinx.android.synthetic.main.fragment_practitioners.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 
 class PractitionersFragment : Fragment() {
     private var insuranceProviderList = ArrayList<InsuranceProvider>()
@@ -25,7 +27,25 @@ class PractitionersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initData()
-        setRecyclerViews()
+//        setProviderRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //get insurance providers
+        val fis = FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+        val ois = ObjectInputStream(fis)
+
+        @Suppress("UNCHECKED_CAST")
+        var insuranceProviderList: Array<InsuranceProvider> =
+            ois.readObject() as Array<InsuranceProvider>
+        val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
+
+
+        val insuranceProviderAdapter = InsuranceProviderAdapter(mutableInsuranceProviderList as ArrayList<InsuranceProvider>)
+        rv_insurance_providers.adapter = insuranceProviderAdapter
+        rv_insurance_providers.setHasFixedSize(true)
     }
 
 
