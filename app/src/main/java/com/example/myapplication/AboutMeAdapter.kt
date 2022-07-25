@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.simple_expander_information.view.*
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 
 //https://www.codevscolor.com/android-kotlin-delete-item-recyclerview
 
@@ -69,6 +73,34 @@ class AboutMeAdapter(val informationList: List<Information>) : RecyclerView.Adap
 
             button.setOnClickListener {
                 // toggle the box being expandable
+                if(currInformation is Appointments){
+                    val fis1 = FileInputStream(context?.filesDir.toString() + "appointments_list.meditrack")
+                    val ois1 = ObjectInputStream(fis1)
+                    var appointmentsList: Array<Appointments> =
+                        ois1.readObject() as Array<Appointments>
+
+                    ois1.close()
+                    fis1.close()
+
+                    for(i in appointmentsList.indices){
+                        if(appointmentsList[i].name == currInformation.name){
+                            val tempappointmentsList = appointmentsList.toMutableList()
+                            tempappointmentsList.removeAt(i)
+                            appointmentsList = tempappointmentsList.toTypedArray()
+                            break
+                        }
+                    }
+
+                    val apptfos =
+                        FileOutputStream(context?.filesDir.toString() + "appointments_list.meditrack")
+                    val apptoos = ObjectOutputStream(apptfos)
+                    apptoos.writeObject(appointmentsList)
+                    apptoos.close()
+                }
+                else if(currInformation is Conditions){
+
+                }
+
                 linear_layout.visibility = View.GONE
             }
 
