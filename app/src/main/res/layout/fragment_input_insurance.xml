@@ -20,8 +20,7 @@
             android:hint="Enter Date"
             android:focusableInTouchMode="false"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputInsurance"

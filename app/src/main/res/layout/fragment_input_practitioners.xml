@@ -19,8 +19,7 @@
             android:inputType="textPersonName"
             android:hint="Enter Practitioner's Name"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/et_cost_per_session"

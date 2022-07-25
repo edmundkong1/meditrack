@@ -19,8 +19,7 @@
             android:inputType="textPersonName"
             android:hint="Enter Appointment Name"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/apptDate"
@@ -31,8 +30,7 @@
             android:hint="Enter Date"
             android:focusableInTouchMode="false"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp"/>
 
         <EditText
             android:id="@+id/appointment_pick_time"
@@ -42,8 +40,7 @@
             android:focusableInTouchMode="false"
             android:hint="Choose Time"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/doctorName"
@@ -53,8 +50,7 @@
             android:inputType="textPersonName"
             android:hint="Enter Doctor's Name"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/phoneNumber"
@@ -64,8 +60,7 @@
             android:inputType="phone"
             android:hint="Enter Doctor's Phone Number"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <EditText
             android:id="@+id/doctorAddress"
@@ -75,8 +70,7 @@
             android:inputType="textCapWords|textAutoCorrect"
             android:hint="Enter Doctor's Address"
             android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:autofillHints="" />
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/submitInputAppt"
