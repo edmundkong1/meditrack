@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.practitioners.InsuredPractitioner
 
 import kotlinx.android.synthetic.main.fragment_practitioners.*
 
 class PractitionersFragment : Fragment() {
     private var publicCoveredList = ArrayList<PublicPractitioners>()
-    private var insuranceProvidersList = ArrayList<InsuranceProviders>()
+    private var insuranceProvidersList = ArrayList<InsuranceProvider>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class PractitionersFragment : Fragment() {
 
     private fun setRecyclerViews() {
 
-        val insuranceProvidersAdapter = InsuranceProvidersAdapter(insuranceProvidersList)
+        val insuranceProvider = PractitionersAdapter(insuranceProvidersList)
         rv_insurance_providers.setLayoutManager(
             LinearLayoutManager(
                 context,
@@ -39,7 +40,7 @@ class PractitionersFragment : Fragment() {
                 false
             )
         )
-        rv_insurance_providers.adapter = insuranceProvidersAdapter
+        rv_insurance_providers.adapter = insuranceProvider
         rv_insurance_providers.setHasFixedSize(true)
 
         val publicCovered= PractitionersAdapter(publicCoveredList)
@@ -48,6 +49,8 @@ class PractitionersFragment : Fragment() {
     }
 
     private fun initData() {
+
+
         publicCoveredList.add(
             PublicPractitioners(
             "Dr. Eyes",
@@ -66,22 +69,20 @@ class PractitionersFragment : Fragment() {
         ))
 
 //        insuranceProvidersList.add(
-//            InsuranceProviders(
+//            InsuranceProvider(
 //            "Sunlife",
-//            "40 mg",
-//            "Refill required---------- DO OTHIS and don't look back on it yuh",
-//            "Directions: Take daily at 9:00am (on empty stomach)."
+//            "Dr. Bean, Dr. Olive, Dr. Letttuce"
 //        ))
 //
 //        insuranceProvidersList.add(
-//            InsuranceProviders(
+//            InsuranceProvider(
 //                "Manulife",
 //                "40 mg",
 //                "Refill required---------- DO OTHIS and don't look back on it yuh",
 //                "Directions: Take daily at 9:00am (on empty stomach)."
 //            ))
 //        insuranceProvidersList.add(
-//            InsuranceProviders(
+//            InsuranceProvider(
 //                "OHIP",
 //                "40 mg",
 //                "Refill required---------- DO OTHIS and don't look back on it yuh",
@@ -89,7 +90,7 @@ class PractitionersFragment : Fragment() {
 //            ))
 //
 //        insuranceProvidersList.add(
-//            InsuranceProviders(
+//            InsuranceProvider(
 //                "CanadaLife",
 //                "40 mg",
 //                "Refill required---------- DO OTHIS and don't look back on it yuh",
