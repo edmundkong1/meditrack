@@ -13,9 +13,7 @@ import com.example.myapplication.databinding.ActivityInputBinding
 import java.util.*
 
 //new Activity created because Input tab is a new screen
-//TODO: need to add either the action bar at the bottom of this new screen, or a back button to go to previous screen
 class InputActivity : AppCompatActivity() {
-    //TODO: add all input content here, and layout info to activity_input.xml file
     private lateinit var binding: ActivityInputBinding
     private var alarmManager: AlarmManager? = null
 
@@ -63,6 +61,7 @@ class InputActivity : AppCompatActivity() {
         )
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleRepeatingNotification(Dayofweek: Int, Hour: Int, Min: Int, NotifMessage: String) {
         val intent = Intent(this@InputActivity, ReminderBroadcast::class.java)
         intent.putExtra("Message", NotifMessage)
@@ -89,5 +88,4 @@ class InputActivity : AppCompatActivity() {
             alarmStartTime.timeInMillis, 1000 * 60 * 60 * 24 * 7, pendingIntent
         )
     }
-
 }

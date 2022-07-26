@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
         onResume()
     }
 
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onResume() {
         super.onResume()
         val todayDate: TextView = thisView.findViewById(R.id.textview_currentDate)
@@ -115,6 +116,7 @@ class HomeFragment : Fragment() {
             data.addAll(day7)
         }
 
+        //iterate through appts
         for (appointment in appointmentsList) {
             if (calendar.get(Calendar.YEAR) == appointment.year &&
                 calendar.get(Calendar.MONTH) + 1 == appointment.month &&
@@ -123,6 +125,7 @@ class HomeFragment : Fragment() {
             }
         }
 
+        //iterate through refills
         for (refill in refillsList) {
             if (calendar.get(Calendar.YEAR) == refill.year &&
                 calendar.get(Calendar.MONTH) + 1 == refill.month &&
@@ -174,9 +177,5 @@ class HomeFragment : Fragment() {
             adapter = recyclerViewAdapter
         }
         (activity as MainActivity).get_news_from_api()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }

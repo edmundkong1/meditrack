@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Appointment Name"
+            android:hint="@string/enter_appointment_name"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date"
-            android:hint="Enter Date"
+            android:hint="@string/enter_date"
             android:focusableInTouchMode="false"
             android:textColor="@color/black"
             android:layout_margin="10dp"/>
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusableInTouchMode="false"
-            android:hint="Choose Time"
+            android:hint="@string/choose_time"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Doctor's Name"
+            android:hint="@string/enter_doctor_s_name"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone"
-            android:hint="Enter Doctor's Phone Number"
+            android:hint="@string/enter_doctor_s_phone_number"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textCapWords|textAutoCorrect"
-            android:hint="Enter Doctor's Address"
+            android:hint="@string/enter_doctor_s_address"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -76,7 +76,7 @@
             android:id="@+id/submitInputAppt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
 

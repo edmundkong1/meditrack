@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_input_medications.*
 import java.io.FileInputStream
@@ -32,7 +34,8 @@ class InputMedicationsFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_medications, container, false)
     }
-    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.M)
+    @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val chooseTime: EditText = view.findViewById(R.id.medicationTime)
         chooseTime.setOnClickListener {
@@ -117,10 +120,10 @@ class InputMedicationsFragment : Fragment() {
                 val medicationsList: Array<Array<Meds>> =
                     ois.readObject() as Array<Array<Meds>>
 
-                var days = arrayListOf<Int>()
+                val days = arrayListOf<Int>()
 
                 if (monCheck.isChecked) {
-                    var newList = medicationsList[0].toMutableList()
+                    val newList = medicationsList[0].toMutableList()
                     newList.add(newMed)
                     medicationsList[0] = newList.toTypedArray()
                     days.add(0)
@@ -132,7 +135,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (tuesCheck.isChecked) {
-                    var newList = medicationsList[1].toMutableList()
+                    val newList = medicationsList[1].toMutableList()
                     newList.add(newMed)
                     medicationsList[1] = newList.toTypedArray()
                     days.add(1)
@@ -144,7 +147,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (wedCheck.isChecked) {
-                    var newList = medicationsList[2].toMutableList()
+                    val newList = medicationsList[2].toMutableList()
                     newList.add(newMed)
                     medicationsList[2] = newList.toTypedArray()
                     days.add(2)
@@ -156,7 +159,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (thursCheck.isChecked) {
-                    var newList = medicationsList[3].toMutableList()
+                    val newList = medicationsList[3].toMutableList()
                     newList.add(newMed)
                     medicationsList[3] = newList.toTypedArray()
                     days.add(3)
@@ -168,7 +171,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (friCheck.isChecked) {
-                    var newList = medicationsList[4].toMutableList()
+                    val newList = medicationsList[4].toMutableList()
                     newList.add(newMed)
                     medicationsList[4] = newList.toTypedArray()
                     days.add(4)
@@ -180,7 +183,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (satCheck.isChecked) {
-                    var newList = medicationsList[5].toMutableList()
+                    val newList = medicationsList[5].toMutableList()
                     newList.add(newMed)
                     medicationsList[5] = newList.toTypedArray()
                     days.add(5)
@@ -192,7 +195,7 @@ class InputMedicationsFragment : Fragment() {
                     )
                 }
                 if (sunCheck.isChecked) {
-                    var newList = medicationsList[6].toMutableList()
+                    val newList = medicationsList[6].toMutableList()
                     newList.add(newMed)
                     medicationsList[6] = newList.toTypedArray()
                     days.add(6)
@@ -242,23 +245,32 @@ class InputMedicationsFragment : Fragment() {
                 val ois2 = ObjectInputStream(fis2)
                 val refillsList: Array<Refills> =
                     ois2.readObject() as Array<Refills>
-                var refillsmutable = refillsList.toMutableList()
+                val refillsmutable = refillsList.toMutableList()
+
+                val temprefill = Refills(newMed.name + " Refill", newMed.timeHour!!, newMed.timeMin!!, newMed.totalAmount.toString(),
+                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))
+
                 refillsmutable.add(Refills(newMed.name + " Refill", newMed.timeHour!!, newMed.timeMin!!, newMed.totalAmount.toString(),
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)))
                 val reffos = FileOutputStream(activity?.filesDir.toString() + "refills_list.meditrack")
                 val refoos = ObjectOutputStream(reffos)
 
+                (activity as InputActivity).scheduleNotification(
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH) + 1,
+                    calendar.get(Calendar.DAY_OF_MONTH),
+                    newMed.timeHour!!,
+                    newMed.timeMin!!,
+                    "Refill: " + newMed.name + " " + temprefill.messageAdapter()
+                )
+
                 refoos.writeObject(refillsmutable.toTypedArray())
                 refoos.close()
-                Log.w("med", newMed.name!!)
-                Log.w("year", calendar.get(Calendar.YEAR).toString())
-                Log.w("month", calendar.get(Calendar.MONTH).toString())
-                Log.w("day", calendar.get(Calendar.DAY_OF_MONTH).toString())
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
-            } else {
+            }
+            else {
                 val dialogBuilder = AlertDialog.Builder(context)
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("Please don't leave any fields empty")
                     // if the dialog is cancelable
@@ -277,5 +289,4 @@ class InputMedicationsFragment : Fragment() {
             }
         }
     }
-
 }

@@ -76,11 +76,6 @@ class MainActivity : AppCompatActivity() {
             appoos.writeObject(appointments)
             appoos.close()
 
-            val NorvascDays = arrayOf(0, 1, 2, 3, 4, 5, 6)
-            val LibitorDays = arrayOf(0, 2, 4, 6)
-            val WarfarinDays = arrayOf(0, 4)
-            val BrilintaDays = arrayOf(0, 5)
-
             //used for calculating when to let user know about refills
             val refillReminders: ArrayList<Refills> = arrayListOf()
 
@@ -144,7 +139,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 day++
             }
-
 
             val editor = wmbPreference.edit()
             editor.putBoolean("FIRSTRUN", false)

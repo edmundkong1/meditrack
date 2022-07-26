@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".InputFragment">
 
     <RelativeLayout
@@ -19,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Select Input Option"
+            android:text="@string/select_input_option"
             android:textSize="20sp"
             android:textAlignment="center"
             android:padding="10dp"/>
@@ -36,7 +35,17 @@
                     android:id="@+id/InputIncidentsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Daily Incident Report"
+                    android:text="@string/enter_daily_incident_report"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:height="80dp" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/InputPractitionersButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_practitioners"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />
@@ -46,7 +55,7 @@
                     android:id="@+id/InputAppointmentsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Appointments"
+                    android:text="@string/enter_appointments"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />
@@ -57,17 +66,7 @@
                     android:id="@+id/InputMedicationsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Medications"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:height="80dp" />
-            </TableRow>
-            <TableRow>
-                <Button
-                    android:id="@+id/InputPractitionersButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Practitioners"
+                    android:text="@string/enter_medications"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />
@@ -77,7 +76,7 @@
                     android:id="@+id/InputConditionsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Conditions"
+                    android:text="@string/enter_conditions"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:height="80dp" />

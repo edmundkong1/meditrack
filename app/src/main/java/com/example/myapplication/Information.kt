@@ -258,8 +258,6 @@ class Conditions(
     }
 }
 
-//// FOR PRACTITIONERS //////////
-
 // eg. Manulife, list of the user's practitioners, list of practitioner info
 class InsuranceProvider(
     _insuranceName: String,

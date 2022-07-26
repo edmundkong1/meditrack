@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InputIncidentReportFragment">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_input_instructions"
-        android:text="Incidents"
+        android:text="@string/incidents"
         android:textSize="20sp"
         android:textAlignment="center"
         android:padding="10dp"
@@ -37,7 +38,7 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:focusableInTouchMode="false"
-                android:hint="Enter Date"
+                android:hint="@string/enter_date"
                 android:inputType="date"
                 android:textColor="@color/black" />
 
@@ -45,36 +46,35 @@
                 android:id="@+id/textview_input_table"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_input_instructions"
                 android:gravity="top"
                 android:paddingTop="10dp"
                 android:stretchColumns="0,1">
-
                 <TableRow android:layout_width="match_parent">
-
                     <TextView
                         android:id="@+id/tv_input_heading1"
                         android:gravity="center"
                         android:padding="3dip"
-                        android:text="Symptom" />
+                        android:text="@string/symptom" />
 
                     <TextView
                         android:id="@+id/tv_input_heading2"
                         android:gravity="center"
                         android:padding="3dip"
-                        android:text="Severity" />
+                        android:text="@string/severity" />
                 </TableRow>
                 <TableRow android:layout_width="match_parent">
                     <TextView
                         android:id="@+id/tv_input_low"
                         android:gravity="right"
                         android:paddingRight="10dp"
-                        android:text="@string/low" />
+                        android:text="@string/low"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                     <TextView
                         android:id="@+id/tv_input_high"
                         android:gravity="right"
                         android:paddingRight="10dp"
-                        android:text="@string/high" />
+                        android:text="@string/high"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </TableRow>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -83,8 +83,6 @@
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/input_tbl_row"/>
-
-
             </TableLayout>
 
             <Button
@@ -93,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"
-                android:text="Add Another Symptom" />
+                android:text="@string/add_another_symptom" />
 
             <Button
                 android:id="@+id/submitInputIncident"
@@ -101,26 +99,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"
-                android:text="Submit" />
-
+                android:text="@string/submit" />
 
         <Button
             android:id="@+id/button_take_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:text="Take a Photo"
-            />
+            android:text="@string/take_a_photo" />
 
         <ImageView
             android:id="@+id/imageview_picture"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            />
-
+            android:layout_height="fill_parent" />
 
         </LinearLayout>
     </RelativeLayout>

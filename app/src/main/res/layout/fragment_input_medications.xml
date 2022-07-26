@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Medication Name"
+            android:hint="@string/enter_medication_name"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusableInTouchMode="false"
-            android:hint="Choose Time"
+            android:hint="@string/choose_time"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/days_check"
-            android:text="Select Days for Medication: "
+            android:text="@string/select_days_for_medication"
             android:textSize="18sp"
             android:layout_margin="10dp" />
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Monday"
+            android:text="@string/monday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Tuesday"
+            android:text="@string/tuesday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Wednesday"
+            android:text="@string/wednesday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Thursday"
+            android:text="@string/thursday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Friday"
+            android:text="@string/friday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Saturday"
+            android:text="@string/saturday"
             android:layout_margin="10dp" />
 
         <CheckBox
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:textSize="18sp"
-            android:text="Sunday"
+            android:text="@string/sunday"
             android:layout_margin="10dp" />
 
         <EditText
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="Enter Medication Dosage (mg)"
+            android:hint="@string/enter_medication_dosage_mg"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
-            android:hint="Enter Medication Actions"
+            android:hint="@string/enter_medication_actions"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
-            android:hint="Enter Medication Directions"
+            android:hint="@string/enter_medication_directions"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="Enter Total Amount (mg)"
+            android:hint="@string/enter_total_amount_mg"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -152,7 +152,7 @@
             android:id="@+id/submitInputMed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
 
