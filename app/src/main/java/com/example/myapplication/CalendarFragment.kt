@@ -50,6 +50,7 @@ class CalendarFragment : Fragment() {
         onResume()
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onResume() {
         super.onResume()
         calendarView = thisView.findViewById(R.id.calendar)
@@ -129,6 +130,7 @@ class CalendarFragment : Fragment() {
             }
         }
 
+        //display refills
         for (refill in refillsList) {
             if (calendar.get(Calendar.YEAR) == refill.year &&
                 calendar.get(Calendar.MONTH) + 1 == refill.month &&
@@ -181,6 +183,8 @@ class CalendarFragment : Fragment() {
                     else {
                         data.addAll(day7)
                     }
+
+                    //iterate through appts
                     for (appointment in appointmentsList) {
                         if (calendar.get(Calendar.YEAR) == appointment.year &&
                             calendar.get(Calendar.MONTH) + 1 == appointment.month &&
@@ -189,6 +193,7 @@ class CalendarFragment : Fragment() {
                         }
                     }
 
+                    //iterate through refills
                     for (refill in refillsList) {
                         if (calendar.get(Calendar.YEAR) == refill.year &&
                             calendar.get(Calendar.MONTH) + 1 == refill.month &&
@@ -197,6 +202,7 @@ class CalendarFragment : Fragment() {
                         }
                     }
 
+                    //sort by time
                     data.sortWith(compareBy({it.timeHour}, {it.timeMin}))
 
                     l.adapter = CalendarListAdapter(requireActivity(), data.toTypedArray())

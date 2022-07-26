@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Condition Name"
+            android:hint="@string/enter_condition_name"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
-            android:hint="Enter Related Procedure History"
+            android:hint="@string/enter_related_procedure_history"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
-            android:hint="Enter Symptoms History"
+            android:hint="@string/enter_symptoms_history"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/submitInputConditions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"/>
 

@@ -35,27 +35,10 @@ import java.io.ObjectOutputStream
 class InputIncidentReportFragment : Fragment() {
     private var inputsList = ArrayList<String>()
 
-    private var incidentAdapter: IncidentsAdapter? = null
-    val CAMERA_PERMISSION_CODE = 1000;
+    private val CAMERA_PERMISSION_CODE = 1000;
     private val IMAGE_CAPTURE_CODE = 1001
     private var imageUri: Uri? = null
     private var imageView: ImageView? = null
-
-
-
-    //TODO: need to load symptoms based on condition
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        //incidentAdapter = IncidentsAdapter(inputsList)
-        //rv_inputs.adapter = IncidentsAdapter(inputsList)
-//        incidentAdapter = .setWhenClickListener(new IncidentsAdpater.OnItemsClickListener() {
-//            override fun OnToggleButtonClick(spinnerValue: String) {
-//                algorithmTitleText.setText(rvOneModel.getName())
-//                setRVTwoList(rvOneModel.getNum())
-//            }
-//        })
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,8 +48,6 @@ class InputIncidentReportFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_incident_report, container, false)
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,9 +59,7 @@ class InputIncidentReportFragment : Fragment() {
             if (permissionGranted) {
                 // Open the camera interface
                 openCameraInterface()
-
             }
-
         }
         initData()
         setRecyclerView()
@@ -118,18 +97,16 @@ class InputIncidentReportFragment : Fragment() {
         submitIncidents.setOnClickListener {
             val incidentsAdapter: IncidentsAdapter = rv_inputs.adapter as IncidentsAdapter
             val symptomsRatings = incidentsAdapter.symptoms
-            var duplicateSymptoms = false
+            val duplicateSymptoms = false
             val seen: MutableSet<String> = mutableSetOf()
             for(symptom in symptomsRatings){
                 if(!seen.add(symptom[0])){
-                    //duplicateSymptoms = true
                     break
                 }
             }
             if (TextUtils.isEmpty(chooseDate.text.toString())) {
                 chooseDate.error = "The date cannot be empty"
                 val dialogBuilder = AlertDialog.Builder(requireContext())
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("The date cannot be empty")
                     // if the dialog is cancelable
@@ -145,9 +122,9 @@ class InputIncidentReportFragment : Fragment() {
                 alert.setTitle("Empty Fields")
                 // show alert dialog
                 alert.show()
-            } else if (symptomsRatings.size < getSizeOfList()) {
+            }
+            else if (symptomsRatings.size < getSizeOfList()) {
                 val dialogBuilder = AlertDialog.Builder(requireContext())
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("You must add a Severity for each symptom")
                     // if the dialog is cancelable
@@ -164,9 +141,9 @@ class InputIncidentReportFragment : Fragment() {
                 // show alert dialog
                 alert.show()
 
-            } else if(duplicateSymptoms){
+            }
+            else if(duplicateSymptoms){
                 val dialogBuilder = AlertDialog.Builder(requireContext())
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("You must have unique symptoms")
                     // if the dialog is cancelable
@@ -182,7 +159,8 @@ class InputIncidentReportFragment : Fragment() {
                 alert.setTitle("Duplicate Symptoms")
                 // show alert dialog
                 alert.show()
-            } else {
+            }
+            else {
                 val date: String = chooseDate.text.toString()
                 val fis =
                     FileInputStream(activity?.filesDir.toString() + "incident_list.meditrack")
@@ -193,14 +171,13 @@ class InputIncidentReportFragment : Fragment() {
                     ois.readObject() as Array<Incident>
                 val mutableIncidentsList = incidentsList.toMutableList()
                 for(symptom in symptomsRatings){
-                    var tempIncident = Incident()
+                    val tempIncident = Incident()
                     tempIncident.date = date
                     tempIncident.symptom = symptom[0]
                     tempIncident.severity = symptom[1]
                     mutableIncidentsList.add(tempIncident)
                 }
                 incidentsList = mutableIncidentsList.toTypedArray()
-
 
                 val incidentfos =
                     FileOutputStream(activity?.filesDir.toString() + "incident_list.meditrack")
@@ -209,10 +186,6 @@ class InputIncidentReportFragment : Fragment() {
                 incidentoos.writeObject(incidentsList)
                 incidentoos.close()
 
-                Log.w("date", date)
-                for (symptom in symptomsRatings) {
-                    Log.w("symptom-rating", symptom.get(0) + "-" + symptom.get(1))
-                }
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
 
@@ -227,7 +200,6 @@ class InputIncidentReportFragment : Fragment() {
     }
 
     private fun initData() {
-
         inputsList.add("First Symptom")
 
     }
@@ -240,11 +212,6 @@ class InputIncidentReportFragment : Fragment() {
     private fun getSizeOfList(): Int {
         return inputsList.size
     }
-
-//MaterialButtonToggleGroup materialButtonToggleGroup =
-//         findViewById(R.id.toggleButton);
-//int buttonId = materialButtonToggleGroup.getCheckedButtonId();
-//MaterialButton button = materialButtonToggleGroup.findViewById(buttonId);
 
     private fun requestCameraPermission(): Boolean {
         var permissionGranted = false
@@ -259,11 +226,13 @@ class InputIncidentReportFragment : Fragment() {
 
                 // Display permission dialog
                 requestPermissions(permission, CAMERA_PERMISSION_CODE)
-            } else {
+            }
+            else {
                 // Permission already granted
                 permissionGranted = true
             }
-        } else {
+        }
+        else {
             // Android version earlier than M -> no need to request permission
             permissionGranted = true
         }

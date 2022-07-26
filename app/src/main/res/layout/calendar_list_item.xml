@@ -40,6 +40,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="RtlHardcoded" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:id="@+id/hidden_view"
                 android:layout_width="match_parent"
@@ -85,7 +87,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -94,13 +97,14 @@
                         android:layout_marginTop="5dp"
                         android:id="@+id/directions"
                         android:textColor="#000000"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
+
                     <Button
                         android:id="@+id/call_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/call_now"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:visibility="gone"/>
                 </RelativeLayout>
             </LinearLayout>

@@ -64,6 +64,7 @@ class CalendarListAdapter(context: Context, data: Array<Reminders>) : BaseAdapte
            }
        })
 
+       //check appts
        if (data[i] is Appointments) {
            val callButton: Button = view.findViewById(R.id.call_button)
            callButton.visibility = View.VISIBLE

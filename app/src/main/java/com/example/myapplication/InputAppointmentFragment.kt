@@ -25,9 +25,6 @@ import java.util.*
 
 
 class InputAppointmentFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +34,9 @@ class InputAppointmentFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_appointment, container, false)
     }
+
     @RequiresApi(Build.VERSION_CODES.M)
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //https://www.codingdemos.com/android-datepicker-button/
         val chooseDate: EditText = view.findViewById(R.id.apptDate)
@@ -91,12 +89,12 @@ class InputAppointmentFragment : Fragment() {
                 submitError = true
             }
             if (chooseDate.text.toString() == "") {
-                val dateText = view.findViewById<EditText>(R.id.apptDate)
+                view.findViewById<EditText>(R.id.apptDate)
                 chooseDate.error = textError
                 submitError = true
             }
             if (chooseTime.text.toString() == "") {
-                val timeText = view.findViewById<EditText>(R.id.appointment_pick_time)
+                view.findViewById<EditText>(R.id.appointment_pick_time)
                 chooseTime.error = textError
                 submitError = true
             }
@@ -122,11 +120,6 @@ class InputAppointmentFragment : Fragment() {
                 val month: Int = date.substringAfter("/").substringBefore("/").toInt()
                 val year: Int = date.substringAfter("/").substringAfter("/").toInt()
 
-                Log.w("Year: ", year.toString())
-                Log.w("Month: ", month.toString())
-                Log.w("Day: ", day.toString())
-                Log.w("Hour: ", timeHour.toString())
-                Log.w("Min: ", timeMin.toString())
                 val newAppointment = Appointments(
                     name,
                     timeHour,
@@ -138,7 +131,6 @@ class InputAppointmentFragment : Fragment() {
                     phonenumber,
                     address
                 )
-
 
                 // input database into ram
                 val fis =
@@ -155,7 +147,6 @@ class InputAppointmentFragment : Fragment() {
                 val mutableAppointmentsList = appointmentsList.toMutableList()
                 mutableAppointmentsList.add(newAppointment)
                 appointmentsList = mutableAppointmentsList.toTypedArray()
-                //appointmentsList = emptyArray()
 
                 // enter data into database
                 val apptfos =
@@ -175,12 +166,11 @@ class InputAppointmentFragment : Fragment() {
                     newAppointment.name + " " + newAppointment.messageAdapter()
                 )
 
-                Log.w("END", "END")
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
-            } else {
+            }
+            else {
                 val dialogBuilder = AlertDialog.Builder(context)
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("Please don't leave any fields empty")
                     // if the dialog is cancelable
@@ -199,5 +189,4 @@ class InputAppointmentFragment : Fragment() {
             }
         }
     }
-
 }

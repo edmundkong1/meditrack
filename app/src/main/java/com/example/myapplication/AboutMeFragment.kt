@@ -5,21 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.github.mikephil.charting.data.Entry
 import kotlinx.android.synthetic.main.fragment_about_me.*
 import java.io.FileInputStream
 import java.io.ObjectInputStream
-import java.util.*
 import kotlin.collections.ArrayList
-
-// TODO:
-//    use real data
-//    add practitoners section
-//    add scrolling
-//    fix last section opening properly (don't default the sections being open)
-//    add button to call pharmacy/doctors + other shortcuts
-//    fix text overlap, go to next line
-//    button to learn more about the medication
 
 class AboutMeFragment : Fragment() {
 
@@ -28,20 +17,12 @@ class AboutMeFragment : Fragment() {
     private var symptomList = ArrayList<IncidentAboutMe>()
     private var appointmentList = ArrayList<Appointments>()
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about_me, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onResume() {
@@ -55,19 +36,6 @@ class AboutMeFragment : Fragment() {
         initData4()
         setRecyclerView4()
     }
-
-//    private fun insertMedicationItem(position: Int) {
-//        medicationsList.add(
-//            position,
-//            Meds("new med", "New Item At Position$position", "This is Line 2", "This is Line 2")
-//        )
-//        AboutMeAdapter(medicationsList).notifyItemInserted(position)
-//    }
-//
-//    fun removeMedicationItem(position: Int) {
-//        medicationsList.removeAt(position)
-//        AboutMeAdapter(medicationsList).notifyItemRemoved(position)
-//    }
 
     // setup the recycler view
     private fun setRecyclerView() {
@@ -103,11 +71,13 @@ class AboutMeFragment : Fragment() {
         val tempmedicationsList: Array<Array<Meds>> =
             ois.readObject() as Array<Array<Meds>>
 
+        //go through medications
         for(i in tempmedicationsList.indices){
             for(j in tempmedicationsList[i].indices){
                 var newmed = true
                 for(k in medicationsList.indices){
                     if(tempmedicationsList[i][j].name == medicationsList[k].name){
+                        //check days of week
                         if(i == 0){
                             medicationsList[k].days += " Monday"
                         }
@@ -167,50 +137,9 @@ class AboutMeFragment : Fragment() {
                 }
             }
         }
-
-        /* medicationsList.add(Meds(
-             "Norvasc",
-             2,
-             20,
-             20,
-             "none",
-             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-             2000
-         ))
-
-         medicationsList.add(Meds(
-             "Brilinta",
-             2,
-             20,
-             20,
-             "none",
-             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-             2000
-         ))
-
-         medicationsList.add(Meds(
-             "Libitor",
-             2,
-             20,
-             20,
-             "none",
-             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-             2000
-         ))
-
-         medicationsList.add(Meds(
-             "Warfarin",
-             2,
-             20,
-             20,
-             "none",
-             "\"Refill required---------- DO OTHIS and don't look back on it yuh\"",
-             2000
-         ))
-
-         */
     }
 
+    //init data for conditions
     private fun initData2() {
         val fis = FileInputStream(activity?.filesDir.toString() + "conditions_list.meditrack")
         val ois = ObjectInputStream(fis)
@@ -220,26 +149,15 @@ class AboutMeFragment : Fragment() {
             ois.readObject() as Array<Conditions>
 
         conditionsList.addAll(tempconditionsList)
-
-//        conditionsList.add(Conditions(
-//            "COPD",
-//            "None",
-//            "Screaming, Crying, Throwing Up",
-//        ))
-//
-//        conditionsList.add(Conditions(
-//            "Acid Reflux",
-//            "Heart Surgery",
-//            "Coughing, Screaming, Crying, Throwing Up",
-//        ))
     }
 
+    //init data for incidents
     private fun initData3() {
         val fis = FileInputStream(activity?.filesDir.toString() + "incident_list.meditrack")
         val ois = ObjectInputStream(fis)
 
         @Suppress("UNCHECKED_CAST")
-        var incidentsList: Array<Incident> =
+        val incidentsList: Array<Incident> =
             ois.readObject() as Array<Incident>
 
         val incidents: ArrayList<Incident> = incidentsList.toMutableList() as ArrayList<Incident>
@@ -252,28 +170,9 @@ class AboutMeFragment : Fragment() {
 
         }
         ois.close()
-//        symptomList.add(Symptoms(
-//            "Heartburn",
-//            0,
-//            "",
-//            "Directions: Take once a week at 12:00pm"
-//        ))
-//
-//        symptomList.add(Symptoms(
-//            "Chest Pain",
-//            0,
-//            "",
-//            "Directions: Take once a week at 12:00pm"
-//        ))
-//
-//        symptomList.add(Symptoms(
-//            "Sore Throat",
-//            0,
-//            "",
-//            "Directions: Take once a week at 12:00pm"
-//        ))
     }
 
+    //init data for appts
     private fun initData4() {
         val fis = FileInputStream(activity?.filesDir.toString() + "appointments_list.meditrack")
         val ois = ObjectInputStream(fis)
@@ -283,44 +182,5 @@ class AboutMeFragment : Fragment() {
             ois.readObject() as Array<Appointments>
 
         appointmentList.addAll(appointmentsList)
-        /*
-        appointmentList.add(Appointments(
-            "Dentist Appointment",
-            2,
-            30,
-            2022,
-            8,
-            20,
-            "Dr. Teeth",
-            "226-555-5555",
-            "255 Sunview St. Waterloo, ON N2L 3V8"
-        )
-        )
-
-        appointmentList.add(Appointments(
-            "Chiropractor Appointment",
-            12,
-            0,
-            2022,
-            11,
-            12,
-            "Dr. Bones",
-            "226-555-5555",
-            "255 Sunview St. Waterloo, ON N2L 3V8"
-        ))
-
-        appointmentList.add(Appointments(
-            "Allergist Appointment",
-            6,
-            20,
-            2022,
-            8,
-            19,
-            "Dr. Peanut",
-            "226-555-5555",
-            "255 Sunview St. Waterloo, ON N2L 3V8"
-        ))
-         */
-
     }
 }

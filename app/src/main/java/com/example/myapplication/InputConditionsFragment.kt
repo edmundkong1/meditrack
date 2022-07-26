@@ -21,10 +21,6 @@ import java.util.*
 
 
 class InputConditionsFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +30,7 @@ class InputConditionsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_input_conditions, container, false)
     }
 
+    @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val submit : Button = view.findViewById(R.id.submitInputConditions)
         submit.setOnClickListener {
@@ -55,7 +52,6 @@ class InputConditionsFragment : Fragment() {
                 submitError = true
             }
             if (!submitError) {
-
                 val newCondition = Conditions(
                     conditionName,
                     procedureHistory,
@@ -73,7 +69,6 @@ class InputConditionsFragment : Fragment() {
                 val mutableConditionsList = conditionsList.toMutableList()
                 mutableConditionsList.add(newCondition)
                 conditionsList = mutableConditionsList.toTypedArray()
-                //appointmentsList = emptyArray()
 
                 val apptfos =
                     FileOutputStream(activity?.filesDir.toString() + "conditions_list.meditrack")
@@ -83,9 +78,9 @@ class InputConditionsFragment : Fragment() {
 
                 // Below quits input tab and returns to previous tab
                 activity?.finish()
-            } else {
+            }
+            else {
                 val dialogBuilder = AlertDialog.Builder(context)
-
                 // set message of alert dialog
                 dialogBuilder.setMessage("Please don't leave any fields empty")
                     // if the dialog is cancelable
@@ -103,7 +98,5 @@ class InputConditionsFragment : Fragment() {
                 alert.show()
             }
         }
-
     }
-
 }

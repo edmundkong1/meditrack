@@ -20,11 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_title"
-                android:text="Title"
+                android:text="@string/title_expander"
                 android:textSize="22sp"
                 android:padding="16dp"
                 android:textStyle="bold"/>
@@ -35,22 +36,20 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@drawable/ic_baseline_delete_24"
                 app:layout_constraintWidth_percent=".08"
-                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintDimensionRatio="1:1" />
 
-                />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rl_expandable_layout"
-            android:visibility="visible"
-            >
+            android:visibility="visible">
 
             <ListView
                 android:layout_width="match_parent"
@@ -58,10 +57,6 @@
                 android:id="@+id/information_list"
                 android:nestedScrollingEnabled="true"/>
 
-
         </RelativeLayout>
-
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -16,8 +15,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
+
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/togglebtns"
                 android:layout_width="match_parent"
@@ -25,43 +24,42 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:singleSelection="true"
-                android:gravity="center"
-                >
+                android:gravity="center">
+
                 <Button
                     android:id="@+id/Btn1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="1"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
+                    android:text="@string/_1"
+                    style="?attr/materialButtonOutlinedStyle" />
+
                 <Button
                     android:id="@+id/Btn2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="2"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
+                    android:text="@string/_2"
+                    style="?attr/materialButtonOutlinedStyle" />
+
                 <Button
                     android:id="@+id/Btn3"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="3"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
+                    android:text="@string/_3"
+                    style="?attr/materialButtonOutlinedStyle" />
+
                 <Button
                     android:id="@+id/Btn4"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="4"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
+                    android:text="@string/_4"
+                    style="?attr/materialButtonOutlinedStyle" />
+
                 <Button
                     android:id="@+id/Btn5"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="5"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
+                    android:text="@string/_5"
+                    style="?attr/materialButtonOutlinedStyle" />
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
     </TableRow>
