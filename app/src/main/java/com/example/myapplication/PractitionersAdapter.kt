@@ -38,6 +38,13 @@ class PractitionersAdapter(val informationList: List<Information>) :
             val isExpandable : Boolean = currInformation.expandable
             rl_expandable_layout.visibility = if (isExpandable) View.GONE else View.VISIBLE
 
+//            rl_expandable_layout.setLayoutManager(
+//            LinearLayoutManager(
+//                context,
+//                LinearLayoutManager.HORIZONTAL,
+//                false
+//            )
+//        )
             linear_layout.setOnClickListener {
                 // toggle the box being expandable
                 currInformation.expandable = !currInformation.expandable

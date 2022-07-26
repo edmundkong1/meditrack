@@ -32,7 +32,7 @@ class InsuranceProviderAdapter(val insuranceProviderList: ArrayList<InsurancePro
 
         holder.itemView.apply {
             tv_title.text = currProvider.name
-            tv_prop1.text = "Name, Title:" + currProvider._userPractitionerList[0].name + ", " + currProvider._userPractitionerList[0].title
+            tv_prop1.text = "Name, Title: " + currProvider._userPractitionerList[0].name + ", " + currProvider._userPractitionerList[0].title
             tv_prop2.text = "Cost Per Session:" + currProvider._userPractitionerList[0].costPerSession
             tv_prop3.text = "Total Coverage by Insurance:" + currProvider.insuredPractitionerInfoList[0].coveredAmount
         }

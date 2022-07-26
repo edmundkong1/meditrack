@@ -52,16 +52,16 @@ class PractitionersFragment : Fragment() {
 
     private fun setRecyclerViews() {
 
-//        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
-//        rv_insurance_providers.setLayoutManager(
-//            LinearLayoutManager(
-//                context,
-//                LinearLayoutManager.HORIZONTAL,
-//                false
-//            )
-//        )
-//        rv_insurance_providers.adapter = insuranceProviderAdapter
-//        rv_insurance_providers.setHasFixedSize(true)
+        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
+        rv_insurance_providers.setLayoutManager(
+            LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+        )
+        rv_insurance_providers.adapter = insuranceProviderAdapter
+        rv_insurance_providers.setHasFixedSize(true)
     }
 
     private fun initData() {
