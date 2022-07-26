@@ -71,6 +71,7 @@ class AboutMeFragment : Fragment() {
         val tempmedicationsList: Array<Array<Meds>> =
             ois.readObject() as Array<Array<Meds>>
 
+        medicationsList.clear()
         //go through medications
         for(i in tempmedicationsList.indices){
             for(j in tempmedicationsList[i].indices){
@@ -148,6 +149,7 @@ class AboutMeFragment : Fragment() {
         val tempconditionsList: Array<Conditions> =
             ois.readObject() as Array<Conditions>
 
+        conditionsList.clear()
         conditionsList.addAll(tempconditionsList)
     }
 
@@ -162,6 +164,7 @@ class AboutMeFragment : Fragment() {
 
         val incidents: ArrayList<Incident> = incidentsList.toMutableList() as ArrayList<Incident>
         //medication taken per week
+        symptomList.clear()
         for (incident in incidents) {
             symptomList.add(IncidentAboutMe(
                 incident.symptom,
@@ -181,6 +184,7 @@ class AboutMeFragment : Fragment() {
         val appointmentsList: Array<Appointments> =
             ois.readObject() as Array<Appointments>
 
+        appointmentList.clear()
         appointmentList.addAll(appointmentsList)
     }
 }
