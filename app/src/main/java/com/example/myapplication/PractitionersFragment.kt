@@ -49,7 +49,6 @@ class PractitionersFragment : Fragment() {
 //            )
 //        )
         rv_practitioners.adapter = practitionerAdapter
-        rv_practitioners.setHasFixedSize(true)
     }
 
     private fun initData() {

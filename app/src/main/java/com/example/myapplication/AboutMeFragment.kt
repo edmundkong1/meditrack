@@ -41,25 +41,21 @@ class AboutMeFragment : Fragment() {
     private fun setRecyclerView() {
         val medicationsAdapter = AboutMeAdapter(medicationsList)
         rv_medications.adapter = medicationsAdapter
-        rv_medications.setHasFixedSize(true)
     }
 
     private fun setRecyclerView2() {
         val conditionsAdapter = AboutMeAdapter(conditionsList)
         rv_conditions.adapter = conditionsAdapter
-        rv_conditions.setHasFixedSize(true)
     }
 
     private fun setRecyclerView3() {
         val symptomsAdapter = AboutMeAdapter(symptomList)
         recycler_view3.adapter = symptomsAdapter
-        recycler_view3.setHasFixedSize(true)
     }
 
     private fun setRecyclerView4() {
         val appointmentAdapter = AboutMeAdapter(appointmentList)
         recycler_view4.adapter = appointmentAdapter
-        recycler_view4.setHasFixedSize(true)
     }
 
     // initialize the recycler view with (temporary) mock data corresponding to mock data in calendar
