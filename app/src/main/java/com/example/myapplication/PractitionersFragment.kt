@@ -25,29 +25,17 @@ class PractitionersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initData()
-//        setProviderRecyclerView()
     }
 
     override fun onResume() {
         super.onResume()
         initData()
         setInsuranceProviderRV()
-
     }
 
-
     private fun setInsuranceProviderRV() {
-
         val practitionerAdapter = PractitionersAdapter(practitionerList)
-//        rv_insurance_providers.setLayoutManager(
-//            LinearLayoutManager(
-//                context,
-//                LinearLayoutManager.HORIZONTAL,
-//                false
-//            )
-//        )
         rv_practitioners.adapter = practitionerAdapter
     }
 

@@ -142,7 +142,6 @@ class MainActivity : AppCompatActivity() {
 
             val editor = wmbPreference.edit()
             editor.putBoolean("FIRSTRUN", false)
-            //editor.commit();
             editor.apply()
         }
 

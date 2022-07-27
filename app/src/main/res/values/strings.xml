@@ -86,6 +86,16 @@
     <string name="property_2">Property 2</string>
     <string name="property_3">Property 3</string>
     <string name="property_5">Property 5</string>
+    <string name="practitioner_info">Practitioner Info</string>
+    <string name="practitioner_s_name_eg_dr_smith">Practitioner\'s Name (eg. Dr. Smith)</string>
+    <string name="practitioner_s_title_eg_psychologist">Practitioner\'s Title (eg. Psychologist)</string>
+    <string name="cost_per_session_eg_80">Cost Per Session ($) (eg. $80)</string>
+    <string name="insurance_practitioners">Insurance</string>
+    <string name="insurance_provider_eg_sunlife">Insurance Provider (eg. SunLife)</string>
+    <string name="annual_coverage_for_expense_eg_500">Annual Coverage for Expense ($) (eg. $500)</string>
+    <string name="reimbursement_eg_80">Reimbursement (%) (eg. 80)</string>
+    <string name="your_practitioners">Your Practitioners</string>
+    <string name="default_text">Default Text</string>
     <string-array name="symptoms_array">
         <item>Heartburn</item>
         <item>Chest Pain</item>

@@ -1,8 +1,5 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +7,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_input_practitioners.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
-import java.util.*
 
 
 class InputPractitionersFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +26,8 @@ class InputPractitionersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val submitInputPractitioners: Button = view.findViewById(R.id.bttn_submit_input_practitioners)
 
+        //what happens on submit button
         submitInputPractitioners.setOnClickListener {
-
             // get information from EditText fields
             val practitionerNameET: EditText = view.findViewById(R.id.et_practitioner_name)
             val practitionerName = practitionerNameET.text.toString()
@@ -56,7 +47,6 @@ class InputPractitionersFragment : Fragment() {
             val reimbursementPercentageET: EditText = view.findViewById(R.id.reimbursement_percentage)
             val reimbursementPercentage = reimbursementPercentageET.text.toString().toInt()
 
-
             var appointmentsLeft = "Invalid - Entered Cost per Session above annual coverage!"
 
             // we get the appointments left in this year
@@ -68,16 +58,11 @@ class InputPractitionersFragment : Fragment() {
 
             // get amount covered
             val outOfPocketCost: Float = (costPerSession - (costPerSession * reimbursementPercentage / 100)).toFloat()
-
-
             // make practitioner object with entered data
             var practitioner = Practitioner(practitionerName, professionalTitle, costPerSession, insuranceName,
                 insuranceCoverage, reimbursementPercentage, appointmentsLeft, outOfPocketCost)
 
-
-
             // open saved insurance providers from database
-
             // input database into ram
             val fis =
                 FileInputStream(activity?.filesDir.toString() + "practitioners_list.meditrack")
@@ -92,9 +77,6 @@ class InputPractitionersFragment : Fragment() {
             mutablePractitionerList.add(practitioner)
             practitionerList = mutablePractitionerList.toTypedArray()
 
-
-            // TODO: check if insurance company already exists in database, check if practitioner exists in database
-
             // enter data into database
             val insfos =
                 FileOutputStream(activity?.filesDir.toString() + "practitioners_list.meditrack")
@@ -102,26 +84,11 @@ class InputPractitionersFragment : Fragment() {
             insoos.writeObject(practitionerList)
             insoos.close()
 
-            createAppointmentSuggestions(mutablePractitionerList)
-
+            createAppointmentSuggestions()
             activity?.finish()
-
-//            et_practitioner_name.setText(insuredPractitionerInfo.title)
         }
     }
 
-    fun createAppointmentSuggestions(
-       practitionerList: MutableList<Practitioner>) {
-
-//        userPractitionerList.forEach { userPractitioner ->
-//            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->
-//                if (userPractitioner.title == insuredPractitionerInfo.title) {
-//                    return
-//                }
-//            }
-//        }
-
-
-    }
+    fun createAppointmentSuggestions() {}
 
 }

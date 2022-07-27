@@ -18,7 +18,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Your Practitioners"
+                    android:text="@string/your_practitioners"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +33,6 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_practitioners"/>
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout >
 </androidx.core.widget.NestedScrollView>

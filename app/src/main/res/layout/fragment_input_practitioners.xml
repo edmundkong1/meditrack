@@ -15,10 +15,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Practitioner Info"/>
+            android:text="@string/practitioner_info"/>
 
         <EditText
             android:id="@+id/et_practitioner_name"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Practitioner's Name (eg. Dr. Smith)"
+            android:hint="@string/practitioner_s_name_eg_dr_smith"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -37,8 +37,9 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Practitioner's Title (eg. Psychologist)"
+            android:hint="@string/practitioner_s_title_eg_psychologist"
             android:textColor="@color/black" />
+
         <EditText
             android:id="@+id/et_cost_per_session"
             android:layout_width="match_parent"
@@ -46,16 +47,15 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Cost Per Session ($) (eg. $80)"
+            android:hint="@string/cost_per_session_eg_80"
             android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:layout_margin="10dp"
-            android:text="Insurance"/>
-
+            android:text="@string/insurance_practitioners"/>
 
 <!--        MAKE dropdown menu-->
         <EditText
@@ -65,7 +65,7 @@
             android:ems="10"
             android:layout_margin="10dp"
             android:inputType="text"
-            android:hint="Insurance Provider (eg. SunLife)"
+            android:hint="@string/insurance_provider_eg_sunlife"
             android:textColor="@color/black" />
 
         <EditText
@@ -75,9 +75,8 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Annual Coverage for Expense ($) (eg. $500)"
+            android:hint="@string/annual_coverage_for_expense_eg_500"
             android:textColor="@color/black" />
-
 
         <EditText
             android:id="@+id/reimbursement_percentage"
@@ -86,15 +85,14 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Reimbursement (%) (eg. 80)"
+            android:hint="@string/reimbursement_eg_80"
             android:textColor="@color/black" />
-
 
         <Button
             android:id="@+id/bttn_submit_input_practitioners"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
 

@@ -40,14 +40,6 @@ class PractitionersAdapter(val practitionerList: ArrayList<Practitioner>) :
 
             val isExpandable : Boolean = practitioner.expandable
             rl_expandable_layout.visibility = if (isExpandable) View.GONE else View.VISIBLE
-
-//            rl_expandable_layout.setLayoutManager(
-//            LinearLayoutManager(
-//                context,
-//                LinearLayoutManager.HORIZONTAL,
-//                false
-//            )
-//        )
             linear_layout.setOnClickListener {
                 // toggle the box being expandable
                 practitioner.expandable = !practitioner.expandable
@@ -82,8 +74,7 @@ class PractitionersAdapter(val practitionerList: ArrayList<Practitioner>) :
                 pracoos.close()
 
                 linear_layout.visibility = View.GONE
-                }
-
+            }
 
             val params = information_list.layoutParams
             params.height =  200 * textFields.size
@@ -91,7 +82,6 @@ class PractitionersAdapter(val practitionerList: ArrayList<Practitioner>) :
             information_list.requestLayout()
 
         }
-
     }
 
     override fun getItemCount(): Int {
