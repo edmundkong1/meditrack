@@ -13,7 +13,7 @@ import java.io.FileInputStream
 import java.io.ObjectInputStream
 
 class PractitionersFragment : Fragment() {
-    private var insuranceProviderList = ArrayList<InsuranceProvider>()
+    private var practitionerList = ArrayList<Practitioner>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,18 +35,12 @@ class PractitionersFragment : Fragment() {
         initData()
         setInsuranceProviderRV()
 
-
-        // add to the adapter to display
-//        val insuranceProviderAdapter = InsuranceProviderAdapter(mutableInsuranceProviderList as ArrayList<InsuranceProvider>)
-//        rv_insurance_providers.adapter = insuranceProviderAdapter
-//        rv_insurance_providers.setHasFixedSize(true)
-
     }
 
 
     private fun setInsuranceProviderRV() {
 
-        val insuranceProviderAdapter = PractitionersAdapter(insuranceProviderList)
+        val practitionerAdapter = PractitionersAdapter(practitionerList)
 //        rv_insurance_providers.setLayoutManager(
 //            LinearLayoutManager(
 //                context,
@@ -54,21 +48,21 @@ class PractitionersFragment : Fragment() {
 //                false
 //            )
 //        )
-        rv_insurance_providers.adapter = insuranceProviderAdapter
-        rv_insurance_providers.setHasFixedSize(true)
+        rv_practitioners.adapter = practitionerAdapter
+        rv_practitioners.setHasFixedSize(true)
     }
 
     private fun initData() {
         //get insurance providers
-        val fis = FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+        val fis = FileInputStream(activity?.filesDir.toString() + "practitioners_list.meditrack")
         val ois = ObjectInputStream(fis)
 
         @Suppress("UNCHECKED_CAST")
-        val tempInsuranceProviderList: Array<InsuranceProvider> =
-            ois.readObject() as Array<InsuranceProvider>
+        val tempPractitionerList: Array<Practitioner> =
+            ois.readObject() as Array<Practitioner>
 
-        insuranceProviderList.clear()
-        insuranceProviderList.addAll(tempInsuranceProviderList)
+        practitionerList.clear()
+        practitionerList.addAll(tempPractitionerList)
     }
 
 }

@@ -259,56 +259,73 @@ class Conditions(
 }
 
 // eg. Manulife, list of the user's practitioners, list of practitioner info
-class InsuranceProvider(
-    _insuranceName: String,
-    _userPractitionerList: MutableList<UserPractitioner>,
-    _insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>,
-): Information(_insuranceName) {
-    var insuranceName: String = _insuranceName
-    var userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
-    var insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo> = _insuredPractitionerInfoList
-    override fun practitionersAdapter() : ArrayList<String> {
-        val newList: ArrayList<String> = arrayListOf()
-        newList.add("Insurance Name: $insuranceName")
-        newList.add("User Practitioner List: $userPractitionerList")
-        newList.add("Insured Practitioners Info: $insuredPractitionerInfoList")
-        return newList
-    }
-}
+//class InsuranceProvider(
+//    _insuranceName: String,
+//    _userPractitionerList: MutableList<UserPractitioner>,
+//    _insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>,
+//): Information(_insuranceName) {
+//    var insuranceName: String = _insuranceName
+//    var userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
+//    var insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo> = _insuredPractitionerInfoList
+//    override fun practitionersAdapter() : ArrayList<String> {
+//        val newList: ArrayList<String> = arrayListOf()
+//        newList.add("Insurance Name: $insuranceName")
+//        newList.add("User Practitioner List: $userPractitionerList")
+//        newList.add("Insured Practitioners Info: $insuredPractitionerInfoList")
+//        return newList
+//    }
+//}
 
 // eg. Dr. Smith, psychologist, $500 per session
-class UserPractitioner(
+class Practitioner(
     _name: String,
     _title: String,
-    _costPerSession: Int
+    _costPerSession: Int,
+    _insuranceProvider: String,
+    _insuranceCoveredAmount: Int,
+    _insuranceReimbursementPercentage: Int,
+    _appointmentsLeft: String,
+    _outOfPocketCost: Float
 ): Information(_name) {
+    var practitionerName: String = _name
     var title: String = _title
     var costPerSession: Int = _costPerSession
+    var insuranceProvider: String = _insuranceProvider
+    var insuranceCoveredAmount: Int = _insuranceCoveredAmount
+    var insuranceReimbursementPercentage: Int = _insuranceReimbursementPercentage
+    var appointmentsLeft: String = _appointmentsLeft
+    var outOfPocketCost: Float = _outOfPocketCost
     override fun practitionersAdapter() : ArrayList<String> {
         val newList: ArrayList<String> = arrayListOf()
-        newList.add("Equivalent Titles: $title")
-        newList.add("Cost Per Session: $costPerSession")
+        newList.add("Sessions Covered for Rest of Calendar Year - $appointmentsLeft")
+        newList.add("Out-of-pocket Cost per Session - $outOfPocketCost")
+        newList.add("Professional Title - $title")
+        newList.add("Cost Per Session - $costPerSession")
+        newList.add("Insurance Provider - $insuranceProvider")
+        newList.add("Annual Insurance Coverage Amount - $insuranceCoveredAmount")
+        newList.add("Insurance Reimbursement Percentage - $insuranceReimbursementPercentage")
         return newList
     }
 }
 
 // eg. Psychologist, $500 per year, 80%
-class InsuredPractitionerInfo(
-    _title: String,
-    _coveredAmount: Int,
-    _reimbursementPercentage: Int
-): Information(_title) {
-    var title: String = _title
-    var coveredAmount: Int = _coveredAmount
-    var reimbursement: Int = _reimbursementPercentage
-    override fun practitionersAdapter() : ArrayList<String> {
-        val newList: ArrayList<String> = arrayListOf()
-        newList.add("Equivalent Titles: $title")
-        newList.add("Covered Amount: $coveredAmount")
-        newList.add("Reimbursement Percentage: $reimbursement%")
-        return newList
-    }
-}
+//class InsuredPractitionerInfo(
+//    _title: String,
+//    _coveredAmount: Int,
+//    _reimbursementPercentage: Int,
+//    _insuranceProvider: String
+//): Information(_title) {
+//    var title: String = _title
+//    var coveredAmount: Int = _coveredAmount
+//    var reimbursement: Int = _reimbursementPercentage
+//    override fun practitionersAdapter() : ArrayList<String> {
+//        val newList: ArrayList<String> = arrayListOf()
+//        newList.add("Equivalent Titles: $title")
+//        newList.add("Covered Amount: $coveredAmount")
+//        newList.add("Reimbursement Percentage: $reimbursement%")
+//        return newList
+//    }
+//}
 
 class IncidentAboutMe (
     _symptom: String,

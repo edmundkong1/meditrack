@@ -57,52 +57,52 @@ class InputPractitionersFragment : Fragment() {
             val reimbursementPercentage = reimbursementPercentageET.text.toString().toInt()
 
 
+            var appointmentsLeft = "Invalid - Entered Cost per Session above annual coverage!"
 
-            // make dropdown for insurance
+            // we get the appointments left in this year
+            if (costPerSession <= insuranceCoverage) {
+                // will auto round-down to nearest int
+                val apptLeft: Int = insuranceCoverage/costPerSession
+                appointmentsLeft = apptLeft.toString()
+            }
 
-
-            // make insured practitioner object to save to db about what type of insurance info is saved
-            var insuredPractitionerInfo = InsuredPractitionerInfo(professionalTitle, insuranceCoverage, reimbursementPercentage)
-            var insuredPractitionerInfoList = mutableListOf<InsuredPractitionerInfo>()
-            insuredPractitionerInfoList.add(insuredPractitionerInfo)
-
-            // make user practitioner
-            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession)
-            var userPractitionerList = mutableListOf<UserPractitioner>()
-            userPractitionerList.add(userPractitioner)
+            // get amount covered
+            val outOfPocketCost: Float = (costPerSession - (costPerSession * reimbursementPercentage / 100)).toFloat()
 
 
-            // add both lists to a new insuranceProvider
-            var insuranceProvider = InsuranceProvider(insuranceName, userPractitionerList, insuredPractitionerInfoList)
+            // make practitioner object with entered data
+            var practitioner = Practitioner(practitionerName, professionalTitle, costPerSession, insuranceName,
+                insuranceCoverage, reimbursementPercentage, appointmentsLeft, outOfPocketCost)
+
 
 
             // open saved insurance providers from database
 
             // input database into ram
             val fis =
-                FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+                FileInputStream(activity?.filesDir.toString() + "practitioners_list.meditrack")
             val ois = ObjectInputStream(fis)
 
             @Suppress("UNCHECKED_CAST")
-            var insuranceProviderList: Array<InsuranceProvider> =
-                ois.readObject() as Array<InsuranceProvider>
+            var practitionerList: Array<Practitioner> =
+                ois.readObject() as Array<Practitioner>
 
             // create data
-            val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
-            mutableInsuranceProviderList.add(insuranceProvider)
-            insuranceProviderList = mutableInsuranceProviderList.toTypedArray()
+            val mutablePractitionerList = practitionerList.toMutableList()
+            mutablePractitionerList.add(practitioner)
+            practitionerList = mutablePractitionerList.toTypedArray()
 
 
             // TODO: check if insurance company already exists in database, check if practitioner exists in database
 
             // enter data into database
             val insfos =
-                FileOutputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+                FileOutputStream(activity?.filesDir.toString() + "practitioners_list.meditrack")
             val insoos = ObjectOutputStream(insfos)
-            insoos.writeObject(insuranceProviderList)
+            insoos.writeObject(practitionerList)
             insoos.close()
 
-            createAppointmentSuggestions(insuranceProvider.userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
+            createAppointmentSuggestions(mutablePractitionerList)
 
             activity?.finish()
 
@@ -111,8 +111,7 @@ class InputPractitionersFragment : Fragment() {
     }
 
     fun createAppointmentSuggestions(
-        userPractitionerList: MutableList<UserPractitioner>,
-        insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>) {
+       practitionerList: MutableList<Practitioner>) {
 
 //        userPractitionerList.forEach { userPractitioner ->
 //            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->

@@ -104,14 +104,14 @@ class MainActivity : AppCompatActivity() {
             condoos.writeObject(condReminders.toTypedArray())
             condoos.close()
 
-            // Create insurance provider list in database
-            val insuranceProviderList: ArrayList<InsuranceProvider> = arrayListOf()
+            // Create practitioners list in database
+            val practitionerList: ArrayList<Practitioner> = arrayListOf()
 
-            val insfos = FileOutputStream(filesDir.toString() + "insurance_providers_list.meditrack")
-            val insoos = ObjectOutputStream(insfos)
+            val prafos = FileOutputStream(filesDir.toString() + "practitioners_list.meditrack")
+            val praoos = ObjectOutputStream(prafos)
 
-            insoos.writeObject(insuranceProviderList.toTypedArray())
-            insoos.close()
+            praoos.writeObject(practitionerList.toTypedArray())
+            praoos.close()
 
             //call alarm for notifications in this activity
             alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
