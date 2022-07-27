@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.simple_expander_information.view.*
 
-class PractitionersAdapter(val informationList: List<Information>) :
+class PractitionersAdapter(val insuranceProviderList: ArrayList<InsuranceProvider>) :
     RecyclerView.Adapter<PractitionersAdapter.InformationViewHolder>(){
 
     class InformationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -23,19 +23,18 @@ class PractitionersAdapter(val informationList: List<Information>) :
     }
 
     override fun onBindViewHolder(holder: InformationViewHolder, position: Int) {
-        val currInformation: Information = informationList[position]
+        val insuranceProvider: InsuranceProvider = insuranceProviderList[position]
 
         // below code makes it so that u don't need to prepend with holder.itemView each time you make a change
         holder.itemView.apply {
 
-            tv_title.text = currInformation.name
-            val textFields = currInformation.practitionersAdapter()
+            tv_title.text = insuranceProvider.name
+            val textFields = insuranceProvider.practitionersAdapter()
             val arrayAdapter = ArrayAdapter(context, R.layout.simple_expander_text, textFields.toTypedArray())
             information_list.adapter = arrayAdapter
 
 
-
-            val isExpandable : Boolean = currInformation.expandable
+            val isExpandable : Boolean = insuranceProvider.expandable
             rl_expandable_layout.visibility = if (isExpandable) View.GONE else View.VISIBLE
 
 //            rl_expandable_layout.setLayoutManager(
@@ -47,7 +46,7 @@ class PractitionersAdapter(val informationList: List<Information>) :
 //        )
             linear_layout.setOnClickListener {
                 // toggle the box being expandable
-                currInformation.expandable = !currInformation.expandable
+                insuranceProvider.expandable = !insuranceProvider.expandable
                 notifyItemChanged(position)
             }
 
@@ -62,6 +61,6 @@ class PractitionersAdapter(val informationList: List<Information>) :
     }
 
     override fun getItemCount(): Int {
-        return informationList.size
+        return insuranceProviderList.size
     }
 }

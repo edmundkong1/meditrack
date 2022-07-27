@@ -32,84 +32,43 @@ class PractitionersFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        initData()
+        setInsuranceProviderRV()
 
-        //get insurance providers
-        val fis = FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
-        val ois = ObjectInputStream(fis)
-
-        @Suppress("UNCHECKED_CAST")
-        val insuranceProviderList: Array<InsuranceProvider> =
-            ois.readObject() as Array<InsuranceProvider>
-        val mutableInsuranceProviderList = insuranceProviderList.toMutableList()
 
         // add to the adapter to display
-        val insuranceProviderAdapter = InsuranceProviderAdapter(mutableInsuranceProviderList as ArrayList<InsuranceProvider>)
-        rv_insurance_providers.adapter = insuranceProviderAdapter
-        rv_insurance_providers.setHasFixedSize(true)
+//        val insuranceProviderAdapter = InsuranceProviderAdapter(mutableInsuranceProviderList as ArrayList<InsuranceProvider>)
+//        rv_insurance_providers.adapter = insuranceProviderAdapter
+//        rv_insurance_providers.setHasFixedSize(true)
 
     }
 
 
-    private fun setRecyclerViews() {
+    private fun setInsuranceProviderRV() {
 
-        val insuranceProviderAdapter = InsuranceProviderAdapter(insuranceProviderList)
-        rv_insurance_providers.setLayoutManager(
-            LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-        )
+        val insuranceProviderAdapter = PractitionersAdapter(insuranceProviderList)
+//        rv_insurance_providers.setLayoutManager(
+//            LinearLayoutManager(
+//                context,
+//                LinearLayoutManager.HORIZONTAL,
+//                false
+//            )
+//        )
         rv_insurance_providers.adapter = insuranceProviderAdapter
         rv_insurance_providers.setHasFixedSize(true)
     }
 
     private fun initData() {
-//        publicCoveredList.add(
-//            PublicPractitioners(
-//            "Dr. Eyes",
-//                "Optometrist",
-//            2022,
-//            9,
-//            30
-//            ))
-//
-//        publicCoveredList.add(PublicPractitioners(
-//            "Dr. Depressed",
-//            "Therapist",
-//            2022,
-//            10,
-//            20
-//        ))
+        //get insurance providers
+        val fis = FileInputStream(activity?.filesDir.toString() + "insurance_providers_list.meditrack")
+        val ois = ObjectInputStream(fis)
 
-//        insuranceProviderList.add(
-//            InsuranceProvider(
-//            "Sunlife",
-//            "Dr. Bean, Dr. Olive, Dr. Letttuce"
-//        ))
-//
-//        insuranceProviderList.add(
-//            InsuranceProvider(
-//                "Manulife",
-//                "40 mg",
-//                "Refill required---------- DO OTHIS and don't look back on it yuh",
-//                "Directions: Take daily at 9:00am (on empty stomach)."
-//            ))
-//        insuranceProviderList.add(
-//            InsuranceProvider(
-//                "OHIP",
-//                "40 mg",
-//                "Refill required---------- DO OTHIS and don't look back on it yuh",
-//                "Directions: Take daily at 9:00am (on empty stomach)."
-//            ))
-//
-//        insuranceProviderList.add(
-//            InsuranceProvider(
-//                "CanadaLife",
-//                "40 mg",
-//                "Refill required---------- DO OTHIS and don't look back on it yuh",
-//                "Directions: Take daily at 9:00am (on empty stomach)."
-//            ))
+        @Suppress("UNCHECKED_CAST")
+        val tempInsuranceProviderList: Array<InsuranceProvider> =
+            ois.readObject() as Array<InsuranceProvider>
+
+        insuranceProviderList.clear()
+        insuranceProviderList.addAll(tempInsuranceProviderList)
     }
 
 }

@@ -36,6 +36,8 @@ class InputPractitionersFragment : Fragment() {
         val submitInputPractitioners: Button = view.findViewById(R.id.bttn_submit_input_practitioners)
 
         submitInputPractitioners.setOnClickListener {
+
+            // get information from EditText fields
             val practitionerNameET: EditText = view.findViewById(R.id.et_practitioner_name)
             val practitionerName = practitionerNameET.text.toString()
 
@@ -56,10 +58,7 @@ class InputPractitionersFragment : Fragment() {
 
 
 
-
-
             // make dropdown for insurance
-            // TODO check if the entered practitioner into the list of practitioners into each of the insurances chosen
 
 
             // make insured practitioner object to save to db about what type of insurance info is saved
@@ -68,7 +67,7 @@ class InputPractitionersFragment : Fragment() {
             insuredPractitionerInfoList.add(insuredPractitionerInfo)
 
             // make user practitioner
-            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession, 2022, 10, 10)
+            var userPractitioner = UserPractitioner(practitionerName, professionalTitle, costPerSession)
             var userPractitionerList = mutableListOf<UserPractitioner>()
             userPractitionerList.add(userPractitioner)
 
@@ -103,7 +102,7 @@ class InputPractitionersFragment : Fragment() {
             insoos.writeObject(insuranceProviderList)
             insoos.close()
 
-            createAppointmentSuggestions(insuranceProvider._userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
+            createAppointmentSuggestions(insuranceProvider.userPractitionerList, insuranceProvider.insuredPractitionerInfoList)
 
             activity?.finish()
 
@@ -115,13 +114,13 @@ class InputPractitionersFragment : Fragment() {
         userPractitionerList: MutableList<UserPractitioner>,
         insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>) {
 
-        userPractitionerList.forEach { userPractitioner ->
-            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->
-                if (userPractitioner.title == insuredPractitionerInfo.title) {
-                    return
-                }
-            }
-        }
+//        userPractitionerList.forEach { userPractitioner ->
+//            insuredPractitionerInfoList.forEach { insuredPractitionerInfo ->
+//                if (userPractitioner.title == insuredPractitionerInfo.title) {
+//                    return
+//                }
+//            }
+//        }
 
 
     }

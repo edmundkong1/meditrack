@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Practitioner's Name (eg. Dr. Smith)"
+            android:hint="Practitioner's Name (eg. Dr. Smith)"
             android:textColor="@color/black"
             android:layout_margin="10dp" />
 
@@ -37,7 +37,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter Practitioner's Title (eg. Psychologist)"
+            android:hint="Practitioner's Title (eg. Psychologist)"
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/et_cost_per_session"
@@ -65,7 +65,7 @@
             android:ems="10"
             android:layout_margin="10dp"
             android:inputType="text"
-            android:hint="Enter Insurance Provider (eg. SunLife)"
+            android:hint="Insurance Provider (eg. SunLife)"
             android:textColor="@color/black" />
 
         <EditText
@@ -75,7 +75,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Enter Annual Coverage for Expense ($) (eg. $500)"
+            android:hint="Annual Coverage for Expense ($) (eg. $500)"
             android:textColor="@color/black" />
 
 
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="Reimbursement (%) (eg. 80/5)"
+            android:hint="Reimbursement (%) (eg. 80)"
             android:textColor="@color/black" />
 
 

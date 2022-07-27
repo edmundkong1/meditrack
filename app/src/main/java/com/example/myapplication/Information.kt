@@ -264,12 +264,14 @@ class InsuranceProvider(
     _userPractitionerList: MutableList<UserPractitioner>,
     _insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo>,
 ): Information(_insuranceName) {
-    var _insuranceName: String = _insuranceName
-    var _userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
+    var insuranceName: String = _insuranceName
+    var userPractitionerList: MutableList<UserPractitioner> = _userPractitionerList
     var insuredPractitionerInfoList: MutableList<InsuredPractitionerInfo> = _insuredPractitionerInfoList
     override fun practitionersAdapter() : ArrayList<String> {
         val newList: ArrayList<String> = arrayListOf()
-        newList.add("Insured Practitioners: $insuredPractitionerInfoList")
+        newList.add("Insurance Name: $insuranceName")
+        newList.add("User Practitioner List: $userPractitionerList")
+        newList.add("Insured Practitioners Info: $insuredPractitionerInfoList")
         return newList
     }
 }
@@ -278,10 +280,7 @@ class InsuranceProvider(
 class UserPractitioner(
     _name: String,
     _title: String,
-    _costPerSession: Int,
-    _year: Int,
-    _month: Int,
-    _day: Int
+    _costPerSession: Int
 ): Information(_name) {
     var title: String = _title
     var costPerSession: Int = _costPerSession
